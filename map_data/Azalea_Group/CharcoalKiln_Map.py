@@ -4,18 +4,18 @@ from class_definitions import WarpInstruction, getHex
 from map_data.map_constants import MapGroup, Azalea
 
 mapGroup = MapGroup.AZALEA
-specificMap = Azalea.AZALEA_GYM
+specificMap = Azalea.CHARCOAL_KILN
 
-class AZALEA_GYM(IntEnum):
+class CHARCOAL_KILN(IntEnum):
     def __str__(self):
         return str(self.value)
 
     AZALEA_TOWN = 1  # dual wide
 
 
-class Azalea_Gym_Warp_Points(Enum):
+class Charcoal_Kiln_Warp_Points(Enum):
 
-    AZALEA_GYM_TO_AZALEA_TOWN_WP = WarpInstruction(
-        getHex(AZALEA_GYM.AZALEA_TOWN),
+    CHARCOAL_KILN_TO_AZALEA_TOWN_WP = WarpInstruction(
+        getHex(CHARCOAL_KILN.AZALEA_TOWN),
         getHex(mapGroup),
         getHex(specificMap))
