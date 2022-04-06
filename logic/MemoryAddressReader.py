@@ -1,13 +1,16 @@
+import os
+
+
 def buildMemoryLocationsFromSym(detectedROMName):
     memoryMapWarps = dict()
     memoryMapScripts = dict()
 
     if detectedROMName == "Pokemon - Crystal Version 1.1":
         print("Loading Vanilla Sym")
-        file = "C:/Users/theje/PycharmProjects/pythonProject/logic/pokecrystal11.sym"  # Change this to hide path
+        file = os.path.join(os.path.dirname(os.path.realpath(__file__)),"pokecrystal11.sym")
     elif detectedROMName == "Pokemon - Crystal Speedchoice Version 7.2":
         print("Loading Speedchoice Sym")
-        file = "C:/Users/theje/PycharmProjects/pythonProject/logic/crystal-speedchoice.sym"  # Change this to hide path
+        file = os.path.join(os.path.dirname(os.path.realpath(__file__)),"crystal-speedchoice.sym")
     # else:
     #     file = "C:/Users/theje/PycharmProjects/pythonProject/logic/crystal-speedchoice.sym"
     #     print("DIDN'T LOAD FULLY SUPPORTED ROM!!")
