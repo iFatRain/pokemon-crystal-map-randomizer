@@ -37014,8 +37014,7 @@
 63:44bc WhirlIslandB2FMaxElixer
 63:44be WhirlIslandB2F_MapEvents
 63:44ff WhirlIslandLugiaChamber_MapScripts
-63:4504 WhirlIslandLugiaChamber_
-
+63:4504 WhirlIslandLugiaChamber_MapScripts.Lugia
 63:4512 WhirlIslandLugiaChamber_MapScripts.Appear
 63:4515 WhirlIslandLugiaChamber_MapScripts.NoAppear
 63:4518 Lugia
