@@ -3,7 +3,7 @@ import time
 from logic import AutomaticWarpLocator
 from logic.MemoryAddressReader import buildMemoryLocationsFromSym
 from logic.NewRandomizerLogic import randomizationStep1, randomizationStep2, randomizationStep3, randomizationStep4, \
-    checkSeedCompletability
+    checkSeedCompletability, randomizationStep5
 from class_definitions import WarpInstruction, getHex
 
 def randomizeWarps():
@@ -19,8 +19,10 @@ def randomizeWarps():
         randomizedNodes = randomizationStep3(randomizedNodes)
         print("Doing Step 4")
         randomizedNodes = randomizationStep4(randomizedNodes)
+        print("Doing Step 5")
+        randomizedNodes = randomizationStep5(randomizedNodes)
         print("Checking the seed....")
-        completableSeed, fullyCompletable = checkSeedCompletability(list(randomizedNodes))
+        completableSeed, fullyCompletable = checkSeedCompletability(randomizedNodes)
 
     return randomizedNodes
 
@@ -31,7 +33,7 @@ def randomizeROM(inputROM, settings):
     randomizedNodes = randomizeWarps()
 
     rom = inputROM.read()
-    memoryLocations, scriptLocations = buildMemoryLocationsFromSym(settings[1])
+    scriptLocations = buildMemoryLocationsFromSym(settings[1])
     lookupDict = AutomaticWarpLocator.getLookupDict()
     warpLocations = dict()
     for key in lookupDict.keys():
@@ -66,8 +68,8 @@ def randomizeROM(inputROM, settings):
     print(settings[1])
     if settings[0] == 1:
         print("EASY LEGENDARIES DETECTED")
-        print("WhirlIslandLugiaChamber is at", hex(memoryLocations["WhirlIslandLugiaChamber"]))
-        memToSeekTo = (memoryLocations["WhirlIslandLugiaChamber"] + 12)
+        print("WhirlIslandLugiaChamber is at", hex(warpLocations["WhirlIslandLugiaChamber"]))
+        memToSeekTo = (warpLocations["WhirlIslandLugiaChamber"] + 7)
         print("Seeking to:", hex(memToSeekTo))
         inputROM.seek(memToSeekTo) #0x0018C546Vanilla Lugia Location
         inputROM.write(bytes.fromhex(getHex(15)))
@@ -145,7 +147,7 @@ def randomizeROM(inputROM, settings):
     inputROM.write(bytes.fromhex(getHex(46)))
 
     #This will make the director always in underground warehouse
-    inputROM.seek(memoryLocations['GoldenrodUndergroundWarehouse'] + 66)
+    inputROM.seek(warpLocations['GoldenrodUndergroundWarehouse'] + 66)
     inputROM.write(bytes.fromhex(getHex(255)))
     inputROM.write(bytes.fromhex(getHex(255)))
 
