@@ -296,17 +296,51 @@ def randomizationStep4(randomizedNodes):
 
 
     # Resetting Nodes In case of re-randomization
+    # for node in randomizedNodes:
+    #     node.value.USED_LINKS = 0
+    #     for link in node.value.LINKS:
+    #         link.value.MODIFIED = False
+    #         link.value.OWN.value.USED = False
+    #         link.value.LINK.value.USED = False
+
+    return randomizedNodes
+
+def getRandomLinkFromList(inputList):
+    while True:
+        sampleLink = random.choice(inputList)
+        if sampleLink.value.MODIFIED == False:
+            if sampleLink.value.OWN.value.USED == True:
+                print("THIS LINKS VALUE HAS ALREADY BEEN USED")
+            sampleLink.value.MODIFIED = True
+            sampleLink.value.OWN.value.USED = True
+            print("Returning ", sampleLink)
+            return sampleLink
+
+def randomizationStep5(randomizedNodes):
+    print("\nThese are unlinked Nodes\n")
+    unchangedLinks = []
     for node in randomizedNodes:
-        node.value.USED_LINKS = 0
         for link in node.value.LINKS:
-            link.value.MODIFIED = False
-            link.value.OWN.value.USED = False
-            link.value.LINK.value.USED = False
+            if link.value.MODIFIED is False:
+                unchangedLinks.append(link)
+
+    for link in unchangedLinks:
+        print("\t",link)
+
+    print("Getting first random unlinked")
+    linkA = getRandomLinkFromList(unchangedLinks)
+    print("Getting second random unlinked")
+    linkB = getRandomLinkFromList(unchangedLinks)
+
+    connectTwoLinks(linkA,linkB)
+
 
     return randomizedNodes
 
 
 def checkSeedCompletability(randomizedNodes):
+
+    nodesToCheck = list(randomizedNodes)
 
     completableSeed = False
     obtainedKeys = []
@@ -316,7 +350,7 @@ def checkSeedCompletability(randomizedNodes):
     fullyUnlockedNodes = []
     stuckCount = 0
 
-    print("There are ",len(randomizedNodes), "to check in total")
+    print("There are ",len(nodesToCheck), "to check in total")
 
     badgeList = [Unlock_Keys.BADGE_1,
                  Unlock_Keys.BADGE_2,
@@ -328,8 +362,8 @@ def checkSeedCompletability(randomizedNodes):
                  Unlock_Keys.BADGE_8,
                 ]
 
-    explorableNodes = [node for node in randomizedNodes if node is MajorNodes.New_Bark_Town_Node]
-    randomizedNodes.pop(randomizedNodes.index(MajorNodes.New_Bark_Town_Node))
+    explorableNodes = [node for node in nodesToCheck if node is MajorNodes.New_Bark_Town_Node]
+    nodesToCheck.pop(nodesToCheck.index(MajorNodes.New_Bark_Town_Node))
     #
     # while completableSeed
 
@@ -393,16 +427,16 @@ def checkSeedCompletability(randomizedNodes):
                 explorableNodes.remove(node)
 
         newNodes = 0
-        for node in list(randomizedNodes):
+        for node in list(nodesToCheck):
             for link in node.value.LINKS:
                 if link.value.OWN in toBeExploredLinks:
                     if node not in explorableNodes:
                         explorableNodes.append(node)
 
         for node in explorableNodes:
-            if node in list(randomizedNodes):
+            if node in list(nodesToCheck):
                 newNodes += 1
-                randomizedNodes.remove(node)
+                nodesToCheck.remove(node)
 
 
         if newNodes == 0:
@@ -412,7 +446,7 @@ def checkSeedCompletability(randomizedNodes):
                 break;
 
         print("Total nodes unlocked = ",len(fullyUnlockedNodes))
-        print("Nodes not yet checked:", len(randomizedNodes))
+        print("Nodes not yet checked:", len(nodesToCheck))
         print()
 
 
@@ -435,9 +469,17 @@ def checkSeedCompletability(randomizedNodes):
     else:
         print("RESETTING NODE LIST TO DEFAULT LINKS")
         for node in randomizedNodes:
+            node.value.USED_LINKS = 0
             for link in node.value.LINKS:
+                link.value.LINK.value.USED = False
                 link.value.LINK = link.value.DEFAULT_LINK
-        print("-ERROR- -ERROR- -ERROR- CANT COMPLETE THE SEED -ERROR- -ERROR- -ERROR-    ")
+                link.value.LINK.value.USED = False
+                link.value.OWN.value.USED = False
+                link.value.MODIFIED = False
+
+
+
+        print("-ERROR- -ERROR- -ERROR- CANT COMPLETE THE SEED -ERROR- -ERROR- -ERROR-")
 
     allItemsObtainable = all(key in obtainedKeys for key in Unlock_Keys)
     if allItemsObtainable:
@@ -446,12 +488,18 @@ def checkSeedCompletability(randomizedNodes):
     return completableSeed, allItemsObtainable
 
 
-completable = False
-fullyCompletable = False
-while not completable:
-    print("\n"*40)
-    randomizedNodes = randomizationStep1()
-    randomizedNodes = randomizationStep2(randomizedNodes)
-    randomizedNodes = randomizationStep3(randomizedNodes)
-    randomizedNodes = randomizationStep4(randomizedNodes)
-    completable, fullyCompletable = checkSeedCompletability(list(randomizedNodes))
+# completable = False
+# fullyCompletable = False
+# while not completable:
+#     print("\n"*40)
+#     randomizedNodes = randomizationStep1()
+#     randomizedNodes = randomizationStep2(randomizedNodes)
+#     randomizedNodes = randomizationStep3(randomizedNodes)
+#     randomizedNodes = randomizationStep4(randomizedNodes)
+#     completable, fullyCompletable = checkSeedCompletability(list(randomizedNodes))
+# #
+# randomizedNodes = randomizationStep1()
+# randomizedNodes = randomizationStep2(randomizedNodes)
+# randomizedNodes = randomizationStep3(randomizedNodes)
+# randomizedNodes = randomizationStep4(randomizedNodes)
+# randomizedNodes = randomizationStep5(randomizedNodes)
