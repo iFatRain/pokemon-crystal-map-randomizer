@@ -34,7 +34,13 @@ with open(fileName) as f:
 f.close()
 
 # create the code string
-proper_map_name = "_".join(re.findall('[A-Z][^A-Z]*', fileName.split(".")[0]))
+# proper_map_name = "_".join(re.findall('[A-Z][^A-Z]*', fileName.split(".")[0]))
+if any(char.isdigit() for char in fileName):
+    map_name = re.split('(B*[0-9]F)', fileName.split(".")[0])
+    proper_map_name = '_'.join(re.findall('[A-Z][^A-Z]*', map_name[0])) + '_' + map_name[1]
+
+else:
+    proper_map_name = '_'.join(re.findall('[A-Z][^A-Z]*', fileName.split(".")[0]))
 
 imports = ("from enum import IntEnum, Enum\n" +
            "from class_definitions import WarpInstruction, getHex\n" +
