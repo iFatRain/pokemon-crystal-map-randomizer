@@ -37,7 +37,7 @@ f.close()
 # proper_map_name = "_".join(re.findall('[A-Z][^A-Z]*', fileName.split(".")[0]))
 if any(char.isdigit() for char in fileName):
     map_name = re.split('(B*[0-9]F)', fileName.split(".")[0])
-    proper_map_name = '_'.join(re.findall('[A-Z][^A-Z]*', map_name[0])) + '_' + map_name[1]
+    proper_map_name = '_'.join(re.findall('[A-Z][^A-Z]*', map_name[0])) + '_' + '_'.join(map_name[1::])
 
 else:
     proper_map_name = '_'.join(re.findall('[A-Z][^A-Z]*', fileName.split(".")[0]))
