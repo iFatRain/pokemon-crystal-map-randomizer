@@ -53,48 +53,6 @@ class MajorNodes_Johto(Enum):
         johto.Route_45_Links
     )))
 
-# class MajorNodes_Kanto(Enum):
-
-    # Celadon_City_Node = Node(
-    #     [link for link in kanto.Celadon_City_Links]
-    # )
-    #
-    # Cerulean_City_Node = Node(
-    #     [link for link in kanto.Cerulean_City_Links]
-    # )
-    #
-    # Cinnabar_Island_Node = Node(
-    #     [link for link in kanto.Cinnabar_Island_Links]
-    # )
-    #
-    # Fuchsia_City_Node = Node(
-    #     [link for link in kanto.Fuchsia_City_Links]
-    # )
-    #
-    # Lavender_Town_Node = Node(
-    #     [link for link in kanto.Lavender_Town_Links]
-    # )
-    #
-    # Pallet_Town_Node = Node(
-    #     [link for link in kanto.Pallet_Town_Links]
-    # )
-    #
-    # Pewter_City_Node = Node(
-    #     [link for link in kanto.Pewter_City_Links]
-    # )
-    #
-    # Saffron_City_Node = Node(
-    #     [link for link in kanto.Saffron_City_Links]
-    # )
-    #
-    # Vermilion_City_Node = Node(
-    #     [link for link in kanto.Vermilion_City_Links]
-    # )
-    #
-    # Viridian_City_Node = Node(
-    #     [link for link in kanto.Viridian_City_Links]
-    # )
-
 class ImportantDeadEndNodes_Johto(Enum):
 
 
@@ -304,8 +262,28 @@ class ImportantDeadEndNodes_Johto(Enum):
         [johto.Route_42_Links.ROUTE_42_TO_MOUNT_MORTAR_1F_OUTSIDE_MIDDLE_LINK]
     )
 
-    Lugia_Chamber_Node = Node(
+    Whirl_Island_Lugia_Chamber_Node = Node(
         [johto.Whirl_Island_Lugia_Chamber_Links.WHIRL_ISLAND_LUGIA_CHAMBER_TO_WHIRL_ISLAND_B2F_LINK]
+    )
+
+    Whirl_Island_B1F_Escape_Rope_Node = Node(
+        [johto.Whirl_Island_B1F_Links.WHIRL_ISLAND_B1F_TO_WHIRL_ISLAND_SW_3_LINK]
+    )
+
+    Whirl_Island_B2F_Single_Item_Node = Node(
+        [johto.Whirl_Island_B2F_Links.WHIRL_ISLAND_B2F_TO_WHIRL_ISLAND_B1F_7_LINK]
+    )
+
+    Whirl_Island_B2F_Double_Item_Node = Node(
+        [johto.Whirl_Island_B2F_Links.WHIRL_ISLAND_B2F_TO_WHIRL_ISLAND_B1F_8_LINK]
+    )
+
+    Whirl_Island_NE_Middle_Node = Node(
+        [johto.Whirl_Island_NE_Links.WHIRL_ISLAND_N_E_TO_WHIRL_ISLAND_B1F_3_LINK]
+    )
+
+    Whirl_Island_SW_Item_Node = Node(
+        [johto.Whirl_Island_SW_Links.WHIRL_ISLAND_S_W_TO_WHIRL_ISLAND_B1F_5_LINK]
     )
 
     Tin_Tower_Roof_Node = Node(
@@ -385,6 +363,11 @@ class ImportantDeadEndNodes_Johto(Enum):
 
 
 class UselessDeadEndNodes_Johto(Enum):
+
+    Whirl_Island_B1F_Useless_Node = Node(
+        [johto.Whirl_Island_B1F_Links.WHIRL_ISLAND_B1F_TO_WHIRL_ISLAND_CAVE_1_LINK]
+    )
+
     #Todo Make these a hub maybe? Alph Lower node
     Ruins_Of_Alph_Lower_From_Union_Cave = Node(
         [johto.Ruins_Of_Alph_Outside_Links.RUINS_OF_ALPH_OUTSIDE_TO_UNION_CAVE_B1F_2_LINK]
@@ -491,6 +474,29 @@ class UselessDeadEndNodes_Johto(Enum):
         [link for link in johto.Mahogany_Red_Gyarados_Speech_House_Links]
     )
 
+    Whirl_Island_B2F_Useless_Ladder_Node = Node(
+        [johto.Whirl_Island_B2F_Links.WHIRL_ISLAND_B2F_TO_WHIRL_ISLAND_SW_5_LINK]
+    )
+
+    Whirl_Island_B2F_Useless_Cave_Node = Node(
+        [johto.Whirl_Island_Lugia_Chamber_Links.WHIRL_ISLAND_LUGIA_CHAMBER_TO_WHIRL_ISLAND_B2F_LINK]
+    )
+
+    Whirl_Island_NE_Left_Node = Node(
+        [johto.Whirl_Island_NE_Links.WHIRL_ISLAND_N_E_TO_ROUTE_41_2_LINK]
+    )
+
+    Whirl_Island_NE_Right_Node = Node(
+        [johto.Whirl_Island_NE_Links.WHIRL_ISLAND_N_E_TO_WHIRL_ISLAND_B1F_2_LINK]
+    )
+
+    Whirl_Island_SW_Lower_Left_Useless_Node = Node(
+        [johto.Whirl_Island_SW_Links.WHIRL_ISLAND_S_W_TO_WHIRL_ISLAND_NW_3_LINK]
+    )
+
+    Whirl_Island_SW_Lower_Right_Useless_Node = Node(
+        [johto.Whirl_Island_SW_Links.WHIRL_ISLAND_S_W_TO_WHIRL_ISLAND_B2F_4_LINK]
+    )
 
 
 class TwoWayCorridorNodes_Johto(Enum):
@@ -763,12 +769,54 @@ class TwoWayCorridorNodes_Johto(Enum):
         [link for link in johto.Ruins_Of_Alph_Omanyte_Chamber_Links]
     )
 
+    Whirl_Island_B1F_Raised_Path_Corridor_Node = Node(
+        [johto.Whirl_Island_B1F_Warp_Points.WHIRL_ISLAND_B1F_TO_WHIRL_ISLAND_B2F_1_WP,
+         johto.Whirl_Island_B1F_Warp_Points.WHIRL_ISLAND_B1F_TO_WHIRL_ISLAND_NE_2_WP]
+    )
+
+    Whirl_Island_B1F_Lower_Right_Corridor_Node = Node(
+        [johto.Whirl_Island_B1F_Links.WHIRL_ISLAND_B1F_TO_WHIRL_ISLAND_SE_2_LINK,
+         johto.Whirl_Island_B1F_Links.WHIRL_ISLAND_B1F_TO_WHIRL_ISLAND_SW_2_LINK]
+    )
+
+    Whirl_Island_Cave_Corridor_Node = Node(
+        [johto.Whirl_Island_Cave_Links.WHIRL_ISLAND_CAVE_TO_WHIRL_ISLAND_NW_4_LINK,
+         johto.Whirl_Island_Cave_Links.WHIRL_ISLAND_CAVE_TO_WHIRL_ISLAND_B1F_9_LINK]
+    )
+
+    Whirl_Island_NW_Upper_Corridor_Node = Node(
+        [johto.Whirl_Island_NW_Links.WHIRL_ISLAND_N_W_TO_WHIRL_ISLAND_B1F_1_LINK,
+         johto.Whirl_Island_NW_Links.WHIRL_ISLAND_N_W_TO_ROUTE_41_1_LINK]
+    )
+
+    Whirl_Island_NW_Lower_Corridor_Node = Node(
+        [johto.Whirl_Island_NW_Links.WHIRL_ISLAND_N_W_TO_WHIRL_ISLAND_SW_4_LINK,
+         johto.Whirl_Island_NW_Links.WHIRL_ISLAND_N_W_TO_WHIRL_ISLAND_CAVE_2_LINK]
+    )
+
+    Whirl_Island_SE_Corridor_Node = Node(
+        [johto.Whirl_Island_SE_Links.WHIRL_ISLAND_S_E_TO_WHIRL_ISLAND_B1F_6_LINK,
+         johto.Whirl_Island_SE_Links.WHIRL_ISLAND_S_E_TO_ROUTE_41_4_LINK]
+    )
+
+    Whirl_Island_SW_Corridor_Node = Node(
+        [johto.Whirl_Island_SW_Links.WHIRL_ISLAND_S_W_TO_WHIRL_ISLAND_B1F_4_LINK,
+         johto.Whirl_Island_SW_Links.WHIRL_ISLAND_S_W_TO_ROUTE_41_3_LINK]
+    )
+
+
     # Dark_Cave_Violet_Entrance_From_Route_31_Node = Node(
     #     [johto.Dark_Cave_Violet_Entrance_Links.DARK_CAVE_VIOLET_ENTRANCE_TO_ROUTE_31_LINK,
     #      johto.Dark_Cave_Violet_Entrance_Links.DARK_CAVE_VIOLET_ENTRANCE_TO_ROUTE_46_LINK]
     # )
 
 class HubNodes(Enum):
+
+    Whirl_Island_B1F_Hub_Node = Node(
+        [johto.Whirl_Island_B1F_Links.WHIRL_ISLAND_B1F_TO_WHIRL_ISLAND_B2F_2_LINK,
+         johto.Whirl_Island_B1F_Links.WHIRL_ISLAND_B1F_TO_WHIRL_ISLAND_NW_2_LINK,
+         johto.Whirl_Island_B1F_Links.WHIRL_ISLAND_B1F_TO_WHIRL_ISLAND_NE_3_LINK]
+    )
 
     Goldenrod_Underground_Hub_Node = Node(
         [johto.Goldenrod_Underground_Links.GOLDENROD_UNDERGROUND_TO_GOLDENROD_UNDERGROUND_KEY_DOOR_LINK,
