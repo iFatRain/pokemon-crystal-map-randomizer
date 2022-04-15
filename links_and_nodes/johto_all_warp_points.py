@@ -119,6 +119,12 @@ from map_data.Goldenrod_Group.DayCare_Map import Day_Care_Warp_Points
 from map_data.Goldenrod_Group.GoldenrodBikeShop_Map import Goldenrod_Bike_Shop_Warp_Points
 from map_data.Goldenrod_Group.GoldenrodCity_Map import Goldenrod_City_Warp_Points
 from map_data.Goldenrod_Group.GoldenrodDeptStore1F_Map import Goldenrod_Dept_Store_1F_Warp_Points
+from map_data.Goldenrod_Group.GoldenrodDeptStore2F_Map import Goldenrod_Dept_Store_2F_Warp_Points
+from map_data.Goldenrod_Group.GoldenrodDeptStore3F_Map import Goldenrod_Dept_Store_3F_Warp_Points
+from map_data.Goldenrod_Group.GoldenrodDeptStore4F_Map import Goldenrod_Dept_Store_4F_Warp_Points
+from map_data.Goldenrod_Group.GoldenrodDeptStore5F_Map import Goldenrod_Dept_Store_5F_Warp_Points
+from map_data.Goldenrod_Group.GoldenrodDeptStore6F_Map import Goldenrod_Dept_Store_6F_Warp_Points
+from map_data.Goldenrod_Group.GoldenrodDeptStoreRoof_Map import Goldenrod_Dept_Store_Roof_Warp_Points
 from map_data.Goldenrod_Group.GoldenrodFlowerShop_Map import Goldenrod_Flower_Shop_Warp_Points
 from map_data.Goldenrod_Group.GoldenrodGameCorner_Map import Goldenrod_Game_Corner_Warp_Points
 from map_data.Goldenrod_Group.GoldenrodGym_Map import Goldenrod_Gym_Warp_Points
@@ -1951,7 +1957,83 @@ class Goldenrod_Dept_Store_1F_Links(Enum):
         "GoldenrodDeptStore1F", dual_width=True
     )
 
-    # GOLDENROD_DEPT_STORE_1F_TO_GOLDENROD_DEPT_STORE_2F
+    GOLDENROD_DEPT_STORE_1F_TO_GOLDENROD_DEPT_STORE_2F_2_LINK = WarpLink(
+        Goldenrod_Dept_Store_1F_Warp_Points.GOLDENROD_DEPT_STORE_1F_TO_GOLDENROD_DEPT_STORE_2F_2_WP,
+        Goldenrod_Dept_Store_2F_Warp_Points.GOLDENROD_DEPT_STORE_2F_TO_GOLDENROD_DEPT_STORE_1F_3_WP,
+        "GoldenrodDeptStore1F", 10
+    )
+
+class Goldenrod_Dept_Store_2F_Links(Enum):
+    GOLDENROD_DEPT_STORE_2F_TO_GOLDENROD_DEPT_STORE_3F_1_LINK = WarpLink(
+        Goldenrod_Dept_Store_2F_Warp_Points.GOLDENROD_DEPT_STORE_2F_TO_GOLDENROD_DEPT_STORE_3F_1_WP,
+        Goldenrod_Dept_Store_3F_Warp_Points.GOLDENROD_DEPT_STORE_3F_TO_GOLDENROD_DEPT_STORE_2F_1_WP,
+        "GoldenrodDeptStore2F"
+    )
+
+    GOLDENROD_DEPT_STORE_2F_TO_GOLDENROD_DEPT_STORE_1F_3_LINK = WarpLink(
+        Goldenrod_Dept_Store_2F_Warp_Points.GOLDENROD_DEPT_STORE_2F_TO_GOLDENROD_DEPT_STORE_1F_3_WP,
+        Goldenrod_Dept_Store_1F_Warp_Points.GOLDENROD_DEPT_STORE_1F_TO_GOLDENROD_DEPT_STORE_2F_2_WP,
+        "GoldenrodDeptStore2F", 5
+    )
+
+
+class Goldenrod_Dept_Store_3F_Links(Enum):
+    GOLDENROD_DEPT_STORE_3F_TO_GOLDENROD_DEPT_STORE_2F_1_LINK = WarpLink(
+        Goldenrod_Dept_Store_3F_Warp_Points.GOLDENROD_DEPT_STORE_3F_TO_GOLDENROD_DEPT_STORE_2F_1_WP,
+        Goldenrod_Dept_Store_2F_Warp_Points.GOLDENROD_DEPT_STORE_2F_TO_GOLDENROD_DEPT_STORE_3F_1_WP,
+        "GoldenrodDeptStore3F"
+    )
+
+    GOLDENROD_DEPT_STORE_3F_TO_GOLDENROD_DEPT_STORE_4F_2_LINK = WarpLink(
+        Goldenrod_Dept_Store_3F_Warp_Points.GOLDENROD_DEPT_STORE_3F_TO_GOLDENROD_DEPT_STORE_4F_2_WP,
+        Goldenrod_Dept_Store_4F_Warp_Points.GOLDENROD_DEPT_STORE_4F_TO_GOLDENROD_DEPT_STORE_3F_2_WP,
+        "GoldenrodDeptStore3F", 5
+    )
+
+class Goldenrod_Dept_Store_4F_Links(Enum):
+    GOLDENROD_DEPT_STORE_4F_TO_GOLDENROD_DEPT_STORE_5F_1_LINK = WarpLink(
+        Goldenrod_Dept_Store_4F_Warp_Points.GOLDENROD_DEPT_STORE_4F_TO_GOLDENROD_DEPT_STORE_5F_1_WP,
+        Goldenrod_Dept_Store_5F_Warp_Points.GOLDENROD_DEPT_STORE_5F_TO_GOLDENROD_DEPT_STORE_4F_1_WP,
+        "GoldenrodDeptStore4F"
+    )
+
+    GOLDENROD_DEPT_STORE_4F_TO_GOLDENROD_DEPT_STORE_3F_2_LINK = WarpLink(
+        Goldenrod_Dept_Store_4F_Warp_Points.GOLDENROD_DEPT_STORE_4F_TO_GOLDENROD_DEPT_STORE_3F_2_WP,
+        Goldenrod_Dept_Store_3F_Warp_Points.GOLDENROD_DEPT_STORE_3F_TO_GOLDENROD_DEPT_STORE_4F_2_WP,
+        "GoldenrodDeptStore4F",5
+    )
+
+class Goldenrod_Dept_Store_5F_Links(Enum):
+    GOLDENROD_DEPT_STORE_5F_TO_GOLDENROD_DEPT_STORE_4F_1_LINK = WarpLink(
+        Goldenrod_Dept_Store_5F_Warp_Points.GOLDENROD_DEPT_STORE_5F_TO_GOLDENROD_DEPT_STORE_4F_1_WP,
+        Goldenrod_Dept_Store_3F_Warp_Points.GOLDENROD_DEPT_STORE_3F_TO_GOLDENROD_DEPT_STORE_4F_2_WP,
+        "GoldenrodDeptStore5F"
+    )
+    GOLDENROD_DEPT_STORE_5F_TO_GOLDENROD_DEPT_STORE_6F_1_LINK = WarpLink(
+        Goldenrod_Dept_Store_5F_Warp_Points.GOLDENROD_DEPT_STORE_5F_TO_GOLDENROD_DEPT_STORE_6F_1_WP,
+        Goldenrod_Dept_Store_6F_Warp_Points.GOLDENROD_DEPT_STORE_6F_TO_GOLDENROD_DEPT_STORE_5F_2_WP,
+        "GoldenrodDeptStore5F", 5
+    )
+
+class Goldenrod_Dept_Store_6F_Links(Enum):
+    GOLDENROD_DEPT_STORE_6F_TO_GOLDENROD_DEPT_STORE_5F_2_LINK = WarpLink(
+        Goldenrod_Dept_Store_6F_Warp_Points.GOLDENROD_DEPT_STORE_6F_TO_GOLDENROD_DEPT_STORE_5F_2_WP,
+        Goldenrod_Dept_Store_5F_Warp_Points.GOLDENROD_DEPT_STORE_5F_TO_GOLDENROD_DEPT_STORE_6F_1_WP,
+        "GoldenrodDeptStore6F"
+    )
+    GOLDENROD_DEPT_STORE_6F_TO_GOLDENROD_DEPT_STORE_ROOF_1_WP = WarpLink(
+        Goldenrod_Dept_Store_6F_Warp_Points.GOLDENROD_DEPT_STORE_6F_TO_GOLDENROD_DEPT_STORE_ROOF_1_WP,
+        Goldenrod_Dept_Store_Roof_Warp_Points.GOLDENROD_DEPT_STORE_ROOF_TO_GOLDENROD_DEPT_STORE_6F_3_WP,
+        "GoldenrodDeptStore6F", 10
+    )
+
+class Goldenrod_Dept_Store_Roof_Links(Enum):
+    GOLDENROD_DEPT_STORE_ROOF_TO_GOLDENROD_DEPT_STORE_6F_3_WP = WarpLink(
+        Goldenrod_Dept_Store_Roof_Warp_Points.GOLDENROD_DEPT_STORE_ROOF_TO_GOLDENROD_DEPT_STORE_6F_3_WP,
+        Goldenrod_Dept_Store_6F_Warp_Points.GOLDENROD_DEPT_STORE_6F_TO_GOLDENROD_DEPT_STORE_ROOF_1_WP,
+        "GoldenrodDeptStoreRoof"
+    )
+
 
 class Goldenrod_Flower_Shop_Links(Enum):
     GOLDENROD_FLOWER_SHOP_TO_GOLDENROD_CITY = WarpLink(

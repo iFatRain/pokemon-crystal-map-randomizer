@@ -240,9 +240,8 @@ class ImportantDeadEndNodes_Johto(Enum):
         [link for link in johto.Goldenrod_Bike_Shop_Links]
     )
 
-    #Todo this is a cooridor
-    Goldenrod_Dept_Store_1F_Node = Node(
-        [link for link in johto.Goldenrod_Dept_Store_1F_Links]
+    Goldenrod_Dept_Store_Roof_Node = Node(
+        [johto.Goldenrod_Dept_Store_Roof_Links.GOLDENROD_DEPT_STORE_ROOF_TO_GOLDENROD_DEPT_STORE_6F_3_WP]
     )
 
     Goldenrod_Flower_Shop_Node = Node(
@@ -500,6 +499,30 @@ class UselessDeadEndNodes_Johto(Enum):
 
 
 class TwoWayCorridorNodes_Johto(Enum):
+
+    Goldenrod_Dept_Store_1F_Node = Node(
+        [link for link in johto.Goldenrod_Dept_Store_1F_Links]
+    )
+
+    Goldenrod_Dept_Store_2F_Node = Node(
+        [link for link in johto.Goldenrod_Dept_Store_2F_Links]
+    )
+
+    Goldenrod_Dept_Store_3F_Node = Node(
+        [link for link in johto.Goldenrod_Dept_Store_3F_Links]
+    )
+
+    Goldenrod_Dept_Store_4F_Node = Node(
+        [link for link in johto.Goldenrod_Dept_Store_4F_Links]
+    )
+
+    Goldenrod_Dept_Store_5F_Node = Node(
+        [link for link in johto.Goldenrod_Dept_Store_5F_Links]
+    )
+
+    Goldenrod_Dept_Store_6F_Node = Node(
+        [link for link in johto.Goldenrod_Dept_Store_6F_Links]
+    )
 
     Mount_Mortar_1F_Outside_Lower_Left_Node = Node(
         [johto.Mount_Mortar_1F_Outside_Links.MOUNT_MORTAR_1F_OUTSIDE_TO_ROUTE_42_3_LINK,
