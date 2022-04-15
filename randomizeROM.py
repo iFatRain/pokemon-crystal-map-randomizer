@@ -1,5 +1,6 @@
 import time
 
+import links_and_nodes.johto_all_warp_points
 from logic import AutomaticWarpLocator
 from logic.MemoryAddressReader import buildMemoryLocationsFromSym
 from logic.NewRandomizerLogic import randomizationStep1, randomizationStep2, randomizationStep3, randomizationStep4, \
@@ -26,31 +27,33 @@ def randomizeWarps():
 
     return randomizedNodes
 
+def checkForDoubles(inputLink, inputROM, warpLocations):
+    if inputLink is links_and_nodes.johto_all_warp_points.Ruins_Of_Alph_Kabuto_Chamber_Links.RUINS_OF_ALPH_KABUTO_CHAMBER_TO_RUINS_OF_ALPH_INNER_CHAMBER_4_LINK:
+        inputROM.seek(warpLocations[links_and_nodes.johto_all_warp_points.Ruins_Of_Alph_Kabuto_Item_Room_Links.RUINS_OF_ALPH_KABUTO_ITEM_ROOM_TO_RUINS_OF_ALPH_KABUTO_WORD_ROOM_1_LINK.value.MEMORY_ORIGIN]
+                      +links_and_nodes.johto_all_warp_points.Ruins_Of_Alph_Kabuto_Item_Room_Links.RUINS_OF_ALPH_KABUTO_ITEM_ROOM_TO_RUINS_OF_ALPH_KABUTO_WORD_ROOM_1_LINK.value.OFFSET)
+        inputROM.write(WarpInstruction.getInstruction(inputLink.value.LINK.value))
+        inputROM.read(2)
+        inputROM.write(WarpInstruction.getInstruction(inputLink.value.LINK.value))
+        print("FOUND KABUTO NODE SO MAKING ITEM ROOM LINK BACK ALSO")
 
 def randomizeROM(inputROM, settings):
 
     startTime = time.time()
+
+    print("Randomizing Warps..")
     randomizedNodes = randomizeWarps()
 
+
+    print("Writing New Warps to ROM...")
     rom = inputROM.read()
-    scriptLocations = buildMemoryLocationsFromSym(settings[1])
     lookupDict = AutomaticWarpLocator.getLookupDict()
     warpLocations = dict()
     for key in lookupDict.keys():
 
         foundLocation = rom.find(lookupDict[key])
-        # print(key, "was found at", hex(foundLocation + 5))
         warpLocations[key] = foundLocation + 5
 
-
-
-    # for node in randomizedNodes:
-    #     for link in node.value.LINKS:
-    #         # print(link.value.MODIFIED)
-
-    print("Writing random warps to rom...")
     for node in randomizedNodes:
-        # print("Writing Node: ", node)
         for link in node.value.LINKS:
             memLocation = warpLocations[link.value.MEMORY_ORIGIN] + link.value.OFFSET
             inputROM.seek(memLocation)
@@ -58,35 +61,25 @@ def randomizeROM(inputROM, settings):
             if link.value.DUAL_WIDTH is True:
                 inputROM.read(2)
                 inputROM.write(WarpInstruction.getInstruction(link.value.LINK.value))
+            checkForDoubles(link, inputROM, warpLocations)
     randomizeTime = time.time() - startTime
+    print("Time to randomize warps and write to ROM:", randomizeTime,"seconds")
 
-
-    # for values in scriptLocations:
-    #     print(values)
-    # Make Lugia and Ho-oh always accessable
-    print(settings[0])
-    print(settings[1])
-    if settings[0] == 1:
-        print("EASY LEGENDARIES DETECTED")
-        print("WhirlIslandLugiaChamber is at", hex(warpLocations["WhirlIslandLugiaChamber"]))
+    scriptLocations = buildMemoryLocationsFromSym(settings[0])
+    if settings[1] == 1:
+        print("\tEnabling Always Catchable Setting")
         memToSeekTo = (warpLocations["WhirlIslandLugiaChamber"] + 7)
-        print("Seeking to:", hex(memToSeekTo))
-        inputROM.seek(memToSeekTo) #0x0018C546Vanilla Lugia Location
+        inputROM.seek(memToSeekTo)
         inputROM.write(bytes.fromhex(getHex(15)))
-        print("Wrote lugia loction, changing the item")
-        inputROM.seek(scriptLocations["LugiaToggle"]) # 0x0018C510Vanilla Lugia Script
+        inputROM.seek(scriptLocations["LugiaToggle"])
         inputROM.write(bytes.fromhex(getHex(18)))
-
-
-        print("changing ho oh item")
-        print("HoOh Toggle is at ", hex(scriptLocations["HoOhToggle"])) #00077256 is speedchoice
-        inputROM.seek(scriptLocations["HoOhToggle"]) #0x0007723C is vanilla
+        inputROM.seek(scriptLocations["HoOhToggle"])
         # if settings[1] == "Pokemon - Crystal Version 1.1":
         #     inputROM.write(bytes.fromhex(getHex(62)))
         # else:
         inputROM.write(bytes.fromhex(getHex(88)))
 
-    print("Disabling E4 Walking")
+    print("\tDisabling E4 Walking")
     inputROM.seek(scriptLocations["KogasRoom_EnterMovement"])
     inputROM.write(bytes.fromhex(getHex(71)))
     inputROM.seek(scriptLocations["KarensRoom_EnterMovement"])
@@ -98,8 +91,7 @@ def randomizeROM(inputROM, settings):
     inputROM.seek(scriptLocations["LancesRoom_EnterMovement"])
     inputROM.write(bytes.fromhex(getHex(71)))
 
-
-    print("Fixing E4 Doors")
+    print("\tOpening All E4 Doors")
     inputROM.seek(scriptLocations["KogasDoorLocksBehindYou"])
     inputROM.write(bytes.fromhex(getHex(2)))
     inputROM.write(bytes.fromhex(getHex(22)))
@@ -132,26 +124,29 @@ def randomizeROM(inputROM, settings):
     inputROM.read(1)
     inputROM.write(bytes.fromhex(getHex(49)))
 
-    print("Fixing the tile collision")
+    print("\tFixing Champions Room Tile Collision")
     inputROM.seek(scriptLocations["TilesetChampionsRoomColl"])
+    inputROM.write(bytes.fromhex(getHex(112)))
     inputROM.write(bytes.fromhex(getHex(112)))
 
 
-    print("Writing Aides Give Potion for Pokeballs")
+    print("\tMaking Aides Give Pokeballs")
     inputROM.seek(scriptLocations["AideScript_GivePotion"])
     inputROM.write(bytes.fromhex(getHex(5)))
     inputROM.write(bytes.fromhex(getHex(5)))
 
-    #Always unlocks the underground switch room door to make underground a hub
+    print("\tUnlocking Basement without Keycard")
     inputROM.seek(scriptLocations['LockBasementDoor'])
     inputROM.write(bytes.fromhex(getHex(46)))
 
-    #This will make the director always in underground warehouse
+    print("\tMaking Director Always Appear in Underground Warehouse")
     inputROM.seek(warpLocations['GoldenrodUndergroundWarehouse'] + 66)
     inputROM.write(bytes.fromhex(getHex(255)))
     inputROM.write(bytes.fromhex(getHex(255)))
+    inputROM.seek(scriptLocations["DirectorKeycard"])
+    inputROM.write(bytes.fromhex(getHex(0)))
 
-    print("Making starters lv100 for testing")
+    print("\tMaking starters lv100 for testing")
     inputROM.seek(scriptLocations["CyndaquilPokeBallScript"])
     inputROM.write(bytes.fromhex(getHex(100)))
     inputROM.seek(scriptLocations["TotodilePokeBallScript"])
@@ -159,7 +154,7 @@ def randomizeROM(inputROM, settings):
     inputROM.seek(scriptLocations["ChikoritaPokeBallScript"])
     inputROM.write(bytes.fromhex(getHex(100)))
 
-    inputROM.close
-    print("Time to randomize links: ", randomizeTime)
+    inputROM.close()
+
     return randomizedNodes
 

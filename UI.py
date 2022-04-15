@@ -54,6 +54,12 @@ def displayMainWindow():
              bg=UI_Colors.Lavender_Web.value,
              fg="black").place(x=550, y=40)
 
+    tk.Label(mainWindow,
+             text="Special Thanks to 3nt0n & Adysons",
+             font=("Comic Sans MS", 8, ""),
+             bg=UI_Colors.Lavender_Web.value,
+             fg="black").place(x=580, y=220)
+
     #
     #   Seed button and text/input
     #
@@ -102,19 +108,21 @@ def displayMainWindow():
 
     tk.Checkbutton(mainWindow,
                    variable=legendaryAvailability,
-                   text=" Lugia/Ho-Oh accessible without Key Item/HM",
+                   text=" Lugia/Ho-Oh Always Catchable",
                    bg=UI_Colors.Lavender_Web.value,
                    font=("Comic Sans MS", 12, ""),
                    activebackground=UI_Colors.Lavender_Web.value).place(x=30, y= 140)
 
     tk.Checkbutton(mainWindow,
-                   text=" Settings Option Here",
+                   variable=regionSplit,
+                   text=" Split Johto and Kanto",
                    bg=UI_Colors.Lavender_Web.value,
                    font=("Comic Sans MS", 12, ""),
                    activebackground=UI_Colors.Lavender_Web.value).place(x=30, y=170)
 
     tk.Checkbutton(mainWindow,
-                   text=" Settings Option Here",
+                   variable=alphPuzzles,
+                   text=" Solved Alph Puzzles",
                    bg=UI_Colors.Lavender_Web.value,
                    font=("Comic Sans MS", 12, ""),
                    activebackground=UI_Colors.Lavender_Web.value).place(x=30, y=200)
@@ -215,7 +223,7 @@ def randomize(originalROM):
     assignSeed()
 
     # Creates a setting Array that we can pass into the other functions to do different things based on settings
-    settings = [legendaryAvailability.get(), loadedROMName.get()]
+    settings = [loadedROMName.get(), legendaryAvailability.get(), regionSplit.get(), alphPuzzles.get()]
 
     # Remove the main window while we try the rando
     mainWindow.withdraw()
@@ -236,6 +244,7 @@ def randomize(originalROM):
         print("Randomizer failed")
         traceback.print_exc()
         exit()
+    print("\nSettings were:", settings[::])
     print("Seed was:", seedString.get())
 
     # Randomizer Success - create output log in same place as the output rom, and display the seed window
@@ -274,9 +283,15 @@ class UI_Colors(Enum):
 
 # Sets up Global UI variables
 mainWindow = tk.Tk()
-baseROM = tk.IntVar()
 seedString = tk.StringVar()
+
+# Randomizer Settings
 legendaryAvailability = tk.IntVar()
+regionSplit = tk.IntVar()
+alphPuzzles = tk.IntVar()
+
+# ROM Variables
+baseROM = tk.IntVar()
 loadedROMName = tk.StringVar()
 loadedROMName.set("No ROM Loaded!")
 loadedROMPath = tk.StringVar()
