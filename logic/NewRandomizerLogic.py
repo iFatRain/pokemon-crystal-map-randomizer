@@ -4,7 +4,7 @@ import random
 import links_and_nodes.johto_all_warp_points
 from class_definitions import Unlock_Keys, Node
 from links_and_nodes.node_containers import MajorNodes_Johto, UselessDeadEndNodes_Johto, ImportantDeadEndNodes_Johto, \
-    TwoWayCorridorNodes_Johto, HubNodes, MajorNodes_Kanto
+    TwoWayCorridorNodes_Johto, HubNodes#, MajorNodes_Kanto
 from logic.MemoryAddressReader import buildMemoryLocationsFromSym
 
 

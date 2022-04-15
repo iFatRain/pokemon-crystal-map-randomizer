@@ -15,7 +15,7 @@ class WHIRL_ISLAND_SW(IntEnum):
 	WHIRL_ISLAND_B2F_4 = 5
 
 
-class Whirl_Island_S_W_Warp_Points(Enum): 
+class Whirl_Island_SW_Warp_Points(Enum):
 
 	WHIRL_ISLAND_S_W_TO_ROUTE_41_3_WP = WarpInstruction( 
 		getHex(WHIRL_ISLAND_SW.ROUTE_41_3),

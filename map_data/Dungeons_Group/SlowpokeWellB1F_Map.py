@@ -14,13 +14,13 @@ class SLOWPOKE_WELL_B1F(IntEnum):
 
 class Slowpoke_Well_B1F_Warp_Points(Enum):
 
-	SLOWPOKE_WELL_B1_F_TO_AZALEA_TOWN_6_WP = WarpInstruction( 
+	SLOWPOKE_WELL_B1F_TO_AZALEA_TOWN_6_WP = WarpInstruction(
 		getHex(SLOWPOKE_WELL_B1F.AZALEA_TOWN_6),
 		getHex(mapGroup),
 		getHex(specificMap)
 		) 
 
-	SLOWPOKE_WELL_B1_F_TO_SLOWPOKE_WELL_B2F_1_WP = WarpInstruction( 
+	SLOWPOKE_WELL_B1F_TO_SLOWPOKE_WELL_B2F_1_WP = WarpInstruction(
 		getHex(SLOWPOKE_WELL_B1F.SLOWPOKE_WELL_B2F_1),
 		getHex(mapGroup),
 		getHex(specificMap)

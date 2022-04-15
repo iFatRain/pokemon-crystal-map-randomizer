@@ -3,7 +3,7 @@ from enum import Enum
 
 from class_definitions import Node
 import links_and_nodes.johto_all_warp_points as johto
-import links_and_nodes.kanto_all_warp_points as kanto
+#import links_and_nodes.kanto_all_warp_points as kanto
 
 
 class MajorNodes_Johto(Enum):
@@ -53,47 +53,47 @@ class MajorNodes_Johto(Enum):
         johto.Route_45_Links
     )))
 
-class MajorNodes_Kanto(Enum):
+# class MajorNodes_Kanto(Enum):
 
-    Celadon_City_Node = Node(
-        [link for link in kanto.Celadon_City_Links]
-    )
-
-    Cerulean_City_Node = Node(
-        [link for link in kanto.Cerulean_City_Links]
-    )
-
-    Cinnabar_Island_Node = Node(
-        [link for link in kanto.Cinnabar_Island_Links]
-    )
-
-    Fuchsia_City_Node = Node(
-        [link for link in kanto.Fuchsia_City_Links]
-    )
-
-    Lavender_Town_Node = Node(
-        [link for link in kanto.Lavender_Town_Links]
-    )
-
-    Pallet_Town_Node = Node(
-        [link for link in kanto.Pallet_Town_Links]
-    )
-
-    Pewter_City_Node = Node(
-        [link for link in kanto.Pewter_City_Links]
-    )
-
-    Saffron_City_Node = Node(
-        [link for link in kanto.Saffron_City_Links]
-    )
-
-    Vermilion_City_Node = Node(
-        [link for link in kanto.Vermilion_City_Links]
-    )
-
-    Viridian_City_Node = Node(
-        [link for link in kanto.Viridian_City_Links]
-    )
+    # Celadon_City_Node = Node(
+    #     [link for link in kanto.Celadon_City_Links]
+    # )
+    #
+    # Cerulean_City_Node = Node(
+    #     [link for link in kanto.Cerulean_City_Links]
+    # )
+    #
+    # Cinnabar_Island_Node = Node(
+    #     [link for link in kanto.Cinnabar_Island_Links]
+    # )
+    #
+    # Fuchsia_City_Node = Node(
+    #     [link for link in kanto.Fuchsia_City_Links]
+    # )
+    #
+    # Lavender_Town_Node = Node(
+    #     [link for link in kanto.Lavender_Town_Links]
+    # )
+    #
+    # Pallet_Town_Node = Node(
+    #     [link for link in kanto.Pallet_Town_Links]
+    # )
+    #
+    # Pewter_City_Node = Node(
+    #     [link for link in kanto.Pewter_City_Links]
+    # )
+    #
+    # Saffron_City_Node = Node(
+    #     [link for link in kanto.Saffron_City_Links]
+    # )
+    #
+    # Vermilion_City_Node = Node(
+    #     [link for link in kanto.Vermilion_City_Links]
+    # )
+    #
+    # Viridian_City_Node = Node(
+    #     [link for link in kanto.Viridian_City_Links]
+    # )
 
 class ImportantDeadEndNodes_Johto(Enum):
 

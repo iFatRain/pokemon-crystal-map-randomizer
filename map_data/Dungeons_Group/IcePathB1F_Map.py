@@ -9,7 +9,7 @@ class ICE_PATH_B1F(IntEnum):
 		return str(self.value)
 
 	ICE_PATH_1F_3 = 1
-	ICE_PATH_B2F_MAHOGANY_SIDE_1 = 2
+	# ICE_PATH_B2F_MAHOGANY_SIDE_1 = 2
 	# ICE_PATH_B2F_MAHOGANY_SIDE_3 ; hole = 3
 	# ICE_PATH_B2F_MAHOGANY_SIDE_4 ; hole = 4
 	# ICE_PATH_B2F_MAHOGANY_SIDE_5 ; hole = 5
@@ -20,50 +20,50 @@ class ICE_PATH_B1F(IntEnum):
 
 class Ice_Path_B1F_Warp_Points(Enum):
 
-	ICE_PATH_B1_F_TO_ICE_PATH_1F_3_WP = WarpInstruction( 
+	ICE_PATH_B1F_TO_ICE_PATH_1F_3_WP = WarpInstruction( 
 		getHex(ICE_PATH_B1F.ICE_PATH_1F_3),
 		getHex(mapGroup),
 		getHex(specificMap)
 		) 
 
-	ICE_PATH_B1_F_TO_ICE_PATH_B2F_MAHOGANY_SIDE_1_WP = WarpInstruction( 
-		getHex(ICE_PATH_B1F.ICE_PATH_B2F_MAHOGANY_SIDE_1),
-		getHex(mapGroup),
-		getHex(specificMap)
-		) 
-
-	# ICE_PATH_B1_F_TO_ICE_PATH_B2F_MAHOGANY_SIDE_3 ; hole_WP = WarpInstruction(
-	# 	getHex(ICE_PATH_B1_F.ICE_PATH_B2F_MAHOGANY_SIDE_3 ; hole),
-	# 	getHex(mapGroup),
-	# 	getHex(specificMap)
-	# 	)
-	#
-	# ICE_PATH_B1_F_TO_ICE_PATH_B2F_MAHOGANY_SIDE_4 ; hole_WP = WarpInstruction(
-	# 	getHex(ICE_PATH_B1_F.ICE_PATH_B2F_MAHOGANY_SIDE_4 ; hole),
-	# 	getHex(mapGroup),
-	# 	getHex(specificMap)
-	# 	)
-	#
-	# ICE_PATH_B1_F_TO_ICE_PATH_B2F_MAHOGANY_SIDE_5 ; hole_WP = WarpInstruction(
-	# 	getHex(ICE_PATH_B1_F.ICE_PATH_B2F_MAHOGANY_SIDE_5 ; hole),
-	# 	getHex(mapGroup),
-	# 	getHex(specificMap)
-	# 	)
-	#
-	# ICE_PATH_B1_F_TO_ICE_PATH_B2F_MAHOGANY_SIDE_6 ; hole_WP = WarpInstruction(
-	# 	getHex(ICE_PATH_B1_F.ICE_PATH_B2F_MAHOGANY_SIDE_6 ; hole),
+	# ICE_PATH_B1F_TO_ICE_PATH_B2F_MAHOGANY_SIDE_1_WP = WarpInstruction(
+	# 	getHex(ICE_PATH_B1F.ICE_PATH_B2F_MAHOGANY_SIDE_1),
 	# 	getHex(mapGroup),
 	# 	getHex(specificMap)
 	# 	)
 
-	ICE_PATH_B1_F_TO_ICE_PATH_1F_4_WP = WarpInstruction( 
+	# ICE_PATH_B1F_TO_ICE_PATH_B2F_MAHOGANY_SIDE_3 ; hole_WP = WarpInstruction(
+	# 	getHex(ICE_PATH_B1F.ICE_PATH_B2F_MAHOGANY_SIDE_3 ; hole),
+	# 	getHex(mapGroup),
+	# 	getHex(specificMap)
+	# 	)
+	#
+	# ICE_PATH_B1F_TO_ICE_PATH_B2F_MAHOGANY_SIDE_4 ; hole_WP = WarpInstruction(
+	# 	getHex(ICE_PATH_B1F.ICE_PATH_B2F_MAHOGANY_SIDE_4 ; hole),
+	# 	getHex(mapGroup),
+	# 	getHex(specificMap)
+	# 	)
+	#
+	# ICE_PATH_B1F_TO_ICE_PATH_B2F_MAHOGANY_SIDE_5 ; hole_WP = WarpInstruction(
+	# 	getHex(ICE_PATH_B1F.ICE_PATH_B2F_MAHOGANY_SIDE_5 ; hole),
+	# 	getHex(mapGroup),
+	# 	getHex(specificMap)
+	# 	)
+	#
+	# ICE_PATH_B1F_TO_ICE_PATH_B2F_MAHOGANY_SIDE_6 ; hole_WP = WarpInstruction(
+	# 	getHex(ICE_PATH_B1F.ICE_PATH_B2F_MAHOGANY_SIDE_6 ; hole),
+	# 	getHex(mapGroup),
+	# 	getHex(specificMap)
+	# 	)
+
+	ICE_PATH_B1F_TO_ICE_PATH_1F_4_WP = WarpInstruction( 
 		getHex(ICE_PATH_B1F.ICE_PATH_1F_4),
 		getHex(mapGroup),
 		getHex(specificMap)
 		) 
 
-	ICE_PATH_B1_F_TO_ICE_PATH_B2F_BLACKTHORN_SIDE_1_WP = WarpInstruction( 
-		getHex(ICE_PATH_B1_F.ICE_PATH_B2F_BLACKTHORN_SIDE_1), 
+	ICE_PATH_B1F_TO_ICE_PATH_B2F_BLACKTHORN_SIDE_1_WP = WarpInstruction( 
+		getHex(ICE_PATH_B1F.ICE_PATH_B2F_BLACKTHORN_SIDE_1), 
 		getHex(mapGroup),
 		getHex(specificMap)
 		) 
