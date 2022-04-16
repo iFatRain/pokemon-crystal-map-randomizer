@@ -65,7 +65,7 @@ class Unlock_Keys(Enum):
     E4_WILL = "Will"
     E4_KAREN = "Karen"
     E4_BRUNO = "Bruno"
-    CHAMPION_LANCE = "Chamption"
+    CHAMPION_LANCE = "Champion"
 
 
 def getHexBytes(hexInput):

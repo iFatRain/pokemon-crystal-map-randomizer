@@ -3,7 +3,7 @@ from enum import Enum
 
 from class_definitions import Node
 import links_and_nodes.johto_all_warp_points as johto
-#import links_and_nodes.kanto_all_warp_points as kanto
+#import links_and_nodes.kanto_all_Link as kanto
 
 
 class MajorNodes_Johto(Enum):
@@ -241,7 +241,7 @@ class ImportantDeadEndNodes_Johto(Enum):
     )
 
     Goldenrod_Dept_Store_Roof_Node = Node(
-        [johto.Goldenrod_Dept_Store_Roof_Links.GOLDENROD_DEPT_STORE_ROOF_TO_GOLDENROD_DEPT_STORE_6F_3_WP]
+        [johto.Goldenrod_Dept_Store_Roof_Links.GOLDENROD_DEPT_STORE_ROOF_TO_GOLDENROD_DEPT_STORE_6F_3_LINK]
     )
 
     Goldenrod_Flower_Shop_Node = Node(
@@ -355,8 +355,8 @@ class ImportantDeadEndNodes_Johto(Enum):
         [johto.Dragons_Den_B1F_Links.DRAGONS_DEN_B1F_TO_DRAGONS_DEN_1F_3_LINK]
     )
 
-    Dragons_Den_B1F_From_Dragon_Shrine_Node = (
-        [johto.Dragons_Den_B1F_Warp_Points.DRAGONS_DEN_B1F_TO_DRAGON_SHRINE_1_WP]
+    Dragons_Den_B1F_From_Dragon_Shrine_Node = Node(
+        [johto.Dragons_Den_B1F_Links.DRAGONS_DEN_B1F_TO_DRAGON_SHRINE_1_LINK]
     )
 
 
@@ -793,8 +793,8 @@ class TwoWayCorridorNodes_Johto(Enum):
     )
 
     Whirl_Island_B1F_Raised_Path_Corridor_Node = Node(
-        [johto.Whirl_Island_B1F_Warp_Points.WHIRL_ISLAND_B1F_TO_WHIRL_ISLAND_B2F_1_WP,
-         johto.Whirl_Island_B1F_Warp_Points.WHIRL_ISLAND_B1F_TO_WHIRL_ISLAND_NE_2_WP]
+        [johto.Whirl_Island_B1F_Links.WHIRL_ISLAND_B1F_TO_WHIRL_ISLAND_B2F_1_LINK,
+         johto.Whirl_Island_B1F_Links.WHIRL_ISLAND_B1F_TO_WHIRL_ISLAND_NE_2_LINK]
     )
 
     Whirl_Island_B1F_Lower_Right_Corridor_Node = Node(

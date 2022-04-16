@@ -15,6 +15,7 @@ def getRandomNode(nodeList, excludedNode = None):
     while len(checkedNodes) != len(nodeList):
 
         sampleNode = random.choice(nodeList)
+        print("Sample Node:",sampleNode)
         if sampleNode in checkedNodes:
             continue
         else:
@@ -249,6 +250,7 @@ def randomizationStep3(randomizedNodes):
     while len(deadEnds) != 0:
 
         deadEndNode = getRandomNode(deadEnds)
+        print("Dead End: ", deadEndNode)
         linkA = deadEndNode.value.LINKS[0]
         destinationNode = getRandomNode(randomizedNodes, deadEndNode)
         linkB = getRandomLink(destinationNode)

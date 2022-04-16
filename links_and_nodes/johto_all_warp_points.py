@@ -1712,7 +1712,7 @@ class Route_32_Ruins_Of_Alph_Gate_Links(Enum):
     ROUTE_32_RUINS_OF_ALPH_GATE_TO_ROUTE_32_LINK = WarpLink(
         Route_32_Ruins_Of_Alph_Gate_Warp_Points.ROUTE_32_RUINS_OF_ALPH_GATE_TO_ROUTE_32_WP,
         Route_32_Warp_Points.ROUTE_32_TO_ROUTE_32_RUINS_OF_ALPH_GATE_WP,
-        "Route32RuinsOfAlphGate" , 10,
+        "Route32RuinsOfAlphGate", 10,
         dual_width=True
     )
 
@@ -2021,14 +2021,14 @@ class Goldenrod_Dept_Store_6F_Links(Enum):
         Goldenrod_Dept_Store_5F_Warp_Points.GOLDENROD_DEPT_STORE_5F_TO_GOLDENROD_DEPT_STORE_6F_1_WP,
         "GoldenrodDeptStore6F"
     )
-    GOLDENROD_DEPT_STORE_6F_TO_GOLDENROD_DEPT_STORE_ROOF_1_WP = WarpLink(
+    GOLDENROD_DEPT_STORE_6F_TO_GOLDENROD_DEPT_STORE_ROOF_1_LINK = WarpLink(
         Goldenrod_Dept_Store_6F_Warp_Points.GOLDENROD_DEPT_STORE_6F_TO_GOLDENROD_DEPT_STORE_ROOF_1_WP,
         Goldenrod_Dept_Store_Roof_Warp_Points.GOLDENROD_DEPT_STORE_ROOF_TO_GOLDENROD_DEPT_STORE_6F_3_WP,
         "GoldenrodDeptStore6F", 10
     )
 
 class Goldenrod_Dept_Store_Roof_Links(Enum):
-    GOLDENROD_DEPT_STORE_ROOF_TO_GOLDENROD_DEPT_STORE_6F_3_WP = WarpLink(
+    GOLDENROD_DEPT_STORE_ROOF_TO_GOLDENROD_DEPT_STORE_6F_3_LINK = WarpLink(
         Goldenrod_Dept_Store_Roof_Warp_Points.GOLDENROD_DEPT_STORE_ROOF_TO_GOLDENROD_DEPT_STORE_6F_3_WP,
         Goldenrod_Dept_Store_6F_Warp_Points.GOLDENROD_DEPT_STORE_6F_TO_GOLDENROD_DEPT_STORE_ROOF_1_WP,
         "GoldenrodDeptStoreRoof"
@@ -2036,7 +2036,7 @@ class Goldenrod_Dept_Store_Roof_Links(Enum):
 
 
 class Goldenrod_Flower_Shop_Links(Enum):
-    GOLDENROD_FLOWER_SHOP_TO_GOLDENROD_CITY = WarpLink(
+    GOLDENROD_FLOWER_SHOP_TO_GOLDENROD_CITY_LINK = WarpLink(
         Goldenrod_Flower_Shop_Warp_Points.GOLDENROD_FLOWER_SHOP_TO_GOLDENROD_CITY_WP,
         Goldenrod_City_Warp_Points.GOLDENROD_CITY_TO_GOLDENROD_FLOWER_SHOP_WP,
         "GoldenrodFlowerShop", dual_width=True
@@ -2655,7 +2655,7 @@ class Route_32_Links(Enum):
     ROUTE_32_TO_ROUTE_32_RUINS_OF_ALPH_GATE_LINK = WarpLink(
         Route_32_Warp_Points.ROUTE_32_TO_ROUTE_32_RUINS_OF_ALPH_GATE_WP,
         Route_32_Ruins_Of_Alph_Gate_Warp_Points.ROUTE_32_RUINS_OF_ALPH_GATE_TO_ROUTE_32_WP,
-        "Route32" , 5, dual_width=True
+        "Route32", 5, dual_width=True
     )
 
     ROUTE_32_TO_UNION_CAVE_LINK = WarpLink(
