@@ -4,7 +4,9 @@ import random
 import links_and_nodes.johto_all_warp_points
 from class_definitions import Unlock_Keys, Node
 from links_and_nodes.node_containers import MajorNodes_Johto, UselessDeadEndNodes_Johto, ImportantDeadEndNodes_Johto, \
-    TwoWayCorridorNodes_Johto, HubNodes#, MajorNodes_Kanto
+    TwoWayCorridorNodes_Johto, HubNodes_Johto
+from links_and_nodes.kanto_node_containers import MajorNodes_Kanto, ImportantDeadEndNodes_Kanto, UselessDeadEndNodes_Kanto,\
+    TwoWayCorridorNodes_Kanto, HubNodes_Kanto
 from logic.MemoryAddressReader import buildMemoryLocationsFromSym
 
 
@@ -171,7 +173,7 @@ def findConnectedLink(randomizedNodes, linkA):
 def randomizationStep1():
     # Step 1 links the Major Nodes Directly (Cities + Their Walkable Overworld)
 
-    unconnectedNodes = list(MajorNodes_Johto)# + list(MajorNodes_Kanto)
+    unconnectedNodes =  list(MajorNodes_Kanto)#list(MajorNodes_Johto)# + list(MajorNodes_Kanto)
 
     # From our major nodes, we randomly select one to begin linking
     randomStart = random.choice(unconnectedNodes)
@@ -200,7 +202,7 @@ def randomizationStep1():
 def randomizationStep2(randomizedNodes):
 
     print("\n Inserting Hubs\n")
-    hubNodes = list(HubNodes)
+    hubNodes = list(HubNodes_Kanto)#list(HubNodes_Johto)
     changedLinks = []
 
     # For each Overworld node, check the links to find which ones have the Overworld connection
@@ -244,7 +246,7 @@ def randomizationStep3(randomizedNodes):
 
 
     available = getAvailableLinkCount(randomizedNodes)
-    deadEnds = list(ImportantDeadEndNodes_Johto)
+    deadEnds = list(ImportantDeadEndNodes_Kanto)#list(ImportantDeadEndNodes_Johto)
 
     print("\nPlacing Dead Ends\n")
     while len(deadEnds) != 0:
@@ -268,7 +270,7 @@ def randomizationStep3(randomizedNodes):
         if available == 0:
             return randomizedNodes
 
-    deadEnds = list(UselessDeadEndNodes_Johto)
+    deadEnds = list(UselessDeadEndNodes_Kanto) #list(UselessDeadEndNodes_Johto)
 
     while len(deadEnds) != 0:
 
@@ -296,7 +298,7 @@ def randomizationStep3(randomizedNodes):
 
 
 def randomizationStep5(randomizedNodes):
-    corridorNodes = list(TwoWayCorridorNodes_Johto)
+    corridorNodes = list(TwoWayCorridorNodes_Kanto) #list(TwoWayCorridorNodes_Johto)
 
     print("\nInserting Corridors\n")
     while len(corridorNodes) != 0:
@@ -361,7 +363,7 @@ def randomizationStep4(randomizedNodes):
     return randomizedNodes
 
 
-def checkSeedCompletability(randomizedNodes):
+def checkJohtoCompletability(randomizedNodes):
 
     nodesToCheck = list(randomizedNodes)
 
@@ -373,8 +375,6 @@ def checkSeedCompletability(randomizedNodes):
     fullyUnlockedNodes = []
     stuckCount = 0
 
-    # print("There are ",len(nodesToCheck), "to check in total")
-
     badgeList = [Unlock_Keys.BADGE_1,
                  Unlock_Keys.BADGE_2,
                  Unlock_Keys.BADGE_3,
@@ -384,15 +384,23 @@ def checkSeedCompletability(randomizedNodes):
                  Unlock_Keys.BADGE_7,
                  Unlock_Keys.BADGE_8,
                 ]
+    listOfHM = [Unlock_Keys.HM_CUT,
+                Unlock_Keys.HM_FLY,
+                Unlock_Keys.HM_SURF,
+                Unlock_Keys.HM_STRENGTH,
+                Unlock_Keys.HM_FLASH,
+                Unlock_Keys.HM_WATERFALL,
+                Unlock_Keys.HM_WHIRLPOOL]
 
     explorableNodes = [node for node in nodesToCheck if node is MajorNodes_Johto.New_Bark_Town_Node]
     nodesToCheck.pop(nodesToCheck.index(MajorNodes_Johto.New_Bark_Town_Node))
     #
     # while completableSeed
+    # print("There are ",len(nodesToCheck), "to check in total")
 
     while len(explorableNodes) != 0:
         for node in list(explorableNodes):
-            print(node)
+            # print(node)
             # for additionalLink in node.value.LINKS:
                 # if additionalLink not in alreadyExploredLinks:
                     # print("      with a new link to ==>",additionalLink)
@@ -406,7 +414,7 @@ def checkSeedCompletability(randomizedNodes):
 
                             for key in link.value.UNLOCKS:
                                 if key not in obtainedKeys:
-                                    # print("We got ",key,"after visiting from",link.value.LINK)
+                                    print("We got ",key,"after visiting from",link.value.LINK)
                                     obtainedKeys.append(key)
 
                     else:
@@ -433,16 +441,19 @@ def checkSeedCompletability(randomizedNodes):
                                 explorableNodes[explorableNodes.index(node)].value.HAS_LOCKED = True
                                 # print(node,"Has a locked enterance")
 
+        print("\n-------Status Report -------")
         obtainedBadges = []
         for key in obtainedKeys:
             if key in badgeList:
                 obtainedBadges.append(key)
-        # print("So far I have",len(obtainedBadges),"badges.")
+        print("So far I have",len(obtainedBadges),"badges.")
         if len(obtainedBadges) >= 7:
             if Unlock_Keys.HAS_7_BADGES not in obtainedKeys:
                 obtainedKeys.append(Unlock_Keys.HAS_7_BADGES)
-        if len(obtainedBadges) == 8 and Unlock_Keys.HM_SURF in obtainedKeys:
+
+        if len(obtainedBadges) == 8 and all(neededHM in obtainedKeys for neededHM in listOfHM):
             completableSeed = True
+
 
         for node in list(explorableNodes):
             if node.value.HAS_LOCKED is False:
@@ -461,12 +472,16 @@ def checkSeedCompletability(randomizedNodes):
                 newNodes += 1
                 nodesToCheck.remove(node)
 
+        obtainedKeys = checkForAdditionalKeys(obtainedKeys)
+
+        for key in obtainedKeys:
+            print("Currently I have", key)
 
         if newNodes == 0:
             print("Adding to stuck count: ",stuckCount+1)
-            stuckCount += 1;
+            stuckCount += 1
             if stuckCount > 6:
-                break;
+                break
 
         # print("Total nodes unlocked = ",len(fullyUnlockedNodes))
         # print("Nodes not yet checked:", len(nodesToCheck))
@@ -476,12 +491,12 @@ def checkSeedCompletability(randomizedNodes):
     # for node in fullyUnlockedNodes:
         # print("These are all unlocked nodes:", node)
 
-    # for key in obtainedKeys:
-    #     # print("I obtained: ", key)
-    #
-    # for key in Unlock_Keys:
-    #     if key not in obtainedKeys:
-    #         # print("I couldn't ever get", key)
+    for key in obtainedKeys:
+        print("I obtained: ", key)
+
+    for key in Unlock_Keys:
+        if key not in obtainedKeys:
+            print("I couldn't ever get", key)
 
     # for link in lockedLinks:
     #     print("This is locked:",link, " [hides]===>",link.value.LINK)
@@ -499,27 +514,62 @@ def checkSeedCompletability(randomizedNodes):
                 link.value.LINK.value.USED = False
                 link.value.OWN.value.USED = False
                 link.value.MODIFIED = False
-
-
-
         print("-ERROR- -ERROR- -ERROR- CANT COMPLETE THE SEED -ERROR- -ERROR- -ERROR-")
 
     allItemsObtainable = all(key in obtainedKeys for key in Unlock_Keys)
     if allItemsObtainable:
         print("   AND I CAN GET ALL ITEMS")
 
-    return completableSeed, allItemsObtainable
+    return completableSeed
 
+def checkForAdditionalKeys(obtainedKeys):
+    obtainedKeys = checkForDualRequirements(Unlock_Keys.TOP_OF_LIGHTHOUSE_FOUND,
+                             Unlock_Keys.CIANNWOOD_PHARMACY_FOUND,
+                             obtainedKeys, Unlock_Keys.OLIVINE_MEDICINE)
+
+    obtainedKeys = checkForDualRequirements(Unlock_Keys.KURTS_HOUSE_FOUND,
+                             Unlock_Keys.SLOWPOKE_WELL_FOUND,
+                             obtainedKeys, Unlock_Keys.CAN_CLEAR_SLOWPOKE_WELL)
+
+    obtainedKeys = checkForDualRequirements(Unlock_Keys.HM_STRENGTH,
+                                            Unlock_Keys.BADGE_3,
+                                            obtainedKeys, Unlock_Keys.CAN_USE_STRENGTH)
+
+    obtainedKeys = checkForDualRequirements(Unlock_Keys.HM_SURF,
+                                            Unlock_Keys.BADGE_4,
+                                            obtainedKeys, Unlock_Keys.CAN_SURF)
+
+    obtainedKeys = checkForDualRequirements(Unlock_Keys.HM_CUT,
+                                            Unlock_Keys.BADGE_2,
+                                            obtainedKeys, Unlock_Keys.CAN_CUT)
+    obtainedKeys = checkForDualRequirements(Unlock_Keys.FOUND_CIANWOOD,
+                                            Unlock_Keys.BADGE_5,
+                                            obtainedKeys, Unlock_Keys.HM_FLY)
+
+    if Unlock_Keys.CAN_CUT in obtainedKeys or Unlock_Keys.CAN_SURF in obtainedKeys:
+        if Unlock_Keys.CAN_SURF_OR_CUT not in obtainedKeys:
+            print("I can surf or cut KEKW")
+            obtainedKeys.append(Unlock_Keys.CAN_SURF_OR_CUT)
+
+
+    return obtainedKeys
+
+def checkForDualRequirements(firstKey, secondKey, keyList, keyToGive):
+    if firstKey in keyList and secondKey in keyList:
+        if keyToGive not in keyList:
+            keyList.append(keyToGive)
+    return keyList
 
 # completable = False
-# fullyCompletable = False
+# # fullyCompletable = False
 # while not completable:
-#     print("\n"*40)
 #     randomizedNodes = randomizationStep1()
 #     randomizedNodes = randomizationStep2(randomizedNodes)
 #     randomizedNodes = randomizationStep3(randomizedNodes)
 #     randomizedNodes = randomizationStep4(randomizedNodes)
-#     completable, fullyCompletable = checkSeedCompletability(list(randomizedNodes))
+#     randomizedNodes = randomizationStep5(randomizedNodes)
+#     print("\n"*40)
+#     completable = checkJohtoCompletability(list(randomizedNodes))
 # #
 # randomizedNodes = randomizationStep1()
 # randomizedNodes = randomizationStep2(randomizedNodes)

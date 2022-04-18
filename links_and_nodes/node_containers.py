@@ -33,11 +33,11 @@ class MajorNodes_Johto(Enum):
              johto.Ecruteak_City_Links.ECRUTEAK_CITY_TO_WISE_TRIOS_ROOM_LINK]
          ]
     )
-
-    Olivine_City_Node = Node(list(itertools.chain(
-        johto.Olivine_City_Links,
-        johto.Route_38_Links,
-        johto.Route_39_Links)))
+    Olivine_City_Node = Node(
+        [link for link in johto.Route_38_Links] +
+        [link for link in johto.Route_39_Links] +
+        [link for link in johto.Olivine_City_Links if link is not johto.Olivine_City_Links.OLIVINE_CITY_TO_OLIVINE_PORT_PASSAGE_LINK]
+    )
 
     Cianwood_City_Node = Node(list(itertools.chain(
         johto.Cianwood_City_Links
@@ -162,10 +162,6 @@ class ImportantDeadEndNodes_Johto(Enum):
 
     Cianwood_Pharmacy_Node = Node(
         [link for link in johto.Cianwood_Pharmacy_Links]
-    )
-
-    Cianwood_Photo_Studio_Node = Node(
-        [link for link in johto.Cianwood_Photo_Studio_Links]
     )
 
 
@@ -359,9 +355,23 @@ class ImportantDeadEndNodes_Johto(Enum):
         [johto.Dragons_Den_B1F_Links.DRAGONS_DEN_B1F_TO_DRAGON_SHRINE_1_LINK]
     )
 
+    Union_Cave_B1F_Item_Node = Node(
+        [johto.Union_Cave_B1F_Links.UNION_CAVE_B1F_TO_UNION_CAVE_1F_1_LINK]
+    )
+
+    Union_Cave_B2F_Node = Node(
+        [johto.Union_Cave_B2F_Links.UNION_CAVE_B2F_TO_UNION_CAVE_B1F_5_LINK]
+    )
 
 
 class UselessDeadEndNodes_Johto(Enum):
+
+    Union_Cave_B1F_Useless_Alph_Node1 = Node(
+        [johto.Union_Cave_B1F_Links.UNION_CAVE_B1F_TO_RUINS_OF_ALPH_OUTSIDE_8_LINK]
+    )
+    Union_Cave_B1F_Useless_Alph_Node2 = Node(
+        [johto.Union_Cave_B1F_Links.UNION_CAVE_B1F_TO_RUINS_OF_ALPH_OUTSIDE_7_LINK]
+    )
 
     Whirl_Island_B1F_Useless_Node = Node(
         [johto.Whirl_Island_B1F_Links.WHIRL_ISLAND_B1F_TO_WHIRL_ISLAND_CAVE_1_LINK]
@@ -381,9 +391,13 @@ class UselessDeadEndNodes_Johto(Enum):
     )
 
 
+    Union_Cave_B1F_Useless_Trainer_Node1 = Node(
+        [johto.Union_Cave_B1F_Links.UNION_CAVE_B1F_TO_UNION_CAVE_1F_2_LINK]
+    )
 
-
-
+    Union_Cave_B1F_Useless_Trainer_Node2 = Node(
+        [johto.Union_Cave_B1F_Links.UNION_CAVE_B1F_TO_UNION_CAVE_B2F_1_LINK]
+    )
 
     Slowpoke_Well_B1F_To_B2F_Useless_Node = Node(
         [johto.Slowpoke_Well_B1F_Links.SLOWPOKE_WELL_B1F_TO_SLOWPOKE_WELL_B2F_LINK]
@@ -495,6 +509,10 @@ class UselessDeadEndNodes_Johto(Enum):
 
     Whirl_Island_SW_Lower_Right_Useless_Node = Node(
         [johto.Whirl_Island_SW_Links.WHIRL_ISLAND_S_W_TO_WHIRL_ISLAND_B2F_4_LINK]
+    )
+
+    Union_Cave_1F_Useless_Node = Node(
+        [johto.Union_Cave_1F_Links.UNION_CAVE_1F_TO_UNION_CAVE_B1FB_LINK]
     )
 
 
@@ -691,10 +709,6 @@ class TwoWayCorridorNodes_Johto(Enum):
         [link for link in johto.National_Park_Links]
     )
 
-    Union_Cave_1F_Node = Node(
-        [link for link in johto.Union_Cave_1F_Links]
-    )
-
     Route_29_Route_46_Gate_Node = Node(
         [link for link in johto.Route_29_Route_46_Gate_Links]
     )
@@ -833,7 +847,7 @@ class TwoWayCorridorNodes_Johto(Enum):
     #      johto.Dark_Cave_Violet_Entrance_Links.DARK_CAVE_VIOLET_ENTRANCE_TO_ROUTE_46_LINK]
     # )
 
-class HubNodes(Enum):
+class HubNodes_Johto(Enum):
 
     Whirl_Island_B1F_Hub_Node = Node(
         [johto.Whirl_Island_B1F_Links.WHIRL_ISLAND_B1F_TO_WHIRL_ISLAND_B2F_2_LINK,
@@ -880,6 +894,11 @@ class HubNodes(Enum):
          johto.Ruins_Of_Alph_Outside_Links.RUINS_OF_ALPH_OUTSIDE_TO_RUINS_OF_ALPH_INNER_CHAMBER_1_LINK,
          johto.Ruins_Of_Alph_Outside_Links.RUINS_OF_ALPH_OUTSIDE_TO_RUINS_OF_ALPH_KABUTO_CHAMBER_1_LINK,
          johto.Ruins_Of_Alph_Outside_Links.RUINS_OF_ALPH_OUTSIDE_TO_RUINS_OF_ALPH_RESEARCH_CENTER_1_LINK]
+    )
+
+    Union_Cave_1F_Node = Node(
+        [link for link in johto.Union_Cave_1F_Links
+         if link is not johto.Union_Cave_1F_Links.UNION_CAVE_1F_TO_UNION_CAVE_B1FB_LINK]
     )
 
 

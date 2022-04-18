@@ -136,6 +136,7 @@ from map_data.Goldenrod_Group.GoldenrodPokecenter_Map import Goldenrod_Pokecente
 from map_data.Dungeons_Group.GoldenrodUndergroundSwitchRoomEntrance_Map import \
     Goldenrod_Underground_Switch_Room_Entrances_Warp_Points
 from map_data.Goldenrod_Group.RadioTower1F_Map import Radio_Tower_1F_Warp_Points
+from map_data.Indigo_Group.IndigoPlateauPokecenter1F_Map import Indigo_Plateau_Pokecenter_1F_Warp_Points
 from map_data.Mahogany_Group.MahoganyGym_Map import Mahogany_Gym_Warp_Points
 from map_data.Mahogany_Group.MahoganyMart_Map import Mahogany_Mart_Warp_Points
 from map_data.Mahogany_Group.MahoganyPokecenter_Map import Mahogany_Pokecenter_Warp_Points
@@ -144,12 +145,6 @@ from map_data.Mahogany_Group.MahoganyTown_Map import Mahogany_Town_Warp_Points
 from map_data.NewBark_Group.ElmsHouse_Map import Elms_House_Warp_Points
 from map_data.NewBark_Group.NeighborsHouse_Map import Players_Neighbors_House_Warp_Points
 from map_data.NewBark_Group.NewBarkTown_Map import New_Bark_Warp_Points
-
-#######################################################################
-#                                                                     #
-#                Functions for getting the links/warps                #
-#                                                                     #
-#######################################################################
 from map_data.Olivine_Group.OlivineCafe_Map import Olivine_Cafe_Warp_Points
 from map_data.Olivine_Group.OlivineCity_Map import Olivine_City_Warp_Points
 from map_data.Olivine_Group.OlivineGoodRodHouse_Map import Olivine_Good_Rod_House_Warp_Points
@@ -262,13 +257,13 @@ class Azalea_Town_Links(Enum):
     AZALEA_TOWN_TO_AZALEA_GYM_LINK = WarpLink(
         Azalea_Town_Warp_Points.AZALEA_TOWN_TO_AZALEA_GYM_WP,
         Azalea_Gym_Warp_Points.AZALEA_GYM_TO_AZALEA_TOWN_WP,
-        "AzaleaTown" , 20, locked_by=[Unlock_Keys.TEAM_ROCKET_AZALEA]
+        "AzaleaTown" , 20, locked_by=[Unlock_Keys.CAN_CLEAR_SLOWPOKE_WELL]
     )
 
     AZALEA_TOWN_TO_SLOWPOKE_WELL_B1F_LINK = WarpLink(
         Azalea_Town_Warp_Points.AZALEA_TOWN_TO_SLOWPOKE_WELL_B1F_WP,
         Slowpoke_Well_B1F_Warp_Points.SLOWPOKE_WELL_B1F_TO_AZALEA_TOWN_6_WP,
-        "AzaleaTown" , 25, locked_by=[Unlock_Keys.KURT_BEFORE_WELL]
+        "AzaleaTown" , 25, locked_by=[Unlock_Keys.KURTS_HOUSE_FOUND]
     )
 
 
@@ -291,7 +286,7 @@ class Kurts_House_Links(Enum):
     KURTS_HOUSE_TO_AZALEA_TOWN_LINK = WarpLink(
         Kurts_House_Warp_Points.KURTS_HOUSE_TO_AZALEA_TOWN_WP,
         Azalea_Town_Warp_Points.AZALEA_TOWN_TO_KURTS_HOUSE_WP,
-        "KurtsHouse", dual_width=True, unlocks=[Unlock_Keys.KURT_BEFORE_WELL]
+        "KurtsHouse", dual_width=True, unlocks=[Unlock_Keys.KURTS_HOUSE_FOUND]
     )
 
 
@@ -303,43 +298,37 @@ class Blackthorn_City_Links(Enum):
     BLACKTHORN_CITY_TO_BLACKTHORN_GYM_1F_LINK = WarpLink(
         Blackthorn_City_Warp_Points.BLACKTHORN_CITY_TO_BLACKTHORN_GYM_1F_WP,
         Blackthorn_Gym_1F_Warp_Points.BLACKTHORN_GYM_1F_TO_BLACKTHORN_CITY_WP,
-        "BlackthornCity", locked_by=[Unlock_Keys.TEAM_ROCKET_RADIO_TOWER],
-        unlocks=[Unlock_Keys.HM_WATERFALL]
+        "BlackthornCity", locked_by=[Unlock_Keys.CAN_CLEAR_RADIO_TOWER_ROCKETS],
     )
 
     BLACKTHORN_CITY_TO_BLACKTHORN_DRAGON_SPEECH_HOUSE_LINK = WarpLink(
         Blackthorn_City_Warp_Points.BLACKTHORN_CITY_TO_BLACKTHORN_DRAGON_SPEECH_HOUSE_WP,
         Blackthorn_Dragon_Speech_House_Warp_Points.BLACKTHORN_DRAGON_SPEECH_HOUSE_TO_BLACKTHORN_CITY_WP,
-        "BlackthornCity" , 5 ,
-        unlocks=[Unlock_Keys.HM_WATERFALL]
+        "BlackthornCity" , 5
     )
 
     BLACKTHORN_CITY_TO_BLACKTHORN_EMYS_HOUSE_LINK = WarpLink(
         Blackthorn_City_Warp_Points.BLACKTHORN_CITY_TO_BLACKTHORN_EMYS_HOUSE_WP,
         Blackthorn_Emys_House_Warp_Points.BLACKTHORN_EMYS_HOUSE_TO_BLACKTHORN_CITY_WP,
-        "BlackthornCity" , 10,
-        unlocks=[Unlock_Keys.HM_WATERFALL]
+        "BlackthornCity" , 10
     )
 
     BLACKTHORN_CITY_TO_BLACKTHORN_MART_LINK = WarpLink(
         Blackthorn_City_Warp_Points.BLACKTHORN_CITY_TO_BLACKTHORN_MART_WP,
         Blackthorn_Mart_Warp_Points.BLACKTHORN_MART_TO_BLACKTHORN_CITY_WP,
-        "BlackthornCity" , 15,
-        unlocks=[Unlock_Keys.HM_WATERFALL]
+        "BlackthornCity" , 15
     )
 
     BLACKTHORN_CITY_TO_BLACKTHORN_POKECENTER_1F_LINK = WarpLink(
         Blackthorn_City_Warp_Points.BLACKTHORN_CITY_TO_BLACKTHORN_POKECENTER_1F_WP,
         Blackthorn_Pokecenter_Warp_Points.BLACKTHORN_POKECENTER_1F_TO_BLACKTHORN_CITY_WP,
-        "BlackthornCity" , 20,
-        unlocks=[Unlock_Keys.HM_WATERFALL]
+        "BlackthornCity" , 20
     )
 
     BLACKTHORN_CITY_TO_MOVE_DELETERS_HOUSE_LINK = WarpLink(
         Blackthorn_City_Warp_Points.BLACKTHORN_CITY_TO_MOVE_DELETERS_HOUSE_WP,
         Move_Deleters_House_Warp_Points.MOVE_DELETERS_HOUSE_TO_BLACKTHORN_CITY_WP,
-        "BlackthornCity" , 25,
-        unlocks=[Unlock_Keys.HM_WATERFALL]
+        "BlackthornCity" , 25
     )
 
     BLACKTHORN_CITY_TO_ICE_PATH_1F_LINK = WarpLink(
@@ -351,7 +340,7 @@ class Blackthorn_City_Links(Enum):
     BLACKTHORN_CITY_TO_DRAGONS_DEN_1F_LINK = WarpLink(
         Blackthorn_City_Warp_Points.BLACKTHORN_CITY_TO_DRAGONS_DEN_1F_WP,
         Dragons_Den_1F_Warp_Points.DRAGONS_DEN_1F_TO_BLACKTHORN_CITY_8_WP,
-        "BlackthornCity" , 35
+        "BlackthornCity" , 35, locked_by=[Unlock_Keys.GYM_BATTLE_8]
     )
 
 class Blackthorn_Dragon_Speech_House_Links(Enum):
@@ -375,8 +364,8 @@ class Blackthorn_Gym_Links(Enum):
     BLACKTHORN_GYM_1F_TO_BLACKTHORN_CITY_LINK = WarpLink(
         Blackthorn_Gym_1F_Warp_Points.BLACKTHORN_GYM_1F_TO_BLACKTHORN_CITY_WP,
         Blackthorn_City_Warp_Points.BLACKTHORN_CITY_TO_BLACKTHORN_GYM_1F_WP,
-        "BlackthornGym1F", dual_width=True, unlocks=[Unlock_Keys.BADGE_8],
-        locked_by=[Unlock_Keys.TEAM_ROCKET_RADIO_TOWER,Unlock_Keys.HM_WHIRLPOOL, Unlock_Keys.HM_SURF, Unlock_Keys.BADGE_4, Unlock_Keys.BADGE_7]
+        "BlackthornGym1F", dual_width=True, unlocks=[Unlock_Keys.GYM_BATTLE_8],
+        locked_by=[Unlock_Keys.CAN_USE_STRENGTH]
     )
 
 class Blackthorn_Mart_Links(Enum):
@@ -521,37 +510,37 @@ class Cianwood_City_Links(Enum):
     CIANWOOD_CITY_TO_MANIAS_HOUSE_LINK = WarpLink(
         Cianwood_City_Warp_Points.CIANWOOD_CITY_TO_MANIAS_HOUSE_WP,
         Manias_House_Warp_Points.MANIAS_HOUSE_TO_CIANWOOD_CITY_WP,
-        "CianwoodCity",unlocks=[Unlock_Keys.HM_FLY]
+        "CianwoodCity",unlocks=[Unlock_Keys.FOUND_CIANWOOD]
     )
     CIANWOOD_CITY_TO_CIANWOOD_GYM_LINK = WarpLink(
         Cianwood_City_Warp_Points.CIANWOOD_CITY_TO_CIANWOOD_GYM_WP,
         Cianwood_Gym_Warp_Points.CIANWOOD_GYM_TO_CIANWOOD_CITY_WP,
-        "CianwoodCity" , 5,unlocks=[Unlock_Keys.HM_FLY]
+        "CianwoodCity" , 5,unlocks=[Unlock_Keys.FOUND_CIANWOOD]
     )
     CIANWOOD_CITY_TO_CIANWOOD_POKECENTER_1F_LINK = WarpLink(
         Cianwood_City_Warp_Points.CIANWOOD_CITY_TO_CIANWOOD_POKECENTER_1F_WP,
         Cianwood_Pokecenter_Warp_Points.CIANWOOD_POKECENTER_1F_TO_CIANWOOD_CITY_WP,
-        "CianwoodCity" , 10,unlocks=[Unlock_Keys.HM_FLY]
+        "CianwoodCity" , 10,unlocks=[Unlock_Keys.FOUND_CIANWOOD]
     )
     CIANWOOD_CITY_TO_CIANWOOD_PHARMACY_LINK = WarpLink(
         Cianwood_City_Warp_Points.CIANWOOD_CITY_TO_CIANWOOD_PHARMACY_WP,
         Cianwood_Pharmacy_Warp_Points.CIANWOOD_PHARMACY_TO_CIANWOOD_CITY_WP,
-        "CianwoodCity" , 15,unlocks=[Unlock_Keys.HM_FLY]
+        "CianwoodCity" , 15,unlocks=[Unlock_Keys.FOUND_CIANWOOD]
     )
     CIANWOOD_CITY_TO_CIANWOOD_PHOTO_STUDIO_LINK = WarpLink(
         Cianwood_City_Warp_Points.CIANWOOD_CITY_TO_CIANWOOD_PHOTO_STUDIO_WP,
         Cianwood_Photo_Studio_Warp_Points.CIANWOOD_PHOTO_STUDIO_TO_CIANWOOD_CITY_WP,
-        "CianwoodCity" , 20,unlocks=[Unlock_Keys.HM_FLY]
+        "CianwoodCity" , 20,unlocks=[Unlock_Keys.FOUND_CIANWOOD]
     )
     CIANWOOD_CITY_TO_CIANWOOD_LUGIA_SPEECH_HOUSE_LINK = WarpLink(
         Cianwood_City_Warp_Points.CIANWOOD_CITY_TO_CIANWOOD_LUGIA_SPEECH_HOUSE_WP,
         Cianwood_Lugia_Speech_House_Warp_Points.CIANWOOD_LUGIA_SPEECH_HOUSE_TO_CIANWOOD_CITY_WP,
-        "CianwoodCity" , 25,unlocks=[Unlock_Keys.HM_FLY]
+        "CianwoodCity" , 25,unlocks=[Unlock_Keys.FOUND_CIANWOOD]
     )
     CIANWOOD_CITY_TO_POKE_SEERS_HOUSE_LINK = WarpLink(
         Cianwood_City_Warp_Points.CIANWOOD_CITY_TO_POKE_SEERS_HOUSE_WP,
         Poke_Seers_House_Warp_Points.POKE_SEERS_HOUSE_TO_CIANWOOD_CITY_WP,
-        "CianwoodCity" , 30,unlocks=[Unlock_Keys.HM_FLY]
+        "CianwoodCity" , 30,unlocks=[Unlock_Keys.FOUND_CIANWOOD]
     )
 
 class Cianwood_Gym_Links(Enum):
@@ -560,7 +549,7 @@ class Cianwood_Gym_Links(Enum):
         Cianwood_Gym_Warp_Points.CIANWOOD_GYM_TO_CIANWOOD_CITY_WP,
         Cianwood_City_Warp_Points.CIANWOOD_CITY_TO_CIANWOOD_GYM_WP,
         "CianwoodGym", dual_width=True, unlocks=[Unlock_Keys.BADGE_5],
-        locked_by=[Unlock_Keys.HM_STRENGTH, Unlock_Keys.BADGE_3]
+        locked_by=[Unlock_Keys.CAN_USE_STRENGTH]
     )
 
 class Cianwood_Lugia_Speech_House_Links(Enum):
@@ -576,10 +565,10 @@ class Cianwood_Pharmacy_Links(Enum):
     CIANWOOD_PHARMACY_TO_CIANWOOD_CITY_LINK = WarpLink(
         Cianwood_Pharmacy_Warp_Points.CIANWOOD_PHARMACY_TO_CIANWOOD_CITY_WP,
         Cianwood_City_Warp_Points.CIANWOOD_CITY_TO_CIANWOOD_PHARMACY_WP,
-        "CianwoodPharmacy", dual_width=True, unlocks=[Unlock_Keys.OLIVINE_MEDICINE]
+        "CianwoodPharmacy", dual_width=True, unlocks=[Unlock_Keys.CIANNWOOD_PHARMACY_FOUND]
     )
 
-class Cianwood_Photo_Studio_Links(Enum):
+class Cianwood_Photo_Studio_Links(Enum): #Unused as a node because it breaks the game
     CIANWOOD_PHOTO_STUDIO_TO_CIANWOOD_CITY_LINK = WarpLink(
         Cianwood_Photo_Studio_Warp_Points.CIANWOOD_PHOTO_STUDIO_TO_CIANWOOD_CITY_WP,
         Cianwood_City_Warp_Points.CIANWOOD_CITY_TO_CIANWOOD_PHOTO_STUDIO_WP,
@@ -744,7 +733,7 @@ class Ice_Path_1F_Links(Enum):
     ICE_PATH_1F_TO_ROUTE_44_1_LINK = WarpLink(
         Ice_Path_1F_Warp_Points.ICE_PATH_1F_TO_ROUTE_44_1_WP,
         Route_44_Warp_Points.ROUTE_44_TO_ICE_PATH_1F_WP,
-        "IcePath1F"
+        "IcePath1F", unlocks=[Unlock_Keys.HM_WATERFALL]
     )
 
     ICE_PATH_1F_TO_BLACKTHORN_CITY_7_LINK = WarpLink(
@@ -756,7 +745,7 @@ class Ice_Path_1F_Links(Enum):
     ICE_PATH_1F_TO_ICE_PATH_B1F_1_LINK = WarpLink(
         Ice_Path_1F_Warp_Points.ICE_PATH_1F_TO_ICE_PATH_B1F_1_WP,
         Ice_Path_B1F_Warp_Points.ICE_PATH_B1F_TO_ICE_PATH_1F_3_WP,
-        "IcePath1F", 10
+        "IcePath1F", 10, unlocks=[Unlock_Keys.HM_WATERFALL]
     )
 
     ICE_PATH_1F_TO_ICE_PATH_B1F_7_LINK = WarpLink(
@@ -770,7 +759,7 @@ class Ice_Path_B1F_Links(Enum):
     ICE_PATH_B1F_TO_ICE_PATH_1F_3_LINK = WarpLink(
         Ice_Path_B1F_Warp_Points.ICE_PATH_B1F_TO_ICE_PATH_1F_3_WP,
         Ice_Path_1F_Warp_Points.ICE_PATH_1F_TO_ICE_PATH_B1F_1_WP,
-        "IcePathB1F", locked_by=[Unlock_Keys.HM_STRENGTH, Unlock_Keys.BADGE_3]
+        "IcePathB1F", locked_by=[Unlock_Keys.CAN_USE_STRENGTH]
     )
 
     ICE_PATH_B1F_TO_ICE_PATH_1F_4_LINK = WarpLink(
@@ -816,7 +805,7 @@ class Ice_Path_B2F_Mahogany_Side_Links(Enum):
     ICE_PATH_B2F_MAHOGANY_SIDE_TO_ICE_PATH_B3F_1_LINK = WarpLink(
         Ice_Path_B2F_Mahogany_Side_Warp_Points.ICE_PATH_B2F_MAHOGANY_SIDE_TO_ICE_PATH_B3F_1_WP,
         Ice_Path_B3F_Warp_Points.ICE_PATH_B3F_TO_ICE_PATH_B2F_MAHOGANY_SIDE_2_WP,
-        "IcePathB2FMahoganySide",5,locked_by=[Unlock_Keys.HM_STRENGTH, Unlock_Keys.BADGE_3]
+        "IcePathB2FMahoganySide",5,locked_by=[Unlock_Keys.CAN_USE_STRENGTH]
     )
 
 
@@ -878,10 +867,11 @@ class Ilex_Forest_Links(Enum):
     ILEX_FOREST_TO_ILEX_FOREST_AZALEA_GATE_LINK = WarpLink(
         Ilex_Forest_Warp_Points.ILEX_FOREST_TO_ILEX_FOREST_AZALEA_GATE_WP,
         Ilex_Forest_Azalea_Gate_Warp_Points.ILEX_FOREST_AZALEA_GATE_TO_ILEX_FOREST_WP,
-        "IlexForest" , 5, dual_width=True, locked_by=[Unlock_Keys.TEAM_ROCKET_AZALEA],
+        "IlexForest" , 5, dual_width=True, locked_by=[Unlock_Keys.CAN_CLEAR_SLOWPOKE_WELL],
      unlocks=[Unlock_Keys.HM_CUT]
     )
 
+#TODO Add National_Park_Bug_Catching_Contest
 class National_Park_Links(Enum):
     NATIONAL_PARK_TO_ROUTE_36_NATIONAL_PARK_GATE_LINK = WarpLink(
         National_Park_Warp_Points.NATIONAL_PARK_TO_ROUTE_36_NATIONAL_PARK_GATE_WP,
@@ -1062,7 +1052,7 @@ class Slowpoke_Well_B1F_Links(Enum):
     SLOWPOKE_WELL_B1F_TO_AZALEA_TOWN_LINK = WarpLink(
         Slowpoke_Well_B1F_Warp_Points.SLOWPOKE_WELL_B1F_TO_AZALEA_TOWN_6_WP,
         Azalea_Town_Warp_Points.AZALEA_TOWN_TO_SLOWPOKE_WELL_B1F_WP,
-        "SlowpokeWellB1F", unlocks=[Unlock_Keys.TEAM_ROCKET_AZALEA]
+        "SlowpokeWellB1F", unlocks=[Unlock_Keys.SLOWPOKE_WELL_FOUND]
     )
 
     SLOWPOKE_WELL_B1F_TO_SLOWPOKE_WELL_B2F_LINK = WarpLink(
@@ -1122,7 +1112,7 @@ class Dragon_Shrine_Links(Enum):
     DRAGON_SHRINE_TO_DRAGONS_DEN_B1F_2_LINK = WarpLink(
         Dragon_Shrine_Warp_Points.DRAGON_SHRINE_TO_DRAGONS_DEN_B1F_2_WP,
         Dragons_Den_B1F_Warp_Points.DRAGONS_DEN_B1F_TO_DRAGON_SHRINE_1_WP,
-        "DragonShrine", dual_width=True
+        "DragonShrine", dual_width=True, unlocks=[Unlock_Keys.BADGE_8]
     )
 
 class Sprout_Tower_1F_Links(Enum):
@@ -1215,17 +1205,16 @@ class Union_Cave_1F_Links(Enum):
     )
 
 class Union_Cave_B1F_Links(Enum):
-    # UNION_CAVE_B1F_TO_RUINS_OF_ALPH_OUTSIDE_7_LINK = WarpLink(
-    #     Union_Cave_B1F_Warp_Points.UNION_CAVE_B1F_TO_RUINS_OF_ALPH_OUTSIDE_7_WP,
-    #     Ruins_Of_Alph_Outside_Warp_Points.,
-    #     "UnionCaveB1F"
-    # )
-    #
-    # UNION_CAVE_B1F_TO_RUINS_OF_ALPH_OUTSIDE_8_LINK = WarpLink(
-    #     Union_Cave_B1F_Warp_Points.UNION_CAVE_B1F_TO_RUINS_OF_ALPH_OUTSIDE_8_WP,
-    #     Ruins_Of_Alph_Outside_Warp_Points.,
-    #     "UnionCaveB1F", 5
-    # )
+    UNION_CAVE_B1F_TO_RUINS_OF_ALPH_OUTSIDE_7_LINK = WarpLink(
+        Union_Cave_B1F_Warp_Points.UNION_CAVE_B1F_TO_RUINS_OF_ALPH_OUTSIDE_7_WP,
+        Ruins_Of_Alph_Outside_Warp_Points.RUINS_OF_ALPH_OUTSIDE_TO_UNION_CAVE_B1F_1_WP,
+        "UnionCaveB1F"
+    )
+    UNION_CAVE_B1F_TO_RUINS_OF_ALPH_OUTSIDE_8_LINK = WarpLink(
+        Union_Cave_B1F_Warp_Points.UNION_CAVE_B1F_TO_RUINS_OF_ALPH_OUTSIDE_8_WP,
+        Ruins_Of_Alph_Outside_Warp_Points.RUINS_OF_ALPH_OUTSIDE_TO_UNION_CAVE_B1F_2_WP,
+        "UnionCaveB1F", 5
+    )
 
     UNION_CAVE_B1F_TO_UNION_CAVE_1F_1_LINK = WarpLink(
         Union_Cave_B1F_Warp_Points.UNION_CAVE_B1F_TO_UNION_CAVE_1F_1_WP,
@@ -1257,13 +1246,13 @@ class Lake_Of_Rage_Links(Enum):
     LAKE_OF_RAGE_TO_LAKE_OF_RAGE_HIDDEN_POWER_HOUSE_LINK = WarpLink(
         Lake_Of_Rage_Warp_Points.LAKE_OF_RAGE_TO_LAKE_OF_RAGE_HIDDEN_POWER_HOUSE_WP,
         Lake_Of_Rage_Hidden_Power_House_Warp_Points.LAKE_OF_RAGE_HIDDEN_POWER_HOUSE_TO_LAKE_OF_RAGE_WP,
-        "LakeOfRage"
+        "LakeOfRage", unlocks=[Unlock_Keys.LAKE_OF_RAGE_FOUND]
     )
 
     LAKE_OF_RAGE_TO_LAKE_OF_RAGE_MAGIKARP_HOUSE_LINK = WarpLink(
         Lake_Of_Rage_Warp_Points.LAKE_OF_RAGE_TO_LAKE_OF_RAGE_MAGIKARP_HOUSE_WP,
         Lake_Of_Rage_Magikarp_House_Warp_Points.LAKE_OF_RAGE_MAGIKARP_HOUSE_TO_LAKE_OF_RAGE_WP,
-        "LakeOfRage" , 5
+        "LakeOfRage" , 5, unlocks=[Unlock_Keys.LAKE_OF_RAGE_FOUND]
     )
 
 
@@ -2006,7 +1995,7 @@ class Goldenrod_Dept_Store_4F_Links(Enum):
 class Goldenrod_Dept_Store_5F_Links(Enum):
     GOLDENROD_DEPT_STORE_5F_TO_GOLDENROD_DEPT_STORE_4F_1_LINK = WarpLink(
         Goldenrod_Dept_Store_5F_Warp_Points.GOLDENROD_DEPT_STORE_5F_TO_GOLDENROD_DEPT_STORE_4F_1_WP,
-        Goldenrod_Dept_Store_3F_Warp_Points.GOLDENROD_DEPT_STORE_3F_TO_GOLDENROD_DEPT_STORE_4F_2_WP,
+        Goldenrod_Dept_Store_4F_Warp_Points.GOLDENROD_DEPT_STORE_4F_TO_GOLDENROD_DEPT_STORE_5F_1_WP,
         "GoldenrodDeptStore5F"
     )
     GOLDENROD_DEPT_STORE_5F_TO_GOLDENROD_DEPT_STORE_6F_1_LINK = WarpLink(
@@ -2101,7 +2090,7 @@ class Goldenrod_Underground_Warehouse_Links(Enum):
     GOLDENROD_UNDERGROUND_WAREHOUSE_TO_GOLDENROD_DEPT_STORE_B1F_LINK = WarpLink(
         Goldenrod_Underground_Warehouse_Warp_Points.GOLDENROD_UNDERGROUND_WAREHOUSE_TO_GOLDENROD_DEPT_STORE_B1F_WP,
         Goldenrod_Underground_Warp_Points.GOLDENROD_UNDERGROUND_TO_GOLDENROD_UNDERGROUND_SWITCH_ROOM_ENTRANCES_SOUTH_WP, #This is the wrong link but doesn't matter
-        "GoldenrodUndergroundWarehouse", 10,
+        "GoldenrodUndergroundWarehouse", 10, unlocks=[Unlock_Keys.KEY_CARD]
     )
 
 
@@ -2173,13 +2162,13 @@ class Goldenrod_Underground_Links(Enum):
 
 
 
-
+#Todo check if keycard early allows you to clear radio tower, or if you need the 7 badge trigger
 class Radio_Tower_1F_Links(Enum):
     RADIO_TOWER_1F_TO_GOLDENROD_CITY_LINK = WarpLink(
         Radio_Tower_1F_Warp_Points.RADIO_TOWER_1F_TO_GOLDENROD_CITY_WP,
         Goldenrod_City_Warp_Points.GOLDENROD_CITY_TO_RADIO_TOWER_1F_WP,
-        "RadioTower1F", dual_width=True, unlocks=[Unlock_Keys.TEAM_ROCKET_RADIO_TOWER],
-        locked_by=[Unlock_Keys.HAS_7_BADGES]
+        "RadioTower1F", dual_width=True, unlocks=[Unlock_Keys.CAN_CLEAR_RADIO_TOWER_ROCKETS],
+        locked_by=[Unlock_Keys.KEY_CARD]
     )
     # RADIO_TOWER_1F_TO_RADIO_TOWER_2F_LINK
 
@@ -2203,38 +2192,48 @@ class Kogas_Room_Links(Enum):
 class Wills_Room_Links(Enum):
     WILLS_ROOM_TO_INDIGO_PLATEAU_POKECENTER_1F_LINK = WarpLink(
         Wills_Room_Warp_Points.WILLS_ROOM_TO_INDIGO_PLATEAU_POKECENTER_1F_WP,
-        Brunos_Room_Warp_Points.BRUNOS_ROOM_TO_KOGAS_ROOM_WP,    #CHANGE THIS IN THE FUTURE (THIS ISNT THE ACTUAL LINK)
-        "WillsRoom", unlocks=[Unlock_Keys.E4_WILL])
+        Indigo_Plateau_Pokecenter_1F_Warp_Points.INDIGO_PLATEAU_POKECENTER_1F_TO_WILLS_ROOM_1_WP,    #CHANGE THIS IN THE FUTURE (THIS ISNT THE ACTUAL LINK)
+        "WillsRoom", unlocks=[Unlock_Keys.E4_WILL]
+    )
+
     WILLS_ROOM_TO_KOGAS_ROOM_LINK = WarpLink(
         Wills_Room_Warp_Points.WILLS_ROOM_TO_KOGAS_ROOM_WP,
         Kogas_Room_Warp_Points.KOGAS_ROOM_TO_WILLS_ROOM_WP,
-        "WillsRoom", 5, dual_width=True, unlocks=[Unlock_Keys.E4_WILL])
+        "WillsRoom", 5, dual_width=True, unlocks=[Unlock_Keys.E4_WILL]
+    )
 
 class Karens_Room_Links(Enum):
     KARENS_ROOM_TO_BRUNOS_ROOM_LINK = WarpLink(
         Karens_Room_Warp_Points.KARENS_ROOM_TO_BRUNOS_ROOM_WP,
         Brunos_Room_Warp_Points.BRUNOS_ROOM_TO_KARENS_ROOM_WP,
-        "KarensRoom", dual_width=True, unlocks=[Unlock_Keys.E4_KAREN])
+        "KarensRoom", dual_width=True, unlocks=[Unlock_Keys.E4_KAREN]
+    )
+
     KARENS_ROOM_TO_LANCES_ROOM_LINK = WarpLink(
         Karens_Room_Warp_Points.KARENS_ROOM_TO_LANCES_ROOM_WP,
         Lances_Room_Warp_Points.LANCES_ROOM_TO_KARENS_ROOM_WP,
-        "KarensRoom", 10, dual_width=True, unlocks=[Unlock_Keys.E4_KAREN])
+        "KarensRoom", 10, dual_width=True, unlocks=[Unlock_Keys.E4_KAREN]
+    )
 
 class Brunos_Room_Links(Enum):
     BRUNOS_ROOM_TO_KOGAS_ROOM_LINK = WarpLink(
         Brunos_Room_Warp_Points.BRUNOS_ROOM_TO_KOGAS_ROOM_WP,
         Kogas_Room_Warp_Points.KOGAS_ROOM_TO_BRUNOS_ROOM_WP,
-        "BrunosRoom", dual_width=True, unlocks=[Unlock_Keys.E4_BRUNO])
+        "BrunosRoom", dual_width=True, unlocks=[Unlock_Keys.E4_BRUNO]
+    )
+
     BRUNOS_ROOM_TO_KARENS_ROOM_LINK = WarpLink(
         Brunos_Room_Warp_Points.BRUNOS_ROOM_TO_KARENS_ROOM_WP,
         Karens_Room_Warp_Points.KARENS_ROOM_TO_BRUNOS_ROOM_WP,
-        "BrunosRoom", 10, dual_width=True, unlocks=[Unlock_Keys.E4_BRUNO])
+        "BrunosRoom", 10, dual_width=True, unlocks=[Unlock_Keys.E4_BRUNO]
+    )
 
 class Lances_Room_Links(Enum):
     LANCES_ROOM_TO_KARENS_ROOM_LINK = WarpLink(
         Lances_Room_Warp_Points.LANCES_ROOM_TO_KARENS_ROOM_WP,
         Karens_Room_Warp_Points.KARENS_ROOM_TO_LANCES_ROOM_WP,
-        "LancesRoom", dual_width=True, unlocks=[Unlock_Keys.CHAMPION_LANCE])
+        "LancesRoom", dual_width=True, unlocks=[Unlock_Keys.CHAMPION_LANCE]
+    )
 
 
 #######################################################################
@@ -2254,7 +2253,7 @@ class Mahogany_Town_Links(Enum):
     MAHOGANY_TOWN_TO_MAHOGANY_GYM_LINK = WarpLink(
         Mahogany_Town_Warp_Points.MAHOGANY_TOWN_TO_MAHOGANY_GYM_WP,
         Mahogany_Gym_Warp_Points.MAHOGANY_GYM_TO_MAHOGANY_TOWN_WP,
-        "MahoganyTown" , 10, locked_by=[Unlock_Keys.TEAM_ROCKET_MAHOGANY]
+        "MahoganyTown" , 10, locked_by=[Unlock_Keys.CAN_CLEAR_MAHOGANY_ROCKETS]
     )
     MAHOGANY_TOWN_TO_MAHOGANY_POKECENTER_1F_LINK = WarpLink(
         Mahogany_Town_Warp_Points.MAHOGANY_TOWN_TO_MAHOGANY_POKECENTER_1F_WP,
@@ -2278,8 +2277,8 @@ class Mahogany_Mart_Links(Enum):
     MAHOGANY_MART_1F_TO_MAHOGANY_TOWN_LINK = WarpLink(
         Mahogany_Mart_Warp_Points.MAHOGANY_MART_1F_TO_MAHOGANY_TOWN_WP,
         Mahogany_Town_Warp_Points.MAHOGANY_TOWN_TO_MAHOGANY_MART_1F_WP,
-        "MahoganyMart1F", dual_width=True, unlocks=[Unlock_Keys.TEAM_ROCKET_MAHOGANY, Unlock_Keys.HM_WHIRLPOOL],
-        locked_by=[Unlock_Keys.HM_SURF, Unlock_Keys.BADGE_4]
+        "MahoganyMart1F", dual_width=True, unlocks=[Unlock_Keys.CAN_CLEAR_MAHOGANY_ROCKETS, Unlock_Keys.HM_WHIRLPOOL],
+        locked_by=[Unlock_Keys.CAN_SURF, Unlock_Keys.LAKE_OF_RAGE_FOUND]
     )
 
     # MAHOGANY_MART_1F_TO_TEAM_ROCKET_BASE_B1F_LINK = WarpLink(
@@ -2549,13 +2548,14 @@ class Olivine_Lighthouse_6F_Links(Enum):
     OLIVINE_LIGHTHOUSE_6F_TO_5F_STAIR_LINK = WarpLink(
         Olivine_Lighthouse_6F_Warp_Points.OLIVINE_LIGHTHOUSE_6F_TO_OLIVINE_LIGHTHOUSE_5FA_WP,
         Olivine_Lighthouse_5F_Warp_Points.OLIVINE_LIGHTHOUSE_5F_TO_OLIVINE_LIGHTHOUSE_6FA_WP,
-        "OlivineLighthouse6F")
+        "OlivineLighthouse6F", unlocks=[Unlock_Keys.TOP_OF_LIGHTHOUSE_FOUND]
+    )
 
     OLIVINE_LIGHTHOUSE_6F_TO_5F_PITFALL_LINK = WarpLink(
         Olivine_Lighthouse_6F_Warp_Points.OLIVINE_LIGHTHOUSE_6F_TO_OLIVINE_LIGHTHOUSE_5FB_WP,
         Olivine_Lighthouse_5F_Warp_Points.OLIVINE_LIGHTHOUSE_5F_TO_OLIVINE_LIGHTHOUSE_6FB_WP,
-        "OlivineLighthouse6F" , 5,
-        dual_width=True)
+        "OlivineLighthouse6F" , 5,dual_width=True, unlocks=[Unlock_Keys.TOP_OF_LIGHTHOUSE_FOUND]
+    )
 
 class Olivine_Mart_Links(Enum):
 
@@ -2763,6 +2763,7 @@ class Route_39_Farmhouse_Links(Enum):
         "Route39Farmhouse", dual_width=True
     )
 
+# class Route_40_Links(Enum):
 # class Route_41_Links(Enum):
 #TODO WHIRLS ISLANDS
 

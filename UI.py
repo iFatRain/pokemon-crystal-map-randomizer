@@ -121,8 +121,8 @@ def displayMainWindow():
                    activebackground=UI_Colors.Lavender_Web.value).place(x=30, y=170)
 
     tk.Checkbutton(mainWindow,
-                   variable=alphPuzzles,
-                   text=" Solved Alph Puzzles",
+                   variable=litDarkCaves,
+                   text=" Lit Dark Caves",
                    bg=UI_Colors.Lavender_Web.value,
                    font=("Comic Sans MS", 12, ""),
                    activebackground=UI_Colors.Lavender_Web.value).place(x=30, y=200)
@@ -223,7 +223,7 @@ def randomize(originalROM):
     assignSeed()
 
     # Creates a setting Array that we can pass into the other functions to do different things based on settings
-    settings = [loadedROMName.get(), legendaryAvailability.get(), regionSplit.get(), alphPuzzles.get()]
+    settings = [loadedROMName.get(), legendaryAvailability.get(), regionSplit.get(), litDarkCaves.get()]
 
     # Remove the main window while we try the rando
     mainWindow.withdraw()
@@ -288,7 +288,7 @@ seedString = tk.StringVar()
 # Randomizer Settings
 legendaryAvailability = tk.IntVar()
 regionSplit = tk.IntVar()
-alphPuzzles = tk.IntVar()
+litDarkCaves = tk.IntVar()
 
 # ROM Variables
 baseROM = tk.IntVar()

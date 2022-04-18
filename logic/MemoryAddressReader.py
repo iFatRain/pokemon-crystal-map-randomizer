@@ -27,9 +27,11 @@ def buildMemoryLocationsFromSym(detectedROMName):
                 memoryMapWarps[mapName] = (int(bank, 16) * 0x4000) + int(address, 16) - 0x4000
 
             if "GoldenrodUndergroundWarehouseDirectorScript" in line:
-                memInfo = line.split(" ")[0]
-                bank, address = memInfo.split(":")[0], memInfo.split(":")[1]
-                memoryMapScripts["DirectorKeycard"] = (int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 11
+                if line.split(" ")[1] == "GoldenrodUndergroundWarehouseDirectorScript":
+                    memInfo = line.split(" ")[0]
+                    bank, address = memInfo.split(":")[0], memInfo.split(":")[1]
+                    memoryMapScripts["DirectorKeycard"] = (int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 11
+                    print("DIRECTORS BADGE CHECK IS AT ",hex((int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 11))
 
             if "MapScripts.Lugia" in line:
                 memInfo = line.split(" ")[0]

@@ -4,11 +4,10 @@ import links_and_nodes.johto_all_warp_points
 from logic import AutomaticWarpLocator
 from logic.MemoryAddressReader import buildMemoryLocationsFromSym
 from logic.NewRandomizerLogic import randomizationStep1, randomizationStep2, randomizationStep3, randomizationStep4, \
-    checkSeedCompletability, randomizationStep5
+    checkJohtoCompletability, randomizationStep5
 from class_definitions import WarpInstruction, getHex
 
 def randomizeWarps():
-    completableSeed = False
     fullyCompletable = False
     while fullyCompletable is False:
         print("Randomizing..")
@@ -22,8 +21,9 @@ def randomizeWarps():
         randomizedNodes = randomizationStep4(randomizedNodes)
         print("Doing Step 5")
         randomizedNodes = randomizationStep5(randomizedNodes)
-        print("Checking the seed....")
-        completableSeed, fullyCompletable = checkSeedCompletability(randomizedNodes)
+        fullyCompletable = True #Todo Create logic for Kanto and fix the checker :P
+        # print("Checking the seed....")
+        # fullyCompletable = checkJohtoCompletability(randomizedNodes)
 
     return randomizedNodes
 
@@ -78,6 +78,9 @@ def randomizeROM(inputROM, settings):
         #     inputROM.write(bytes.fromhex(getHex(62)))
         # else:
         inputROM.write(bytes.fromhex(getHex(88)))
+
+    if settings[3] == 1:
+        disableDarkMode(inputROM, warpLocations)
 
     print("\tDisabling E4 Walking")
     inputROM.seek(scriptLocations["KogasRoom_EnterMovement"])
@@ -143,6 +146,7 @@ def randomizeROM(inputROM, settings):
     inputROM.seek(warpLocations['GoldenrodUndergroundWarehouse'] + 66)
     inputROM.write(bytes.fromhex(getHex(255)))
     inputROM.write(bytes.fromhex(getHex(255)))
+    print(hex(scriptLocations["DirectorKeycard"]))
     inputROM.seek(scriptLocations["DirectorKeycard"])
     inputROM.write(bytes.fromhex(getHex(0)))
 
@@ -158,3 +162,17 @@ def randomizeROM(inputROM, settings):
 
     return randomizedNodes
 
+def disableDarkMode(inputROM, warpLocations):
+    print(hex(warpLocations["DungeonsMapGroup"] +587)) #write 12, read 8, 9 times then read 35, then write, read 8, write, then read 72, write, read 8 , write
+    inputROM.seek(warpLocations["DungeonsMapGroup"] +587)
+    for i in range(9):
+        inputROM.write(bytes.fromhex(getHex(18)))
+        inputROM.read(8)
+    inputROM.read(27)
+    inputROM.write(bytes.fromhex(getHex(18)))
+    inputROM.read(8)
+    inputROM.write(bytes.fromhex(getHex(18)))
+    inputROM.read(71)
+    inputROM.write(bytes.fromhex(getHex(18)))
+    inputROM.read(8)
+    inputROM.write(bytes.fromhex(getHex(18)))

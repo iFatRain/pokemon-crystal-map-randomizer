@@ -39,9 +39,17 @@ class Node:
 
 
 class Unlock_Keys(Enum):
-    KURT_BEFORE_WELL = "Kurt Before Well"
+    KURTS_HOUSE_FOUND = "Triggers Rocket Removal From Well entrance"
+    SLOWPOKE_WELL_FOUND = "Triggers Rocket Removal from Azalea Gym"
+    CAN_CLEAR_SLOWPOKE_WELL = "Found Well and Kurt to trigger in proper order"
+
     ENTERED_BURNED_TOWER = "Entered Burned Tower"
-    OLIVINE_MEDICINE = "Olivine Medicine"
+    FOUND_CIANWOOD = "Found Cianwood for Fly HM"
+
+    TOP_OF_LIGHTHOUSE_FOUND = "Begin Medicine Quest"
+    CIANNWOOD_PHARMACY_FOUND = "Can Get Medicine for Quest"
+    OLIVINE_MEDICINE = "Olivine Medicine Obtained"
+
     HM_STRENGTH = "Strength"
     HM_SURF = "Surf"
     HM_CUT = "Cut"
@@ -57,10 +65,22 @@ class Unlock_Keys(Enum):
     BADGE_6 = "Useless Gym Badge"
     BADGE_7 = "Waterfall Gym Badge"
     BADGE_8 = "Whirlpool Gym Badge"
-    TEAM_ROCKET_AZALEA = "Team Rocket Azalea"
-    TEAM_ROCKET_MAHOGANY = "Team Rocket Mahogany"
-    TEAM_ROCKET_RADIO_TOWER = "Team Rocket Radio Tower"
+
+    #Conditionals to make logic easier
+    CAN_SURF = "Have HM and Badge for Surf"
+    CAN_CUT = "Have HM and Badge for Cut"
+    CAN_SURF_OR_CUT = "Have HM+Badge for Surf/Cut"
+    CAN_USE_STRENGTH = "HM+Badge for Strength"
+    LAKE_OF_RAGE_FOUND = "Found Lake of Rage for Lance Questline"
+
+    GYM_BATTLE_8 = "Battle Gym 8 Opens Dragon Shrine Entrance"
+
+    CAN_CLEAR_MAHOGANY_ROCKETS = "Team Rocket Mahogany"
+    CAN_CLEAR_RADIO_TOWER_ROCKETS = "Team Rocket Radio Tower"
+    KEY_CARD = "Keycard for Radio Tower"
+
     HAS_7_BADGES = "Badge Count of 7"
+
     E4_KOGA = "Koga"
     E4_WILL = "Will"
     E4_KAREN = "Karen"
