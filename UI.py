@@ -115,7 +115,7 @@ def displayMainWindow():
 
     tk.Checkbutton(mainWindow,
                    variable=regionSplit,
-                   text=" Split Johto and Kanto",
+                   text=" (Currently Disabled)",
                    bg=UI_Colors.Lavender_Web.value,
                    font=("Comic Sans MS", 12, ""),
                    activebackground=UI_Colors.Lavender_Web.value).place(x=30, y=170)
@@ -244,6 +244,7 @@ def randomize(originalROM):
         print("Randomizer failed")
         traceback.print_exc()
         exit()
+        quit()
     print("\nSettings were:", settings[::])
     print("Seed was:", seedString.get())
 

@@ -3,8 +3,8 @@ import random
 
 import links_and_nodes.johto_all_warp_points
 from class_definitions import Unlock_Keys, Node
-from links_and_nodes.node_containers import MajorNodes_Johto, UselessDeadEndNodes_Johto, ImportantDeadEndNodes_Johto, \
-    TwoWayCorridorNodes_Johto, HubNodes_Johto
+from links_and_nodes.johto_node_containers import MajorNodes_Johto, ReachableUselessDeadEndNodes_Johto, UnreachableUselessDeadEndNodes_Johto,\
+    ImportantDeadEndNodes_Johto, TwoWayCorridorNodes_Johto, HubNodes_Johto
 from links_and_nodes.kanto_node_containers import MajorNodes_Kanto, ImportantDeadEndNodes_Kanto, UselessDeadEndNodes_Kanto,\
     TwoWayCorridorNodes_Kanto, HubNodes_Kanto
 from logic.MemoryAddressReader import buildMemoryLocationsFromSym
@@ -17,7 +17,7 @@ def getRandomNode(nodeList, excludedNode = None):
     while len(checkedNodes) != len(nodeList):
 
         sampleNode = random.choice(nodeList)
-        print("Sample Node:",sampleNode)
+        #print("Sample Node:",sampleNode)
         if sampleNode in checkedNodes:
             continue
         else:
@@ -25,8 +25,8 @@ def getRandomNode(nodeList, excludedNode = None):
             if sampleNode == excludedNode:
                 continue
                 # Specific logic for making sure Radio Tower and Underground aren't placed in Goldenrod
-            if excludedNode == links_and_nodes.node_containers.ImportantDeadEndNodes_Johto.Radio_Tower_1F_Node or  excludedNode == links_and_nodes.node_containers.TwoWayCorridorNodes_Johto.Goldenrod_Underground_Warehouse_Node:
-                if sampleNode == links_and_nodes.node_containers.MajorNodes_Johto.Goldenrod_City_Node:
+            if excludedNode == links_and_nodes.johto_node_containers.ImportantDeadEndNodes_Johto.Radio_Tower_1F_Node or  excludedNode == links_and_nodes.johto_node_containers.TwoWayCorridorNodes_Johto.Goldenrod_Underground_Warehouse_Node:
+                if sampleNode == links_and_nodes.johto_node_containers.MajorNodes_Johto.Goldenrod_City_Node:
                     continue
             # If we find a node that has an open link, we return that node
             if sampleNode.value.USED_LINKS != sampleNode.value.TOTAL_LINKS:
@@ -173,7 +173,7 @@ def findConnectedLink(randomizedNodes, linkA):
 def randomizationStep1():
     # Step 1 links the Major Nodes Directly (Cities + Their Walkable Overworld)
 
-    unconnectedNodes =  list(MajorNodes_Kanto)#list(MajorNodes_Johto)# + list(MajorNodes_Kanto)
+    unconnectedNodes = list(MajorNodes_Kanto) #list(MajorNodes_Johto)# +
 
     # From our major nodes, we randomly select one to begin linking
     randomStart = random.choice(unconnectedNodes)
@@ -266,12 +266,33 @@ def randomizationStep3(randomizedNodes):
         deadEnds.pop(deadEnds.index(deadEndNode))
 
         available -= 1
-        print("\t",linkA,"<===>",linkB)
+        print("\t", linkA, "<===>", linkB, "There are still", available, "links left and ", len(deadEnds),
+              "remaining deadEnds")
         if available == 0:
             return randomizedNodes
 
-    deadEnds = list(UselessDeadEndNodes_Kanto) #list(UselessDeadEndNodes_Johto)
+    # deadEnds = list(ReachableUselessDeadEndNodes_Johto) #list(UselessDeadEndNodes_Johto)
+    #
+    # while len(deadEnds) != 0:
+    #
+    #     deadEndNode = getRandomNode(deadEnds)
+    #     linkA = deadEndNode.value.LINKS[0]
+    #     destinationNode = getRandomNode(randomizedNodes)
+    #     linkB = getRandomLink(destinationNode)
+    #
+    #     connectTwoLinks(linkA, linkB)
+    #     Node.incrementUsedLinks(deadEndNode.value)
+    #     Node.incrementUsedLinks(destinationNode.value)
+    #
+    #     randomizedNodes.append(deadEndNode)
+    #     deadEnds.pop(deadEnds.index(deadEndNode))
+    #
+    #     available -= 1
+    #     if available == 0:
+    #         return randomizedNodes
 
+    deadEnds = list(UselessDeadEndNodes_Kanto)  # list(UselessDeadEndNodes_Johto)
+    print("STARTING STAGE TWO OF STEP 3")
     while len(deadEnds) != 0:
 
         deadEndNode = getRandomNode(deadEnds)
@@ -287,7 +308,8 @@ def randomizationStep3(randomizedNodes):
         deadEnds.pop(deadEnds.index(deadEndNode))
 
         available -= 1
-        print("\t",linkA,"<===>",linkB, "There are still",available,"links left and ",len(deadEnds),"remaining deadEnds")
+        print("\t", linkA, "<===>", linkB, "There are still", available, "links left and ", len(deadEnds),
+              "remaining deadEnds")
         if len(deadEnds) == 1 and available % 2 == 0:
             return randomizedNodes
         if available == 0:

@@ -25,6 +25,7 @@ from map_data.Cherrygrove_Group.CherrygrovePokecenter_Map import Cherrygrove_Pok
 from map_data.Cherrygrove_Group.GuideGentsHouse_Map import Guide_Gents_House_Warp_Points
 from map_data.Cherrygrove_Group.MrPokemonsHouse_Map import Mr_Pokemons_House_Warp_Points
 from map_data.Cherrygrove_Group.Route30BerryHouse_Map import Route_30_Berry_House_Warp_Points
+from map_data.Cianwood_Group.BattleTowerOutside_Map import Battle_Tower_Outside_Warp_Points
 from map_data.Cianwood_Group.CianwoodCity_Map import Cianwood_City_Warp_Points
 from map_data.Cianwood_Group.CianwoodGym_Map import Cianwood_Gym_Warp_Points
 from map_data.Cianwood_Group.CianwoodLugiaSpeechHouse_Map import Cianwood_Lugia_Speech_House_Warp_Points
@@ -33,6 +34,7 @@ from map_data.Cianwood_Group.CianwoodPhotoStudio_Map import Cianwood_Photo_Studi
 from map_data.Cianwood_Group.CianwoodPokecenter_Map import Cianwood_Pokecenter_Warp_Points
 from map_data.Cianwood_Group.ManiasHouse_Map import Manias_House_Warp_Points
 from map_data.Cianwood_Group.PokeSeersHouse_Map import Poke_Seers_House_Warp_Points
+from map_data.Cianwood_Group.Route40BattleTowerGate_Map import Route_40_Battle_Tower_Gate_Warp_Points
 from map_data.Dungeons_Group.BurnedTower1F_Map import Burned_Tower_1F_Warp_Points
 from map_data.Dungeons_Group.DarkCaveBlackthornEntrance_Map import Dark_Cave_Blackthorn_Entrance_Warp_Points
 from map_data.Dungeons_Group.DarkCaveVioletEntrance_Map import Dark_Cave_Violet_Entrance_Warp_Points
@@ -75,6 +77,14 @@ from map_data.Dungeons_Group.SproutTower1F_Map import Sprout_Tower_1F_Warp_Point
 from map_data.Dungeons_Group.SproutTower2F_Map import Sprout_Tower_2F_Warp_Points
 from map_data.Dungeons_Group.SproutTower3F_Map import Sprout_Tower_3F_Warp_Points
 from map_data.Dungeons_Group.TinTower1F_Map import Tin_Tower_1F_Warp_Points
+from map_data.Dungeons_Group.TinTower2F_Map import Tin_Tower_2F_Warp_Points
+from map_data.Dungeons_Group.TinTower3F_Map import Tin_Tower_3F_Warp_Points
+from map_data.Dungeons_Group.TinTower4F_Map import Tin_Tower_4F_Warp_Points
+from map_data.Dungeons_Group.TinTower5F_Map import Tin_Tower_5F_Warp_Points
+from map_data.Dungeons_Group.TinTower6F_Map import Tin_Tower_6F_Warp_Points
+from map_data.Dungeons_Group.TinTower7F_Map import Tin_Tower_7F_Warp_Points
+from map_data.Dungeons_Group.TinTower8F_Map import Tin_Tower_8F_Warp_Points
+from map_data.Dungeons_Group.TinTower9F_Map import Tin_Tower_9F_Warp_Points
 from map_data.Dungeons_Group.TinTowerRoof_Map import Tin_Tower_Roof_Warp_Points
 from map_data.Dungeons_Group.UnionCave1F_Map import Union_Cave_1F_Warp_Points
 from map_data.Dungeons_Group.UnionCaveB1F_Map import Union_Cave_B1F_Warp_Points
@@ -173,6 +183,7 @@ from map_data.Routes.Route35_Map import Route_35_Warp_Points
 from map_data.Routes.Route36_Map import Route_36_Warp_Points
 from map_data.Routes.Route38_Map import Route_38_Warp_Points
 from map_data.Routes.Route39_Map import Route_39_Warp_Points
+from map_data.Routes.Route40_Map import Route_40_Warp_Points
 from map_data.Routes.Route41_Map import Route_41_Warp_Points
 from map_data.Routes.Route42_Map import Route_42_Warp_Points
 from map_data.Routes.Route43_Map import Route_43_Warp_Points
@@ -1176,6 +1187,217 @@ class Tin_Tower_1F_Links(Enum):
         Tin_Tower_1F_Warp_Points.TIN_TOWER_1F_TO_ECRUTEAK_CITY_WP,
         Ecruteak_City_Warp_Points.ECRUTEAK_CITY_TO_TIN_TOWER_1F_WP,
         "TinTower1F", dual_width=True
+    )
+
+
+class Tin_Tower_2F_Links(Enum):
+    TIN_TOWER_2F_TO_TIN_TOWER_3F_1_LINK = WarpLink(
+        Tin_Tower_2F_Warp_Points.TIN_TOWER_2F_TO_TIN_TOWER_3F_1_WP,
+        Tin_Tower_3F_Warp_Points.TIN_TOWER_3F_TO_TIN_TOWER_2F_1_WP,
+        "TinTower2F", unlocks=[]
+    )
+
+    TIN_TOWER_2F_TO_TIN_TOWER_1F_3_LINK = WarpLink(
+        Tin_Tower_2F_Warp_Points.TIN_TOWER_2F_TO_TIN_TOWER_1F_3_WP,
+        Tin_Tower_1F_Warp_Points.TIN_TOWER_1F_TO_TIN_TOWER_2F_WP,
+        "TinTower2F",5, unlocks=[]
+    )
+
+
+class Tin_Tower_3F_Links(Enum):
+    TIN_TOWER_3F_TO_TIN_TOWER_2F_1_LINK = WarpLink(
+        Tin_Tower_3F_Warp_Points.TIN_TOWER_3F_TO_TIN_TOWER_2F_1_WP,
+        Tin_Tower_2F_Warp_Points.TIN_TOWER_2F_TO_TIN_TOWER_3F_1_WP,
+        "TinTower3F", unlocks=[]
+    )
+
+    TIN_TOWER_3F_TO_TIN_TOWER_4F_2_LINK = WarpLink(
+        Tin_Tower_3F_Warp_Points.TIN_TOWER_3F_TO_TIN_TOWER_4F_2_WP,
+        Tin_Tower_4F_Warp_Points.TIN_TOWER_4F_TO_TIN_TOWER_3F_2_WP,
+        "TinTower3F",5, unlocks=[]
+    )
+
+
+class Tin_Tower_4F_Links(Enum):
+    TIN_TOWER_4F_TO_TIN_TOWER_5F_2_LINK = WarpLink(
+        Tin_Tower_4F_Warp_Points.TIN_TOWER_4F_TO_TIN_TOWER_5F_2_WP,
+        Tin_Tower_5F_Warp_Points.TIN_TOWER_5F_TO_TIN_TOWER_4F_1_WP,
+        "TinTower4F", unlocks=[]
+    )
+
+    TIN_TOWER_4F_TO_TIN_TOWER_3F_2_LINK = WarpLink(
+        Tin_Tower_4F_Warp_Points.TIN_TOWER_4F_TO_TIN_TOWER_3F_2_WP,
+        Tin_Tower_3F_Warp_Points.TIN_TOWER_3F_TO_TIN_TOWER_4F_2_WP,
+        "TinTower4F",5, unlocks=[]
+    )
+
+    TIN_TOWER_4F_TO_TIN_TOWER_5F_3_LINK = WarpLink(
+        Tin_Tower_4F_Warp_Points.TIN_TOWER_4F_TO_TIN_TOWER_5F_3_WP,
+        Tin_Tower_5F_Warp_Points.TIN_TOWER_5F_TO_TIN_TOWER_4F_3_WP,
+        "TinTower4F",10, unlocks=[]
+    )
+
+    TIN_TOWER_4F_TO_TIN_TOWER_5F_4_LINK = WarpLink(
+        Tin_Tower_4F_Warp_Points.TIN_TOWER_4F_TO_TIN_TOWER_5F_4_WP,
+        Tin_Tower_5F_Warp_Points.TIN_TOWER_5F_TO_TIN_TOWER_4F_4_WP,
+        "TinTower4F",15, unlocks=[]
+    )
+
+
+class Tin_Tower_5F_Links(Enum):
+    TIN_TOWER_5F_TO_TIN_TOWER_6F_2_LINK = WarpLink(  # middle bottom one way
+        Tin_Tower_5F_Warp_Points.TIN_TOWER_5F_TO_TIN_TOWER_6F_2_WP,
+        Tin_Tower_6F_Warp_Points.TIN_TOWER_6F_TO_TIN_TOWER_5F_1_WP,
+        "TinTower5F", unlocks=[]
+    )
+
+    TIN_TOWER_5F_TO_TIN_TOWER_4F_1_LINK = WarpLink(  # top
+        Tin_Tower_5F_Warp_Points.TIN_TOWER_5F_TO_TIN_TOWER_4F_1_WP,
+        Tin_Tower_4F_Warp_Points.TIN_TOWER_4F_TO_TIN_TOWER_5F_2_WP,
+        "TinTower5F",5, unlocks=[]
+    )
+
+    TIN_TOWER_5F_TO_TIN_TOWER_4F_3_LINK = WarpLink(  # deadend (item) (left)
+        Tin_Tower_5F_Warp_Points.TIN_TOWER_5F_TO_TIN_TOWER_4F_3_WP,
+        Tin_Tower_4F_Warp_Points.TIN_TOWER_4F_TO_TIN_TOWER_5F_3_WP,
+        "TinTower5F",10, unlocks=[]
+    )
+
+    TIN_TOWER_5F_TO_TIN_TOWER_4F_4_LINK = WarpLink(  # deadend (item) (left)
+        Tin_Tower_5F_Warp_Points.TIN_TOWER_5F_TO_TIN_TOWER_4F_4_WP,
+        Tin_Tower_4F_Warp_Points.TIN_TOWER_4F_TO_TIN_TOWER_5F_4_WP,
+        "TinTower5F",15, unlocks=[]
+    )
+
+
+class Tin_Tower_6F_Links(Enum):
+    TIN_TOWER_6F_TO_TIN_TOWER_7F_1_LINK = WarpLink(
+        Tin_Tower_6F_Warp_Points.TIN_TOWER_6F_TO_TIN_TOWER_7F_1_WP,
+        Tin_Tower_7F_Warp_Points.TIN_TOWER_7F_TO_TIN_TOWER_6F_1_WP,
+        "TinTower6F", unlocks=[]
+    )
+
+    TIN_TOWER_6F_TO_TIN_TOWER_5F_1_LINK = WarpLink(
+        Tin_Tower_6F_Warp_Points.TIN_TOWER_6F_TO_TIN_TOWER_5F_1_WP,
+        Tin_Tower_5F_Warp_Points.TIN_TOWER_5F_TO_TIN_TOWER_6F_2_WP,
+        "TinTower6F",5, unlocks=[]
+    )
+
+
+class Tin_Tower_7F_Links(Enum):  # 1-2-4 , 3-5
+
+    TIN_TOWER_7F_TO_TIN_TOWER_6F_1_LINK = WarpLink(
+        Tin_Tower_7F_Warp_Points.TIN_TOWER_7F_TO_TIN_TOWER_6F_1_WP,
+        Tin_Tower_6F_Warp_Points.TIN_TOWER_6F_TO_TIN_TOWER_7F_1_WP,
+        "TinTower7F", unlocks=[]
+    )
+
+    TIN_TOWER_7F_TO_TIN_TOWER_8F_1_LINK = WarpLink(
+        Tin_Tower_7F_Warp_Points.TIN_TOWER_7F_TO_TIN_TOWER_8F_1_WP,
+        Tin_Tower_8F_Warp_Points.TIN_TOWER_8F_TO_TIN_TOWER_7F_2_WP,
+        "TinTower7F",5, unlocks=[]
+    )
+
+    TIN_TOWER_7F_TO_TIN_TOWER_7F_4_LINK = WarpLink(
+        Tin_Tower_7F_Warp_Points.TIN_TOWER_7F_TO_TIN_TOWER_7F_4_WP,
+        Tin_Tower_7F_Warp_Points.TIN_TOWER_7F_TO_TIN_TOWER_7F_3_WP,
+        "TinTower7F",10, unlocks=[]
+    )
+
+    TIN_TOWER_7F_TO_TIN_TOWER_7F_3_LINK = WarpLink(
+        Tin_Tower_7F_Warp_Points.TIN_TOWER_7F_TO_TIN_TOWER_7F_3_WP,
+        Tin_Tower_7F_Warp_Points.TIN_TOWER_7F_TO_TIN_TOWER_7F_4_WP,
+        "TinTower7F",15, unlocks=[]
+    )
+
+    TIN_TOWER_7F_TO_TIN_TOWER_9F_5_LINK = WarpLink(
+        Tin_Tower_7F_Warp_Points.TIN_TOWER_7F_TO_TIN_TOWER_9F_5_WP,
+        Tin_Tower_9F_Warp_Points.TIN_TOWER_9F_TO_TIN_TOWER_7F_5_WP,
+        "TinTower7F",20, unlocks=[]
+    )
+
+
+class Tin_Tower_8F_Links(Enum):  # 1-2 (left), 3-4 (top) ,5x (bottom) ,6x (middle)
+
+    TIN_TOWER_8F_TO_TIN_TOWER_7F_2_LINK = WarpLink(
+        Tin_Tower_8F_Warp_Points.TIN_TOWER_8F_TO_TIN_TOWER_7F_2_WP,
+        Tin_Tower_7F_Warp_Points.TIN_TOWER_7F_TO_TIN_TOWER_8F_1_WP,
+        "TinTower8F", unlocks=[]
+    )
+
+    TIN_TOWER_8F_TO_TIN_TOWER_9F_1_LINK = WarpLink(
+        Tin_Tower_8F_Warp_Points.TIN_TOWER_8F_TO_TIN_TOWER_9F_1_WP,
+        Tin_Tower_9F_Warp_Points.TIN_TOWER_9F_TO_TIN_TOWER_8F_2_WP,
+        "TinTower8F",5, unlocks=[]
+    )
+
+    TIN_TOWER_8F_TO_TIN_TOWER_9F_2_LINK = WarpLink(
+        Tin_Tower_8F_Warp_Points.TIN_TOWER_8F_TO_TIN_TOWER_9F_2_WP,
+        Tin_Tower_9F_Warp_Points.TIN_TOWER_9F_TO_TIN_TOWER_8F_3_WP,
+        "TinTower8F",10, unlocks=[]
+    )
+
+    TIN_TOWER_8F_TO_TIN_TOWER_9F_3_LINK = WarpLink(
+        Tin_Tower_8F_Warp_Points.TIN_TOWER_8F_TO_TIN_TOWER_9F_3_WP,
+        Tin_Tower_9F_Warp_Points.TIN_TOWER_9F_TO_TIN_TOWER_8F_4_WP,
+        "TinTower8F",15, unlocks=[]
+    )
+
+    TIN_TOWER_8F_TO_TIN_TOWER_9F_6_LINK = WarpLink(
+        Tin_Tower_8F_Warp_Points.TIN_TOWER_8F_TO_TIN_TOWER_9F_6_WP,
+        Tin_Tower_9F_Warp_Points.TIN_TOWER_9F_TO_TIN_TOWER_8F_5_WP,
+        "TinTower8F",20, unlocks=[]
+    )
+
+    TIN_TOWER_8F_TO_TIN_TOWER_9F_7_LINK = WarpLink(
+        Tin_Tower_8F_Warp_Points.TIN_TOWER_8F_TO_TIN_TOWER_9F_7_WP,
+        Tin_Tower_9F_Warp_Points.TIN_TOWER_9F_TO_TIN_TOWER_8F_6_WP,
+        "TinTower8F",25, unlocks=[]
+    )
+
+
+class Tin_Tower_9F_Links(Enum):  # 5-6-7, 1-2(top) , 3-4(middle)
+
+    TIN_TOWER_9F_TO_TIN_TOWER_8F_2_LINK = WarpLink(
+        Tin_Tower_9F_Warp_Points.TIN_TOWER_9F_TO_TIN_TOWER_8F_2_WP,
+        Tin_Tower_8F_Warp_Points.TIN_TOWER_8F_TO_TIN_TOWER_9F_1_WP,
+        "TinTower9F", unlocks=[]
+    )
+
+    TIN_TOWER_9F_TO_TIN_TOWER_8F_3_LINK = WarpLink(
+        Tin_Tower_9F_Warp_Points.TIN_TOWER_9F_TO_TIN_TOWER_8F_3_WP,
+        Tin_Tower_8F_Warp_Points.TIN_TOWER_8F_TO_TIN_TOWER_9F_2_WP,
+        "TinTower9F",5, unlocks=[]
+    )
+
+    TIN_TOWER_9F_TO_TIN_TOWER_8F_4_LINK = WarpLink(
+        Tin_Tower_9F_Warp_Points.TIN_TOWER_9F_TO_TIN_TOWER_8F_4_WP,
+        Tin_Tower_8F_Warp_Points.TIN_TOWER_8F_TO_TIN_TOWER_9F_3_WP,
+        "TinTower9F",10, unlocks=[]
+    )
+
+    TIN_TOWER_9F_TO_TIN_TOWER_ROOF_1_LINK = WarpLink(
+        Tin_Tower_9F_Warp_Points.TIN_TOWER_9F_TO_TIN_TOWER_ROOF_1_WP,
+        Tin_Tower_Roof_Warp_Points.TIN_TOWER_ROOF_TO_TIN_TOWER_9F_WP,
+        "TinTower9F",15, unlocks=[]
+    )
+
+    TIN_TOWER_9F_TO_TIN_TOWER_7F_5_LINK = WarpLink(
+        Tin_Tower_9F_Warp_Points.TIN_TOWER_9F_TO_TIN_TOWER_7F_5_WP,
+        Tin_Tower_7F_Warp_Points.TIN_TOWER_7F_TO_TIN_TOWER_9F_5_WP,
+        "TinTower9F",20, unlocks=[]
+    )
+
+    TIN_TOWER_9F_TO_TIN_TOWER_8F_5_LINK = WarpLink(
+        Tin_Tower_9F_Warp_Points.TIN_TOWER_9F_TO_TIN_TOWER_8F_5_WP,
+        Tin_Tower_8F_Warp_Points.TIN_TOWER_8F_TO_TIN_TOWER_9F_6_WP,
+        "TinTower9F",25, unlocks=[]
+    )
+
+    TIN_TOWER_9F_TO_TIN_TOWER_8F_6_LINK = WarpLink(
+        Tin_Tower_9F_Warp_Points.TIN_TOWER_9F_TO_TIN_TOWER_8F_6_WP,
+        Tin_Tower_8F_Warp_Points.TIN_TOWER_8F_TO_TIN_TOWER_9F_7_WP,
+        "TinTower9F",30, unlocks=[]
     )
 
 class Union_Cave_1F_Links(Enum):
@@ -2763,7 +2985,39 @@ class Route_39_Farmhouse_Links(Enum):
         "Route39Farmhouse", dual_width=True
     )
 
-# class Route_40_Links(Enum):
+class Route_40_Links(Enum):
+    ROUTE_40_TO_ROUTE_40_BATTLE_TOWER_GATE_1_LINK = WarpLink(
+        Route_40_Warp_Points.ROUTE_40_TO_ROUTE_40_BATTLE_TOWER_GATE_1_WP,
+        Route_40_Battle_Tower_Gate_Warp_Points.ROUTE_40_BATTLE_TOWER_GATE_TO_ROUTE_40_1_WP,
+        "Route40"
+    )
+class Route_40_Battle_Tower_Gate_Links(Enum):
+    ROUTE_40_BATTLE_TOWER_GATE_TO_ROUTE_40_1_LINK = WarpLink(
+        Route_40_Battle_Tower_Gate_Warp_Points.ROUTE_40_BATTLE_TOWER_GATE_TO_ROUTE_40_1_WP,
+        Route_40_Warp_Points.ROUTE_40_TO_ROUTE_40_BATTLE_TOWER_GATE_1_WP,
+        "Route40BattleTowerGate", dual_width=True
+    )
+
+    ROUTE_40_BATTLE_TOWER_GATE_TO_BATTLE_TOWER_OUTSIDE_1_LINK = WarpLink(
+        Route_40_Battle_Tower_Gate_Warp_Points.ROUTE_40_BATTLE_TOWER_GATE_TO_BATTLE_TOWER_OUTSIDE_1_WP,
+        Battle_Tower_Outside_Warp_Points.BATTLE_TOWER_OUTSIDE_TO_ROUTE_40_BATTLE_TOWER_GATE_3_WP,
+        "Route40BattleTowerGate", 10,dual_width=True
+    )
+
+
+class Battle_Tower_Outside_Links(Enum):
+    BATTLE_TOWER_OUTSIDE_TO_ROUTE_40_BATTLE_TOWER_GATE_3_LINK = WarpLink(
+        Battle_Tower_Outside_Warp_Points.BATTLE_TOWER_OUTSIDE_TO_ROUTE_40_BATTLE_TOWER_GATE_3_WP,
+        Route_40_Battle_Tower_Gate_Warp_Points.ROUTE_40_BATTLE_TOWER_GATE_TO_BATTLE_TOWER_OUTSIDE_1_WP,
+        "BattleTowerOutside",dual_width=True
+    )
+
+    BATTLE_TOWER_OUTSIDE_TO_BATTLE_TOWER_1F_1_LINK = WarpLink(
+        Battle_Tower_Outside_Warp_Points.BATTLE_TOWER_OUTSIDE_TO_BATTLE_TOWER_1F_1_WP,
+        Battle_Tower_Outside_Warp_Points.BATTLE_TOWER_OUTSIDE_TO_BATTLE_TOWER_1F_1_WP, # wrong but overwritten always
+        "BattleTowerOutside", 10, dual_width=True
+    )
+
 # class Route_41_Links(Enum):
 #TODO WHIRLS ISLANDS
 

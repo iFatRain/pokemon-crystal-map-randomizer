@@ -357,7 +357,7 @@ class Celadon_Mansion_Roof_House_Links(Enum):
     CELADON_MANSION_ROOF_HOUSE_TO_CELADON_MANSION_ROOF_3_LINK = WarpLink(#
         Celadon_Mansion_Roof_House_Warp_Points.CELADON_MANSION_ROOF_HOUSE_TO_CELADON_MANSION_ROOF_3_WP,
         Celadon_Mansion_Roof_Warp_Points.CELADON_MANSION_ROOF_TO_CELADON_MANSION_ROOF_HOUSE_1_WP,
-        "CeladonMansionRoof", dual_width= True, unlocks=[]
+        "CeladonMansionRoofHouse", dual_width= True, unlocks=[]
     )
 
 class Celadon_Mansion_Roof_Links(Enum): # 1-3, 2x
@@ -365,19 +365,19 @@ class Celadon_Mansion_Roof_Links(Enum): # 1-3, 2x
     CELADON_MANSION_ROOF_TO_CELADON_MANSION_3F_1_LINK = WarpLink(#
         Celadon_Mansion_Roof_Warp_Points.CELADON_MANSION_ROOF_TO_CELADON_MANSION_3F_1_WP,
         Celadon_Mansion_3F_Warp_Points.CELADON_MANSION_3F_TO_CELADON_MANSION_ROOF_1_WP,
-        "CeladonMansionRoofHouse", unlocks=[]
+        "CeladonMansionRoof", unlocks=[]
     )
 
     CELADON_MANSION_ROOF_TO_CELADON_MANSION_3F_4_LINK = WarpLink(
         Celadon_Mansion_Roof_Warp_Points.CELADON_MANSION_ROOF_TO_CELADON_MANSION_3F_4_WP,
         Celadon_Mansion_3F_Warp_Points.CELADON_MANSION_3F_TO_CELADON_MANSION_ROOF_2_WP,
-        "CeladonMansionRoofHouse", 5, unlocks=[]
+        "CeladonMansionRoof", 5, unlocks=[]
     )
 
     CELADON_MANSION_ROOF_TO_CELADON_MANSION_ROOF_HOUSE_1_LINK = WarpLink(#
         Celadon_Mansion_Roof_Warp_Points.CELADON_MANSION_ROOF_TO_CELADON_MANSION_ROOF_HOUSE_1_WP,
         Celadon_Mansion_Roof_House_Warp_Points.CELADON_MANSION_ROOF_HOUSE_TO_CELADON_MANSION_ROOF_3_WP,
-        "CeladonMansionRoofHouse", 10, unlocks=[]
+        "CeladonMansionRoof", 10, unlocks=[]
     )
 
 class Celadon_Pokecenter_1F_Links(Enum):
@@ -518,7 +518,7 @@ class Power_Plant_Links(Enum):
     POWER_PLANT_TO_ROUTE_10_NORTH_2_LINK = WarpLink( 
         Power_Plant_Warp_Points.POWER_PLANT_TO_ROUTE_10_NORTH_2_WP,
         Route_10_North_Warp_Points.ROUTE_10_NORTH_TO_POWER_PLANT_1_WP,
-        "CeruleanTradeSpeechHouse", dual_width= True, unlocks=[]
+        "PowerPlant", dual_width= True, unlocks=[]
     )
 
 
@@ -1303,7 +1303,7 @@ class Vermilion_City_Links(Enum):
     VERMILION_CITY_TO_DIGLETTS_CAVE_1_LINK = WarpLink(
         Vermilion_City_Warp_Points.VERMILION_CITY_TO_DIGLETTS_CAVE_1_WP,
         Digletts_Cave_Warp_Points.DIGLETTS_CAVE_TO_VERMILION_CITY_10_WP,
-        "VermilionCity", 40, unlocks=[]
+        "VermilionCity", 45, unlocks=[]
     )
     
 

@@ -22,8 +22,8 @@ def randomizeWarps():
         print("Doing Step 5")
         randomizedNodes = randomizationStep5(randomizedNodes)
         fullyCompletable = True #Todo Create logic for Kanto and fix the checker :P
-        # print("Checking the seed....")
-        # fullyCompletable = checkJohtoCompletability(randomizedNodes)
+        print("Checking the seed....")
+        #fullyCompletable = checkJohtoCompletability(randomizedNodes)
 
     return randomizedNodes
 
