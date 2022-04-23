@@ -272,9 +272,10 @@ class ImportantDeadEndNodes_Kanto(Enum):
     Fast_Ship_Cabins_SE_SSE_Captains_Cabin_10_Node = Node(
         [kmd.Fast_Ship_Cabins_SE_SSE_Captains_Cabin_Links.FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN_TO_FAST_SHIP_1F_10_LINK]
     ) 
+class ReachableUselessDeadEndNodes_Kanto(Enum):
+    pass
 
-
-class UselessDeadEndNodes_Kanto(Enum):
+class UnreachableUselessDeadEndNodes_Kanto(Enum):
 
 #All Interiors
 # Route 16 Cycling Road House  
@@ -378,6 +379,8 @@ class UselessDeadEndNodes_Kanto(Enum):
     Fast_Ship_Cabins_SE_SSE_Captains_Cabin_9_Node = Node(
         [kmd.Fast_Ship_Cabins_SE_SSE_Captains_Cabin_Links.FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN_TO_FAST_SHIP_1F_9_LINK]
     )
+
+
 
 
 class TwoWayCorridorNodes_Kanto(Enum):

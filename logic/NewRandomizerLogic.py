@@ -3,11 +3,7 @@ import random
 
 import links_and_nodes.johto_all_warp_points
 from class_definitions import Unlock_Keys, Node
-from links_and_nodes.johto_node_containers import MajorNodes_Johto, ReachableUselessDeadEndNodes_Johto, UnreachableUselessDeadEndNodes_Johto,\
-    ImportantDeadEndNodes_Johto, TwoWayCorridorNodes_Johto, HubNodes_Johto
-from links_and_nodes.kanto_node_containers import MajorNodes_Kanto, ImportantDeadEndNodes_Kanto, UselessDeadEndNodes_Kanto,\
-    TwoWayCorridorNodes_Kanto, HubNodes_Kanto
-from logic.MemoryAddressReader import buildMemoryLocationsFromSym
+from links_and_nodes.johto_node_containers import MajorNodes_Johto
 
 
 def getRandomNode(nodeList, excludedNode = None):
@@ -168,12 +164,10 @@ def findConnectedLink(randomizedNodes, linkA):
                 return linkB
     print("I DIDNT FIND A LINK FOR SOME REASON")
 
-
-
-def randomizationStep1():
+def randomizationStep1(majorNodesInput):
     # Step 1 links the Major Nodes Directly (Cities + Their Walkable Overworld)
 
-    unconnectedNodes = list(MajorNodes_Kanto) #list(MajorNodes_Johto)# +
+    unconnectedNodes = list(majorNodesInput) #list(MajorNodes_Johto)# +
 
     # From our major nodes, we randomly select one to begin linking
     randomStart = random.choice(unconnectedNodes)
@@ -199,10 +193,10 @@ def randomizationStep1():
 
 
 
-def randomizationStep2(randomizedNodes):
+def randomizationStep2(randomizedNodes, hubNodesList):
 
     print("\n Inserting Hubs\n")
-    hubNodes = list(HubNodes_Kanto)#list(HubNodes_Johto)
+    hubNodes = list(hubNodesList)#list(HubNodes_Johto)
     changedLinks = []
 
     # For each Overworld node, check the links to find which ones have the Overworld connection
@@ -242,11 +236,11 @@ def getAvailableLinkCount(randomizedNodes):
         available += node.value.TOTAL_LINKS - node.value.USED_LINKS
     return available
 
-def randomizationStep3(randomizedNodes):
+def randomizationStep3(randomizedNodes, important, reachableUseless, unreachableUseless):
 
 
     available = getAvailableLinkCount(randomizedNodes)
-    deadEnds = list(ImportantDeadEndNodes_Kanto)#list(ImportantDeadEndNodes_Johto)
+    deadEnds = list(important)#list(ImportantDeadEndNodes_Johto)
 
     print("\nPlacing Dead Ends\n")
     while len(deadEnds) != 0:
@@ -271,27 +265,27 @@ def randomizationStep3(randomizedNodes):
         if available == 0:
             return randomizedNodes
 
-    # deadEnds = list(ReachableUselessDeadEndNodes_Johto) #list(UselessDeadEndNodes_Johto)
-    #
-    # while len(deadEnds) != 0:
-    #
-    #     deadEndNode = getRandomNode(deadEnds)
-    #     linkA = deadEndNode.value.LINKS[0]
-    #     destinationNode = getRandomNode(randomizedNodes)
-    #     linkB = getRandomLink(destinationNode)
-    #
-    #     connectTwoLinks(linkA, linkB)
-    #     Node.incrementUsedLinks(deadEndNode.value)
-    #     Node.incrementUsedLinks(destinationNode.value)
-    #
-    #     randomizedNodes.append(deadEndNode)
-    #     deadEnds.pop(deadEnds.index(deadEndNode))
-    #
-    #     available -= 1
-    #     if available == 0:
-    #         return randomizedNodes
+    deadEnds = list(reachableUseless) #list(UselessDeadEndNodes_Johto)
 
-    deadEnds = list(UselessDeadEndNodes_Kanto)  # list(UselessDeadEndNodes_Johto)
+    while len(deadEnds) != 0:
+
+        deadEndNode = getRandomNode(deadEnds)
+        linkA = deadEndNode.value.LINKS[0]
+        destinationNode = getRandomNode(randomizedNodes)
+        linkB = getRandomLink(destinationNode)
+
+        connectTwoLinks(linkA, linkB)
+        Node.incrementUsedLinks(deadEndNode.value)
+        Node.incrementUsedLinks(destinationNode.value)
+
+        randomizedNodes.append(deadEndNode)
+        deadEnds.pop(deadEnds.index(deadEndNode))
+
+        available -= 1
+        if available == 0:
+            return randomizedNodes
+
+    deadEnds = list(unreachableUseless)  # list(UselessDeadEndNodes_Johto)
     print("STARTING STAGE TWO OF STEP 3")
     while len(deadEnds) != 0:
 
@@ -319,8 +313,8 @@ def randomizationStep3(randomizedNodes):
 
 
 
-def randomizationStep5(randomizedNodes):
-    corridorNodes = list(TwoWayCorridorNodes_Kanto) #list(TwoWayCorridorNodes_Johto)
+def randomizationStep5(randomizedNodes, corridorInputList):
+    corridorNodes = list(corridorInputList) #list(TwoWayCorridorNodes_Johto)
 
     print("\nInserting Corridors\n")
     while len(corridorNodes) != 0:

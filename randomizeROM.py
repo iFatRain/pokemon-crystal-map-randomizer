@@ -1,29 +1,48 @@
 import time
 
 import links_and_nodes.johto_all_warp_points
+import links_and_nodes.johto_node_containers as Johto
+import links_and_nodes.kanto_node_containers as Kanto
 from logic import AutomaticWarpLocator
 from logic.MemoryAddressReader import buildMemoryLocationsFromSym
 from logic.NewRandomizerLogic import randomizationStep1, randomizationStep2, randomizationStep3, randomizationStep4, \
     checkJohtoCompletability, randomizationStep5
 from class_definitions import WarpInstruction, getHex
 
-def randomizeWarps():
-    fullyCompletable = False
-    while fullyCompletable is False:
-        print("Randomizing..")
-        print("Doing Step 1")
-        randomizedNodes = randomizationStep1()
-        print("Doing Step 2")
-        randomizedNodes = randomizationStep2(randomizedNodes)
-        print("Doing Step 3")
-        randomizedNodes = randomizationStep3(randomizedNodes)
-        print("Doing Step 4")
+def randomizeWarps(combinedRegions):
+    print("Randomizing..")
+    if combinedRegions:
+        randomizedNodes = randomizationStep1(list(Johto.MajorNodes_Johto) + list(Kanto.MajorNodes_Kanto))
+        randomizedNodes = randomizationStep2(randomizedNodes, list(Johto.HubNodes_Johto) + list(Kanto.HubNodes_Kanto))
+        randomizedNodes = randomizationStep3(randomizedNodes,
+                                             list(Johto.ImportantDeadEndNodes_Johto) + list(Kanto.ImportantDeadEndNodes_Kanto),
+                                             list(Johto.ReachableUselessDeadEndNodes_Johto) + list(Kanto.ReachableUselessDeadEndNodes_Kanto),
+                                             list(Johto.UnreachableUselessDeadEndNodes_Johto) + list(Kanto.UnreachableUselessDeadEndNodes_Kanto))
         randomizedNodes = randomizationStep4(randomizedNodes)
-        print("Doing Step 5")
-        randomizedNodes = randomizationStep5(randomizedNodes)
-        fullyCompletable = True #Todo Create logic for Kanto and fix the checker :P
-        print("Checking the seed....")
-        #fullyCompletable = checkJohtoCompletability(randomizedNodes)
+        randomizedNodes = randomizationStep5(randomizedNodes, list(Johto.TwoWayCorridorNodes_Johto) + list(Kanto.TwoWayCorridorNodes_Kanto))
+    else:
+        johtoFullyCompletable = False
+        while johtoFullyCompletable is False:
+            randomizedJohto = randomizationStep1(list(Johto.MajorNodes_Johto))
+            randomizedJohto = randomizationStep2(randomizedJohto, list(Johto.HubNodes_Johto))
+            randomizedJohto = randomizationStep3(randomizedJohto, list(Johto.ImportantDeadEndNodes_Johto),
+                                                 list(Johto.ReachableUselessDeadEndNodes_Johto), list(Johto.UnreachableUselessDeadEndNodes_Johto))
+            randomizedJohto = randomizationStep4(randomizedJohto)
+            randomizedJohto = randomizationStep5(randomizedJohto, list(Johto.TwoWayCorridorNodes_Johto))
+            johtoFullyCompletable = checkJohtoCompletability(randomizedJohto)
+
+        # Now we randomize Kanto individually currently without checking
+        randomizedKanto = randomizationStep1(list(Kanto.MajorNodes_Kanto))
+        randomizedKanto = randomizationStep2(randomizedKanto, list(Kanto.HubNodes_Kanto))
+        randomizedKanto = randomizationStep3(randomizedKanto, list(Kanto.ImportantDeadEndNodes_Kanto),
+                                             list(Kanto.ReachableUselessDeadEndNodes_Kanto),
+                                             list(Kanto.UnreachableUselessDeadEndNodes_Kanto))
+        randomizedKanto = randomizationStep4(randomizedKanto)
+        randomizedKanto = randomizationStep5(randomizedKanto, list(Kanto.TwoWayCorridorNodes_Kanto))
+
+        randomizedNodes = randomizedJohto + randomizedKanto
+
+
 
     return randomizedNodes
 
@@ -41,7 +60,7 @@ def randomizeROM(inputROM, settings):
     startTime = time.time()
 
     print("Randomizing Warps..")
-    randomizedNodes = randomizeWarps()
+    randomizedNodes = randomizeWarps(settings[2])
 
 
     print("Writing New Warps to ROM...")
@@ -132,11 +151,11 @@ def randomizeROM(inputROM, settings):
     inputROM.write(bytes.fromhex(getHex(112)))
     inputROM.write(bytes.fromhex(getHex(112)))
 
-
-    print("\tMaking Aides Give Pokeballs")
-    inputROM.seek(scriptLocations["AideScript_GivePotion"])
-    inputROM.write(bytes.fromhex(getHex(5)))
-    inputROM.write(bytes.fromhex(getHex(5)))
+    if settings[5]:
+        print("\tMaking Aides Give Pokeballs")
+        inputROM.seek(scriptLocations["AideScript_GivePotion"])
+        inputROM.write(bytes.fromhex(getHex(5)))
+        inputROM.write(bytes.fromhex(getHex(5)))
 
     print("\tUnlocking Basement without Keycard")
     inputROM.seek(scriptLocations['LockBasementDoor'])
@@ -184,55 +203,55 @@ def randomizeROM(inputROM, settings):
     inputROM.write(bytes.fromhex(getHex(12)))
 
 
-
-    print("\t Blackthorn Map Block Changes")
-    inputROM.seek(scriptLocations["BlackthornCity_Blocks"])
-    inputROM.write(bytes.fromhex(getHex(111))) #6F
-    inputROM.write(bytes.fromhex(getHex(114))) #72
-    inputROM.write(bytes.fromhex(getHex(109)))
-    inputROM.write(bytes.fromhex(getHex(113)))
-    inputROM.write(bytes.fromhex(getHex(111)))  # 6F
-    inputROM.write(bytes.fromhex(getHex(114))) #6C
-    inputROM.read(14)
-    inputROM.write(bytes.fromhex(getHex(105)))
-    inputROM.read(4)
-    inputROM.write(bytes.fromhex(getHex(2)))
-    inputROM.write(bytes.fromhex(getHex(2)))
-    inputROM.write(bytes.fromhex(getHex(2)))
-    inputROM.write(bytes.fromhex(getHex(71))) #47
-    inputROM.read(11)
-    inputROM.write(bytes.fromhex(getHex(109))) #6D
-    inputROM.write(bytes.fromhex(getHex(105)))
-    inputROM.write(bytes.fromhex(getHex(2)))
-    inputROM.write(bytes.fromhex(getHex(2)))
-    inputROM.write(bytes.fromhex(getHex(2)))
-    inputROM.write(bytes.fromhex(getHex(2)))
-    inputROM.read(14)
-    inputROM.write(bytes.fromhex(getHex(113)))
-    inputROM.write(bytes.fromhex(getHex(105)))
-    inputROM.write(bytes.fromhex(getHex(2))) #69
-    inputROM.read(17)
-    inputROM.write(bytes.fromhex(getHex(113)))
-    inputROM.write(bytes.fromhex(getHex(105)))
-    inputROM.write(bytes.fromhex(getHex(2)))
-    inputROM.read(17)
-    inputROM.write(bytes.fromhex(getHex(113)))  # 71
-    inputROM.write(bytes.fromhex(getHex(105)))
-    inputROM.write(bytes.fromhex(getHex(2)))  # 71
-    inputROM.read(17)
-    inputROM.write(bytes.fromhex(getHex(113)))  # 71
-    inputROM.write(bytes.fromhex(getHex(105)))
-    inputROM.write(bytes.fromhex(getHex(2)))  # 71
-    inputROM.read(17)
-    inputROM.write(bytes.fromhex(getHex(113)))  # 71
-    inputROM.read(28)
-    inputROM.write(bytes.fromhex(getHex(75)))  # 71
-    inputROM.read(39)
-    inputROM.write(bytes.fromhex(getHex(90)))  # 71
-    inputROM.read(16)
-    inputROM.write(bytes.fromhex(getHex(90)))  # 71
-    inputROM.read(2)
-    inputROM.write(bytes.fromhex(getHex(90)))  # 71
+    if settings[4]:
+        print("\t Blackthorn Map Block Changes")
+        inputROM.seek(scriptLocations["BlackthornCity_Blocks"])
+        inputROM.write(bytes.fromhex(getHex(111))) #6F
+        inputROM.write(bytes.fromhex(getHex(114))) #72
+        inputROM.write(bytes.fromhex(getHex(109)))
+        inputROM.write(bytes.fromhex(getHex(113)))
+        inputROM.write(bytes.fromhex(getHex(111)))  # 6F
+        inputROM.write(bytes.fromhex(getHex(114))) #6C
+        inputROM.read(14)
+        inputROM.write(bytes.fromhex(getHex(105)))
+        inputROM.read(4)
+        inputROM.write(bytes.fromhex(getHex(2)))
+        inputROM.write(bytes.fromhex(getHex(2)))
+        inputROM.write(bytes.fromhex(getHex(2)))
+        inputROM.write(bytes.fromhex(getHex(71))) #47
+        inputROM.read(11)
+        inputROM.write(bytes.fromhex(getHex(109))) #6D
+        inputROM.write(bytes.fromhex(getHex(105)))
+        inputROM.write(bytes.fromhex(getHex(2)))
+        inputROM.write(bytes.fromhex(getHex(2)))
+        inputROM.write(bytes.fromhex(getHex(2)))
+        inputROM.write(bytes.fromhex(getHex(2)))
+        inputROM.read(14)
+        inputROM.write(bytes.fromhex(getHex(113)))
+        inputROM.write(bytes.fromhex(getHex(105)))
+        inputROM.write(bytes.fromhex(getHex(2))) #69
+        inputROM.read(17)
+        inputROM.write(bytes.fromhex(getHex(113)))
+        inputROM.write(bytes.fromhex(getHex(105)))
+        inputROM.write(bytes.fromhex(getHex(2)))
+        inputROM.read(17)
+        inputROM.write(bytes.fromhex(getHex(113)))  # 71
+        inputROM.write(bytes.fromhex(getHex(105)))
+        inputROM.write(bytes.fromhex(getHex(2)))  # 71
+        inputROM.read(17)
+        inputROM.write(bytes.fromhex(getHex(113)))  # 71
+        inputROM.write(bytes.fromhex(getHex(105)))
+        inputROM.write(bytes.fromhex(getHex(2)))  # 71
+        inputROM.read(17)
+        inputROM.write(bytes.fromhex(getHex(113)))  # 71
+        inputROM.read(28)
+        inputROM.write(bytes.fromhex(getHex(75)))  # 71
+        inputROM.read(39)
+        inputROM.write(bytes.fromhex(getHex(90)))  # 71
+        inputROM.read(16)
+        inputROM.write(bytes.fromhex(getHex(90)))  # 71
+        inputROM.read(2)
+        inputROM.write(bytes.fromhex(getHex(90)))  # 71
 
     inputROM.close()
 

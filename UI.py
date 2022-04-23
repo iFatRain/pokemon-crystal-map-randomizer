@@ -12,7 +12,7 @@ import randomizeROM
 
 def displayMainWindow():
 
-    mainWindow.geometry("800x250")
+    mainWindow.geometry("800x330")
     mainWindow.title("Pokemon Crystal Warp Randomizer v1.0 by iFatRain")
     mainWindow.configure(bg= UI_Colors.Lavender_Web.value)
 
@@ -115,7 +115,7 @@ def displayMainWindow():
 
     tk.Checkbutton(mainWindow,
                    variable=regionSplit,
-                   text=" (Currently Disabled)",
+                   text=" Combined Regions",
                    bg=UI_Colors.Lavender_Web.value,
                    font=("Comic Sans MS", 12, ""),
                    activebackground=UI_Colors.Lavender_Web.value).place(x=30, y=170)
@@ -126,6 +126,20 @@ def displayMainWindow():
                    bg=UI_Colors.Lavender_Web.value,
                    font=("Comic Sans MS", 12, ""),
                    activebackground=UI_Colors.Lavender_Web.value).place(x=30, y=200)
+
+    tk.Checkbutton(mainWindow,
+                   variable=mapChanges,
+                   text=" Softlock Prevention Map Changes",
+                   bg=UI_Colors.Lavender_Web.value,
+                   font=("Comic Sans MS", 12, ""),
+                   activebackground=UI_Colors.Lavender_Web.value).place(x=30, y=230)
+
+    tk.Checkbutton(mainWindow,
+                   variable=aidePokeball,
+                   text=" Aide Gives Pokeballs at Start",
+                   bg=UI_Colors.Lavender_Web.value,
+                   font=("Comic Sans MS", 12, ""),
+                   activebackground=UI_Colors.Lavender_Web.value).place(x=30, y=260)
 
     mainWindow.mainloop()
 
@@ -223,7 +237,8 @@ def randomize(originalROM):
     assignSeed()
 
     # Creates a setting Array that we can pass into the other functions to do different things based on settings
-    settings = [loadedROMName.get(), legendaryAvailability.get(), regionSplit.get(), litDarkCaves.get()]
+    settings = [loadedROMName.get(), legendaryAvailability.get(), regionSplit.get(), litDarkCaves.get(), mapChanges.get(),
+                aidePokeball.get()]
 
     # Remove the main window while we try the rando
     mainWindow.withdraw()
@@ -290,6 +305,8 @@ seedString = tk.StringVar()
 legendaryAvailability = tk.IntVar()
 regionSplit = tk.IntVar()
 litDarkCaves = tk.IntVar()
+mapChanges = tk.IntVar()
+aidePokeball = tk.IntVar()
 
 # ROM Variables
 baseROM = tk.IntVar()
