@@ -158,6 +158,82 @@ def randomizeROM(inputROM, settings):
     inputROM.seek(scriptLocations["ChikoritaPokeBallScript"])
     inputROM.write(bytes.fromhex(getHex(100)))
 
+
+    #Write IcePathFixes
+    print("\t Making Rocks Always In Ice Path")
+    inputROM.seek(warpLocations["IcePathB2FMahoganySide"] + 47)
+    inputROM.write(bytes.fromhex(getHex(255)))
+    inputROM.write(bytes.fromhex(getHex(255)))
+    inputROM.read(11)
+    inputROM.write(bytes.fromhex(getHex(255)))
+    inputROM.write(bytes.fromhex(getHex(255)))
+    inputROM.read(11)
+    inputROM.write(bytes.fromhex(getHex(255)))
+    inputROM.write(bytes.fromhex(getHex(255)))
+    inputROM.read(11)
+    inputROM.write(bytes.fromhex(getHex(255)))
+    inputROM.write(bytes.fromhex(getHex(255)))
+    print("\t Removing Rocks from Above")
+    inputROM.seek(scriptLocations["InitializeEventsScript"])
+    inputROM.write(bytes.fromhex(getHex(9)))
+    inputROM.read(2)
+    inputROM.write(bytes.fromhex(getHex(10)))
+    inputROM.read(2)
+    inputROM.write(bytes.fromhex(getHex(11)))
+    inputROM.read(2)
+    inputROM.write(bytes.fromhex(getHex(12)))
+
+
+
+    print("\t Blackthorn Map Block Changes")
+    inputROM.seek(scriptLocations["BlackthornCity_Blocks"])
+    inputROM.write(bytes.fromhex(getHex(111))) #6F
+    inputROM.write(bytes.fromhex(getHex(114))) #72
+    inputROM.write(bytes.fromhex(getHex(109)))
+    inputROM.write(bytes.fromhex(getHex(113)))
+    inputROM.write(bytes.fromhex(getHex(111)))  # 6F
+    inputROM.write(bytes.fromhex(getHex(114))) #6C
+    inputROM.read(14)
+    inputROM.write(bytes.fromhex(getHex(105)))
+    inputROM.read(4)
+    inputROM.write(bytes.fromhex(getHex(2)))
+    inputROM.write(bytes.fromhex(getHex(2)))
+    inputROM.write(bytes.fromhex(getHex(2)))
+    inputROM.write(bytes.fromhex(getHex(71))) #47
+    inputROM.read(11)
+    inputROM.write(bytes.fromhex(getHex(109))) #6D
+    inputROM.write(bytes.fromhex(getHex(105)))
+    inputROM.write(bytes.fromhex(getHex(2)))
+    inputROM.write(bytes.fromhex(getHex(2)))
+    inputROM.write(bytes.fromhex(getHex(2)))
+    inputROM.write(bytes.fromhex(getHex(2)))
+    inputROM.read(14)
+    inputROM.write(bytes.fromhex(getHex(113)))
+    inputROM.write(bytes.fromhex(getHex(105)))
+    inputROM.write(bytes.fromhex(getHex(2))) #69
+    inputROM.read(17)
+    inputROM.write(bytes.fromhex(getHex(113)))
+    inputROM.write(bytes.fromhex(getHex(105)))
+    inputROM.write(bytes.fromhex(getHex(2)))
+    inputROM.read(17)
+    inputROM.write(bytes.fromhex(getHex(113)))  # 71
+    inputROM.write(bytes.fromhex(getHex(105)))
+    inputROM.write(bytes.fromhex(getHex(2)))  # 71
+    inputROM.read(17)
+    inputROM.write(bytes.fromhex(getHex(113)))  # 71
+    inputROM.write(bytes.fromhex(getHex(105)))
+    inputROM.write(bytes.fromhex(getHex(2)))  # 71
+    inputROM.read(17)
+    inputROM.write(bytes.fromhex(getHex(113)))  # 71
+    inputROM.read(28)
+    inputROM.write(bytes.fromhex(getHex(75)))  # 71
+    inputROM.read(39)
+    inputROM.write(bytes.fromhex(getHex(90)))  # 71
+    inputROM.read(16)
+    inputROM.write(bytes.fromhex(getHex(90)))  # 71
+    inputROM.read(2)
+    inputROM.write(bytes.fromhex(getHex(90)))  # 71
+
     inputROM.close()
 
     return randomizedNodes

@@ -110,6 +110,21 @@ def buildMemoryLocationsFromSym(detectedROMName):
                     bank, address = memInfo.split(":")[0], memInfo.split(":")[1]
                     memoryMapScripts["HoOhToggle"] = (int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 12
 
+            if "InitializeEventsScript" in line and "InitializeEventsScriptStdScript" not in line:
+                memInfo = line.split(" ")[0]
+                bank, address = memInfo.split(":")[0], memInfo.split(":")[1]
+                memoryMapScripts["InitializeEventsScript"] = (int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 73
+
+                print(line.split(" ")[1], "is at", hex((int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 73))
+
+            if "BlackthornCity_Blocks" in line and "Beta" not in line:
+                memInfo = line.split(" ")[0]
+                bank, address = memInfo.split(":")[0], memInfo.split(":")[1]
+                memoryMapScripts["BlackthornCity_Blocks"] = (int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 3
+
+                print(line.split(" ")[1], "is at", hex((int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 3))
+
+
 
 
 
