@@ -6,7 +6,7 @@ import links_and_nodes.kanto_node_containers as Kanto
 from logic import AutomaticWarpLocator
 from logic.MemoryAddressReader import buildMemoryLocationsFromSym
 from logic.NewRandomizerLogic import randomizationStep1, randomizationStep2, randomizationStep3, randomizationStep4, \
-    checkJohtoCompletability, randomizationStep5
+    checkJohtoCompletability, randomizationStep5, checkKantoCompletability
 from class_definitions import WarpInstruction, getHex
 
 def randomizeWarps(combinedRegions):
@@ -26,19 +26,24 @@ def randomizeWarps(combinedRegions):
             randomizedJohto = randomizationStep1(list(Johto.MajorNodes_Johto))
             randomizedJohto = randomizationStep2(randomizedJohto, list(Johto.HubNodes_Johto))
             randomizedJohto = randomizationStep3(randomizedJohto, list(Johto.ImportantDeadEndNodes_Johto),
-                                                 list(Johto.ReachableUselessDeadEndNodes_Johto), list(Johto.UnreachableUselessDeadEndNodes_Johto))
+                                                 list(Johto.ReachableUselessDeadEndNodes_Johto),
+                                                 list(Johto.UnreachableUselessDeadEndNodes_Johto))
             randomizedJohto = randomizationStep4(randomizedJohto)
             randomizedJohto = randomizationStep5(randomizedJohto, list(Johto.TwoWayCorridorNodes_Johto))
             johtoFullyCompletable = checkJohtoCompletability(randomizedJohto)
 
-        # Now we randomize Kanto individually currently without checking
-        randomizedKanto = randomizationStep1(list(Kanto.MajorNodes_Kanto))
-        randomizedKanto = randomizationStep2(randomizedKanto, list(Kanto.HubNodes_Kanto))
-        randomizedKanto = randomizationStep3(randomizedKanto, list(Kanto.ImportantDeadEndNodes_Kanto),
-                                             list(Kanto.ReachableUselessDeadEndNodes_Kanto),
-                                             list(Kanto.UnreachableUselessDeadEndNodes_Kanto))
-        randomizedKanto = randomizationStep4(randomizedKanto)
-        randomizedKanto = randomizationStep5(randomizedKanto, list(Kanto.TwoWayCorridorNodes_Kanto))
+        kantoFullyCompletable = False
+        while kantoFullyCompletable is False:
+            randomizedKanto = randomizationStep1(list(Kanto.MajorNodes_Kanto))
+            randomizedKanto = randomizationStep2(randomizedKanto, list(Kanto.HubNodes_Kanto))
+            randomizedKanto = randomizationStep3(randomizedKanto, list(Kanto.ImportantDeadEndNodes_Kanto),
+                                                 list(Kanto.ReachableUselessDeadEndNodes_Kanto),
+                                                 list(Kanto.UnreachableUselessDeadEndNodes_Kanto))
+            randomizedKanto = randomizationStep4(randomizedKanto)
+            randomizedKanto = randomizationStep5(randomizedKanto, list(Kanto.TwoWayCorridorNodes_Kanto))
+
+
+            kantoFullyCompletable = checkKantoCompletability(randomizedKanto)
 
         randomizedNodes = randomizedJohto + randomizedKanto
 
@@ -177,22 +182,31 @@ def randomizeROM(inputROM, settings):
     inputROM.seek(scriptLocations["ChikoritaPokeBallScript"])
     inputROM.write(bytes.fromhex(getHex(100)))
 
+    #Remove Right Guard from Victory Road Gate
+    print("\tFixing Victory Road Gate")
+    if settings[0] == 'Pokemon - Crystal Speedchoice Version 7.2':
+     inputROM.seek(warpLocations["VictoryRoadGate"] + 91)
+    else:
+        inputROM.seek(warpLocations["VictoryRoadGate"] + 95)
+    inputROM.write(bytes.fromhex(getHex(26)))
+    inputROM.write(bytes.fromhex(getHex(0)))
 
     #Write IcePathFixes
     print("\t Making Rocks Always In Ice Path")
-    inputROM.seek(warpLocations["IcePathB2FMahoganySide"] + 47)
-    inputROM.write(bytes.fromhex(getHex(255)))
-    inputROM.write(bytes.fromhex(getHex(255)))
-    inputROM.read(11)
-    inputROM.write(bytes.fromhex(getHex(255)))
-    inputROM.write(bytes.fromhex(getHex(255)))
-    inputROM.read(11)
-    inputROM.write(bytes.fromhex(getHex(255)))
-    inputROM.write(bytes.fromhex(getHex(255)))
-    inputROM.read(11)
-    inputROM.write(bytes.fromhex(getHex(255)))
-    inputROM.write(bytes.fromhex(getHex(255)))
+    # inputROM.seek(warpLocations["IcePathB2FMahoganySide"] + 47)
+    # inputROM.write(bytes.fromhex(getHex(255)))
+    # inputROM.write(bytes.fromhex(getHex(255)))
+    # inputROM.read(11)
+    # inputROM.write(bytes.fromhex(getHex(255)))
+    # inputROM.write(bytes.fromhex(getHex(255)))
+    # inputROM.read(11)
+    # inputROM.write(bytes.fromhex(getHex(255)))
+    # inputROM.write(bytes.fromhex(getHex(255)))
+    # inputROM.read(11)
+    # inputROM.write(bytes.fromhex(getHex(255)))
+    # inputROM.write(bytes.fromhex(getHex(255)))
     print("\t Removing Rocks from Above")
+    print("\t ROCKS ARE AT ", hex(scriptLocations["InitializeEventsScript"]))
     inputROM.seek(scriptLocations["InitializeEventsScript"])
     inputROM.write(bytes.fromhex(getHex(9)))
     inputROM.read(2)
@@ -202,8 +216,45 @@ def randomizeROM(inputROM, settings):
     inputROM.read(2)
     inputROM.write(bytes.fromhex(getHex(12)))
 
+    print("\t Making lower alph usable")
+    inputROM.seek(scriptLocations["RuinsOfAlphOutside_Blocks"])
+    inputROM.write(bytes.fromhex(getHex(90)))
+    inputROM.read(8)
+    inputROM.write(bytes.fromhex(getHex(90)))
+
+    if settings[6] == 1:
+        print("Fixing the Ruins of Alph FLoors")
+        print("Fixing Aero")
+        inputROM.seek(scriptLocations["RuinsOfAlphAerodactylChamber_MapScripts.FloorClosed"])
+        inputROM.write(bytes.fromhex(getHex(24)))
+        inputROM.read(3)
+        inputROM.write(bytes.fromhex(getHex(25)))
+        print("Fixing HoOh")
+        inputROM.seek(scriptLocations["RuinsOfAlphHoOhChamber_MapScripts.FloorClosed"])
+        inputROM.write(bytes.fromhex(getHex(24)))
+        inputROM.read(3)
+        inputROM.write(bytes.fromhex(getHex(25)))
+        print("Fixing Omanyte")
+        inputROM.seek(scriptLocations["RuinsOfAlphOmanyteChamber_MapScripts.FloorClosed"])
+        inputROM.write(bytes.fromhex(getHex(24)))
+        inputROM.read(3)
+        inputROM.write(bytes.fromhex(getHex(25)))
+        print("Fixing Kabuto")
+        inputROM.seek(scriptLocations["RuinsOfAlphKabutoChamber_MapScripts.FloorClosed"])
+        inputROM.write(bytes.fromhex(getHex(24)))
+        inputROM.read(3)
+        inputROM.write(bytes.fromhex(getHex(25)))
 
     if settings[4]:
+        print("\t Vermillion Map Block Changes")
+        inputROM.seek(scriptLocations["VermilionCity_Blocks"])
+        inputROM.write(bytes.fromhex(getHex(97)))
+
+
+        print("\t Mortar Map Block Changes")
+        inputROM.seek(scriptLocations["MountMortar2FInside_Blocks"])
+        inputROM.write(bytes.fromhex(getHex(2)))
+
         print("\t Blackthorn Map Block Changes")
         inputROM.seek(scriptLocations["BlackthornCity_Blocks"])
         inputROM.write(bytes.fromhex(getHex(111))) #6F
@@ -252,6 +303,8 @@ def randomizeROM(inputROM, settings):
         inputROM.write(bytes.fromhex(getHex(90)))  # 71
         inputROM.read(2)
         inputROM.write(bytes.fromhex(getHex(90)))  # 71
+        inputROM.seek(warpLocations["BlackthornCity"] + 56)
+        inputROM.write(bytes.fromhex(getHex(23)))
 
     inputROM.close()
 

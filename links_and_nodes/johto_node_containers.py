@@ -18,8 +18,7 @@ class MajorNodes_Johto(Enum):
         +   [johto.Route_36_Links.ROUTE_36_TO_ROUTE_36_RUINS_OF_ALPH_GATE_LINK]
         +   [johto.Route_32_Links.ROUTE_32_TO_ROUTE_32_RUINS_OF_ALPH_GATE_LINK])
 
-    Azalea_Town_Node = Node([link for link in johto.Azalea_Town_Links if link not in
-            [johto.Azalea_Town_Links.AZALEA_TOWN_TO_SLOWPOKE_WELL_B1F_LINK]] +
+    Azalea_Town_Node = Node([link for link in johto.Azalea_Town_Links] +
             [johto.Route_33_Links.ROUTE_33_TO_UNION_CAVE_1F_LINK])
 
     Goldenrod_City_Node = Node(list(itertools.chain(
@@ -33,6 +32,7 @@ class MajorNodes_Johto(Enum):
              johto.Ecruteak_City_Links.ECRUTEAK_CITY_TO_WISE_TRIOS_ROOM_LINK]
          ]
     )
+
     Olivine_City_Node = Node(
         [link for link in johto.Route_38_Links] +
         [link for link in johto.Route_39_Links] +
@@ -55,8 +55,30 @@ class MajorNodes_Johto(Enum):
     )))
 
 class ImportantDeadEndNodes_Johto(Enum):
+    Tin_Tower_5F_Deadend_N_Node = Node(
+        [johto.Tin_Tower_5F_Links.TIN_TOWER_5F_TO_TIN_TOWER_4F_1_LINK]
+    )
+    # Tintower 5F Deadend SE
+    Tin_Tower_5F_Deadend_SE_Node = Node(
+        [johto.Tin_Tower_5F_Links.TIN_TOWER_5F_TO_TIN_TOWER_4F_4_LINK]
+    )
+    # Tintower 5F Deadend S
+    Tin_Tower_5F_Deadend_S_Node = Node(
+        [johto.Tin_Tower_5F_Links.TIN_TOWER_5F_TO_TIN_TOWER_6F_2_LINK]
+    )
+    # Tintower 5F Deadend SW
+    Tin_Tower_5F_Deadend_SW_Node = Node(
+        [johto.Tin_Tower_5F_Links.TIN_TOWER_5F_TO_TIN_TOWER_4F_3_LINK]
+    )
 
-
+    # Tintower 8F Deadend Middle
+    Tin_Tower_8F_Deadend_Middle_Node = Node(
+        [johto.Tin_Tower_8F_Links.TIN_TOWER_8F_TO_TIN_TOWER_9F_7_LINK]
+    )
+    # Tintower 8F Deadend S
+    Tin_Tower_8F_Deadend_S_Node = Node(
+        [johto.Tin_Tower_8F_Links.TIN_TOWER_8F_TO_TIN_TOWER_9F_6_LINK]
+    )
 
     Route_46_Berry_Tree_Node = Node(
         [johto.Route_46_Links.ROUTE_46_TO_DARK_CAVE_VIOLET_ENTRANCE_LINK]
@@ -102,8 +124,6 @@ class ImportantDeadEndNodes_Johto(Enum):
     Olivine_Tims_House_Node = Node(list(itertools.chain(
         johto.Olivine_Tims_House_Links)))
 
-
-
     Cherrygrove_Mart_Node = Node(list(itertools.chain(
         johto.Cherrygrove_Mart_Links)))
 
@@ -112,9 +132,6 @@ class ImportantDeadEndNodes_Johto(Enum):
 
     Route_30_Berry_House_Node = Node(list(itertools.chain(
         johto.Route_30_Berry_House_Links)))
-
-    Earls_Pokemon_Academy_Node = Node(list(itertools.chain(
-        johto.Earls_Pokemon_Academy_Links)))
 
     Violet_Mart_Node = Node(list(itertools.chain(
         johto.Violet_City_Mart_Links)))
@@ -133,8 +150,6 @@ class ImportantDeadEndNodes_Johto(Enum):
         [link for link in johto.Azalea_Mart_Links]
     )
 
-
-
     Charcoal_Kiln_Node = Node(
         [link for link in johto.Charcoal_Kiln_Links]
     )
@@ -151,8 +166,6 @@ class ImportantDeadEndNodes_Johto(Enum):
         [link for link in johto.Blackthorn_Mart_Links]
     )
 
-
-
     Move_Deleters_House_Node = Node(
         [link for link in johto.Move_Deleters_House_Links]
     )
@@ -164,7 +177,6 @@ class ImportantDeadEndNodes_Johto(Enum):
     Cianwood_Pharmacy_Node = Node(
         [link for link in johto.Cianwood_Pharmacy_Links]
     )
-
 
 
     Manias_House_Node = Node(
@@ -186,14 +198,6 @@ class ImportantDeadEndNodes_Johto(Enum):
 
     Ilex_Forest_From_Azalea_Gate_Node = Node(
         [johto.Ilex_Forest_Links.ILEX_FOREST_TO_ILEX_FOREST_AZALEA_GATE_LINK]
-    )
-
-    Ruins_Of_Alph_Research_Center_Node = Node(
-        [link for link in johto.Ruins_Of_Alph_Research_Center_Links]
-    )
-
-    Slowpoke_Well_Overworld_Entrance_Node = Node(
-        [johto.Azalea_Town_Links.AZALEA_TOWN_TO_SLOWPOKE_WELL_B1F_LINK]
     )
 
     Slowpoke_Well_B1F_From_Overworld_Node = Node(
@@ -290,12 +294,6 @@ class ImportantDeadEndNodes_Johto(Enum):
         [link for link in johto.Goldenrod_Magnet_Train_Station_Links]
     )
 
-
-
-    Goldenrod_PP_Speech_House_Node = Node(
-        [link for link in johto.Goldenrod_PP_Speech_House_Links]
-    )
-
     #TODO Technically Corridor
     Radio_Tower_1F_Node = Node(
         [link for link in johto.Radio_Tower_1F_Links]
@@ -363,32 +361,41 @@ class ImportantDeadEndNodes_Johto(Enum):
     Union_Cave_B2F_Node = Node(
         [johto.Union_Cave_B2F_Links.UNION_CAVE_B2F_TO_UNION_CAVE_B1F_5_LINK]
     )
+    # victory road gate bottom 
+    Victory_Road_Gate_Bottom_Node = Node(
+        [johto.Victory_Road_Gate_Links.VICTORY_ROAD_GATE_TO_ROUTE_26_1_LINK]
+    )
+    # tohjo fall interior left
+    Tohjo_Falls_Left_Interior_Node = Node(
+        [johto.Tohjo_Falls_Links.TOHJO_FALLS_TO_ROUTE_27_2_LINK]
+    )
 
+#sandstorm house interior
+    Route_27_Sandstorm_House_Interior_Node = Node(
+        [johto.Route_27_Sandstorm_House_Links.ROUTE_27_SANDSTORM_HOUSE_TO_ROUTE_27_1_LINK]
+    )
+#route 26 heal house interior
+    Route_26_Heal_House_Interior_Node = Node(
+        [johto.Route_26_Heal_House_Links.ROUTE_26_HEAL_HOUSE_TO_ROUTE_26_2_LINK]
+    )
+    
 class UnreachableUselessDeadEndNodes_Johto(Enum):
-    Tin_Tower_5F_Deadend_N_Node = Node(
-        [johto.Tin_Tower_5F_Links.TIN_TOWER_5F_TO_TIN_TOWER_4F_1_LINK]
-    )
-    # Tintower 5F Deadend SE
-    Tin_Tower_5F_Deadend_SE_Node = Node(
-        [johto.Tin_Tower_5F_Links.TIN_TOWER_5F_TO_TIN_TOWER_4F_4_LINK]
-    )
-    # Tintower 5F Deadend S
-    Tin_Tower_5F_Deadend_S_Node = Node(
-        [johto.Tin_Tower_5F_Links.TIN_TOWER_5F_TO_TIN_TOWER_6F_2_LINK]
-    )
-    # Tintower 5F Deadend SW
-    Tin_Tower_5F_Deadend_SW_Node = Node(
-        [johto.Tin_Tower_5F_Links.TIN_TOWER_5F_TO_TIN_TOWER_4F_3_LINK]
+
+    Ruins_Of_Alph_Research_Center_Node = Node(
+        [link for link in johto.Ruins_Of_Alph_Research_Center_Links]
     )
 
-    # Tintower 8F Deadend Middle
-    Tin_Tower_8F_Deadend_Middle_Node = Node(
-        [johto.Tin_Tower_8F_Links.TIN_TOWER_8F_TO_TIN_TOWER_9F_7_LINK]
+    Goldenrod_PP_Speech_House_Node = Node(
+        [link for link in johto.Goldenrod_PP_Speech_House_Links]
     )
-    # Tintower 8F Deadend S
-    Tin_Tower_8F_Deadend_S_Node = Node(
-        [johto.Tin_Tower_8F_Links.TIN_TOWER_8F_TO_TIN_TOWER_9F_6_LINK]
+
+    # route 26 day of week sibling house interior
+    Route_26_Day_Of_Week_Sibling_House_Interior_Node = Node(
+        [johto.Day_Of_Week_Siblings_House_Links.DAY_OF_WEEK_SIBLINGS_HOUSE_TO_ROUTE_26_3_LINK]
     )
+
+    Earls_Pokemon_Academy_Node = Node(list(itertools.chain(
+        johto.Earls_Pokemon_Academy_Links)))
 
     Olivine_Punishment_Speech_House_Node = Node(list(itertools.chain(
         johto.Olivine_Punishment_Speech_House_Links)))
@@ -431,6 +438,33 @@ class UnreachableUselessDeadEndNodes_Johto(Enum):
 
 class ReachableUselessDeadEndNodes_Johto(Enum):
 
+
+
+    # route 27 tohjo fall entrance left
+    Tohjo_Falls_Left_Node = Node(
+        [johto.Route_27_Links.ROUTE_27_TO_TOHJO_FALLS_1_LINK]
+    )
+    
+    # tohjo fall interior right
+    Tohjo_Falls_Right_Interior_Node = Node(
+        [johto.Tohjo_Falls_Links.TOHJO_FALLS_TO_ROUTE_27_3_LINK]
+    )
+    # route 41 whirl entrance nw
+    Route_41_To_Whirl_Island_NW_Node = Node(
+        [johto.Route_41_Links.ROUTE_41_TO_WHIRL_ISLAND_NW_LINK]
+    )
+    # route 41 whirl entrance ne
+    Route_41_To_Whirl_Island_NE_Node = Node(
+        [johto.Route_41_Links.ROUTE_41_TO_WHIRL_ISLAND_NE_LINK]
+    )
+    # route 41 whirl entrance sw
+    Route_41_To_Whirl_Island_SW_Node = Node(
+        [johto.Route_41_Links.ROUTE_41_TO_WHIRL_ISLAND_SW_LINK]
+    )
+    # route 41 whirl entrance se
+    Route_41_To_Whirl_Island_SE_Node = Node(
+        [johto.Route_41_Links.ROUTE_41_TO_WHIRL_ISLAND_SE_LINK]
+    )
     Union_Cave_B1F_Useless_Alph_Node1 = Node(
         [johto.Union_Cave_B1F_Links.UNION_CAVE_B1F_TO_RUINS_OF_ALPH_OUTSIDE_8_LINK]
     )
@@ -442,20 +476,6 @@ class ReachableUselessDeadEndNodes_Johto(Enum):
     Whirl_Island_B1F_Useless_Node = Node(
         [johto.Whirl_Island_B1F_Links.WHIRL_ISLAND_B1F_TO_WHIRL_ISLAND_CAVE_1_LINK]
     )
-
-    #Todo Make these a hub maybe? Alph Lower node
-    Ruins_Of_Alph_Lower_From_Union_Cave = Node(
-        [johto.Ruins_Of_Alph_Outside_Links.RUINS_OF_ALPH_OUTSIDE_TO_UNION_CAVE_B1F_2_LINK]
-    )
-
-    Ruins_Of_Alph_Lower_To_Aero = Node(
-        [johto.Ruins_Of_Alph_Outside_Links.RUINS_OF_ALPH_OUTSIDE_TO_RUINS_OF_ALPH_AERODACTYL_CHAMBER_1_LINK]
-    )
-
-    Ruins_Of_Alph_Lower_To_Omanyte = Node(
-        [johto.Ruins_Of_Alph_Outside_Links.RUINS_OF_ALPH_OUTSIDE_TO_RUINS_OF_ALPH_OMANYTE_CHAMBER_1_LINK]
-    )
-
 
     Union_Cave_B1F_Useless_Trainer_Node1 = Node(
         [johto.Union_Cave_B1F_Links.UNION_CAVE_B1F_TO_UNION_CAVE_1F_2_LINK]
@@ -498,14 +518,6 @@ class ReachableUselessDeadEndNodes_Johto(Enum):
     #     [johto.Ecruteak_Tin_Tower_Entrance_Links.ECRUTEAK_TIN_TOWER_ENTRANCE_TO_WISE_TRIOS_ROOM_LINK]
     # )
 
-    Route_43_Gate_Top_Node = Node(
-        [johto.Route_43_Gate_Links.ROUTE_43_GATE_TO_ROUTE_43_TOP_LINK]
-    )
-
-    Route_43_Gate_Bottom_Node = Node(
-        [johto.Route_43_Gate_Links.ROUTE_43_GATE_TO_ROUTE_43_BOTTOM_LINK]
-    )
-
     Bills_Familys_House_Node = Node(
         [link for link in johto.Bills_Familys_House_Links]
     )
@@ -516,7 +528,7 @@ class ReachableUselessDeadEndNodes_Johto(Enum):
     )
 
     Whirl_Island_B2F_Useless_Cave_Node = Node(
-        [johto.Whirl_Island_Lugia_Chamber_Links.WHIRL_ISLAND_LUGIA_CHAMBER_TO_WHIRL_ISLAND_B2F_LINK]
+        [johto.Whirl_Island_B2F_Links.WHIRL_ISLAND_B2F_TO_WHIRL_ISLAND_LUGIA_CHAMBER_1_LINK]
     )
 
     Whirl_Island_NE_Left_Node = Node(
@@ -541,30 +553,13 @@ class ReachableUselessDeadEndNodes_Johto(Enum):
 
 
 class TwoWayCorridorNodes_Johto(Enum):
-
-    Goldenrod_Dept_Store_1F_Node = Node(
-        [link for link in johto.Goldenrod_Dept_Store_1F_Links]
+    # route 27 tohjo fall entrance right to sandstorm house
+    Tohjo_Falls_Right_To_Route_27_Sandstorm_House_Node = Node(
+         [johto.Route_27_Links.ROUTE_27_TO_TOHJO_FALLS_2_LINK,
+         johto.Route_27_Links.ROUTE_27_TO_ROUTE_27_SANDSTORM_HOUSE_1_LINK]
     )
 
-    Goldenrod_Dept_Store_2F_Node = Node(
-        [link for link in johto.Goldenrod_Dept_Store_2F_Links]
-    )
 
-    Goldenrod_Dept_Store_3F_Node = Node(
-        [link for link in johto.Goldenrod_Dept_Store_3F_Links]
-    )
-
-    Goldenrod_Dept_Store_4F_Node = Node(
-        [link for link in johto.Goldenrod_Dept_Store_4F_Links]
-    )
-
-    Goldenrod_Dept_Store_5F_Node = Node(
-        [link for link in johto.Goldenrod_Dept_Store_5F_Links]
-    )
-
-    Goldenrod_Dept_Store_6F_Node = Node(
-        [link for link in johto.Goldenrod_Dept_Store_6F_Links]
-    )
 
     Mount_Mortar_1F_Outside_Lower_Left_Node = Node(
         [johto.Mount_Mortar_1F_Outside_Links.MOUNT_MORTAR_1F_OUTSIDE_TO_ROUTE_42_3_LINK,
@@ -579,8 +574,8 @@ class TwoWayCorridorNodes_Johto(Enum):
          johto.Mount_Mortar_1F_Outside_Links.MOUNT_MORTAR_1F_OUTSIDE_TO_MOUNT_MORTAR_1F_INSIDE_2_LINK]
     )
 
-    Ice_Path_B1F_Strength_Path_Node = Node(
-        [johto.Ice_Path_B1F_Links.ICE_PATH_B1F_TO_ICE_PATH_1F_3_LINK,
+    Ice_Path_B2F_Ice_Rock_Room_Node = Node(
+        [johto.Ice_Path_B2F_Mahogany_Side_Links.ICE_PATH_B2F_MAHOGANY_SIDE_TO_ICE_PATH_B1F_2_LINK,
          johto.Ice_Path_B2F_Mahogany_Side_Links.ICE_PATH_B2F_MAHOGANY_SIDE_TO_ICE_PATH_B3F_1_LINK]
     )
 
@@ -782,6 +777,9 @@ class TwoWayCorridorNodes_Johto(Enum):
         [link for link in johto.Route_43_Mahogany_Gate_Links]
     )
 
+    Route_43_Gate_Node = Node(
+        [link for link in johto.Route_43_Gate_Links]
+    )
 
     Route_35_Node = Node(
         [link for link in johto.Route_35_Links]
@@ -988,6 +986,38 @@ class HubNodes_Johto(Enum):
     Union_Cave_1F_Node = Node(
         [link for link in johto.Union_Cave_1F_Links
          if link is not johto.Union_Cave_1F_Links.UNION_CAVE_1F_TO_UNION_CAVE_B1FB_LINK]
+    )
+    Indigo_Plateau_Pokecenter_1F_Node = Node(
+        [johto.Indigo_Plateau_Pokecenter_1F_Links.INDIGO_PLATEAU_POKECENTER_1F_TO_ROUTE_23_1_LINK,
+         johto.Indigo_Plateau_Pokecenter_1F_Links.INDIGO_PLATEAU_POKECENTER_1F_TO_POKECENTER_2F_1_LINK,
+         johto.Indigo_Plateau_Pokecenter_1F_Links.INDIGO_PLATEAU_POKECENTER_1F_TO_WILLS_ROOM_1_LINK]
+    )
+
+    Ruins_Of_Alph_Lower_Node = Node(
+        [johto.Ruins_Of_Alph_Outside_Links.RUINS_OF_ALPH_OUTSIDE_TO_UNION_CAVE_B1F_2_LINK,
+         johto.Ruins_Of_Alph_Outside_Links.RUINS_OF_ALPH_OUTSIDE_TO_RUINS_OF_ALPH_AERODACTYL_CHAMBER_1_LINK,
+         johto.Ruins_Of_Alph_Outside_Links.RUINS_OF_ALPH_OUTSIDE_TO_RUINS_OF_ALPH_OMANYTE_CHAMBER_1_LINK]
+    )
+
+    Ice_Path_B1F_Hub_Node = Node(
+        [link for link in johto.Ice_Path_B1F_Links if link not in
+         [johto.Ice_Path_B1F_Links.ICE_PATH_B1F_TO_ICE_PATH_B2F_BLACKTHORN_SIDE_1_LINK,
+          johto.Ice_Path_B1F_Links.ICE_PATH_B1F_TO_ICE_PATH_1F_4_LINK]
+         ]
+    )
+
+    Goldenrod_Dept_Store_Hub_Node = Node(
+        [johto.Goldenrod_Dept_Store_B1F_Links.GOLDENROD_DEPT_STORE_B1F_TO_UNDERGROUND_WAREHOUSE_LINK] +
+        [link for link in johto.Goldenrod_Dept_Store_1F_Links] +
+        [link for link in johto.Goldenrod_Dept_Store_2F_Links] +
+        [link for link in johto.Goldenrod_Dept_Store_3F_Links] +
+        [link for link in johto.Goldenrod_Dept_Store_4F_Links] +
+        [link for link in johto.Goldenrod_Dept_Store_5F_Links] +
+        [link for link in johto.Goldenrod_Dept_Store_6F_Links]
+    )
+
+    Route_26_Hub = Node(
+        [link for link in johto.Route_26_Links]
     )
 
 

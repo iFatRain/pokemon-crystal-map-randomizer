@@ -4,6 +4,7 @@ import random
 import links_and_nodes.johto_all_warp_points
 from class_definitions import Unlock_Keys, Node
 from links_and_nodes.johto_node_containers import MajorNodes_Johto
+from links_and_nodes.kanto_node_containers import MajorNodes_Kanto, TwoWayCorridorNodes_Kanto
 
 
 def getRandomNode(nodeList, excludedNode = None):
@@ -51,6 +52,23 @@ def getRandomLink(inputNode):
     while len(checkedLinks) != inputNode.value.TOTAL_LINKS:
         sampleLink = random.choice(inputNode.value.LINKS)
         if sampleLink in checkedLinks:
+            continue
+        else:
+            checkedLinks.append(sampleLink)
+            if sampleLink.value.MODIFIED == False:
+                markLinkAsUsed(sampleLink)
+                return sampleLink
+    return None
+
+def getRandomOverworldLink(inputNode):
+    checkedLinks = []
+    if inputNode.value.USED_LINKS == inputNode.value.TOTAL_LINKS:
+        return None
+    while len(checkedLinks) != inputNode.value.TOTAL_LINKS:
+        sampleLink = random.choice(inputNode.value.LINKS)
+        if sampleLink in checkedLinks:
+            continue
+        if sampleLink.value.LOCKED_BY is not None:
             continue
         else:
             checkedLinks.append(sampleLink)
@@ -110,9 +128,9 @@ def linkOverworldNodes(nodeA, nodeB):
              links_and_nodes.johto_all_warp_points.Goldenrod_City_Links.GOLDENROD_CITY_TO_GOLDENROD_DEPT_STORE_1F_LINK,
              links_and_nodes.johto_all_warp_points.Goldenrod_City_Links.GOLDENROD_CITY_TO_RADIO_TOWER_1F_LINK,
              links_and_nodes.johto_all_warp_points.Goldenrod_City_Links.GOLDENROD_CITY_TO_GOLDENROD_MAGNET_TRAIN_STATION_LINK])
-        randomLinkB = getRandomLink(nodeB)
+        randomLinkB = getRandomOverworldLink(nodeB)
     elif nodeB is MajorNodes_Johto.Goldenrod_City_Node:
-        randomLinkA = getRandomLink(nodeA)
+        randomLinkA = getRandomOverworldLink(nodeA)
         randomLinkB = getRandomLinkOnlyIncluding(nodeB,
             [links_and_nodes.johto_all_warp_points.Goldenrod_City_Links.GOLDENROD_CITY_TO_ROUTE_35_GOLDENROD_GATE_LINK,
              links_and_nodes.johto_all_warp_points.Goldenrod_City_Links.GOLDENROD_CITY_TO_GOLDENROD_GYM_LINK,
@@ -122,8 +140,8 @@ def linkOverworldNodes(nodeA, nodeB):
              links_and_nodes.johto_all_warp_points.Goldenrod_City_Links.GOLDENROD_CITY_TO_GOLDENROD_MAGNET_TRAIN_STATION_LINK])
 
     else:
-        randomLinkA = getRandomLink(nodeA)
-        randomLinkB = getRandomLink(nodeB)
+        randomLinkA = getRandomOverworldLink(nodeA)
+        randomLinkB = getRandomOverworldLink(nodeB)
 
     connectTwoLinks(randomLinkA,randomLinkB)
 
@@ -261,10 +279,11 @@ def randomizationStep3(randomizedNodes, important, reachableUseless, unreachable
 
         available -= 1
         print("\t", linkA, "<===>", linkB, "There are still", available, "links left and ", len(deadEnds),
-              "remaining deadEnds")
+              "remaining IMPORTANT deadEnds")
         if available == 0:
             return randomizedNodes
 
+    print("Doing the Reachable")
     deadEnds = list(reachableUseless) #list(UselessDeadEndNodes_Johto)
 
     while len(deadEnds) != 0:
@@ -282,11 +301,13 @@ def randomizationStep3(randomizedNodes, important, reachableUseless, unreachable
         deadEnds.pop(deadEnds.index(deadEndNode))
 
         available -= 1
+        print("\t", linkA, "<===>", linkB, "There are still", available, "links left and ", len(deadEnds),
+              "remaining reachable deadEnds")
         if available == 0:
             return randomizedNodes
 
+    print("Doing the Unreachable")
     deadEnds = list(unreachableUseless)  # list(UselessDeadEndNodes_Johto)
-    print("STARTING STAGE TWO OF STEP 3")
     while len(deadEnds) != 0:
 
         deadEndNode = getRandomNode(deadEnds)
@@ -303,7 +324,7 @@ def randomizationStep3(randomizedNodes, important, reachableUseless, unreachable
 
         available -= 1
         print("\t", linkA, "<===>", linkB, "There are still", available, "links left and ", len(deadEnds),
-              "remaining deadEnds")
+              "remaining  useless deadEnds")
         if len(deadEnds) == 1 and available % 2 == 0:
             return randomizedNodes
         if available == 0:
@@ -331,15 +352,6 @@ def randomizationStep5(randomizedNodes, corridorInputList):
         Node.incrementUsedLinks(randomCorridor.value, 2)
         corridorNodes.pop(corridorNodes.index(randomCorridor))
         randomizedNodes.append(randomCorridor)
-
-
-    # Resetting Nodes In case of re-randomization
-    # for node in randomizedNodes:
-    #     node.value.USED_LINKS = 0
-    #     for link in node.value.LINKS:
-    #         link.value.MODIFIED = False
-    #         link.value.OWN.value.USED = False
-    #         link.value.LINK.value.USED = False
 
     return randomizedNodes
 
@@ -538,6 +550,163 @@ def checkJohtoCompletability(randomizedNodes):
 
     return completableSeed
 
+def checkKantoCompletability(randomizedNodes):
+
+
+    print("Starting Kanto Check")
+
+    nodesToCheck = list(randomizedNodes)
+
+    completableSeed = False
+    obtainedKeys = [Unlock_Keys.CAN_SURF_OR_CUT, Unlock_Keys.RADIO_CARD]
+    lockedLinks = []
+    alreadyExploredLinks = []
+    toBeExploredLinks = []
+    fullyUnlockedNodes = []
+    stuckCount = 0
+
+    badgeList = [Unlock_Keys.BADGE_9,
+                 Unlock_Keys.BADGE_10,
+                 Unlock_Keys.BADGE_11,
+                 Unlock_Keys.BADGE_12,
+                 Unlock_Keys.BADGE_13,
+                 Unlock_Keys.BADGE_14,
+                 Unlock_Keys.BADGE_15,
+                 Unlock_Keys.BADGE_16]
+
+    explorableNodes = [node for node in nodesToCheck if node is MajorNodes_Kanto.Vermilion_City_Node or node is TwoWayCorridorNodes_Kanto.Victory_Road_Gate_Kanto_Node]
+    nodesToCheck.pop(nodesToCheck.index(MajorNodes_Kanto.Vermilion_City_Node))
+    nodesToCheck.pop(nodesToCheck.index(TwoWayCorridorNodes_Kanto.Victory_Road_Gate_Kanto_Node))
+    #
+    # while completableSeed
+    # print("There are ",len(nodesToCheck), "to check in total")
+
+    while len(explorableNodes) != 0:
+        print("We've gotta explore these:",explorableNodes)
+        for node in list(explorableNodes):
+            print(node)
+            for additionalLink in node.value.LINKS:
+                if additionalLink not in alreadyExploredLinks:
+                    print("      with a new link to ==>",additionalLink)
+            for link in node.value.LINKS:
+                if link not in alreadyExploredLinks:
+                    if link.value.LOCKED_BY is None:
+                        print(link, "was unlocked so we're going to explore it")
+                        alreadyExploredLinks.append(link)
+                        toBeExploredLinks.append(link.value.LINK)
+                        if link.value.UNLOCKS is not None:
+
+                            for key in link.value.UNLOCKS:
+                                if key not in obtainedKeys:
+                                    print("We got ",key,"after visiting from",link.value.LINK)
+                                    obtainedKeys.append(key)
+
+                    else:
+                        print("\n",link,"was locked...")
+                        if all(neededKey in obtainedKeys for neededKey in link.value.LOCKED_BY):
+                            print("    ... but we have all the keys!!")
+                            print("    ... now we can visit", link.value.LINK)
+                            print("    ... and we should have key(s)",link.value.UNLOCKS)
+                            alreadyExploredLinks.append(link)
+                            toBeExploredLinks.append(link.value.LINK)
+
+                            if link in lockedLinks:
+                                lockedLinks.remove(link)
+                                explorableNodes[explorableNodes.index(node)].value.HAS_LOCKED = False
+                            if link.value.UNLOCKS is not None:
+                                for key in link.value.UNLOCKS:
+                                    if key not in obtainedKeys:
+                                        print("We got ", key, "from an unlocked link")
+                                        obtainedKeys.append(key)
+                        else:
+                            # print("   ... and we don't have the needed keys yet")
+                            if link not in lockedLinks:
+                                lockedLinks.append(link)
+                                explorableNodes[explorableNodes.index(node)].value.HAS_LOCKED = True
+                                # print(node,"Has a locked enterance")
+
+        print("\n-------Status Report -------")
+        obtainedBadges = []
+        for key in obtainedKeys:
+            if key in badgeList:
+                obtainedBadges.append(key)
+        print("So far I have",len(obtainedBadges)," Kanto badges.")
+        if len(obtainedBadges) == 8:
+            if Unlock_Keys.HAS_ALL_KANTO_BADGES not in obtainedKeys:
+                obtainedKeys.append(Unlock_Keys.HAS_ALL_KANTO_BADGES)
+
+        if len(obtainedBadges) == 8 and Unlock_Keys.OAKS_LAB_ACCESS in obtainedKeys:
+            completableSeed = True
+
+
+        for node in list(explorableNodes):
+            if node.value.HAS_LOCKED is False:
+                fullyUnlockedNodes.append(node)
+                explorableNodes.remove(node)
+
+        newNodes = 0
+        for node in list(nodesToCheck):
+            for link in node.value.LINKS:
+                if link.value.OWN in toBeExploredLinks:
+                    if node not in explorableNodes:
+                        explorableNodes.append(node)
+
+        for node in explorableNodes:
+            if node in list(nodesToCheck):
+                newNodes += 1
+                nodesToCheck.remove(node)
+
+        obtainedKeys = checkForAdditionalKantoKeys(obtainedKeys)
+
+        for key in obtainedKeys:
+            print("Currently I have", key)
+
+        if newNodes == 0:
+            print("Adding to stuck count: ",stuckCount+1)
+            stuckCount += 1
+            if stuckCount > 6:
+                print("I'm breaking now")
+                break
+
+        # print("Total nodes unlocked = ",len(fullyUnlockedNodes))
+        # print("Nodes not yet checked:", len(nodesToCheck))
+        print()
+
+
+    # for node in fullyUnlockedNodes:
+        # print("These are all unlocked nodes:", node)
+
+    for key in obtainedKeys:
+        print("I obtained: ", key)
+
+    for key in Unlock_Keys:
+        if key not in obtainedKeys:
+            print("I couldn't ever get", key)
+
+    for link in lockedLinks:
+        print("This is locked:",link, " [hides]===>",link.value.LINK)
+    # print()
+    # print()
+    if completableSeed:
+        print("This seed is completable!!!")
+    else:
+        print("RESETTING NODE LIST TO DEFAULT LINKS")
+        for node in randomizedNodes:
+            node.value.USED_LINKS = 0
+            for link in node.value.LINKS:
+                link.value.LINK.value.USED = False
+                link.value.LINK = link.value.DEFAULT_LINK
+                link.value.LINK.value.USED = False
+                link.value.OWN.value.USED = False
+                link.value.MODIFIED = False
+        print("-ERROR- -ERROR- -ERROR- CANT COMPLETE THE SEED -ERROR- -ERROR- -ERROR-")
+
+    allItemsObtainable = all(key in obtainedKeys for key in Unlock_Keys)
+    if allItemsObtainable:
+        print("   AND I CAN GET ALL ITEMS")
+
+    return completableSeed
+
 def checkForAdditionalKeys(obtainedKeys):
     obtainedKeys = checkForDualRequirements(Unlock_Keys.TOP_OF_LIGHTHOUSE_FOUND,
                              Unlock_Keys.CIANNWOOD_PHARMACY_FOUND,
@@ -567,6 +736,19 @@ def checkForAdditionalKeys(obtainedKeys):
             print("I can surf or cut KEKW")
             obtainedKeys.append(Unlock_Keys.CAN_SURF_OR_CUT)
 
+
+    return obtainedKeys
+
+def checkForAdditionalKantoKeys(obtainedKeys):
+    obtainedKeys = checkForDualRequirements(Unlock_Keys.POWER_PLANT_ACCESS,
+                             Unlock_Keys.CERULEAN_GYM_ACCESS,
+                             obtainedKeys, Unlock_Keys.MACHINE_PART)
+
+    if Unlock_Keys.MACHINE_PART in obtainedKeys:
+        print("We've got machine part, we should award badge 11 now!")
+        if Unlock_Keys.BADGE_11 not in obtainedKeys:
+            print("Adding Badge 11")
+            obtainedKeys.append(Unlock_Keys.BADGE_11)
 
     return obtainedKeys
 

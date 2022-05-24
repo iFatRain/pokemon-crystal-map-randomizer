@@ -86,9 +86,11 @@ from map_data.Dungeons_Group.TinTower7F_Map import Tin_Tower_7F_Warp_Points
 from map_data.Dungeons_Group.TinTower8F_Map import Tin_Tower_8F_Warp_Points
 from map_data.Dungeons_Group.TinTower9F_Map import Tin_Tower_9F_Warp_Points
 from map_data.Dungeons_Group.TinTowerRoof_Map import Tin_Tower_Roof_Warp_Points
+from map_data.Dungeons_Group.TohjoFalls_Map import Tohjo_Falls_Warp_Points
 from map_data.Dungeons_Group.UnionCave1F_Map import Union_Cave_1F_Warp_Points
 from map_data.Dungeons_Group.UnionCaveB1F_Map import Union_Cave_B1F_Warp_Points
 from map_data.Dungeons_Group.UnionCaveB2F_Map import Union_Cave_B2F_Warp_Points
+from map_data.Dungeons_Group.VictoryRoad_Map import Victory_Road_Warp_Points
 from map_data.Dungeons_Group.WhirlIslandB1F_Map import Whirl_Island_B1F_Warp_Points
 from map_data.Dungeons_Group.WhirlIslandB2F_Map import Whirl_Island_B2F_Warp_Points
 from map_data.Dungeons_Group.WhirlIslandCave_Map import Whirl_Island_Cave_Warp_Points
@@ -124,6 +126,7 @@ from map_data.Gates.Route38EcruteakGate_Map import Route_38_Ecruteak_Gate_Warp_P
 from map_data.Gates.Route42EcruteakGate_Map import Route_42_Ecruteak_Gate_Warp_Points
 from map_data.Gates.Route43Gate_Map import Route_43_Gate_Warp_Points
 from map_data.Gates.Route43MahoganyGate_Map import Route_43_Mahogany_Gate_Warp_Points
+from map_data.Gates.VictoryRoadGate_Map import Victory_Road_Gate_Warp_Points
 from map_data.Goldenrod_Group.BillsFamilysHouse_Map import Bills_Familys_House_Warp_Points
 from map_data.Goldenrod_Group.DayCare_Map import Day_Care_Warp_Points
 from map_data.Goldenrod_Group.GoldenrodBikeShop_Map import Goldenrod_Bike_Shop_Warp_Points
@@ -134,6 +137,7 @@ from map_data.Goldenrod_Group.GoldenrodDeptStore3F_Map import Goldenrod_Dept_Sto
 from map_data.Goldenrod_Group.GoldenrodDeptStore4F_Map import Goldenrod_Dept_Store_4F_Warp_Points
 from map_data.Goldenrod_Group.GoldenrodDeptStore5F_Map import Goldenrod_Dept_Store_5F_Warp_Points
 from map_data.Goldenrod_Group.GoldenrodDeptStore6F_Map import Goldenrod_Dept_Store_6F_Warp_Points
+from map_data.Goldenrod_Group.GoldenrodDeptStoreB1F_Map import Goldenrod_Dept_Store_B1F_Warp_Points
 from map_data.Goldenrod_Group.GoldenrodDeptStoreRoof_Map import Goldenrod_Dept_Store_Roof_Warp_Points
 from map_data.Goldenrod_Group.GoldenrodFlowerShop_Map import Goldenrod_Flower_Shop_Warp_Points
 from map_data.Goldenrod_Group.GoldenrodGameCorner_Map import Goldenrod_Game_Corner_Warp_Points
@@ -147,14 +151,19 @@ from map_data.Dungeons_Group.GoldenrodUndergroundSwitchRoomEntrance_Map import \
     Goldenrod_Underground_Switch_Room_Entrances_Warp_Points
 from map_data.Goldenrod_Group.RadioTower1F_Map import Radio_Tower_1F_Warp_Points
 from map_data.Indigo_Group.IndigoPlateauPokecenter1F_Map import Indigo_Plateau_Pokecenter_1F_Warp_Points
+from map_data.Indigo_Group.Route23_Map import Route23_Warp_Points
+from map_data.Kanto_Routes.Route22_Map import Route_22_Warp_Points
 from map_data.Mahogany_Group.MahoganyGym_Map import Mahogany_Gym_Warp_Points
 from map_data.Mahogany_Group.MahoganyMart_Map import Mahogany_Mart_Warp_Points
 from map_data.Mahogany_Group.MahoganyPokecenter_Map import Mahogany_Pokecenter_Warp_Points
 from map_data.Mahogany_Group.MahoganyRedGyaradosSpeechHouse_Map import Mahogany_Red_Gyarados_Speech_House_Warp_Points
 from map_data.Mahogany_Group.MahoganyTown_Map import Mahogany_Town_Warp_Points
+from map_data.NewBark_Group.DayOfWeekSiblingsHouse_Map import Day_Of_Week_Siblings_House_Warp_Points
 from map_data.NewBark_Group.ElmsHouse_Map import Elms_House_Warp_Points
 from map_data.NewBark_Group.NeighborsHouse_Map import Players_Neighbors_House_Warp_Points
 from map_data.NewBark_Group.NewBarkTown_Map import New_Bark_Warp_Points
+from map_data.NewBark_Group.Route26HealHouse_Map import Route_26_Heal_House_Warp_Points
+from map_data.NewBark_Group.Route27SandstormHouse_Map import Route_27_Sandstorm_House_Warp_Points
 from map_data.Olivine_Group.OlivineCafe_Map import Olivine_Cafe_Warp_Points
 from map_data.Olivine_Group.OlivineCity_Map import Olivine_City_Warp_Points
 from map_data.Olivine_Group.OlivineGoodRodHouse_Map import Olivine_Good_Rod_House_Warp_Points
@@ -172,6 +181,8 @@ from map_data.Olivine_Group.OlivinePunishmentSpeechHouse_Map import Olivine_Puni
 from map_data.Olivine_Group.OlivineTimsHouse_Map import Olivine_Tims_House_Warp_Points
 from map_data.Olivine_Group.Route39Barn_Map import Route_39_Barn_Warp_Points
 from map_data.Olivine_Group.Route39Farmhouse_Map import Route_39_Farmhouse_Warp_Points
+from map_data.Routes.Route26_Map import Route_26_Warp_Points
+from map_data.Routes.Route27_Map import Route_27_Warp_Points
 from map_data.Routes.Route29_Map import Route_29_Warp_Points
 from map_data.Routes.Route30_Map import Route_30_Warp_Points
 from map_data.Routes.Route31_Map import Route_31_Warp_Points
@@ -770,7 +781,37 @@ class Ice_Path_B1F_Links(Enum):
     ICE_PATH_B1F_TO_ICE_PATH_1F_3_LINK = WarpLink(
         Ice_Path_B1F_Warp_Points.ICE_PATH_B1F_TO_ICE_PATH_1F_3_WP,
         Ice_Path_1F_Warp_Points.ICE_PATH_1F_TO_ICE_PATH_B1F_1_WP,
-        "IcePathB1F", locked_by=[Unlock_Keys.CAN_USE_STRENGTH]
+        "IcePathB1F"
+    )
+
+    ICE_PATH_B1F_TO_ICE_PATH_B2F_MAHOGANY_SIDE_1_LINK = WarpLink(
+        Ice_Path_B1F_Warp_Points.ICE_PATH_B1F_TO_ICE_PATH_B2F_MAHOGANY_SIDE_1_WP,
+        Ice_Path_B2F_Mahogany_Side_Warp_Points.ICE_PATH_B2F_MAHOGANY_SIDE_TO_ICE_PATH_B1F_2_WP,
+        "IcePathB1F", 5
+    )
+
+    ICE_PATH_B1F_TO_ICE_PATH_B2F_MAHOGANY_SIDE_3_LINK = WarpLink(
+        Ice_Path_B1F_Warp_Points.ICE_PATH_B1F_TO_ICE_PATH_B2F_MAHOGANY_SIDE_3_WP,
+        Ice_Path_B2F_Mahogany_Side_Warp_Points.ICE_PATH_B2F_MAHOGANY_SIDE_TO_ICE_PATH_B1F_3_WP,
+        "IcePathB1F", 10
+    )
+
+    ICE_PATH_B1F_TO_ICE_PATH_B2F_MAHOGANY_SIDE_4_LINK = WarpLink(
+        Ice_Path_B1F_Warp_Points.ICE_PATH_B1F_TO_ICE_PATH_B2F_MAHOGANY_SIDE_4_WP,
+        Ice_Path_B2F_Mahogany_Side_Warp_Points.ICE_PATH_B2F_MAHOGANY_SIDE_TO_ICE_PATH_B1F_4_WP,
+        "IcePathB1F", 15
+    )
+
+    ICE_PATH_B1F_TO_ICE_PATH_B2F_MAHOGANY_SIDE_5_LINK = WarpLink(
+        Ice_Path_B1F_Warp_Points.ICE_PATH_B1F_TO_ICE_PATH_B2F_MAHOGANY_SIDE_5_WP,
+        Ice_Path_B2F_Mahogany_Side_Warp_Points.ICE_PATH_B2F_MAHOGANY_SIDE_TO_ICE_PATH_B1F_5_WP,
+        "IcePathB1F", 20
+    )
+
+    ICE_PATH_B1F_TO_ICE_PATH_B2F_MAHOGANY_SIDE_6_LINK = WarpLink(
+        Ice_Path_B1F_Warp_Points.ICE_PATH_B1F_TO_ICE_PATH_B2F_MAHOGANY_SIDE_6_WP,
+        Ice_Path_B2F_Mahogany_Side_Warp_Points.ICE_PATH_B2F_MAHOGANY_SIDE_TO_ICE_PATH_B1F_6_WP,
+        "IcePathB1F", 25
     )
 
     ICE_PATH_B1F_TO_ICE_PATH_1F_4_LINK = WarpLink(
@@ -813,10 +854,16 @@ class Ice_Path_B3F_Links(Enum):
 
 class Ice_Path_B2F_Mahogany_Side_Links(Enum):
 
+    ICE_PATH_B2F_MAHOGANY_SIDE_TO_ICE_PATH_B1F_2_LINK = WarpLink(
+        Ice_Path_B2F_Mahogany_Side_Warp_Points.ICE_PATH_B2F_MAHOGANY_SIDE_TO_ICE_PATH_B1F_2_WP,
+        Ice_Path_B1F_Warp_Points.ICE_PATH_B1F_TO_ICE_PATH_B2F_MAHOGANY_SIDE_1_WP,
+        "IcePathB2FMahoganySide"
+    )
+
     ICE_PATH_B2F_MAHOGANY_SIDE_TO_ICE_PATH_B3F_1_LINK = WarpLink(
         Ice_Path_B2F_Mahogany_Side_Warp_Points.ICE_PATH_B2F_MAHOGANY_SIDE_TO_ICE_PATH_B3F_1_WP,
         Ice_Path_B3F_Warp_Points.ICE_PATH_B3F_TO_ICE_PATH_B2F_MAHOGANY_SIDE_2_WP,
-        "IcePathB2FMahoganySide",5,locked_by=[Unlock_Keys.CAN_USE_STRENGTH]
+        "IcePathB2FMahoganySide",5
     )
 
 
@@ -1194,13 +1241,13 @@ class Tin_Tower_2F_Links(Enum):
     TIN_TOWER_2F_TO_TIN_TOWER_3F_1_LINK = WarpLink(
         Tin_Tower_2F_Warp_Points.TIN_TOWER_2F_TO_TIN_TOWER_3F_1_WP,
         Tin_Tower_3F_Warp_Points.TIN_TOWER_3F_TO_TIN_TOWER_2F_1_WP,
-        "TinTower2F", unlocks=[]
+        "TinTower2F"
     )
 
     TIN_TOWER_2F_TO_TIN_TOWER_1F_3_LINK = WarpLink(
         Tin_Tower_2F_Warp_Points.TIN_TOWER_2F_TO_TIN_TOWER_1F_3_WP,
         Tin_Tower_1F_Warp_Points.TIN_TOWER_1F_TO_TIN_TOWER_2F_WP,
-        "TinTower2F",5, unlocks=[]
+        "TinTower2F",5
     )
 
 
@@ -1208,13 +1255,13 @@ class Tin_Tower_3F_Links(Enum):
     TIN_TOWER_3F_TO_TIN_TOWER_2F_1_LINK = WarpLink(
         Tin_Tower_3F_Warp_Points.TIN_TOWER_3F_TO_TIN_TOWER_2F_1_WP,
         Tin_Tower_2F_Warp_Points.TIN_TOWER_2F_TO_TIN_TOWER_3F_1_WP,
-        "TinTower3F", unlocks=[]
+        "TinTower3F"
     )
 
     TIN_TOWER_3F_TO_TIN_TOWER_4F_2_LINK = WarpLink(
         Tin_Tower_3F_Warp_Points.TIN_TOWER_3F_TO_TIN_TOWER_4F_2_WP,
         Tin_Tower_4F_Warp_Points.TIN_TOWER_4F_TO_TIN_TOWER_3F_2_WP,
-        "TinTower3F",5, unlocks=[]
+        "TinTower3F",5
     )
 
 
@@ -1222,25 +1269,25 @@ class Tin_Tower_4F_Links(Enum):
     TIN_TOWER_4F_TO_TIN_TOWER_5F_2_LINK = WarpLink(
         Tin_Tower_4F_Warp_Points.TIN_TOWER_4F_TO_TIN_TOWER_5F_2_WP,
         Tin_Tower_5F_Warp_Points.TIN_TOWER_5F_TO_TIN_TOWER_4F_1_WP,
-        "TinTower4F", unlocks=[]
+        "TinTower4F"
     )
 
     TIN_TOWER_4F_TO_TIN_TOWER_3F_2_LINK = WarpLink(
         Tin_Tower_4F_Warp_Points.TIN_TOWER_4F_TO_TIN_TOWER_3F_2_WP,
         Tin_Tower_3F_Warp_Points.TIN_TOWER_3F_TO_TIN_TOWER_4F_2_WP,
-        "TinTower4F",5, unlocks=[]
+        "TinTower4F",5
     )
 
     TIN_TOWER_4F_TO_TIN_TOWER_5F_3_LINK = WarpLink(
         Tin_Tower_4F_Warp_Points.TIN_TOWER_4F_TO_TIN_TOWER_5F_3_WP,
         Tin_Tower_5F_Warp_Points.TIN_TOWER_5F_TO_TIN_TOWER_4F_3_WP,
-        "TinTower4F",10, unlocks=[]
+        "TinTower4F",10
     )
 
     TIN_TOWER_4F_TO_TIN_TOWER_5F_4_LINK = WarpLink(
         Tin_Tower_4F_Warp_Points.TIN_TOWER_4F_TO_TIN_TOWER_5F_4_WP,
         Tin_Tower_5F_Warp_Points.TIN_TOWER_5F_TO_TIN_TOWER_4F_4_WP,
-        "TinTower4F",15, unlocks=[]
+        "TinTower4F",15
     )
 
 
@@ -1248,25 +1295,25 @@ class Tin_Tower_5F_Links(Enum):
     TIN_TOWER_5F_TO_TIN_TOWER_6F_2_LINK = WarpLink(  # middle bottom one way
         Tin_Tower_5F_Warp_Points.TIN_TOWER_5F_TO_TIN_TOWER_6F_2_WP,
         Tin_Tower_6F_Warp_Points.TIN_TOWER_6F_TO_TIN_TOWER_5F_1_WP,
-        "TinTower5F", unlocks=[]
+        "TinTower5F"
     )
 
     TIN_TOWER_5F_TO_TIN_TOWER_4F_1_LINK = WarpLink(  # top
         Tin_Tower_5F_Warp_Points.TIN_TOWER_5F_TO_TIN_TOWER_4F_1_WP,
         Tin_Tower_4F_Warp_Points.TIN_TOWER_4F_TO_TIN_TOWER_5F_2_WP,
-        "TinTower5F",5, unlocks=[]
+        "TinTower5F",5
     )
 
     TIN_TOWER_5F_TO_TIN_TOWER_4F_3_LINK = WarpLink(  # deadend (item) (left)
         Tin_Tower_5F_Warp_Points.TIN_TOWER_5F_TO_TIN_TOWER_4F_3_WP,
         Tin_Tower_4F_Warp_Points.TIN_TOWER_4F_TO_TIN_TOWER_5F_3_WP,
-        "TinTower5F",10, unlocks=[]
+        "TinTower5F",10
     )
 
     TIN_TOWER_5F_TO_TIN_TOWER_4F_4_LINK = WarpLink(  # deadend (item) (left)
         Tin_Tower_5F_Warp_Points.TIN_TOWER_5F_TO_TIN_TOWER_4F_4_WP,
         Tin_Tower_4F_Warp_Points.TIN_TOWER_4F_TO_TIN_TOWER_5F_4_WP,
-        "TinTower5F",15, unlocks=[]
+        "TinTower5F",15
     )
 
 
@@ -1274,13 +1321,13 @@ class Tin_Tower_6F_Links(Enum):
     TIN_TOWER_6F_TO_TIN_TOWER_7F_1_LINK = WarpLink(
         Tin_Tower_6F_Warp_Points.TIN_TOWER_6F_TO_TIN_TOWER_7F_1_WP,
         Tin_Tower_7F_Warp_Points.TIN_TOWER_7F_TO_TIN_TOWER_6F_1_WP,
-        "TinTower6F", unlocks=[]
+        "TinTower6F"
     )
 
     TIN_TOWER_6F_TO_TIN_TOWER_5F_1_LINK = WarpLink(
         Tin_Tower_6F_Warp_Points.TIN_TOWER_6F_TO_TIN_TOWER_5F_1_WP,
         Tin_Tower_5F_Warp_Points.TIN_TOWER_5F_TO_TIN_TOWER_6F_2_WP,
-        "TinTower6F",5, unlocks=[]
+        "TinTower6F",5
     )
 
 
@@ -1289,31 +1336,31 @@ class Tin_Tower_7F_Links(Enum):  # 1-2-4 , 3-5
     TIN_TOWER_7F_TO_TIN_TOWER_6F_1_LINK = WarpLink(
         Tin_Tower_7F_Warp_Points.TIN_TOWER_7F_TO_TIN_TOWER_6F_1_WP,
         Tin_Tower_6F_Warp_Points.TIN_TOWER_6F_TO_TIN_TOWER_7F_1_WP,
-        "TinTower7F", unlocks=[]
+        "TinTower7F"
     )
 
     TIN_TOWER_7F_TO_TIN_TOWER_8F_1_LINK = WarpLink(
         Tin_Tower_7F_Warp_Points.TIN_TOWER_7F_TO_TIN_TOWER_8F_1_WP,
         Tin_Tower_8F_Warp_Points.TIN_TOWER_8F_TO_TIN_TOWER_7F_2_WP,
-        "TinTower7F",5, unlocks=[]
+        "TinTower7F",5
     )
 
     TIN_TOWER_7F_TO_TIN_TOWER_7F_4_LINK = WarpLink(
         Tin_Tower_7F_Warp_Points.TIN_TOWER_7F_TO_TIN_TOWER_7F_4_WP,
         Tin_Tower_7F_Warp_Points.TIN_TOWER_7F_TO_TIN_TOWER_7F_3_WP,
-        "TinTower7F",10, unlocks=[]
+        "TinTower7F",10
     )
 
     TIN_TOWER_7F_TO_TIN_TOWER_7F_3_LINK = WarpLink(
         Tin_Tower_7F_Warp_Points.TIN_TOWER_7F_TO_TIN_TOWER_7F_3_WP,
         Tin_Tower_7F_Warp_Points.TIN_TOWER_7F_TO_TIN_TOWER_7F_4_WP,
-        "TinTower7F",15, unlocks=[]
+        "TinTower7F",15
     )
 
     TIN_TOWER_7F_TO_TIN_TOWER_9F_5_LINK = WarpLink(
         Tin_Tower_7F_Warp_Points.TIN_TOWER_7F_TO_TIN_TOWER_9F_5_WP,
         Tin_Tower_9F_Warp_Points.TIN_TOWER_9F_TO_TIN_TOWER_7F_5_WP,
-        "TinTower7F",20, unlocks=[]
+        "TinTower7F",20
     )
 
 
@@ -1322,37 +1369,37 @@ class Tin_Tower_8F_Links(Enum):  # 1-2 (left), 3-4 (top) ,5x (bottom) ,6x (middl
     TIN_TOWER_8F_TO_TIN_TOWER_7F_2_LINK = WarpLink(
         Tin_Tower_8F_Warp_Points.TIN_TOWER_8F_TO_TIN_TOWER_7F_2_WP,
         Tin_Tower_7F_Warp_Points.TIN_TOWER_7F_TO_TIN_TOWER_8F_1_WP,
-        "TinTower8F", unlocks=[]
+        "TinTower8F"
     )
 
     TIN_TOWER_8F_TO_TIN_TOWER_9F_1_LINK = WarpLink(
         Tin_Tower_8F_Warp_Points.TIN_TOWER_8F_TO_TIN_TOWER_9F_1_WP,
         Tin_Tower_9F_Warp_Points.TIN_TOWER_9F_TO_TIN_TOWER_8F_2_WP,
-        "TinTower8F",5, unlocks=[]
+        "TinTower8F",5
     )
 
     TIN_TOWER_8F_TO_TIN_TOWER_9F_2_LINK = WarpLink(
         Tin_Tower_8F_Warp_Points.TIN_TOWER_8F_TO_TIN_TOWER_9F_2_WP,
         Tin_Tower_9F_Warp_Points.TIN_TOWER_9F_TO_TIN_TOWER_8F_3_WP,
-        "TinTower8F",10, unlocks=[]
+        "TinTower8F",10
     )
 
     TIN_TOWER_8F_TO_TIN_TOWER_9F_3_LINK = WarpLink(
         Tin_Tower_8F_Warp_Points.TIN_TOWER_8F_TO_TIN_TOWER_9F_3_WP,
         Tin_Tower_9F_Warp_Points.TIN_TOWER_9F_TO_TIN_TOWER_8F_4_WP,
-        "TinTower8F",15, unlocks=[]
+        "TinTower8F",15
     )
 
     TIN_TOWER_8F_TO_TIN_TOWER_9F_6_LINK = WarpLink(
         Tin_Tower_8F_Warp_Points.TIN_TOWER_8F_TO_TIN_TOWER_9F_6_WP,
         Tin_Tower_9F_Warp_Points.TIN_TOWER_9F_TO_TIN_TOWER_8F_5_WP,
-        "TinTower8F",20, unlocks=[]
+        "TinTower8F",20
     )
 
     TIN_TOWER_8F_TO_TIN_TOWER_9F_7_LINK = WarpLink(
         Tin_Tower_8F_Warp_Points.TIN_TOWER_8F_TO_TIN_TOWER_9F_7_WP,
         Tin_Tower_9F_Warp_Points.TIN_TOWER_9F_TO_TIN_TOWER_8F_6_WP,
-        "TinTower8F",25, unlocks=[]
+        "TinTower8F",25
     )
 
 
@@ -1361,43 +1408,43 @@ class Tin_Tower_9F_Links(Enum):  # 5-6-7, 1-2(top) , 3-4(middle)
     TIN_TOWER_9F_TO_TIN_TOWER_8F_2_LINK = WarpLink(
         Tin_Tower_9F_Warp_Points.TIN_TOWER_9F_TO_TIN_TOWER_8F_2_WP,
         Tin_Tower_8F_Warp_Points.TIN_TOWER_8F_TO_TIN_TOWER_9F_1_WP,
-        "TinTower9F", unlocks=[]
+        "TinTower9F"
     )
 
     TIN_TOWER_9F_TO_TIN_TOWER_8F_3_LINK = WarpLink(
         Tin_Tower_9F_Warp_Points.TIN_TOWER_9F_TO_TIN_TOWER_8F_3_WP,
         Tin_Tower_8F_Warp_Points.TIN_TOWER_8F_TO_TIN_TOWER_9F_2_WP,
-        "TinTower9F",5, unlocks=[]
+        "TinTower9F",5
     )
 
     TIN_TOWER_9F_TO_TIN_TOWER_8F_4_LINK = WarpLink(
         Tin_Tower_9F_Warp_Points.TIN_TOWER_9F_TO_TIN_TOWER_8F_4_WP,
         Tin_Tower_8F_Warp_Points.TIN_TOWER_8F_TO_TIN_TOWER_9F_3_WP,
-        "TinTower9F",10, unlocks=[]
+        "TinTower9F",10
     )
 
     TIN_TOWER_9F_TO_TIN_TOWER_ROOF_1_LINK = WarpLink(
         Tin_Tower_9F_Warp_Points.TIN_TOWER_9F_TO_TIN_TOWER_ROOF_1_WP,
         Tin_Tower_Roof_Warp_Points.TIN_TOWER_ROOF_TO_TIN_TOWER_9F_WP,
-        "TinTower9F",15, unlocks=[]
+        "TinTower9F",15
     )
 
     TIN_TOWER_9F_TO_TIN_TOWER_7F_5_LINK = WarpLink(
         Tin_Tower_9F_Warp_Points.TIN_TOWER_9F_TO_TIN_TOWER_7F_5_WP,
         Tin_Tower_7F_Warp_Points.TIN_TOWER_7F_TO_TIN_TOWER_9F_5_WP,
-        "TinTower9F",20, unlocks=[]
+        "TinTower9F",20
     )
 
     TIN_TOWER_9F_TO_TIN_TOWER_8F_5_LINK = WarpLink(
         Tin_Tower_9F_Warp_Points.TIN_TOWER_9F_TO_TIN_TOWER_8F_5_WP,
         Tin_Tower_8F_Warp_Points.TIN_TOWER_8F_TO_TIN_TOWER_9F_6_WP,
-        "TinTower9F",25, unlocks=[]
+        "TinTower9F",25
     )
 
     TIN_TOWER_9F_TO_TIN_TOWER_8F_6_LINK = WarpLink(
         Tin_Tower_9F_Warp_Points.TIN_TOWER_9F_TO_TIN_TOWER_8F_6_WP,
         Tin_Tower_8F_Warp_Points.TIN_TOWER_8F_TO_TIN_TOWER_9F_7_WP,
-        "TinTower9F",30, unlocks=[]
+        "TinTower9F",30
     )
 
 class Union_Cave_1F_Links(Enum):
@@ -1777,7 +1824,7 @@ class Ecruteak_City_Links(Enum):
     ECRUTEAK_CITY_TO_ROUTE_38_ECRUTEAK_GATE_LINK = WarpLink(
         Ecruteak_City_Warp_Points.ECRUTEAK_CITY_TO_ROUTE_38_ECRUTEAK_GATE_WP,
         Route_38_Ecruteak_Gate_Warp_Points.ROUTE_38_ECRUTEAK_GATE_TO_ECRUTEAK_CITY_WP,
-        "EcruteakCity" , 65, dual_width= True
+        "EcruteakCity" , 65, dual_width=True
     )
 
 class Ecruteak_Gym_Links(Enum):
@@ -1785,7 +1832,7 @@ class Ecruteak_Gym_Links(Enum):
     ECRUTEAK_GYM_TO_ECRUTEAK_CITY_LINK = WarpLink(
         Ecruteak_Gym_Warp_Points.ECRUTEAK_GYM_TO_ECRUTEAK_CITY_WP,
         Ecruteak_City_Warp_Points.ECRUTEAK_CITY_TO_ECRUTEAK_GYM_WP,
-        "EcruteakGym", locked_by=[Unlock_Keys.ENTERED_BURNED_TOWER],
+        "EcruteakGym", dual_width=True, locked_by=[Unlock_Keys.ENTERED_BURNED_TOWER],
         unlocks=[Unlock_Keys.BADGE_4]
     )
 
@@ -2161,6 +2208,13 @@ class Goldenrod_Bike_Shop_Links(Enum):
         "GoldenrodBikeShop", dual_width=True
     )
 
+class Goldenrod_Dept_Store_B1F_Links(Enum):
+    GOLDENROD_DEPT_STORE_B1F_TO_UNDERGROUND_WAREHOUSE_LINK = WarpLink(
+        Goldenrod_Dept_Store_B1F_Warp_Points.GOLDENROD_DEPT_STORE_B1F_TO_GOLDENROD_UNDERGROUND_WAREHOUSE_3_WP,
+        Goldenrod_Underground_Warehouse_Warp_Points.GOLDENROD_UNDERGROUND_WAREHOUSE_TO_GOLDENROD_DEPT_STORE_B1F_WP,
+        "GoldenrodDeptStoreB1F", locked_by=[Unlock_Keys.KEY_CARD]
+    )
+
 class Goldenrod_Dept_Store_1F_Links(Enum):
     GOLDENROD_DEPT_STORE_1F_TO_GOLDENROD_CITY_LINK = WarpLink(
         Goldenrod_Dept_Store_1F_Warp_Points.GOLDENROD_DEPT_STORE_1F_TO_GOLDENROD_CITY_9_WP,
@@ -2389,7 +2443,7 @@ class Radio_Tower_1F_Links(Enum):
     RADIO_TOWER_1F_TO_GOLDENROD_CITY_LINK = WarpLink(
         Radio_Tower_1F_Warp_Points.RADIO_TOWER_1F_TO_GOLDENROD_CITY_WP,
         Goldenrod_City_Warp_Points.GOLDENROD_CITY_TO_RADIO_TOWER_1F_WP,
-        "RadioTower1F", dual_width=True, unlocks=[Unlock_Keys.CAN_CLEAR_RADIO_TOWER_ROCKETS],
+        "RadioTower1F", dual_width=True, unlocks=[Unlock_Keys.CAN_CLEAR_RADIO_TOWER_ROCKETS, Unlock_Keys.RADIO_CARD],
         locked_by=[Unlock_Keys.KEY_CARD]
     )
     # RADIO_TOWER_1F_TO_RADIO_TOWER_2F_LINK
@@ -2830,6 +2884,115 @@ class Olivine_Tims_House_Links(Enum):
 #######################################################################
 #                    Routes Group                                     #
 #######################################################################
+
+class Indigo_Plateau_Pokecenter_1F_Links(Enum):
+
+    INDIGO_PLATEAU_POKECENTER_1F_TO_ROUTE_23_1_LINK = WarpLink(
+        Indigo_Plateau_Pokecenter_1F_Warp_Points.INDIGO_PLATEAU_POKECENTER_1F_TO_ROUTE_23_1_WP,
+        Route23_Warp_Points.ROUTE23_TO_INDIGO_PLATEAU_POKECENTER_1F_1_WP,
+        "IndigoPlateauPokecenter1F", dual_width=True)
+
+    INDIGO_PLATEAU_POKECENTER_1F_TO_POKECENTER_2F_1_LINK = WarpLink(
+        Indigo_Plateau_Pokecenter_1F_Warp_Points.INDIGO_PLATEAU_POKECENTER_1F_TO_POKECENTER_2F_1_WP,
+        Pokecenter_2F_Warp_Points.POKECENTER_2F_TO_POKECENTER_1F_WP,
+        "IndigoPlateauPokecenter1F", 10
+    )
+
+    INDIGO_PLATEAU_POKECENTER_1F_TO_WILLS_ROOM_1_LINK = WarpLink(
+        Indigo_Plateau_Pokecenter_1F_Warp_Points.INDIGO_PLATEAU_POKECENTER_1F_TO_WILLS_ROOM_1_WP,
+        Wills_Room_Warp_Points.WILLS_ROOM_TO_INDIGO_PLATEAU_POKECENTER_1F_WP,
+        "IndigoPlateauPokecenter1F", 15
+    )
+
+
+class Route23_Links(Enum):
+
+    ROUTE23_TO_INDIGO_PLATEAU_POKECENTER_1F_1_LINK = WarpLink(
+        Route23_Warp_Points.ROUTE23_TO_INDIGO_PLATEAU_POKECENTER_1F_1_WP,
+        Indigo_Plateau_Pokecenter_1F_Warp_Points.INDIGO_PLATEAU_POKECENTER_1F_TO_ROUTE_23_1_WP,
+        "Route23", dual_width=True)
+
+    ROUTE23_TO_VICTORY_ROAD_10_LINK = WarpLink(
+        Route23_Warp_Points.ROUTE23_TO_VICTORY_ROAD_10_WP,
+        Victory_Road_Warp_Points.VICTORY_ROAD_TO_ROUTE_23_3_WP,
+        "Route23", 10, dual_width=True)
+class Day_Of_Week_Siblings_House_Links(Enum):
+    DAY_OF_WEEK_SIBLINGS_HOUSE_TO_ROUTE_26_3_LINK = WarpLink(
+        Day_Of_Week_Siblings_House_Warp_Points.DAY_OF_WEEK_SIBLINGS_HOUSE_TO_ROUTE_26_3_WP,
+        Route_26_Warp_Points.ROUTE_26_TO_DAY_OF_WEEK_SIBLINGS_HOUSE_1_WP,
+        "DayOfWeekSiblingsHouse", dual_width=True)
+
+
+class Route_26_Heal_House_Links(Enum):
+    ROUTE_26_HEAL_HOUSE_TO_ROUTE_26_2_LINK = WarpLink(
+        Route_26_Heal_House_Warp_Points.ROUTE_26_HEAL_HOUSE_TO_ROUTE_26_2_WP,
+        Route_26_Warp_Points.ROUTE_26_TO_ROUTE_26_HEAL_HOUSE_1_WP,
+        "Route26HealHouse", dual_width=True)
+
+
+class Route_27_Sandstorm_House_Links(Enum):
+    ROUTE_27_SANDSTORM_HOUSE_TO_ROUTE_27_1_LINK = WarpLink(
+        Route_27_Sandstorm_House_Warp_Points.ROUTE27_SANDSTORM_HOUSE_TO_ROUTE_27_1_WP,
+        Route_27_Warp_Points.ROUTE_27_TO_ROUTE_27_SANDSTORM_HOUSE_1_WP,
+        "Route27SandstormHouse", dual_width=True)
+
+class Route_26_Links(Enum):
+
+    ROUTE_26_TO_VICTORY_ROAD_GATE_3_LINK = WarpLink(
+        Route_26_Warp_Points.ROUTE_26_TO_VICTORY_ROAD_GATE_3_WP,
+        Victory_Road_Gate_Warp_Points.VICTORY_ROAD_GATE_TO_ROUTE_26_1_WP,
+        "Route26")
+
+    ROUTE_26_TO_ROUTE_26_HEAL_HOUSE_1_LINK = WarpLink(
+        Route_26_Warp_Points.ROUTE_26_TO_ROUTE_26_HEAL_HOUSE_1_WP,
+        Route_26_Heal_House_Warp_Points.ROUTE_26_HEAL_HOUSE_TO_ROUTE_26_2_WP,
+        "Route26", 5)
+
+    ROUTE_26_TO_DAY_OF_WEEK_SIBLINGS_HOUSE_1_LINK = WarpLink(
+        Route_26_Warp_Points.ROUTE_26_TO_DAY_OF_WEEK_SIBLINGS_HOUSE_1_WP,
+        Day_Of_Week_Siblings_House_Warp_Points.DAY_OF_WEEK_SIBLINGS_HOUSE_TO_ROUTE_26_3_WP,
+        "Route26", 10)
+
+
+class Route_27_Links(Enum):
+
+    ROUTE_27_TO_ROUTE_27_SANDSTORM_HOUSE_1_LINK = WarpLink(
+        Route_27_Warp_Points.ROUTE_27_TO_ROUTE_27_SANDSTORM_HOUSE_1_WP,
+        Route_27_Sandstorm_House_Warp_Points.ROUTE27_SANDSTORM_HOUSE_TO_ROUTE_27_1_WP,
+        "Route27")
+
+    ROUTE_27_TO_TOHJO_FALLS_1_LINK = WarpLink(
+        Route_27_Warp_Points.ROUTE_27_TO_TOHJO_FALLS_1_WP,
+        Tohjo_Falls_Warp_Points.TOHJO_FALLS_TO_ROUTE_27_2_WP,
+        "Route27", 5)
+
+    ROUTE_27_TO_TOHJO_FALLS_2_LINK = WarpLink(
+        Route_27_Warp_Points.ROUTE_27_TO_TOHJO_FALLS_2_WP,
+        Tohjo_Falls_Warp_Points.TOHJO_FALLS_TO_ROUTE_27_3_WP,
+        "Route27", 10)
+
+
+class Route_41_Links(Enum):
+
+    ROUTE_41_TO_WHIRL_ISLAND_NW_LINK = WarpLink(
+        Route_41_Warp_Points.ROUTE_41_TO_WHIRL_ISLAND_NW_WP,
+        Whirl_Island_NW_Warp_Points.WHIRL_ISLAND_N_W_TO_ROUTE_41_1_WP,
+        "Route41")
+
+    ROUTE_41_TO_WHIRL_ISLAND_NE_LINK = WarpLink(
+        Route_41_Warp_Points.ROUTE_41_TO_WHIRL_ISLAND_NE_WP,
+        Whirl_Island_NE_Warp_Points.WHIRL_ISLAND_N_E_TO_ROUTE_41_2_WP,
+        "Route41", 5)
+
+    ROUTE_41_TO_WHIRL_ISLAND_SW_LINK = WarpLink(
+        Route_41_Warp_Points.ROUTE_41_TO_WHIRL_ISLAND_SW_WP,
+        Whirl_Island_SW_Warp_Points.WHIRL_ISLAND_S_W_TO_ROUTE_41_3_WP,
+        "Route41", 10)
+
+    ROUTE_41_TO_WHIRL_ISLAND_SE_LINK = WarpLink(
+        Route_41_Warp_Points.ROUTE_41_TO_WHIRL_ISLAND_SE_WP,
+        Whirl_Island_SE_Warp_Points.WHIRL_ISLAND_S_E_TO_ROUTE_41_4_WP,
+        "Route41", 15)
 class Route_29_Links(Enum):
 
     ROUTE_29_TO_ROUTE_46_GATE_LINK = WarpLink(
@@ -3206,6 +3369,91 @@ class Violet_Nickname_Speech_House_Links(Enum):
         "VioletNicknameSpeechHouse",
         dual_width=True
     )
+
+
+class Route_28_Warp_Points:
+    pass
+
+
+class Victory_Road_Gate_Links(Enum):
+
+    VICTORY_ROAD_GATE_TO_ROUTE_22_1_LINK = WarpLink(
+        Victory_Road_Gate_Warp_Points.VICTORY_ROAD_GATE_TO_ROUTE_22_1_WP,
+        Route_22_Warp_Points.ROUTE_22_TO_VICTORY_ROAD_GATE_1_WP,
+        "VictoryRoadGate", dual_width=True)
+
+    VICTORY_ROAD_GATE_TO_ROUTE_26_1_LINK = WarpLink(
+        Victory_Road_Gate_Warp_Points.VICTORY_ROAD_GATE_TO_ROUTE_26_1_WP,
+        Route_26_Warp_Points.ROUTE_26_TO_VICTORY_ROAD_GATE_3_WP,
+        "VictoryRoadGate", 10, dual_width=True, unlocks=[Unlock_Keys.VICTORY_ROAD_GATE_ACCESS])
+
+    VICTORY_ROAD_GATE_TO_VICTORY_ROAD_1_LINK = WarpLink(
+        Victory_Road_Gate_Warp_Points.VICTORY_ROAD_GATE_TO_VICTORY_ROAD_1_WP,
+        Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_GATE_5_WP,
+        "VictoryRoadGate", 20, dual_width=True)
+
+    # VICTORY_ROAD_GATE_TO_ROUTE_28_2_LINK = WarpLink(
+    #     Victory_Road_Gate_Warp_Points.VICTORY_ROAD_GATE_TO_ROUTE_28_2_WP,
+    #     Route_28_Warp_Points.ROUTE_28_TO_VICTORY_ROAD_GATE_7_WP, #todo - might have to import route 28 (will probably keep route 28 vanilla though)
+    #     "VictoryRoadGate", 30, dual_width=True)
+
+class Victory_Road_Links(Enum):
+
+    VICTORY_ROAD_TO_VICTORY_ROAD_GATE_5_LINK = WarpLink(
+        Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_GATE_5_WP,
+        Victory_Road_Gate_Warp_Points.VICTORY_ROAD_GATE_TO_VICTORY_ROAD_1_WP,
+        "VictoryRoad")
+
+    VICTORY_ROAD_TO_VICTORY_ROAD_3_LINK = WarpLink(
+        Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_3_WP,
+        Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_2_WP,
+        "VictoryRoad", 5)
+
+    VICTORY_ROAD_TO_VICTORY_ROAD_2_LINK = WarpLink(
+        Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_2_WP,
+        Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_3_WP,
+        "VictoryRoad", 10)
+
+    VICTORY_ROAD_TO_VICTORY_ROAD_5_LINK = WarpLink(
+        Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_5_WP,
+        Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_4_WP,
+        "VictoryRoad", 15)
+
+    VICTORY_ROAD_TO_VICTORY_ROAD_4_LINK = WarpLink(
+        Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_4_WP,
+        Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_5_WP,
+        "VictoryRoad", 20)
+
+    VICTORY_ROAD_TO_VICTORY_ROAD_7_LINK = WarpLink(
+        Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_7_WP,
+        Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_6_WP,
+        "VictoryRoad", 25)
+
+    VICTORY_ROAD_TO_VICTORY_ROAD_6_LINK = WarpLink(
+        Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_6_WP,
+        Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_7_WP,
+        "VictoryRoad", 30)
+
+    VICTORY_ROAD_TO_VICTORY_ROAD_9_LINK = WarpLink(
+        Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_9_WP,
+        Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_8_WP,
+        "VictoryRoad", 35)
+
+    VICTORY_ROAD_TO_ROUTE_23_3_LINK = WarpLink(
+        Victory_Road_Warp_Points.VICTORY_ROAD_TO_ROUTE_23_3_WP,
+        Route23_Warp_Points.ROUTE23_TO_VICTORY_ROAD_10_WP,
+        "VictoryRoad", 45)
+class Tohjo_Falls_Links(Enum):
+
+    TOHJO_FALLS_TO_ROUTE_27_2_LINK = WarpLink(
+        Tohjo_Falls_Warp_Points.TOHJO_FALLS_TO_ROUTE_27_2_WP,
+        Route_27_Warp_Points.ROUTE_27_TO_TOHJO_FALLS_1_WP,
+        "TohjoFalls")
+
+    TOHJO_FALLS_TO_ROUTE_27_3_LINK = WarpLink(
+        Tohjo_Falls_Warp_Points.TOHJO_FALLS_TO_ROUTE_27_3_WP,
+        Route_27_Warp_Points.ROUTE_27_TO_TOHJO_FALLS_2_WP,
+        "TohjoFalls", 5)
 
 #######################################################################
 #                    END OF GROUPS                                    #

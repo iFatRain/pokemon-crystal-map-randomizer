@@ -66,7 +66,6 @@ class Unlock_Keys(Enum):
     BADGE_7 = "Waterfall Gym Badge"
     BADGE_8 = "Whirlpool Gym Badge"
 
-    #Conditionals to make logic easier
     CAN_SURF = "Have HM and Badge for Surf"
     CAN_CUT = "Have HM and Badge for Cut"
     CAN_SURF_OR_CUT = "Have HM+Badge for Surf/Cut"
@@ -80,12 +79,33 @@ class Unlock_Keys(Enum):
     KEY_CARD = "Keycard for Radio Tower"
 
     HAS_7_BADGES = "Badge Count of 7"
+    HAS_ALL_JOHTO_BADGES = "All Johto Badges"
 
     E4_KOGA = "Koga"
     E4_WILL = "Will"
     E4_KAREN = "Karen"
     E4_BRUNO = "Bruno"
     CHAMPION_LANCE = "Champion"
+
+    #Kanto Keys
+    HAS_ALL_KANTO_BADGES = "All Kanto Badges"
+    BADGE_9 = "Badge 9"
+    BADGE_10 = "Badge 10"
+    BADGE_11 = "Badge 11"
+    BADGE_12 = "Badge 12"
+    BADGE_13 = "Badge 13"
+    BADGE_14 = "Badge 14"
+    BADGE_15 = "Badge 15"
+    BADGE_16 = "Badge 16"
+
+    RADIO_CARD = "Radio Card"
+    EXPN_CARD = "Expansion Card"
+    MACHINE_PART = "Machine Part"
+    POWER_PLANT_ACCESS = "Power Plant"
+    OAKS_LAB_ACCESS = "Oaks Lab"
+    CERULEAN_GYM_ACCESS = "Cerulean Gym Access"
+    FOUND_BLUE = "Blues Clues Lead You Here"
+    VICTORY_ROAD_GATE_ACCESS = "Welcome to Kanto Friend"
 
 
 def getHexBytes(hexInput):

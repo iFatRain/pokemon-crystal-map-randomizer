@@ -3,6 +3,7 @@ from enum import Enum
 
 from class_definitions import Node
 import links_and_nodes.kanto_all_warp_points as kmd
+import links_and_nodes.johto_all_warp_points as johto
 
 
 class MajorNodes_Kanto(Enum):
@@ -26,7 +27,8 @@ class MajorNodes_Kanto(Enum):
 #Vermillion (note: snorlax key) excluded gym + route 6
     Vermilion_City_Node = Node(
             [link for link in kmd.Vermilion_City_Links if link not in 
-            [kmd.Vermilion_City_Links.VERMILION_CITY_TO_VERMILION_GYM_1_LINK]]
+            [kmd.Vermilion_City_Links.VERMILION_CITY_TO_VERMILION_GYM_1_LINK] +
+             [kmd.Vermilion_City_Links.VERMILION_CITY_TO_VERMILION_PORT_PASSAGE_1_LINK]]
         +   [kmd.Route_6_Links.ROUTE_6_TO_ROUTE_6_UNDERGROUND_PATH_ENTRANCE_1_LINK]
         +   [kmd.Route_6_Links.ROUTE_6_TO_ROUTE_6_SAFFRON_GATE_3_LINK])
 
@@ -109,10 +111,10 @@ class ImportantDeadEndNodes_Kanto(Enum):
     Seafoam_Gym_Exterior_Node = Node(
         [kmd.Route_20_Links.ROUTE_20_TO_SEAFOAM_GYM_1_LINK]
     ) 
-# Vermillion Port Ship Entrance 
-    Vermilion_Port_Node = Node(
-        [kmd.Vermilion_Port_Links.VERMILION_PORT_TO_VERMILION_PORT_PASSAGE_5_LINK]
-    ) 
+# # Vermillion Port Ship Entrance
+#     Vermilion_Port_Node = Node(
+#         [kmd.Vermilion_Port_Links.VERMILION_PORT_TO_VERMILION_PORT_PASSAGE_5_LINK]
+#     )
 
 #Interior Nodes
 # Powerplant  
@@ -210,10 +212,6 @@ class ImportantDeadEndNodes_Kanto(Enum):
 # Celadon Gym 
     Celadon_Gym_Node = Node(
         [kmd.Celadon_Gym_Links.CELADON_GYM_TO_CELADON_CITY_8_LINK]
-    ) 
-# Celadon Store 6F
-    Celadon_Dept_Store_6F_Node = Node(
-        [kmd.Celadon_Dept_Store_6F_Links.CELADON_DEPT_STORE_6F_TO_CELADON_DEPT_STORE_5F_2_LINK]
     )
 # Celadon Roof House Back 
     Celadon_Mansion_Roof_House_Node = Node(
@@ -258,20 +256,36 @@ class ImportantDeadEndNodes_Kanto(Enum):
 # Cinnabar Gym 
     Seafoam_Gym_Node = Node(
         [kmd.Seafoam_Gym_Links.SEAFOAM_GYM_TO_ROUTE_20_1_LINK]
-    ) 
+    )
+#Gate Route16
+    Route_16_Gate_Right_Node = Node(
+        [kmd.Route_16_Gate_Links.ROUTE_16_GATE_TO_ROUTE_16_2_LINK]
+    )
 
-#Fast Ship Cabin Warp 4 lazy sailor
-    Fast_Ship_Cabins_NNW_NNE_NE_Cabin_4_Node = Node(
-        [kmd.Fast_Ship_Cabins_NNW_NNE_NE_Links.FAST_SHIP_CABINS_NNW_NNE_NE_TO_FAST_SHIP_1F_4_LINK]
-    ) 
-#Fast Ship Cabin Warp 5 player cabin
-    Fast_Ship_Cabins_SW_SSW_NW_Cabin_5_Node = Node(
-        [kmd.Fast_Ship_Cabins_SW_SSW_NW_Links.FAST_SHIP_CABINS_SW_SSW_NW_TO_FAST_SHIP_1F_5_LINK]
-    ) 
-#Fast Ship Cabin Warp 10 captain
-    Fast_Ship_Cabins_SE_SSE_Captains_Cabin_10_Node = Node(
-        [kmd.Fast_Ship_Cabins_SE_SSE_Captains_Cabin_Links.FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN_TO_FAST_SHIP_1F_10_LINK]
-    ) 
+    Route_16_Gate_Left_Node = Node(
+        [kmd.Route_16_Gate_Links.ROUTE_16_GATE_TO_ROUTE_16_4_LINK]
+    )
+
+#Gate Route17 - 18
+    Route_17_Route_18_Gate_Left_Node = Node(
+        [kmd.Route_17_Route_18_Gate_Links.ROUTE_17_ROUTE_18_GATE_TO_ROUTE_17_1_LINK]
+    )
+
+    Route_17_Route_18_Gate_Right_Node = Node(
+        [kmd.Route_17_Route_18_Gate_Links.ROUTE_17_ROUTE_18_GATE_TO_ROUTE_18_1_LINK]
+    )
+# #Fast Ship Cabin Warp 4 lazy sailor
+#     Fast_Ship_Cabins_NNW_NNE_NE_Cabin_4_Node = Node(
+#         [kmd.Fast_Ship_Cabins_NNW_NNE_NE_Links.FAST_SHIP_CABINS_NNW_NNE_NE_TO_FAST_SHIP_1F_4_LINK]
+#     )
+# #Fast Ship Cabin Warp 5 player cabin
+#     Fast_Ship_Cabins_SW_SSW_NW_Cabin_5_Node = Node(
+#         [kmd.Fast_Ship_Cabins_SW_SSW_NW_Links.FAST_SHIP_CABINS_SW_SSW_NW_TO_FAST_SHIP_1F_5_LINK]
+#     )
+# #Fast Ship Cabin Warp 10 captain
+#     Fast_Ship_Cabins_SE_SSE_Captains_Cabin_10_Node = Node(
+#         [kmd.Fast_Ship_Cabins_SE_SSE_Captains_Cabin_Links.FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN_TO_FAST_SHIP_1F_10_LINK]
+#     )
 class ReachableUselessDeadEndNodes_Kanto(Enum):
     pass
 
@@ -360,9 +374,9 @@ class UnreachableUselessDeadEndNodes_Kanto(Enum):
         [kmd.Fast_Ship_Cabins_NNW_NNE_NE_Links.FAST_SHIP_CABINS_NNW_NNE_NE_TO_FAST_SHIP_1F_2_LINK]
     )
 #Fast Ship Cabin Warp 3
-    Fast_Ship_Cabins_NNW_NNE_NE_Cabin_3_Node = Node(
-        [kmd.Fast_Ship_Cabins_NNW_NNE_NE_Links.FAST_SHIP_CABINS_NNW_NNE_NE_TO_FAST_SHIP_1F_3_LINK]
-    )
+    # Fast_Ship_Cabins_NNW_NNE_NE_Cabin_3_Node = Node(
+    #     [kmd.Fast_Ship_Cabins_NNW_NNE_NE_Links.FAST_SHIP_CABINS_NNW_NNE_NE_TO_FAST_SHIP_1F_3_LINK]
+    # )
 #Fast Ship Cabin Warp 6
     Fast_Ship_Cabins_SW_SSW_NW_Cabin_6_Node = Node(
         [kmd.Fast_Ship_Cabins_SW_SSW_NW_Links.FAST_SHIP_CABINS_SW_SSW_NW_TO_FAST_SHIP_1F_6_LINK]
@@ -376,9 +390,9 @@ class UnreachableUselessDeadEndNodes_Kanto(Enum):
         [kmd.Fast_Ship_Cabins_SE_SSE_Captains_Cabin_Links.FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN_TO_FAST_SHIP_1F_8_LINK]
     )
 #Fast Ship Cabin Warp 9
-    Fast_Ship_Cabins_SE_SSE_Captains_Cabin_9_Node = Node(
-        [kmd.Fast_Ship_Cabins_SE_SSE_Captains_Cabin_Links.FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN_TO_FAST_SHIP_1F_9_LINK]
-    )
+    # Fast_Ship_Cabins_SE_SSE_Captains_Cabin_9_Node = Node(
+    #     [kmd.Fast_Ship_Cabins_SE_SSE_Captains_Cabin_Links.FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN_TO_FAST_SHIP_1F_9_LINK]
+    # )
 
 
 
@@ -421,15 +435,15 @@ class TwoWayCorridorNodes_Kanto(Enum):
          kmd.Underground_Path_Links.UNDERGROUND_PATH_TO_ROUTE_6_UNDERGROUND_PATH_ENTRANCE_3_LINK]
     )
 #Vermillion Port Passage
-    Vermilion_Port_Passage_Entrance_Node = Node(
-        [kmd.Vermilion_Port_Passage_Links.VERMILION_PORT_PASSAGE_TO_VERMILION_CITY_8_LINK,
-         kmd.Vermilion_Port_Passage_Links.VERMILION_PORT_PASSAGE_TO_VERMILION_PORT_PASSAGE_4_LINK]
-    )
-#Vermillion Port Passage
-    Vermilion_Port_Passage_Tunnel_Node = Node(
-        [kmd.Vermilion_Port_Passage_Links.VERMILION_PORT_PASSAGE_TO_VERMILION_PORT_PASSAGE_3_LINK,
-         kmd.Vermilion_Port_Passage_Links.VERMILION_PORT_PASSAGE_TO_VERMILION_PORT_1_LINK]
-    )
+#     Vermilion_Port_Passage_Entrance_Node = Node(
+#         [kmd.Vermilion_Port_Passage_Links.VERMILION_PORT_PASSAGE_TO_VERMILION_CITY_8_LINK,
+#          kmd.Vermilion_Port_Passage_Links.VERMILION_PORT_PASSAGE_TO_VERMILION_PORT_PASSAGE_4_LINK]
+#     )
+# #Vermillion Port Passage
+#     Vermilion_Port_Passage_Tunnel_Node = Node(
+#         [kmd.Vermilion_Port_Passage_Links.VERMILION_PORT_PASSAGE_TO_VERMILION_PORT_PASSAGE_3_LINK,
+#          kmd.Vermilion_Port_Passage_Links.VERMILION_PORT_PASSAGE_TO_VERMILION_PORT_1_LINK]
+#     )
 #Rocktunnel 1F
     Rock_Tunnel_1F_Route_9_Side_Node = Node(
         [kmd.Rock_Tunnel_1F_Links.ROCK_TUNNEL_1F_TO_ROUTE_9_1_LINK, 
@@ -545,16 +559,6 @@ class TwoWayCorridorNodes_Kanto(Enum):
         [kmd.Route_15_Fuchsia_Gate_Links.ROUTE_15_FUCHSIA_GATE_TO_FUCHSIA_CITY_8_LINK,
          kmd.Route_15_Fuchsia_Gate_Links.ROUTE_15_FUCHSIA_GATE_TO_ROUTE_15_1_LINK]
     )
-#Gate Route16
-    Route_16_Gate_Node = Node(
-        [kmd.Route_16_Gate_Links.ROUTE_16_GATE_TO_ROUTE_16_4_LINK,
-         kmd.Route_16_Gate_Links.ROUTE_16_GATE_TO_ROUTE_16_2_LINK]
-    )
-#Gate Route17 - 18
-    Route_17_Route_18_Gate_Node = Node(
-        [kmd.Route_17_Route_18_Gate_Links.ROUTE_17_ROUTE_18_GATE_TO_ROUTE_17_1_LINK,
-         kmd.Route_17_Route_18_Gate_Links.ROUTE_17_ROUTE_18_GATE_TO_ROUTE_18_1_LINK]
-    )
 #Gate Route19 - Fuchsia
     Route_19_Fuchsia_Gate_Node = Node(
         [kmd.Route_19_Fuchsia_Gate_Links.ROUTE_19_FUCHSIA_GATE_TO_FUCHSIA_CITY_10_LINK,
@@ -569,31 +573,6 @@ class TwoWayCorridorNodes_Kanto(Enum):
     Trainer_House_1F_Node = Node(
         [kmd.Trainer_House_1F_Links.TRAINER_HOUSE_1F_TO_VIRIDIAN_CITY_3_LINK,
          kmd.Trainer_House_1F_Links.TRAINER_HOUSE_1F_TO_TRAINER_HOUSE_B1F_1_LINK]
-    )
-#Celadon Store 1F
-    Celadon_Dept_Store_1F_Node = Node(
-        [kmd.Celadon_Dept_Store_1F_Links.CELADON_DEPT_STORE_1F_TO_CELADON_CITY_1_LINK,
-         kmd.Celadon_Dept_Store_1F_Links.CELADON_DEPT_STORE_1F_TO_CELADON_DEPT_STORE_2F_2_LINK]
-    )
-#Celadon Store 2F
-    Celadon_Dept_Store_2F_Node = Node(
-        [kmd.Celadon_Dept_Store_2F_Links.CELADON_DEPT_STORE_2F_TO_CELADON_DEPT_STORE_3F_1_LINK,
-         kmd.Celadon_Dept_Store_2F_Links.CELADON_DEPT_STORE_2F_TO_CELADON_DEPT_STORE_1F_3_LINK]
-    )
-#Celadon Store 3F
-    Celadon_Dept_Store_3F_Node = Node(
-        [kmd.Celadon_Dept_Store_3F_Links.CELADON_DEPT_STORE_3F_TO_CELADON_DEPT_STORE_2F_1_LINK,
-         kmd.Celadon_Dept_Store_3F_Links.CELADON_DEPT_STORE_3F_TO_CELADON_DEPT_STORE_4F_2_LINK]
-    )
-#Celadon Store 4F
-    Celadon_Dept_Store_4F_Node = Node(
-        [kmd.Celadon_Dept_Store_4F_Links.CELADON_DEPT_STORE_4F_TO_CELADON_DEPT_STORE_5F_1_LINK,
-         kmd.Celadon_Dept_Store_4F_Links.CELADON_DEPT_STORE_4F_TO_CELADON_DEPT_STORE_3F_2_LINK]
-    )
-#Celadon Store 5F
-    Celadon_Dept_Store_5F_Node = Node(
-        [kmd.Celadon_Dept_Store_5F_Links.CELADON_DEPT_STORE_5F_TO_CELADON_DEPT_STORE_4F_1_LINK,
-         kmd.Celadon_Dept_Store_5F_Links.CELADON_DEPT_STORE_5F_TO_CELADON_DEPT_STORE_6F_1_LINK]
     )
 #Celadon Mansion Front 1F
     Celadon_Mansion_1F_Front_Node = Node(
@@ -635,16 +614,20 @@ class TwoWayCorridorNodes_Kanto(Enum):
         [kmd.Copycats_House_1F_Links.COPYCATS_HOUSE_1F_TO_SAFFRON_CITY_8_LINK, 
          kmd.Copycats_House_1F_Links.COPYCATS_HOUSE_1F_TO_COPYCATS_HOUSE_2F_1_LINK]
     )
-#Fast Ship F1 Corridor
-    Fast_Ship_1F_Corridor_Node = Node(
-        [kmd.Fast_Ship_1F_Links.FAST_SHIP_1F_TO_FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN_5_LINK, 
-         kmd.Fast_Ship_1F_Links.FAST_SHIP_1F_TO_FAST_SHIP_B1F_1_LINK]
+    Victory_Road_Gate_Kanto_Node = Node(
+        [johto.Victory_Road_Gate_Links.VICTORY_ROAD_GATE_TO_VICTORY_ROAD_1_LINK,
+         johto.Victory_Road_Gate_Links.VICTORY_ROAD_GATE_TO_ROUTE_22_1_LINK]
     )
+#Fast Ship F1 Corridor Outside Captains Room
+    # Fast_Ship_1F_Corridor_Node = Node(
+    #     [kmd.Fast_Ship_1F_Links.FAST_SHIP_1F_TO_FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN_5_LINK,
+    #      kmd.Fast_Ship_1F_Links.FAST_SHIP_1F_TO_FAST_SHIP_B1F_1_LINK]
+    # )
 #Fast Ship B1F Corridor
-    Fast_Ship_B1F_Node = Node(
-        [kmd.Fast_Ship_B1F_Links.FAST_SHIP_B1F_TO_FAST_SHIP_1F_11_LINK, 
-         kmd.Fast_Ship_B1F_Links.FAST_SHIP_B1F_TO_FAST_SHIP_1F_12_LINK]
-    )
+    # Fast_Ship_B1F_Node = Node(
+    #     [kmd.Fast_Ship_B1F_Links.FAST_SHIP_B1F_TO_FAST_SHIP_1F_11_LINK,
+    #      kmd.Fast_Ship_B1F_Links.FAST_SHIP_B1F_TO_FAST_SHIP_1F_12_LINK]
+    # )
 
 
 class HubNodes_Kanto(Enum):
@@ -664,7 +647,20 @@ class HubNodes_Kanto(Enum):
     Fast_Ship_1F_Hub_Node = Node(
         [link for link in kmd.Fast_Ship_1F_Links if link not in
          [kmd.Fast_Ship_1F_Links.FAST_SHIP_1F_TO_FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN_5_LINK,
-         kmd.Fast_Ship_1F_Links.FAST_SHIP_1F_TO_FAST_SHIP_B1F_1_LINK]]
+          kmd.Fast_Ship_1F_Links.FAST_SHIP_1F_TO_FAST_SHIP_B1F_1_LINK,
+          kmd.Fast_Ship_1F_Links.FAST_SHIP_1F_TO_FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN_3_LINK,
+          kmd.Fast_Ship_1F_Links.FAST_SHIP_1F_TO_FAST_SHIP_B1F_2_LINK,
+          kmd.Fast_Ship_1F_Links.FAST_SHIP_1F_TO_FAST_SHIP_CABINS_NNW_NNE_NE_3_LINK]]
+    )
+
+#Celadon Dept Store Hub
+    Celadon_Dept_Store_Hub_Node = Node(
+        [link for link in kmd.Celadon_Dept_Store_1F_Links] +
+        [link for link in kmd.Celadon_Dept_Store_2F_Links] +
+        [link for link in kmd.Celadon_Dept_Store_3F_Links] +
+        [link for link in kmd.Celadon_Dept_Store_4F_Links] +
+        [link for link in kmd.Celadon_Dept_Store_5F_Links] +
+        [link for link in kmd.Celadon_Dept_Store_6F_Links]
     )
 
 

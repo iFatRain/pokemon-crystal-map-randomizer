@@ -141,6 +141,13 @@ def displayMainWindow():
                    font=("Comic Sans MS", 12, ""),
                    activebackground=UI_Colors.Lavender_Web.value).place(x=30, y=260)
 
+    tk.Checkbutton(mainWindow,
+                   variable=ruinPuzzles,
+                   text=" Presolved Ruins Puzzles",
+                   bg=UI_Colors.Lavender_Web.value,
+                   font=("Comic Sans MS", 12, ""),
+                   activebackground=UI_Colors.Lavender_Web.value).place(x=30, y=290)
+
     mainWindow.mainloop()
 
 def displaySeedInfoWindow(seed):
@@ -238,7 +245,7 @@ def randomize(originalROM):
 
     # Creates a setting Array that we can pass into the other functions to do different things based on settings
     settings = [loadedROMName.get(), legendaryAvailability.get(), regionSplit.get(), litDarkCaves.get(), mapChanges.get(),
-                aidePokeball.get()]
+                aidePokeball.get(), ruinPuzzles.get()]
 
     # Remove the main window while we try the rando
     mainWindow.withdraw()
@@ -307,6 +314,7 @@ regionSplit = tk.IntVar()
 litDarkCaves = tk.IntVar()
 mapChanges = tk.IntVar()
 aidePokeball = tk.IntVar()
+ruinPuzzles = tk.IntVar()
 
 # ROM Variables
 baseROM = tk.IntVar()
