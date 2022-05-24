@@ -553,6 +553,11 @@ class ReachableUselessDeadEndNodes_Johto(Enum):
 
 
 class TwoWayCorridorNodes_Johto(Enum):
+
+    Victory_Road_Cave_Node = Node(
+        [link for link in johto.Victory_Road_Links]
+    )
+
     # route 27 tohjo fall entrance right to sandstorm house
     Tohjo_Falls_Right_To_Route_27_Sandstorm_House_Node = Node(
          [johto.Route_27_Links.ROUTE_27_TO_TOHJO_FALLS_2_LINK,

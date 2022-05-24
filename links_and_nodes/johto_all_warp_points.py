@@ -3403,41 +3403,41 @@ class Victory_Road_Links(Enum):
         Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_GATE_5_WP,
         Victory_Road_Gate_Warp_Points.VICTORY_ROAD_GATE_TO_VICTORY_ROAD_1_WP,
         "VictoryRoad")
-
-    VICTORY_ROAD_TO_VICTORY_ROAD_3_LINK = WarpLink(
-        Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_3_WP,
-        Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_2_WP,
-        "VictoryRoad", 5)
-
-    VICTORY_ROAD_TO_VICTORY_ROAD_2_LINK = WarpLink(
-        Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_2_WP,
-        Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_3_WP,
-        "VictoryRoad", 10)
-
-    VICTORY_ROAD_TO_VICTORY_ROAD_5_LINK = WarpLink(
-        Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_5_WP,
-        Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_4_WP,
-        "VictoryRoad", 15)
-
-    VICTORY_ROAD_TO_VICTORY_ROAD_4_LINK = WarpLink(
-        Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_4_WP,
-        Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_5_WP,
-        "VictoryRoad", 20)
-
-    VICTORY_ROAD_TO_VICTORY_ROAD_7_LINK = WarpLink(
-        Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_7_WP,
-        Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_6_WP,
-        "VictoryRoad", 25)
-
-    VICTORY_ROAD_TO_VICTORY_ROAD_6_LINK = WarpLink(
-        Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_6_WP,
-        Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_7_WP,
-        "VictoryRoad", 30)
-
-    VICTORY_ROAD_TO_VICTORY_ROAD_9_LINK = WarpLink(
-        Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_9_WP,
-        Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_8_WP,
-        "VictoryRoad", 35)
+    #Leaving the interior vanilla
+    # VICTORY_ROAD_TO_VICTORY_ROAD_3_LINK = WarpLink(
+    #     Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_3_WP,
+    #     Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_2_WP,
+    #     "VictoryRoad", 5)
+    #
+    # VICTORY_ROAD_TO_VICTORY_ROAD_2_LINK = WarpLink(
+    #     Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_2_WP,
+    #     Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_3_WP,
+    #     "VictoryRoad", 10)
+    #
+    # VICTORY_ROAD_TO_VICTORY_ROAD_5_LINK = WarpLink(
+    #     Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_5_WP,
+    #     Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_4_WP,
+    #     "VictoryRoad", 15)
+    #
+    # VICTORY_ROAD_TO_VICTORY_ROAD_4_LINK = WarpLink(
+    #     Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_4_WP,
+    #     Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_5_WP,
+    #     "VictoryRoad", 20)
+    #
+    # VICTORY_ROAD_TO_VICTORY_ROAD_7_LINK = WarpLink(
+    #     Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_7_WP,
+    #     Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_6_WP,
+    #     "VictoryRoad", 25)
+    #
+    # VICTORY_ROAD_TO_VICTORY_ROAD_6_LINK = WarpLink(
+    #     Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_6_WP,
+    #     Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_7_WP,
+    #     "VictoryRoad", 30)
+    #
+    # VICTORY_ROAD_TO_VICTORY_ROAD_9_LINK = WarpLink(
+    #     Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_9_WP,
+    #     Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_8_WP,
+    #     "VictoryRoad", 35)
 
     VICTORY_ROAD_TO_ROUTE_23_3_LINK = WarpLink(
         Victory_Road_Warp_Points.VICTORY_ROAD_TO_ROUTE_23_3_WP,
