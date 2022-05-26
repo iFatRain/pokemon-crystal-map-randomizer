@@ -374,9 +374,13 @@ class UnreachableUselessDeadEndNodes_Kanto(Enum):
         [kmd.Fast_Ship_Cabins_NNW_NNE_NE_Links.FAST_SHIP_CABINS_NNW_NNE_NE_TO_FAST_SHIP_1F_2_LINK]
     )
 #Fast Ship Cabin Warp 3
-    # Fast_Ship_Cabins_NNW_NNE_NE_Cabin_3_Node = Node(
-    #     [kmd.Fast_Ship_Cabins_NNW_NNE_NE_Links.FAST_SHIP_CABINS_NNW_NNE_NE_TO_FAST_SHIP_1F_3_LINK]
-    # )
+    Fast_Ship_Cabins_NNW_NNE_NE_Cabin_3_Node = Node(
+        [kmd.Fast_Ship_Cabins_NNW_NNE_NE_Links.FAST_SHIP_CABINS_NNW_NNE_NE_TO_FAST_SHIP_1F_3_LINK]
+    )
+#Fast Ship Cabin Warp 5
+    Fast_Ship_Cabins_SW_SSW_NW_Cabin_5_Node = Node(
+        [kmd.Fast_Ship_Cabins_SW_SSW_NW_Links.FAST_SHIP_CABINS_SW_SSW_NW_TO_FAST_SHIP_1F_5_LINK]
+    )
 #Fast Ship Cabin Warp 6
     Fast_Ship_Cabins_SW_SSW_NW_Cabin_6_Node = Node(
         [kmd.Fast_Ship_Cabins_SW_SSW_NW_Links.FAST_SHIP_CABINS_SW_SSW_NW_TO_FAST_SHIP_1F_6_LINK]
