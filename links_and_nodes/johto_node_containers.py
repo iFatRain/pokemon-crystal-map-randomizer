@@ -55,6 +55,10 @@ class MajorNodes_Johto(Enum):
     )))
 
 class ImportantDeadEndNodes_Johto(Enum):
+    Lighthouse_3F_Middle_Item_Node = Node(
+        [johto.Olivine_Lighthouse_3F_Links.OLIVINE_LIGHTHOUSE_3F_TO_4F_MIDDLE_STAIR_LINK]
+    )
+
     Tin_Tower_5F_Deadend_N_Node = Node(
         [johto.Tin_Tower_5F_Links.TIN_TOWER_5F_TO_TIN_TOWER_4F_1_LINK]
     )
