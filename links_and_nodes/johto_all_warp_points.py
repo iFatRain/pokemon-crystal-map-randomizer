@@ -58,6 +58,7 @@ from map_data.Dungeons_Group.MountMortar1FInside_Map import Mount_Mortar_1F_Insi
 from map_data.Dungeons_Group.MountMortar1FOutside_Map import Mount_Mortar_1F_Outside_Warp_Points
 from map_data.Dungeons_Group.MountMortar2FInside_Map import Mount_Mortar_2F_Inside_Warp_Points
 from map_data.Dungeons_Group.MountMortarB1F_Map import Mount_Mortar_B1F_Warp_Points
+from map_data.Dungeons_Group.NationalParkBugContest_Map import National_Park_Bug_Contest_Warp_Points
 from map_data.Dungeons_Group.NationalPark_Map import National_Park_Warp_Points
 from map_data.Dungeons_Group.Pokecenter2F_Map import Pokecenter_2F_Warp_Points
 from map_data.Dungeons_Group.RuinsOfAlphAerodactylChamber_Map import Ruins_Of_Alph_Aerodactyl_Chamber_Warp_Points
@@ -929,7 +930,21 @@ class Ilex_Forest_Links(Enum):
      unlocks=[Unlock_Keys.HM_CUT]
     )
 
-#TODO Add National_Park_Bug_Catching_Contest
+
+class National_Park_Bug_Contest_Links(Enum):
+    NATIONAL_PARK_TO_ROUTE_36_NATIONAL_PARK_GATE_LINK = WarpLink(
+        National_Park_Bug_Contest_Warp_Points.NATIONAL_PARK_BUG_CONTEST_TO_ROUTE_36_NATIONAL_PARK_GATE_1_WP,
+        Route_36_National_Park_Gate_Warp_Points.ROUTE_36_NATIONAL_PARK_GATE_TO_NATIONAL_PARK_WP,
+        "NationalParkBugContest", dual_width=True
+    )
+
+    NATIONAL_PARK_TO_ROUTE_35_NATIONAL_PARK_GATE_LINK = WarpLink(
+        National_Park_Bug_Contest_Warp_Points.NATIONAL_PARK_BUG_CONTEST_TO_ROUTE_35_NATIONAL_PARK_GATE_1_WP,
+        Route_35_National_Park_Gate_Warp_Points.ROUTE_35_NATIONAL_PARK_GATE_TO_NATIONAL_PARK_WP,
+        "NationalParkBugContest", 10, dual_width=True
+    )
+
+
 class National_Park_Links(Enum):
     NATIONAL_PARK_TO_ROUTE_36_NATIONAL_PARK_GATE_LINK = WarpLink(
         National_Park_Warp_Points.NATIONAL_PARK_TO_ROUTE_36_NATIONAL_PARK_GATE_WP,
@@ -1102,7 +1117,7 @@ class Ruins_Of_Alph_Omanyte_Item_Room_Links(Enum):
     RUINS_OF_ALPH_OMANYTE_ITEM_ROOM_TO_RUINS_OF_ALPH_OMANYTE_WORD_ROOM_1_LINK = WarpLink(
         Ruins_Of_Alph_Omanyte_Item_Room_Warp_Points.RUINS_OF_ALPH_OMANYTE_ITEM_ROOM_TO_RUINS_OF_ALPH_OMANYTE_WORD_ROOM_1_WP,
         Ruins_Of_Alph_Omanyte_Item_Room_Warp_Points.RUINS_OF_ALPH_OMANYTE_ITEM_ROOM_TO_RUINS_OF_ALPH_OMANYTE_WORD_ROOM_1_WP,
-        "RuinsOfOmanyteItemRoom", 10, dual_width=True
+        "RuinsOfAlphOmanyteItemRoom", 10, dual_width=True
     )
 
 

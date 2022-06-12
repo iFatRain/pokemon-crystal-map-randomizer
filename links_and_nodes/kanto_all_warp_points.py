@@ -1055,7 +1055,7 @@ class Saffron_Pokecenter_1F_Links(Enum):
     SAFFRON_POKECENTER_1F_TO_POKECENTER_2F_1_LINK = WarpLink(
         Saffron_Pokecenter_1F_Warp_Points.SAFFRON_POKECENTER_1F_TO_POKECENTER_2F_1_WP,
         Pokecenter_2F_Warp_Points.POKECENTER_2F_TO_POKECENTER_1F_WP,
-        "SaffronPokecenter1F", 10, dual_width= True
+        "SaffronPokecenter1F", 10
     )
 
 class Silph_Co_1F_Links(Enum):

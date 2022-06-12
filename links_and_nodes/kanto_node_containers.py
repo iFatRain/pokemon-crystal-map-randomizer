@@ -37,14 +37,14 @@ class MajorNodes_Kanto(Enum):
     Celadon_City_Node = Node(
             [link for link in kmd.Celadon_City_Links if link not in 
             [kmd.Celadon_City_Links.CELADON_CITY_TO_CELADON_GYM_1_LINK]]
-        +   [kmd.Route_8_Links.ROUTE_8_TO_ROUTE_8_SAFFRON_GATE_3_LINK]
+        +   [kmd.Route_7_Links.ROUTE_7_TO_ROUTE_7_SAFFRON_GATE_1_LINK]
         +   [kmd.Route_16_Links.ROUTE_16_TO_ROUTE_16_GATE_3_LINK])
 
 #Lavender + rocktunnel entrance + route 7 gate + superrodhouse + route 15 gate
     Lavender_Town_Node = Node(
             [link for link in kmd.Lavender_Town_Links]
         +   [kmd.Route_10_South_Links.ROUTE_10_SOUTH_TO_ROCK_TUNNEL_1F_2_LINK]
-        +   [kmd.Route_7_Links.ROUTE_7_TO_ROUTE_7_SAFFRON_GATE_1_LINK]
+        +   [kmd.Route_8_Links.ROUTE_8_TO_ROUTE_8_SAFFRON_GATE_3_LINK]
         +   [kmd.Route_12_Links.ROUTE_12_TO_ROUTE_12_SUPER_ROD_HOUSE_1_LINK]
         +   [kmd.Route_15_Links.ROUTE_15_TO_ROUTE_15_FUCHSIA_GATE_3_LINK]) #(#todo make this gate a dead end for less pain ?)
 
@@ -378,9 +378,9 @@ class UnreachableUselessDeadEndNodes_Kanto(Enum):
         [kmd.Fast_Ship_Cabins_NNW_NNE_NE_Links.FAST_SHIP_CABINS_NNW_NNE_NE_TO_FAST_SHIP_1F_3_LINK]
     )
 #Fast Ship Cabin Warp 5
-    Fast_Ship_Cabins_SW_SSW_NW_Cabin_5_Node = Node(
-        [kmd.Fast_Ship_Cabins_SW_SSW_NW_Links.FAST_SHIP_CABINS_SW_SSW_NW_TO_FAST_SHIP_1F_5_LINK]
-    )
+    # Fast_Ship_Cabins_SW_SSW_NW_Cabin_5_Node = Node(
+    #     [kmd.Fast_Ship_Cabins_SW_SSW_NW_Links.FAST_SHIP_CABINS_SW_SSW_NW_TO_FAST_SHIP_1F_5_LINK]
+    # )
 #Fast Ship Cabin Warp 6
     Fast_Ship_Cabins_SW_SSW_NW_Cabin_6_Node = Node(
         [kmd.Fast_Ship_Cabins_SW_SSW_NW_Links.FAST_SHIP_CABINS_SW_SSW_NW_TO_FAST_SHIP_1F_6_LINK]
@@ -650,7 +650,8 @@ class HubNodes_Kanto(Enum):
 #Fast Ship Hub
     Fast_Ship_1F_Hub_Node = Node(
         [link for link in kmd.Fast_Ship_1F_Links if link not in
-         [kmd.Fast_Ship_1F_Links.FAST_SHIP_1F_TO_FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN_5_LINK,
+         [kmd.Fast_Ship_1F_Links.FAST_SHIP_1F_TO_FAST_SHIP_CABINS_SW_SSW_NW_1_LINK,
+          kmd.Fast_Ship_1F_Links.FAST_SHIP_1F_TO_FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN_5_LINK,
           kmd.Fast_Ship_1F_Links.FAST_SHIP_1F_TO_FAST_SHIP_B1F_1_LINK,
           kmd.Fast_Ship_1F_Links.FAST_SHIP_1F_TO_FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN_3_LINK,
           kmd.Fast_Ship_1F_Links.FAST_SHIP_1F_TO_FAST_SHIP_B1F_2_LINK,

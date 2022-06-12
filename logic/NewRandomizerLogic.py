@@ -3,7 +3,7 @@ import random
 
 import links_and_nodes.johto_all_warp_points
 from class_definitions import Unlock_Keys, Node
-from links_and_nodes.johto_node_containers import MajorNodes_Johto
+from links_and_nodes.johto_node_containers import MajorNodes_Johto, TwoWayCorridorNodes_Johto
 from links_and_nodes.kanto_node_containers import MajorNodes_Kanto, TwoWayCorridorNodes_Kanto
 
 
@@ -166,6 +166,7 @@ def insertCorridorBetweenLinks(corridorToInsert, linkA, linkB):
         exitPoint = getRandomLink(corridorToInsert)
         connectTwoLinks(linkA, entrancePoint)
         connectTwoLinks(linkB, exitPoint)
+
 
 
 
@@ -346,6 +347,7 @@ def randomizationStep5(randomizedNodes, corridorInputList):
         if linkB is None:
             print(linkA, "was linked to", linkB)
         randomCorridor = getRandomNode(corridorNodes)
+
 
         insertCorridorBetweenLinks(randomCorridor, linkA, linkB)
 
@@ -700,6 +702,182 @@ def checkKantoCompletability(randomizedNodes):
                 link.value.OWN.value.USED = False
                 link.value.MODIFIED = False
         print("-ERROR- -ERROR- -ERROR- CANT COMPLETE THE SEED -ERROR- -ERROR- -ERROR-")
+
+    allItemsObtainable = all(key in obtainedKeys for key in Unlock_Keys)
+    if allItemsObtainable:
+        print("   AND I CAN GET ALL ITEMS")
+
+    return completableSeed
+
+
+def checkFullCompletability(randomizedNodes):
+
+    nodesToCheck = list(randomizedNodes)
+
+    completableSeed = False
+    obtainedKeys = []
+    lockedLinks = []
+    alreadyExploredLinks = []
+    toBeExploredLinks = []
+    fullyUnlockedNodes = []
+    stuckCount = 0
+
+    badgeList = [Unlock_Keys.BADGE_1,
+                 Unlock_Keys.BADGE_2,
+                 Unlock_Keys.BADGE_3,
+                 Unlock_Keys.BADGE_4,
+                 Unlock_Keys.BADGE_5,
+                 Unlock_Keys.BADGE_6,
+                 Unlock_Keys.BADGE_7,
+                 Unlock_Keys.BADGE_8,
+                 Unlock_Keys.BADGE_9,
+                 Unlock_Keys.BADGE_10,
+                 Unlock_Keys.BADGE_11,
+                 Unlock_Keys.BADGE_12,
+                 Unlock_Keys.BADGE_13,
+                 Unlock_Keys.BADGE_14,
+                 Unlock_Keys.BADGE_15,
+                 Unlock_Keys.BADGE_16
+
+                ]
+    listOfHM = [Unlock_Keys.HM_CUT,
+                Unlock_Keys.HM_FLY,
+                Unlock_Keys.HM_SURF,
+                Unlock_Keys.HM_STRENGTH,
+                Unlock_Keys.HM_FLASH,
+                Unlock_Keys.HM_WATERFALL,
+                Unlock_Keys.HM_WHIRLPOOL]
+
+    explorableNodes = [node for node in nodesToCheck if node is MajorNodes_Johto.New_Bark_Town_Node]
+    nodesToCheck.pop(nodesToCheck.index(MajorNodes_Johto.New_Bark_Town_Node))
+    #
+    # while completableSeed
+    # print("There are ",len(nodesToCheck), "to check in total")
+
+    while len(explorableNodes) != 0:
+        for node in list(explorableNodes):
+            # print(node)
+            # for additionalLink in node.value.LINKS:
+                # if additionalLink not in alreadyExploredLinks:
+                    # print("      with a new link to ==>",additionalLink)
+            for link in node.value.LINKS:
+                if link not in alreadyExploredLinks:
+                    if link.value.LOCKED_BY is None:
+                        # print(link, "was unlocked so we're going to explore it")
+                        alreadyExploredLinks.append(link)
+                        toBeExploredLinks.append(link.value.LINK)
+                        if link.value.UNLOCKS is not None:
+
+                            for key in link.value.UNLOCKS:
+                                if key not in obtainedKeys:
+                                    print("We got ",key,"after visiting from",link.value.LINK)
+                                    obtainedKeys.append(key)
+
+                    else:
+                        # print("\n",link,"was locked...")
+                        if all(neededKey in obtainedKeys for neededKey in link.value.LOCKED_BY):
+                            # print("    ... but we have all the keys!!")
+                            # print("    ... now we can visit", link.value.LINK)
+                            # print("    ... and we should have key(s)",link.value.UNLOCKS)
+                            alreadyExploredLinks.append(link)
+                            toBeExploredLinks.append(link.value.LINK)
+
+                            if link in lockedLinks:
+                                lockedLinks.remove(link)
+                                explorableNodes[explorableNodes.index(node)].value.HAS_LOCKED = False
+                            if link.value.UNLOCKS is not None:
+                                for key in link.value.UNLOCKS:
+                                    if key not in obtainedKeys:
+                                        # print("We got ", key, "from an unlocked link")
+                                        obtainedKeys.append(key)
+                        else:
+                            # print("   ... and we don't have the needed keys yet")
+                            if link not in lockedLinks:
+                                lockedLinks.append(link)
+                                explorableNodes[explorableNodes.index(node)].value.HAS_LOCKED = True
+                                # print(node,"Has a locked enterance")
+
+        print("\n-------Status Report -------")
+        obtainedBadges = []
+        for key in obtainedKeys:
+            if key in badgeList:
+                obtainedBadges.append(key)
+        print("So far I have",len(obtainedBadges),"badges.")
+        if len(obtainedBadges) >= 7:
+            if Unlock_Keys.HAS_7_BADGES not in obtainedKeys:
+                obtainedKeys.append(Unlock_Keys.HAS_7_BADGES)
+
+        if len(obtainedBadges) == 16 and all(neededHM in obtainedKeys for neededHM in listOfHM) and Unlock_Keys.VICTORY_ROAD_GATE_ACCESS in obtainedKeys:
+            completableSeed = True
+
+
+        for node in list(explorableNodes):
+            if node.value.HAS_LOCKED is False:
+                fullyUnlockedNodes.append(node)
+                explorableNodes.remove(node)
+
+        newNodes = 0
+        for node in list(nodesToCheck):
+            for link in node.value.LINKS:
+                if link.value.OWN in toBeExploredLinks:
+                    if node not in explorableNodes:
+                        explorableNodes.append(node)
+
+        for node in explorableNodes:
+            if node in list(nodesToCheck):
+                newNodes += 1
+                nodesToCheck.remove(node)
+
+        obtainedKeys = checkForAdditionalKeys(obtainedKeys)
+        obtainedKeys = checkForAdditionalKantoKeys(obtainedKeys)
+
+        for key in obtainedKeys:
+            print("Currently I have", key)
+
+        if newNodes == 0:
+            print("Adding to stuck count: ",stuckCount+1)
+            stuckCount += 1
+            if stuckCount > 6:
+                break
+
+        # print("Total nodes unlocked = ",len(fullyUnlockedNodes))
+        # print("Nodes not yet checked:", len(nodesToCheck))
+        print()
+
+
+    # for node in fullyUnlockedNodes:
+        # print("These are all unlocked nodes:", node)
+
+    for key in obtainedKeys:
+        print("I obtained: ", key)
+
+    for key in Unlock_Keys:
+        if key not in obtainedKeys:
+            print("I couldn't ever get", key)
+
+    # for link in lockedLinks:
+    #     print("This is locked:",link, " [hides]===>",link.value.LINK)
+    # print()
+    # print()
+    if completableSeed:
+        print("This seed is completable!!!")
+    else:
+        print("RESETTING NODE LIST TO DEFAULT LINKS")
+        for node in randomizedNodes:
+            node.value.USED_LINKS = 0
+            for link in node.value.LINKS:
+                link.value.LINK.value.USED = False
+                link.value.LINK = link.value.DEFAULT_LINK
+                link.value.LINK.value.USED = False
+                link.value.OWN.value.USED = False
+                link.value.MODIFIED = False
+        print("-ERROR- -ERROR- -ERROR- CANT COMPLETE THE SEED -ERROR- -ERROR- -ERROR-")
+        print("-ERROR- -ERROR- -ERROR- CANT COMPLETE THE SEED -ERROR- -ERROR- -ERROR-")
+        print("-ERROR- -ERROR- -ERROR- CANT COMPLETE THE SEED -ERROR- -ERROR- -ERROR-")
+        print("-ERROR- -ERROR- -ERROR- CANT COMPLETE THE SEED -ERROR- -ERROR- -ERROR-")
+        print("-ERROR- -ERROR- -ERROR- CANT COMPLETE THE SEED -ERROR- -ERROR- -ERROR-")
+
+
 
     allItemsObtainable = all(key in obtainedKeys for key in Unlock_Keys)
     if allItemsObtainable:

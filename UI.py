@@ -12,7 +12,7 @@ import randomizeROM
 
 def displayMainWindow():
 
-    mainWindow.geometry("800x330")
+    mainWindow.geometry("800x360")
     mainWindow.title("Pokemon Crystal Warp Randomizer v1.0 by iFatRain")
     mainWindow.configure(bg= UI_Colors.Lavender_Web.value)
 
@@ -28,13 +28,22 @@ def displayMainWindow():
                                                activebackground=UI_Colors.Lavender_Web.value,
                                                variable=baseROM, value=1)
 
-    baseOptions_Speedchoice = tk.Radiobutton(mainWindow,
-                                               text="Speedchoice 7.2",
+    baseOptions_Speedchoice7p2 = tk.Radiobutton(mainWindow,
+                                               text="SC 7.2",
                                                font=("Comic Sans MS", 12, ""),
                                                bg=UI_Colors.Lavender_Web.value,
                                                activebackground=UI_Colors.Lavender_Web.value,
                                                variable=baseROM,
                                                value=2)
+
+    baseOptions_Speedchoice7p3 = tk.Radiobutton(mainWindow,
+                                             text="SC 7.3",
+                                             font=("Comic Sans MS", 12, ""),
+                                             bg=UI_Colors.Lavender_Web.value,
+                                             activebackground=UI_Colors.Lavender_Web.value,
+                                             variable=baseROM,
+                                             value=3)
+
 
     tk.Label(mainWindow,
              text="Pokémon Crystal Warp Randomizer",
@@ -98,7 +107,8 @@ def displayMainWindow():
               font=("Comic Sans MS", 13, "bold"),
               bg=UI_Colors.Han_Blue.value,
               fg=UI_Colors.Minion_Yellow.value,
-              command=lambda:[loadAndDetermineROM(), displayBaseOptions(baseOptions_Vanilla,baseOptions_Speedchoice,baseOptions_Label)]).place(x=40, y=70)
+              command=lambda:[loadAndDetermineROM(), displayBaseOptions(baseOptions_Vanilla,baseOptions_Speedchoice7p2,
+                  baseOptions_Speedchoice7p3,baseOptions_Label)]).place(x=40, y=70)
 
     tk.Label(mainWindow,
              textvariable=loadedROMName,
@@ -148,6 +158,13 @@ def displayMainWindow():
                    font=("Comic Sans MS", 12, ""),
                    activebackground=UI_Colors.Lavender_Web.value).place(x=30, y=290)
 
+    tk.Checkbutton(mainWindow,
+                   variable=starterLevel,
+                   text=" Lvl 98 Starters for Testing",
+                   bg=UI_Colors.Lavender_Web.value,
+                   font=("Comic Sans MS", 12, ""),
+                   activebackground=UI_Colors.Lavender_Web.value).place(x=30, y=290)
+
     mainWindow.mainloop()
 
 def displaySeedInfoWindow(seed):
@@ -190,27 +207,32 @@ def displaySeedInfoWindow(seed):
 
     seedInfoWindow.mainloop()
 
-def displayBaseOptions(vanilla, speedchoice,label):
+def displayBaseOptions(vanilla, speedchoice7p2,speedchoice7p3,label):
     if not supportedROM.get():
         label.place(x=160, y=110)
         vanilla.place(x=300,y=110)
-        speedchoice.place(x=380,y=110)
+        speedchoice7p2.place(x=380,y=110)
+        speedchoice7p3.place(x=460, y=110)
 
     else:
         label.place_forget()
         vanilla.place_forget()
-        speedchoice.place_forget()
+        speedchoice7p2.place_forget()
+        speedchoice7p3.place_forget()
 
 def determineROM(rom_md5):
     # vanillaROM_MD5 = "301899b8087289a6436b0a241fbbb474"
     # 7.2 confirmed = "79369a19272472ae254b5b6abc32e9cd"
-
+    print(rom_md5)
     match rom_md5:
         case "301899b8087289a6436b0a241fbbb474":
             loadedROMName.set("Pokemon - Crystal Version 1.1")
             supportedROM.set(True)
         case "79369a19272472ae254b5b6abc32e9cd":
             loadedROMName.set("Pokemon - Crystal Speedchoice Version 7.2")
+            supportedROM.set(True)
+        case "acb7fc79e249271129082f73bb4bd2ba":
+            loadedROMName.set("Pokemon - Crystal Speedchoice Version 7.3")
             supportedROM.set(True)
         case _:
             loadedROMName.set("Unsupported ROM!")
@@ -240,12 +262,14 @@ def randomize(originalROM):
             loadedROMName.set("Pokemon - Crystal Version 1.1")
         elif baseROM.get() == 2:
             loadedROMName.set("Pokemon - Crystal Speedchoice Version 7.2")
+        elif baseROM.get() == 3:
+            loadedROMName.set("Pokemon - Crystal Speedchoice Version 7.3")
 
     assignSeed()
 
     # Creates a setting Array that we can pass into the other functions to do different things based on settings
     settings = [loadedROMName.get(), legendaryAvailability.get(), regionSplit.get(), litDarkCaves.get(), mapChanges.get(),
-                aidePokeball.get(), ruinPuzzles.get()]
+                aidePokeball.get(), ruinPuzzles.get(), starterLevel.get()]
 
     # Remove the main window while we try the rando
     mainWindow.withdraw()
@@ -271,10 +295,10 @@ def randomize(originalROM):
     print("Seed was:", seedString.get())
 
     # Randomizer Success - create output log in same place as the output rom, and display the seed window
-    createOutputLog(randomizedNodeList, os.path.join(os.path.dirname(os.path.abspath(newROM)),"spoiler_log.txt"))
+    createOutputLog(randomizedNodeList, settings, os.path.join(os.path.dirname(os.path.abspath(newROM)),"spoiler_log.txt"))
     displaySeedInfoWindow(seedString.get())
 
-def createOutputLog(nodeList, outputPath):
+def createOutputLog(nodeList, settings, outputPath):
     allLinks = []
     for node in nodeList:
         for link in node.value.LINKS:
@@ -282,7 +306,11 @@ def createOutputLog(nodeList, outputPath):
 
     allLinks.sort(key=sortingFunc)
     with open(outputPath, "w") as spoilerLog:
-        spoilerLog.write("Seed: "+  seedString.get() + "\n\n")
+        spoilerLog.write("Seed: " +  seedString.get() + "\n\n")
+        spoilerLog.write("Version and settings chosen: ")
+        for value in settings:
+            spoilerLog.write('['+str(value)+']')
+        spoilerLog.write("\n\n")
         for link in allLinks:
             if link.value.OUTPUT_TO_LOG == False:
                 spoilerLog.write("\n" + str(link.value.OWN).split(".")[1].ljust(75, ".") + str(link.value.LINK).split(".")[1])
@@ -315,6 +343,7 @@ litDarkCaves = tk.IntVar()
 mapChanges = tk.IntVar()
 aidePokeball = tk.IntVar()
 ruinPuzzles = tk.IntVar()
+starterLevel = tk.IntVar()
 
 # ROM Variables
 baseROM = tk.IntVar()

@@ -6,20 +6,28 @@ import links_and_nodes.kanto_node_containers as Kanto
 from logic import AutomaticWarpLocator
 from logic.MemoryAddressReader import buildMemoryLocationsFromSym
 from logic.NewRandomizerLogic import randomizationStep1, randomizationStep2, randomizationStep3, randomizationStep4, \
-    checkJohtoCompletability, randomizationStep5, checkKantoCompletability
+    checkJohtoCompletability, randomizationStep5, checkKantoCompletability, checkFullCompletability
 from class_definitions import WarpInstruction, getHex
 
 def randomizeWarps(combinedRegions):
     print("Randomizing..")
     if combinedRegions:
-        randomizedNodes = randomizationStep1(list(Johto.MajorNodes_Johto) + list(Kanto.MajorNodes_Kanto))
-        randomizedNodes = randomizationStep2(randomizedNodes, list(Johto.HubNodes_Johto) + list(Kanto.HubNodes_Kanto))
-        randomizedNodes = randomizationStep3(randomizedNodes,
-                                             list(Johto.ImportantDeadEndNodes_Johto) + list(Kanto.ImportantDeadEndNodes_Kanto),
-                                             list(Johto.ReachableUselessDeadEndNodes_Johto) + list(Kanto.ReachableUselessDeadEndNodes_Kanto),
-                                             list(Johto.UnreachableUselessDeadEndNodes_Johto) + list(Kanto.UnreachableUselessDeadEndNodes_Kanto))
-        randomizedNodes = randomizationStep4(randomizedNodes)
-        randomizedNodes = randomizationStep5(randomizedNodes, list(Johto.TwoWayCorridorNodes_Johto) + list(Kanto.TwoWayCorridorNodes_Kanto))
+        combinedFullyCompletable = False
+        while combinedFullyCompletable is False:
+            randomizedNodes = randomizationStep1(list(Johto.MajorNodes_Johto) + list(Kanto.MajorNodes_Kanto))
+            randomizedNodes = randomizationStep2(randomizedNodes, list(Johto.HubNodes_Johto) + list(Kanto.HubNodes_Kanto))
+            randomizedNodes = randomizationStep3(randomizedNodes,
+                                                 list(Johto.ImportantDeadEndNodes_Johto) + list(Kanto.ImportantDeadEndNodes_Kanto),
+                                                 list(Johto.ReachableUselessDeadEndNodes_Johto) + list(Kanto.ReachableUselessDeadEndNodes_Kanto),
+                                                 list(Johto.UnreachableUselessDeadEndNodes_Johto) + list(Kanto.UnreachableUselessDeadEndNodes_Kanto))
+            randomizedNodes = randomizationStep4(randomizedNodes)
+            randomizedNodes = randomizationStep5(randomizedNodes, list(Johto.TwoWayCorridorNodes_Johto) + list(Kanto.TwoWayCorridorNodes_Kanto))
+            combinedFullyCompletable = checkFullCompletability(randomizedNodes)
+
+
+
+
+
     else:
         johtoFullyCompletable = False
         while johtoFullyCompletable is False:
@@ -52,13 +60,61 @@ def randomizeWarps(combinedRegions):
     return randomizedNodes
 
 def checkForDoubles(inputLink, inputROM, warpLocations):
-    if inputLink is links_and_nodes.johto_all_warp_points.Ruins_Of_Alph_Kabuto_Chamber_Links.RUINS_OF_ALPH_KABUTO_CHAMBER_TO_RUINS_OF_ALPH_INNER_CHAMBER_4_LINK:
-        inputROM.seek(warpLocations[links_and_nodes.johto_all_warp_points.Ruins_Of_Alph_Kabuto_Item_Room_Links.RUINS_OF_ALPH_KABUTO_ITEM_ROOM_TO_RUINS_OF_ALPH_KABUTO_WORD_ROOM_1_LINK.value.MEMORY_ORIGIN]
-                      +links_and_nodes.johto_all_warp_points.Ruins_Of_Alph_Kabuto_Item_Room_Links.RUINS_OF_ALPH_KABUTO_ITEM_ROOM_TO_RUINS_OF_ALPH_KABUTO_WORD_ROOM_1_LINK.value.OFFSET)
+    if inputLink is links_and_nodes.johto_all_warp_points.Ruins_Of_Alph_Ho_Oh_Chamber_Links.RUINS_OF_ALPH_HO_OH_CHAMBER_TO_RUINS_OF_ALPH_INNER_CHAMBER_2_LINK:
+        inputROM.seek(warpLocations[links_and_nodes.johto_all_warp_points.Ruins_Of_Alph_Ho_Oh_Item_Room_Links.RUINS_OF_ALPH_HO_OH_ITEM_ROOM_TO_RUINS_OF_ALPH_HO_OH_WORD_ROOM_1_LINK.value.MEMORY_ORIGIN]
+                      + links_and_nodes.johto_all_warp_points.Ruins_Of_Alph_Ho_Oh_Item_Room_Links.RUINS_OF_ALPH_HO_OH_ITEM_ROOM_TO_RUINS_OF_ALPH_HO_OH_WORD_ROOM_1_LINK.value.OFFSET)
         inputROM.write(WarpInstruction.getInstruction(inputLink.value.LINK.value))
         inputROM.read(2)
         inputROM.write(WarpInstruction.getInstruction(inputLink.value.LINK.value))
-        print("FOUND KABUTO NODE SO MAKING ITEM ROOM LINK BACK ALSO")
+        print("Fixing Ho Oh Chamber Double!")
+
+    if inputLink is links_and_nodes.johto_all_warp_points.Ruins_Of_Alph_Kabuto_Chamber_Links.RUINS_OF_ALPH_KABUTO_CHAMBER_TO_RUINS_OF_ALPH_INNER_CHAMBER_4_LINK:
+        inputROM.seek(warpLocations[links_and_nodes.johto_all_warp_points.Ruins_Of_Alph_Kabuto_Item_Room_Links.RUINS_OF_ALPH_KABUTO_ITEM_ROOM_TO_RUINS_OF_ALPH_KABUTO_WORD_ROOM_1_LINK.value.MEMORY_ORIGIN]
+                      + links_and_nodes.johto_all_warp_points.Ruins_Of_Alph_Kabuto_Item_Room_Links.RUINS_OF_ALPH_KABUTO_ITEM_ROOM_TO_RUINS_OF_ALPH_KABUTO_WORD_ROOM_1_LINK.value.OFFSET)
+        inputROM.write(WarpInstruction.getInstruction(inputLink.value.LINK.value))
+        inputROM.read(2)
+        inputROM.write(WarpInstruction.getInstruction(inputLink.value.LINK.value))
+        print("Fixing Kabuto Chamber Double!")
+
+    if inputLink is links_and_nodes.johto_all_warp_points.Ruins_Of_Alph_Aerodactyl_Chamber_Links.RUINS_OF_ALPH_AERODACTYL_CHAMBER_TO_RUINS_OF_ALPH_INNER_CHAMBER_8_LINK:
+        inputROM.seek(warpLocations[links_and_nodes.johto_all_warp_points.Ruins_Of_Alph_Aerodactyl_Item_Room_Links.RUINS_OF_ALPH_AERODACTYL_ITEM_ROOM_TO_RUINS_OF_ALPH_AERODACTYL_WORD_ROOM_1_LINK.value.MEMORY_ORIGIN]
+                      + links_and_nodes.johto_all_warp_points.Ruins_Of_Alph_Aerodactyl_Item_Room_Links.RUINS_OF_ALPH_AERODACTYL_ITEM_ROOM_TO_RUINS_OF_ALPH_AERODACTYL_WORD_ROOM_1_LINK.value.OFFSET)
+        inputROM.write(WarpInstruction.getInstruction(inputLink.value.LINK.value))
+        inputROM.read(2)
+        inputROM.write(WarpInstruction.getInstruction(inputLink.value.LINK.value))
+        print("Fixing Aero Chamber Double!")
+
+    if inputLink is links_and_nodes.johto_all_warp_points.Ruins_Of_Alph_Omanyte_Chamber_Links.RUINS_OF_ALPH_OMANYTE_CHAMBER_TO_RUINS_OF_ALPH_INNER_CHAMBER_6_LINK:
+        inputROM.seek(warpLocations[links_and_nodes.johto_all_warp_points.Ruins_Of_Alph_Omanyte_Item_Room_Links.RUINS_OF_ALPH_OMANYTE_ITEM_ROOM_TO_RUINS_OF_ALPH_OMANYTE_WORD_ROOM_1_LINK.value.MEMORY_ORIGIN]
+                      + links_and_nodes.johto_all_warp_points.Ruins_Of_Alph_Omanyte_Item_Room_Links.RUINS_OF_ALPH_OMANYTE_ITEM_ROOM_TO_RUINS_OF_ALPH_OMANYTE_WORD_ROOM_1_LINK.value.OFFSET)
+        inputROM.write(WarpInstruction.getInstruction(inputLink.value.LINK.value))
+        inputROM.read(2)
+        inputROM.write(WarpInstruction.getInstruction(inputLink.value.LINK.value))
+        print("Fixing Omanyte Chamber Double!")
+
+
+    if inputLink is links_and_nodes.johto_all_warp_points.National_Park_Links.NATIONAL_PARK_TO_ROUTE_36_NATIONAL_PARK_GATE_LINK:
+        inputROM.seek(warpLocations[links_and_nodes.johto_all_warp_points.National_Park_Bug_Contest_Links.NATIONAL_PARK_TO_ROUTE_36_NATIONAL_PARK_GATE_LINK.value.MEMORY_ORIGIN]
+                      + links_and_nodes.johto_all_warp_points.National_Park_Bug_Contest_Links.NATIONAL_PARK_TO_ROUTE_36_NATIONAL_PARK_GATE_LINK.value.OFFSET)
+        inputROM.write(WarpInstruction.getInstruction(inputLink.value.LINK.value))
+        inputROM.read(2)
+        inputROM.write(WarpInstruction.getInstruction(inputLink.value.LINK.value))
+        print("Fixing Bug Contest to Route 36 Double!")
+
+    if inputLink is links_and_nodes.johto_all_warp_points.National_Park_Links.NATIONAL_PARK_TO_ROUTE_35_NATIONAL_PARK_GATE_LINK:
+        inputROM.seek(warpLocations[links_and_nodes.johto_all_warp_points.National_Park_Bug_Contest_Links.NATIONAL_PARK_TO_ROUTE_35_NATIONAL_PARK_GATE_LINK.value.MEMORY_ORIGIN]
+                      + links_and_nodes.johto_all_warp_points.National_Park_Bug_Contest_Links.NATIONAL_PARK_TO_ROUTE_35_NATIONAL_PARK_GATE_LINK.value.OFFSET)
+        inputROM.write(WarpInstruction.getInstruction(inputLink.value.LINK.value))
+        inputROM.read(2)
+        inputROM.write(WarpInstruction.getInstruction(inputLink.value.LINK.value))
+        print("Fixing Bug Contest to Route 35 Double!")
+
+    if inputLink is links_and_nodes.johto_all_warp_points.Tin_Tower_1F_Links.TIN_TOWER_1F_TO_ECRUTEAK_CITY_LINK:
+        inputROM.seek(warpLocations[links_and_nodes.johto_all_warp_points.Tin_Tower_1F_Links.TIN_TOWER_1F_TO_ECRUTEAK_CITY_LINK.value.MEMORY_ORIGIN] + 10)
+        inputROM.write(WarpInstruction.getInstruction(inputLink.value.LINK.value))
+        print("Fixing Rear Stairs of Tin Tower 1F")
+
+
 
 def randomizeROM(inputROM, settings):
 
@@ -174,20 +230,23 @@ def randomizeROM(inputROM, settings):
     inputROM.seek(scriptLocations["DirectorKeycard"])
     inputROM.write(bytes.fromhex(getHex(0)))
 
-    print("\tMaking starters lv100 for testing")
-    inputROM.seek(scriptLocations["CyndaquilPokeBallScript"])
-    inputROM.write(bytes.fromhex(getHex(100)))
-    inputROM.seek(scriptLocations["TotodilePokeBallScript"])
-    inputROM.write(bytes.fromhex(getHex(100)))
-    inputROM.seek(scriptLocations["ChikoritaPokeBallScript"])
-    inputROM.write(bytes.fromhex(getHex(100)))
+    if settings[7] == 1:
+        print("\tMaking starters lv100 for testing")
+        inputROM.seek(scriptLocations["CyndaquilPokeBallScript"])
+        inputROM.write(bytes.fromhex(getHex(98)))
+        inputROM.seek(scriptLocations["TotodilePokeBallScript"])
+        inputROM.write(bytes.fromhex(getHex(98)))
+        inputROM.seek(scriptLocations["ChikoritaPokeBallScript"])
+        inputROM.write(bytes.fromhex(getHex(98)))
 
     #Remove Right Guard from Victory Road Gate
     print("\tFixing Victory Road Gate")
-    if settings[0] == 'Pokemon - Crystal Speedchoice Version 7.2':
-     inputROM.seek(warpLocations["VictoryRoadGate"] + 91)
+    if "Pokemon - Crystal Speedchoice" in settings[0]:
+        print("Detected Speedchoice offset of 91")
+        inputROM.seek(warpLocations["VictoryRoadGate"] + 86)
     else:
-        inputROM.seek(warpLocations["VictoryRoadGate"] + 95)
+        inputROM.seek(warpLocations["VictoryRoadGate"] + 90)
+        print("Going to offset of 95")
     inputROM.write(bytes.fromhex(getHex(26)))
     inputROM.write(bytes.fromhex(getHex(0)))
 
@@ -305,6 +364,12 @@ def randomizeROM(inputROM, settings):
         inputROM.write(bytes.fromhex(getHex(90)))  # 71
         inputROM.seek(warpLocations["BlackthornCity"] + 56)
         inputROM.write(bytes.fromhex(getHex(23)))
+
+    #For testing custom scripts/warps
+    # inputROM.seek(warpLocations["CherrygroveCity"])
+    # inputROM.write(bytes.fromhex(getHex(1)))
+    # inputROM.write(bytes.fromhex(getHex(18)))
+    # inputROM.write(bytes.fromhex(getHex(11)))
 
     inputROM.close()
 

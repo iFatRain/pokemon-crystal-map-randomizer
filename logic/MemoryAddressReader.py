@@ -7,14 +7,18 @@ def buildMemoryLocationsFromSym(detectedROMName):
     print(sys.executable)
     if detectedROMName == "Pokemon - Crystal Version 1.1":
         print("\nLoading Vanilla Scripts...")
-        file = os.path.join(os.path.dirname(os.path.realpath(__file__)),"pokecrystal11.sym")
-        # file = os.path.join(os.path.dirname(sys.executable),"syms\\pokecrystal11.sym")
+        # file = os.path.join(os.path.dirname(os.path.realpath(__file__)),"vanilla.sym")
+        file = os.path.join(os.path.dirname(sys.executable),"syms\\vanilla.sym")
     elif detectedROMName == "Pokemon - Crystal Speedchoice Version 7.2":
-        print("\nLoading Speedchoice Scripts...")
-        file = os.path.join(os.path.dirname(os.path.realpath(__file__)), "crystal-speedchoice.sym")
-        # file = os.path.join(os.path.dirname(sys.executable),"syms\\crystal-speedchoice.sym")
+        print("\nLoading Speedchoice 7.2 Scripts...")
+        # file = os.path.join(os.path.dirname(os.path.realpath(__file__)), "crystal-speedchoice7.2.sym")
+        file = os.path.join(os.path.dirname(sys.executable),"syms\\crystal-speedchoice7.2.sym")
+    elif detectedROMName == "Pokemon - Crystal Speedchoice Version 7.3":
+        print("\nLoading Speedchoice 7.3 Scripts...")
+        # file = os.path.join(os.path.dirname(os.path.realpath(__file__)), "crystal-speedchoice7.3.sym")
+        file = os.path.join(os.path.dirname(sys.executable),"syms\\crystal-speedchoice7.3.sym")
     # else:
-    #     file = "C:/Users/theje/PycharmProjects/pythonProject/logic/crystal-speedchoice.sym"
+    #     file = "C:/Users/theje/PycharmProjects/pythonProject/logic/crystal-speedchoice7.2.sym"
     #     print("DIDN'T LOAD FULLY SUPPORTED ROM!!")
 
     with open(file, "r") as memLoc:
@@ -102,7 +106,7 @@ def buildMemoryLocationsFromSym(detectedROMName):
                 memoryMapScripts[line.split(" ")[1]] = (int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 49
                 #print(line.split(" ")[1], "is at", hex((int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 49))
 
-            if detectedROMName == "Pokemon - Crystal Speedchoice Version 7.2":
+            if "Pokemon - Crystal Speedchoice" in detectedROMName:
                 if "MapScripts.NoE4Check" in line:
                     memInfo = line.split(" ")[0]
                     bank, address = memInfo.split(":")[0], memInfo.split(":")[1]
@@ -116,7 +120,7 @@ def buildMemoryLocationsFromSym(detectedROMName):
             if "InitializeEventsScript" in line and "InitializeEventsScriptStdScript" not in line and "SkipDirector" not in line:
                 memInfo = line.split(" ")[0]
                 bank, address = memInfo.split(":")[0], memInfo.split(":")[1]
-                if detectedROMName == "Pokemon - Crystal Speedchoice Version 7.2":
+                if "Pokemon - Crystal Speedchoice" in detectedROMName:
                     memoryMapScripts["InitializeEventsScript"] = (int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 76
                     print(line.split(" ")[1], "is at", hex((int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 76))
                 else:
