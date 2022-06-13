@@ -12,6 +12,7 @@ Currently supported ROMs:
 <a download="iFat's Crystal Randomizer.zip" href="https://github.com/iFatRain/pokemon-crystal-map-randomizer/blob/main/iFat's%20Crystal%20Randomizer.zip">
     Download the randomizer here
 </a>
+Using the randomizer is as simple as running the program, and selecting your source ROM within the program. The program should be in the same directory as the syms folder. ie Randomizers/syms and Randomizers/program.exe
 
 
 To use with UPR or KIR:
