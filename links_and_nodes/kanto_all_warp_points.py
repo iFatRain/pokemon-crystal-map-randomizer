@@ -1813,7 +1813,7 @@ class Route_5_Links(Enum):
     ROUTE_5_TO_ROUTE_5_UNDERGROUND_PATH_ENTRANCE_1_LINK = WarpLink(
         Route_5_Warp_Points.ROUTE_5_TO_ROUTE_5_UNDERGROUND_PATH_ENTRANCE_1_WP,
         Route_5_Underground_Path_Entrance_Warp_Points.ROUTE_5_UNDERGROUND_PATH_ENTRANCE_TO_ROUTE_5_1_WP,
-        "Route5"
+        "Route5", locked_by=Unlock_Keys.MACHINE_PART
     )
 
     ROUTE_5_TO_ROUTE_5_SAFFRON_GATE_1_LINK = WarpLink(
@@ -1847,7 +1847,7 @@ class Route_6_Links(Enum):
     ROUTE_6_TO_ROUTE_6_UNDERGROUND_PATH_ENTRANCE_1_LINK = WarpLink(
         Route_6_Warp_Points.ROUTE_6_TO_ROUTE_6_UNDERGROUND_PATH_ENTRANCE_1_WP,
         Route_6_Underground_Path_Entrance_Warp_Points.ROUTE_6_UNDERGROUND_PATH_ENTRANCE_TO_ROUTE_6_1_WP,
-        "Route6"
+        "Route6", locked_by=Unlock_Keys.MACHINE_PART
     )
 
     ROUTE_6_TO_ROUTE_6_SAFFRON_GATE_3_LINK = WarpLink(
