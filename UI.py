@@ -13,8 +13,9 @@ import randomizeROM
 def displayMainWindow():
 
     mainWindow.geometry("800x360")
-    mainWindow.title("Pokemon Crystal Warp Randomizer v1.0 by iFatRain")
+    mainWindow.title("Pokemon Crystal Warp Randomizer v1.1 by iFatRain")
     mainWindow.configure(bg= UI_Colors.Lavender_Web.value)
+    mainWindow.protocol("WM_DELETE_WINDOW", lambda:[mainWindow.destroy(), quit()])
 
     baseOptions_Label       = tk.Label(mainWindow,
                                          text="Pick base version:",
@@ -171,8 +172,9 @@ def displaySeedInfoWindow(seed):
 
     seedInfoWindow = tk.Tk()
     seedInfoWindow.geometry("500x150")
-    seedInfoWindow.title("Pokemon Crystal Warp Randomizer v1.0 by iFatRain")
+    seedInfoWindow.title("Pokemon Crystal Warp Randomizer v1.1 by iFatRain")
     seedInfoWindow.configure(bg=UI_Colors.Lavender_Web.value)
+    seedInfoWindow.protocol("WM_DELETE_WINDOW", lambda: [mainWindow.destroy(), seedInfoWindow.destroy(), quit()])
 
     tk.Label(seedInfoWindow,
              text="Pokemon Crystal Warp Randomizer",
@@ -289,8 +291,14 @@ def randomize(originalROM):
         # TODO Add a Fatal Error Screen
         print("Randomizer failed")
         traceback.print_exc()
-        exit()
-        quit()
+        displaySeedInfoWindow("Randomizer Failed!!")
+        # Below shouldn't ever really be triggered because windows are closed before this
+        # ...but adding for extra safety ;)
+        try:
+            mainWindow.destroy()
+            quit()
+        except:
+            quit()
     print("\nSettings were:", settings[::])
     print("Seed was:", seedString.get())
 
