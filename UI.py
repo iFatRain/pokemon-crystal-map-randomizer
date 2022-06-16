@@ -164,7 +164,7 @@ def displayMainWindow():
                    text=" Lvl 98 Starters for Testing",
                    bg=UI_Colors.Lavender_Web.value,
                    font=("Comic Sans MS", 12, ""),
-                   activebackground=UI_Colors.Lavender_Web.value).place(x=30, y=290)
+                   activebackground=UI_Colors.Lavender_Web.value).place(x=30, y=320)
 
     mainWindow.mainloop()
 
