@@ -286,6 +286,30 @@ class ImportantDeadEndNodes_Kanto(Enum):
 #     Fast_Ship_Cabins_SE_SSE_Captains_Cabin_10_Node = Node(
 #         [kmd.Fast_Ship_Cabins_SE_SSE_Captains_Cabin_Links.FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN_TO_FAST_SHIP_1F_10_LINK]
 #     )
+    Route_28_Steel_Wing_House_Node = Node(
+        [kmd.Route_28_Steel_Wing_House_Links.ROUTE_28_STEEL_WING_HOUSE_TO_ROUTE_28_1_LINK]
+    )
+
+    Useless_Route_28_Steel_Wing_House_Exterior_Node = Node(
+        [kmd.Route_28_Links.ROUTE_28_TO_ROUTE_28_STEEL_WING_HOUSE_1_LINK]
+    )
+
+    Silver_Cave_Room_2_Item_Node_1 = Node(
+        [kmd.Silver_Cave_Room_2_Links.SILVER_CAVE_ROOM_2_TO_SILVER_CAVE_ITEM_ROOMS_1_LINK]
+    )
+
+    Silver_Cave_Room_2_Item_Node_2 = Node(
+        [kmd.Silver_Cave_Room_2_Links.SILVER_CAVE_ROOM_2_TO_SILVER_CAVE_ITEM_ROOMS_2_LINK]
+    )
+
+    Silver_Cave_Item_Room_1_Node = Node(
+        [kmd.Silver_Cave_Item_Rooms_Links.SILVER_CAVE_ITEM_ROOMS_TO_SILVER_CAVE_ROOM_2_3_LINK]
+    )
+
+    Silver_Cave_Item_Room_2_Node = Node(
+        [kmd.Silver_Cave_Item_Rooms_Links.SILVER_CAVE_ITEM_ROOMS_TO_SILVER_CAVE_ROOM_2_4_LINK]
+    )
+
 class ReachableUselessDeadEndNodes_Kanto(Enum):
     pass
 
@@ -402,6 +426,19 @@ class UnreachableUselessDeadEndNodes_Kanto(Enum):
 
 
 class TwoWayCorridorNodes_Kanto(Enum):
+
+    Silver_Cave_Room_1_Corridor_Node = Node(
+        [link for link in kmd.Silver_Cave_Room_1_Links]
+    )
+
+    Silver_Cave_Room_2_Corridor_Node = Node(
+        [kmd.Silver_Cave_Room_2_Links.SILVER_CAVE_ROOM_2_TO_SILVER_CAVE_ROOM_1_2_LINK,
+         kmd.Silver_Cave_Room_2_Links.SILVER_CAVE_ROOM_2_TO_SILVER_CAVE_ROOM_3_1_LINK]
+    )
+
+    Silver_Cave_Pokecenter_1F_Node = Node(
+        [link for link in kmd.Silver_Cave_Pokecenter_1F_Links]
+    )
 
 #Outside Diglett - Pewter 
     Route_2_Diglett_Cave_To_Nugget_House_Node = Node(
@@ -635,6 +672,12 @@ class TwoWayCorridorNodes_Kanto(Enum):
 
 
 class HubNodes_Kanto(Enum):
+
+    Route_28_Silver_Cave_Outside_Node = Node(
+        [kmd.Route_28_Links.ROUTE_28_TO_VICTORY_ROAD_GATE_7_LINK,
+         kmd.Silver_Cave_Outside_Links.SILVER_CAVE_OUTSIDE_TO_SILVER_CAVE_ROOM_1_1_LINK,
+         kmd.Silver_Cave_Outside_Links.SILVER_CAVE_OUTSIDE_TO_SILVER_CAVE_POKECENTER_1F_1_LINK]
+    )
 
 #Mount Moon 
     Mount_Moon_Node = Node(

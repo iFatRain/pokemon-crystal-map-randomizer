@@ -1,6 +1,7 @@
 import time
 
 import links_and_nodes.johto_all_warp_points
+import links_and_nodes.kanto_all_warp_points
 import links_and_nodes.johto_node_containers as Johto
 import links_and_nodes.kanto_node_containers as Kanto
 from logic import AutomaticWarpLocator
@@ -93,21 +94,21 @@ def checkForDoubles(inputLink, inputROM, warpLocations):
         print("Fixing Omanyte Chamber Double!")
 
 
-    if inputLink is links_and_nodes.johto_all_warp_points.National_Park_Links.NATIONAL_PARK_TO_ROUTE_36_NATIONAL_PARK_GATE_LINK:
-        inputROM.seek(warpLocations[links_and_nodes.johto_all_warp_points.National_Park_Bug_Contest_Links.NATIONAL_PARK_TO_ROUTE_36_NATIONAL_PARK_GATE_LINK.value.MEMORY_ORIGIN]
-                      + links_and_nodes.johto_all_warp_points.National_Park_Bug_Contest_Links.NATIONAL_PARK_TO_ROUTE_36_NATIONAL_PARK_GATE_LINK.value.OFFSET)
-        inputROM.write(WarpInstruction.getInstruction(inputLink.value.LINK.value))
-        inputROM.read(2)
-        inputROM.write(WarpInstruction.getInstruction(inputLink.value.LINK.value))
-        print("Fixing Bug Contest to Route 36 Double!")
-
-    if inputLink is links_and_nodes.johto_all_warp_points.National_Park_Links.NATIONAL_PARK_TO_ROUTE_35_NATIONAL_PARK_GATE_LINK:
-        inputROM.seek(warpLocations[links_and_nodes.johto_all_warp_points.National_Park_Bug_Contest_Links.NATIONAL_PARK_TO_ROUTE_35_NATIONAL_PARK_GATE_LINK.value.MEMORY_ORIGIN]
-                      + links_and_nodes.johto_all_warp_points.National_Park_Bug_Contest_Links.NATIONAL_PARK_TO_ROUTE_35_NATIONAL_PARK_GATE_LINK.value.OFFSET)
-        inputROM.write(WarpInstruction.getInstruction(inputLink.value.LINK.value))
-        inputROM.read(2)
-        inputROM.write(WarpInstruction.getInstruction(inputLink.value.LINK.value))
-        print("Fixing Bug Contest to Route 35 Double!")
+    # if inputLink is links_and_nodes.johto_all_warp_points.National_Park_Links.NATIONAL_PARK_TO_ROUTE_36_NATIONAL_PARK_GATE_LINK:
+    #     inputROM.seek(warpLocations[links_and_nodes.johto_all_warp_points.National_Park_Bug_Contest_Links.NATIONAL_PARK_TO_ROUTE_36_NATIONAL_PARK_GATE_LINK.value.MEMORY_ORIGIN]
+    #                   + links_and_nodes.johto_all_warp_points.National_Park_Bug_Contest_Links.NATIONAL_PARK_TO_ROUTE_36_NATIONAL_PARK_GATE_LINK.value.OFFSET)
+    #     inputROM.write(WarpInstruction.getInstruction(inputLink.value.LINK.value))
+    #     inputROM.read(2)
+    #     inputROM.write(WarpInstruction.getInstruction(inputLink.value.LINK.value))
+    #     print("Fixing Bug Contest to Route 36 Double!")
+    #
+    # if inputLink is links_and_nodes.johto_all_warp_points.National_Park_Links.NATIONAL_PARK_TO_ROUTE_35_NATIONAL_PARK_GATE_LINK:
+    #     inputROM.seek(warpLocations[links_and_nodes.johto_all_warp_points.National_Park_Bug_Contest_Links.NATIONAL_PARK_TO_ROUTE_35_NATIONAL_PARK_GATE_LINK.value.MEMORY_ORIGIN]
+    #                   + links_and_nodes.johto_all_warp_points.National_Park_Bug_Contest_Links.NATIONAL_PARK_TO_ROUTE_35_NATIONAL_PARK_GATE_LINK.value.OFFSET)
+    #     inputROM.write(WarpInstruction.getInstruction(inputLink.value.LINK.value))
+    #     inputROM.read(2)
+    #     inputROM.write(WarpInstruction.getInstruction(inputLink.value.LINK.value))
+    #     print("Fixing Bug Contest to Route 35 Double!")
 
     if inputLink is links_and_nodes.johto_all_warp_points.Tin_Tower_1F_Links.TIN_TOWER_1F_TO_ECRUTEAK_CITY_LINK:
         inputROM.seek(warpLocations[links_and_nodes.johto_all_warp_points.Tin_Tower_1F_Links.TIN_TOWER_1F_TO_ECRUTEAK_CITY_LINK.value.MEMORY_ORIGIN] + 10)
@@ -132,6 +133,7 @@ def randomizeROM(inputROM, settings):
 
         foundLocation = rom.find(lookupDict[key])
         warpLocations[key] = foundLocation + 5
+    scriptLocations = buildMemoryLocationsFromSym(settings[0])
 
     for node in randomizedNodes:
         for link in node.value.LINKS:
@@ -142,10 +144,42 @@ def randomizeROM(inputROM, settings):
                 inputROM.read(2)
                 inputROM.write(WarpInstruction.getInstruction(link.value.LINK.value))
             checkForDoubles(link, inputROM, warpLocations)
+            if link.value.LINK == links_and_nodes.johto_all_warp_points.Ecruteak_Gym_Warp_Points.ECRUTEAK_GYM_TO_ECRUTEAK_CITY_WP:
+                inputROM.seek(memLocation - 2)
+                y_coord = inputROM.read(1)
+                x_coord = inputROM.read(1)
+                dest_map = WarpInstruction.getInstruction(link.value.OWN.value)[1::]
+                inputROM.seek(scriptLocations["EcruteakGymClosed"])
+                inputROM.write(dest_map)
+                inputROM.write(x_coord)
+                inputROM.write(y_coord)
+            if link.value.LINK == links_and_nodes.johto_all_warp_points.Slowpoke_Well_B1F_Warp_Points.SLOWPOKE_WELL_B1F_TO_AZALEA_TOWN_6_WP:
+                inputROM.seek(memLocation - 2)
+                y_coord = inputROM.read(1)
+                x_coord = inputROM.read(1)
+                dest_map = WarpInstruction.getInstruction(link.value.OWN.value)[1::]
+                inputROM.seek(scriptLocations["TrainerGruntM1.Script"])
+                inputROM.write(dest_map)
+                inputROM.write(x_coord)
+                inputROM.write(y_coord)
+
     randomizeTime = time.time() - startTime
     print("Time to randomize warps and write to ROM:", randomizeTime,"seconds")
 
-    scriptLocations = buildMemoryLocationsFromSym(settings[0])
+    link = links_and_nodes.johto_all_warp_points.Victory_Road_Gate_Links.VICTORY_ROAD_GATE_TO_ROUTE_28_2_LINK
+    inputROM.seek(warpLocations[link.value.MEMORY_ORIGIN] + link.value.OFFSET)
+    inputROM.write(WarpInstruction.getInstruction(link.value.LINK.value))
+    if link.value.DUAL_WIDTH is True:
+        inputROM.read(2)
+        inputROM.write(WarpInstruction.getInstruction(link.value.LINK.value))
+
+    link = links_and_nodes.kanto_all_warp_points.Silver_Cave_Room_3_Links.SILVER_CAVE_ROOM_3_TO_SILVER_CAVE_ROOM_2_2_LINK
+    inputROM.seek(warpLocations[link.value.MEMORY_ORIGIN] + link.value.OFFSET)
+    inputROM.write(WarpInstruction.getInstruction(link.value.LINK.value))
+    if link.value.DUAL_WIDTH is True:
+        inputROM.read(2)
+        inputROM.write(WarpInstruction.getInstruction(link.value.LINK.value))
+
     if settings[1] == 1:
         print("\tEnabling Always Catchable Setting")
         memToSeekTo = (warpLocations["WhirlIslandLugiaChamber"] + 7)

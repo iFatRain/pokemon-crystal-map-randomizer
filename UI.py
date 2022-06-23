@@ -7,13 +7,14 @@ import tkinter as tk
 import traceback
 from enum import Enum
 from tkinter import filedialog
+from idlelib.tooltip import Hovertip
 
 import randomizeROM
 
 def displayMainWindow():
 
     mainWindow.geometry("800x360")
-    mainWindow.title("Pokemon Crystal Warp Randomizer v1.1 by iFatRain")
+    mainWindow.title("Pokemon Crystal Warp Randomizer v1.2.0-beta by iFatRain")
     mainWindow.configure(bg= UI_Colors.Lavender_Web.value)
     mainWindow.protocol("WM_DELETE_WINDOW", lambda:[mainWindow.destroy(), quit()])
 
@@ -38,7 +39,7 @@ def displayMainWindow():
                                                value=2)
 
     baseOptions_Speedchoice7p3 = tk.Radiobutton(mainWindow,
-                                             text="SC 7.3",
+                                             text="SC 7.31",
                                              font=("Comic Sans MS", 12, ""),
                                              bg=UI_Colors.Lavender_Web.value,
                                              activebackground=UI_Colors.Lavender_Web.value,
@@ -117,54 +118,69 @@ def displayMainWindow():
              bg=UI_Colors.Lavender_Web.value,
              fg="black").place(x=160, y=75)
 
-    tk.Checkbutton(mainWindow,
+    legendarySetting = tk.Checkbutton(mainWindow,
                    variable=legendaryAvailability,
                    text=" Lugia/Ho-Oh Always Catchable",
                    bg=UI_Colors.Lavender_Web.value,
                    font=("Comic Sans MS", 12, ""),
-                   activebackground=UI_Colors.Lavender_Web.value).place(x=30, y= 140)
+                   activebackground=UI_Colors.Lavender_Web.value)
+    legendarySetting.place(x=30, y= 140)
+    Hovertip(legendarySetting,"Enables Both Legendary Birds without the Key-Item \nAlso Moves Lugia to Shorline",500)
 
-    tk.Checkbutton(mainWindow,
+    splitSetting = tk.Checkbutton(mainWindow,
                    variable=regionSplit,
                    text=" Combined Regions",
                    bg=UI_Colors.Lavender_Web.value,
                    font=("Comic Sans MS", 12, ""),
-                   activebackground=UI_Colors.Lavender_Web.value).place(x=30, y=170)
+                   activebackground=UI_Colors.Lavender_Web.value)
+    splitSetting.place(x=30, y=170)
+    Hovertip(splitSetting,"Enables Warps between both Regions\n  ->If unchecked all warps will be to same region",500)
 
-    tk.Checkbutton(mainWindow,
+    litCavesSetting = tk.Checkbutton(mainWindow,
                    variable=litDarkCaves,
                    text=" Lit Dark Caves",
                    bg=UI_Colors.Lavender_Web.value,
                    font=("Comic Sans MS", 12, ""),
-                   activebackground=UI_Colors.Lavender_Web.value).place(x=30, y=200)
+                   activebackground=UI_Colors.Lavender_Web.value)
+    litCavesSetting.place(x=30, y=200)
+    Hovertip(litCavesSetting,"Removes the need to use Flash to see in Dark Caves",500)
 
-    tk.Checkbutton(mainWindow,
+    mapChangeSetting = tk.Checkbutton(mainWindow,
                    variable=mapChanges,
                    text=" Softlock Prevention Map Changes",
                    bg=UI_Colors.Lavender_Web.value,
                    font=("Comic Sans MS", 12, ""),
-                   activebackground=UI_Colors.Lavender_Web.value).place(x=30, y=230)
+                   activebackground=UI_Colors.Lavender_Web.value)
+    mapChangeSetting.place(x=30, y=230)
+    Hovertip(mapChangeSetting,"Modifies to map to help prevent softlocks:\nBlackthorn behind Gym is majorly overhauled.\n" +
+             "Also removes a ledge in Mt.Mortar and a pylon near Snorlax.",500)
 
-    tk.Checkbutton(mainWindow,
+    pokeballSetting = tk.Checkbutton(mainWindow,
                    variable=aidePokeball,
                    text=" Aide Gives Pokeballs at Start",
                    bg=UI_Colors.Lavender_Web.value,
                    font=("Comic Sans MS", 12, ""),
-                   activebackground=UI_Colors.Lavender_Web.value).place(x=30, y=260)
+                   activebackground=UI_Colors.Lavender_Web.value)
+    pokeballSetting.place(x=30, y=260)
+    Hovertip(pokeballSetting,"After getting your Pokemon the aide will give\n5 Pokeballs instead of a potion",500)
 
-    tk.Checkbutton(mainWindow,
+    puzzleSetting = tk.Checkbutton(mainWindow,
                    variable=ruinPuzzles,
                    text=" Presolved Ruins Puzzles",
                    bg=UI_Colors.Lavender_Web.value,
                    font=("Comic Sans MS", 12, ""),
-                   activebackground=UI_Colors.Lavender_Web.value).place(x=30, y=290)
+                   activebackground=UI_Colors.Lavender_Web.value)
+    puzzleSetting.place(x=30, y=290)
+    Hovertip(puzzleSetting,"Removes the need to solve the Alph Ruin Puzzles\nDropdowns will become opened",500)
 
-    tk.Checkbutton(mainWindow,
+    levelSetting = tk.Checkbutton(mainWindow,
                    variable=starterLevel,
                    text=" Lvl 98 Starters for Testing",
                    bg=UI_Colors.Lavender_Web.value,
                    font=("Comic Sans MS", 12, ""),
-                   activebackground=UI_Colors.Lavender_Web.value).place(x=30, y=320)
+                   activebackground=UI_Colors.Lavender_Web.value)
+    levelSetting.place(x=30, y=320)
+    Hovertip(levelSetting,"Makes the 3 starters lv98\nThis setting is intended for TESTING ONLY",500)
 
     mainWindow.mainloop()
 
@@ -172,7 +188,7 @@ def displaySeedInfoWindow(seed):
 
     seedInfoWindow = tk.Tk()
     seedInfoWindow.geometry("500x150")
-    seedInfoWindow.title("Pokemon Crystal Warp Randomizer v1.1 by iFatRain")
+    seedInfoWindow.title("Pokemon Crystal Warp Randomizer v1.2.0-beta by iFatRain")
     seedInfoWindow.configure(bg=UI_Colors.Lavender_Web.value)
     seedInfoWindow.protocol("WM_DELETE_WINDOW", lambda: [mainWindow.destroy(), seedInfoWindow.destroy(), quit()])
 
@@ -234,7 +250,7 @@ def determineROM(rom_md5):
             loadedROMName.set("Pokemon - Crystal Speedchoice Version 7.2")
             supportedROM.set(True)
         case "acb7fc79e249271129082f73bb4bd2ba":
-            loadedROMName.set("Pokemon - Crystal Speedchoice Version 7.3")
+            loadedROMName.set("Pokemon - Crystal Speedchoice Version 7.31")
             supportedROM.set(True)
         case _:
             loadedROMName.set("Unsupported ROM!")
@@ -265,7 +281,7 @@ def randomize(originalROM):
         elif baseROM.get() == 2:
             loadedROMName.set("Pokemon - Crystal Speedchoice Version 7.2")
         elif baseROM.get() == 3:
-            loadedROMName.set("Pokemon - Crystal Speedchoice Version 7.3")
+            loadedROMName.set("Pokemon - Crystal Speedchoice Version 7.31")
 
     assignSeed()
 
@@ -303,7 +319,7 @@ def randomize(originalROM):
     print("Seed was:", seedString.get())
 
     # Randomizer Success - create output log in same place as the output rom, and display the seed window
-    createOutputLog(randomizedNodeList, settings, os.path.join(os.path.dirname(os.path.abspath(newROM)),"spoiler_log.txt"))
+    createOutputLog(randomizedNodeList, settings, os.path.join(os.path.dirname(os.path.abspath(newROM)),newROM.removesuffix(".gbc") + "_spoiler_log.txt"))
     displaySeedInfoWindow(seedString.get())
 
 def createOutputLog(nodeList, settings, outputPath):
@@ -314,6 +330,7 @@ def createOutputLog(nodeList, settings, outputPath):
 
     allLinks.sort(key=sortingFunc)
     with open(outputPath, "w") as spoilerLog:
+        spoilerLog.write("Randomizer version: v1.2.0-beta\n")
         spoilerLog.write("Seed: " +  seedString.get() + "\n\n")
         spoilerLog.write("Version and settings chosen: ")
         for value in settings:

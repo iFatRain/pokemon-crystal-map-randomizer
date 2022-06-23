@@ -762,9 +762,10 @@ class TwoWayCorridorNodes_Johto(Enum):
         [link for link in johto.Route_35_Goldenrod_Gate_Links]
     )
 
-    Route_35_National_Park_Gate_Node = Node(
-        [link for link in johto.Route_35_National_Park_Gate_Links]
-    )
+    # Removed rt 35 national park gate so that bug contest only has a single entry point.
+    # Route_35_National_Park_Gate_Node = Node(
+    #     [link for link in johto.Route_35_National_Park_Gate_Links]
+    # )
 
     Route_36_National_Park_Gate_Node = Node(
         [link for link in johto.Route_36_National_Park_Gate_Links]

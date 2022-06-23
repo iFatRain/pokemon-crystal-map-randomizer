@@ -44,6 +44,7 @@ from map_data.Fuchsia_Group.FuchsiaMart_Map import Fuchsia_Mart_Warp_Points
 from map_data.Fuchsia_Group.FuchsiaPokecenter1F_Map import Fuchsia_Pokecenter_1F_Warp_Points
 from map_data.Fuchsia_Group.SafariZoneMainOffice_Map import Safari_Zone_Main_Office_Warp_Points
 from map_data.Fuchsia_Group.SafariZoneWardensHome_Map import Safari_Zone_Wardens_Home_Warp_Points
+from map_data.Gates.VictoryRoadGate_Map import Victory_Road_Gate_Warp_Points
 
 from map_data.Lavender_Group.LavenderMart_Map import Lavender_Mart_Warp_Points
 from map_data.Lavender_Group.LavenderNameRater_Map import Lavender_Name_Rater_Warp_Points
@@ -77,6 +78,14 @@ from map_data.Saffron_Group.SaffronMagnetTrainStation_Map import Saffron_Magnet_
 from map_data.Saffron_Group.SaffronMart_Map import Saffron_Mart_Warp_Points
 from map_data.Saffron_Group.SaffronPokecenter1F_Map import Saffron_Pokecenter_1F_Warp_Points
 from map_data.Saffron_Group.SilphCo1F_Map import Silph_Co_1F_Warp_Points
+from map_data.Silver_Group.Route28SteelWingHouse_Map import Route_28_Steel_Wing_House_Warp_Points
+from map_data.Silver_Group.Route28_Map import Route_28_Warp_Points
+from map_data.Silver_Group.SilverCaveItemRooms_Map import Silver_Cave_Item_Rooms_Warp_Points
+from map_data.Silver_Group.SilverCaveOutside_Map import Silver_Cave_Outside_Warp_Points
+from map_data.Silver_Group.SilverCavePokecenter1F_Map import Silver_Cave_Pokecenter_1F_Warp_Points
+from map_data.Silver_Group.SilverCaveRoom1_Map import Silver_Cave_Room_1_Warp_Points
+from map_data.Silver_Group.SilverCaveRoom2_Map import Silver_Cave_Room_2_Warp_Points
+from map_data.Silver_Group.SilverCaveRoom3_Map import Silver_Cave_Room_3_Warp_Points
 
 from map_data.Vermilion_Group.PokemonFanClub_Map import Pokemon_Fan_Club_Warp_Points
 from map_data.Vermilion_Group.VermilionCity_Map import Vermilion_City_Warp_Points
@@ -2185,6 +2194,101 @@ class Fast_Ship_Cabins_SW_SSW_NW_Links(Enum):
         Fast_Ship_Cabins_SW_SSW_NW_Warp_Points.FAST_SHIP_CABINS_SW_SSW_NW_TO_FAST_SHIP_1F_7_WP,
         Fast_Ship_1F_Warp_Points.FAST_SHIP_1F_TO_FAST_SHIP_CABINS_SW_SSW_NW_4_WP,
         "FastShipCabins_SW_SSW_NW", 15, dual_width= True
+    )
+
+class Route_28_Links(Enum):
+    ROUTE_28_TO_ROUTE_28_STEEL_WING_HOUSE_1_LINK = WarpLink(
+        Route_28_Warp_Points.ROUTE_28_TO_ROUTE_28_STEEL_WING_HOUSE_1_WP,
+        Route_28_Steel_Wing_House_Warp_Points.ROUTE_28_STEEL_WING_HOUSE_TO_ROUTE_28_1_WP,
+        "Route28"
+    )
+    ROUTE_28_TO_VICTORY_ROAD_GATE_7_LINK = WarpLink(
+        Route_28_Warp_Points.ROUTE_28_TO_VICTORY_ROAD_GATE_7_WP,
+        Victory_Road_Gate_Warp_Points.VICTORY_ROAD_GATE_TO_ROUTE_28_2_WP,
+        "Route28", 5
+    )
+
+class Route_28_Steel_Wing_House_Links(Enum):
+    ROUTE_28_STEEL_WING_HOUSE_TO_ROUTE_28_1_LINK = WarpLink(
+        Route_28_Steel_Wing_House_Warp_Points.ROUTE_28_STEEL_WING_HOUSE_TO_ROUTE_28_1_WP,
+        Route_28_Warp_Points.ROUTE_28_TO_ROUTE_28_STEEL_WING_HOUSE_1_WP,
+        "Route28SteelWingHouse", dual_width=True
+    )
+
+class Silver_Cave_Outside_Links(Enum):
+    SILVER_CAVE_OUTSIDE_TO_SILVER_CAVE_POKECENTER_1F_1_LINK = WarpLink(
+        Silver_Cave_Outside_Warp_Points.SILVER_CAVE_OUTSIDE_TO_SILVER_CAVE_POKECENTER_1F_1_WP,
+        Silver_Cave_Pokecenter_1F_Warp_Points.SILVER_CAVE_POKECENTER_1F_TO_SILVER_CAVE_OUTSIDE_1_WP,
+        "SilverCaveOutside"
+    )
+    SILVER_CAVE_OUTSIDE_TO_SILVER_CAVE_ROOM_1_1_LINK = WarpLink(
+        Silver_Cave_Outside_Warp_Points.SILVER_CAVE_OUTSIDE_TO_SILVER_CAVE_ROOM_1_1_WP,
+        Silver_Cave_Room_1_Warp_Points.SILVER_CAVE_ROOM_1_TO_SILVER_CAVE_OUTSIDE_2_WP,
+        "SilverCaveOutside", 5
+    )
+
+class Silver_Cave_Pokecenter_1F_Links(Enum):
+    SILVER_CAVE_POKECENTER_1F_TO_SILVER_CAVE_OUTSIDE_1_LINK = WarpLink(
+        Silver_Cave_Pokecenter_1F_Warp_Points.SILVER_CAVE_POKECENTER_1F_TO_SILVER_CAVE_OUTSIDE_1_WP,
+        Silver_Cave_Outside_Warp_Points.SILVER_CAVE_OUTSIDE_TO_SILVER_CAVE_POKECENTER_1F_1_WP,
+        "SilverCavePokecenter1F", dual_width=True
+    )
+    SILVER_CAVE_POKECENTER_1F_TO_POKECENTER_2F_1_LINK = WarpLink(
+        Silver_Cave_Pokecenter_1F_Warp_Points.SILVER_CAVE_POKECENTER_1F_TO_POKECENTER_2F_1_WP,
+        Pokecenter_2F_Warp_Points.POKECENTER_2F_TO_POKECENTER_1F_WP,
+        "SilverCavePokecenter1F", 10
+    )
+
+class Silver_Cave_Room_1_Links(Enum):
+    SILVER_CAVE_ROOM_1_TO_SILVER_CAVE_OUTSIDE_2_LINK = WarpLink(
+        Silver_Cave_Room_1_Warp_Points.SILVER_CAVE_ROOM_1_TO_SILVER_CAVE_OUTSIDE_2_WP,
+        Silver_Cave_Outside_Warp_Points.SILVER_CAVE_OUTSIDE_TO_SILVER_CAVE_ROOM_1_1_WP,
+        "SilverCaveRoom1"
+    )
+    SILVER_CAVE_ROOM_1_TO_SILVER_CAVE_ROOM_2_1_LINK = WarpLink(
+        Silver_Cave_Room_1_Warp_Points.SILVER_CAVE_ROOM_1_TO_SILVER_CAVE_ROOM_2_1_WP,
+        Silver_Cave_Room_2_Warp_Points.SILVER_CAVE_ROOM_2_TO_SILVER_CAVE_ROOM_1_2_WP,
+        "SilverCaveRoom1", 5
+    )
+
+class Silver_Cave_Room_2_Links(Enum):
+    SILVER_CAVE_ROOM_2_TO_SILVER_CAVE_ROOM_1_2_LINK = WarpLink(
+        Silver_Cave_Room_2_Warp_Points.SILVER_CAVE_ROOM_2_TO_SILVER_CAVE_ROOM_1_2_WP,
+        Silver_Cave_Room_1_Warp_Points.SILVER_CAVE_ROOM_1_TO_SILVER_CAVE_ROOM_2_1_WP,
+        "SilverCaveRoom2"
+    )
+    SILVER_CAVE_ROOM_2_TO_SILVER_CAVE_ROOM_3_1_LINK = WarpLink(
+        Silver_Cave_Room_2_Warp_Points.SILVER_CAVE_ROOM_2_TO_SILVER_CAVE_ROOM_3_1_WP,
+        Silver_Cave_Room_3_Warp_Points.SILVER_CAVE_ROOM_3_TO_SILVER_CAVE_ROOM_2_2_WP,
+        "SilverCaveRoom2", 5
+    )
+    SILVER_CAVE_ROOM_2_TO_SILVER_CAVE_ITEM_ROOMS_1_LINK = WarpLink(
+        Silver_Cave_Room_2_Warp_Points.SILVER_CAVE_ROOM_2_TO_SILVER_CAVE_ITEM_ROOMS_1_WP,
+        Silver_Cave_Item_Rooms_Warp_Points.SILVER_CAVE_ITEM_ROOMS_TO_SILVER_CAVE_ROOM_2_3_WP,
+        "SilverCaveRoom2", 10
+    )
+    SILVER_CAVE_ROOM_2_TO_SILVER_CAVE_ITEM_ROOMS_2_LINK = WarpLink(
+        Silver_Cave_Room_2_Warp_Points.SILVER_CAVE_ROOM_2_TO_SILVER_CAVE_ITEM_ROOMS_2_WP,
+        Silver_Cave_Item_Rooms_Warp_Points.SILVER_CAVE_ITEM_ROOMS_TO_SILVER_CAVE_ROOM_2_4_WP,
+        "SilverCaveRoom2", 15
+    )
+class Silver_Cave_Room_3_Links(Enum):
+    SILVER_CAVE_ROOM_3_TO_SILVER_CAVE_ROOM_2_2_LINK = WarpLink(
+        Silver_Cave_Room_3_Warp_Points.SILVER_CAVE_ROOM_3_TO_SILVER_CAVE_ROOM_2_2_WP,
+        Victory_Road_Gate_Warp_Points.VICTORY_ROAD_GATE_TO_ROUTE_28_2_WP,
+        "SilverCaveRoom3"
+    )
+
+class Silver_Cave_Item_Rooms_Links(Enum):
+    SILVER_CAVE_ITEM_ROOMS_TO_SILVER_CAVE_ROOM_2_3_LINK = WarpLink(
+        Silver_Cave_Item_Rooms_Warp_Points.SILVER_CAVE_ITEM_ROOMS_TO_SILVER_CAVE_ROOM_2_3_WP,
+        Silver_Cave_Room_2_Warp_Points.SILVER_CAVE_ROOM_2_TO_SILVER_CAVE_ITEM_ROOMS_1_WP,
+        "SilverCaveItemRooms"
+    )
+    SILVER_CAVE_ITEM_ROOMS_TO_SILVER_CAVE_ROOM_2_4_LINK = WarpLink(
+        Silver_Cave_Item_Rooms_Warp_Points.SILVER_CAVE_ITEM_ROOMS_TO_SILVER_CAVE_ROOM_2_4_WP,
+        Silver_Cave_Room_2_Warp_Points.SILVER_CAVE_ROOM_2_TO_SILVER_CAVE_ITEM_ROOMS_2_WP,
+        "SilverCaveItemRooms", 5
     )
 
 

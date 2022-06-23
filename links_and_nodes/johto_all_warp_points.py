@@ -202,6 +202,7 @@ from map_data.Routes.Route43_Map import Route_43_Warp_Points
 from map_data.Routes.Route44_Map import Route_44_Warp_Points
 from map_data.Routes.Route45_Map import Route_45_Warp_Points
 from map_data.Routes.Route46_Map import Route_46_Warp_Points
+from map_data.Silver_Group.SilverCaveRoom3_Map import Silver_Cave_Room_3_Warp_Points
 from map_data.Violet_Group.EarlsPokemonAcademy_Map import Earls_Pokemon_Academy_Warp_Points
 from map_data.Violet_Group.VioletCityMart_Map import Violet_Mart_Warp_Points
 from map_data.Violet_Group.VioletCityPokecenter_Map import Violet_Pokecenter_Warp_Points
@@ -930,7 +931,8 @@ class Ilex_Forest_Links(Enum):
      unlocks=[Unlock_Keys.HM_CUT]
     )
 
-
+# This class is unused and unneeded at present. Vanilla Bug Contest,
+# Can only be entered/exited from Rt36/Nat Gate
 class National_Park_Bug_Contest_Links(Enum):
     NATIONAL_PARK_TO_ROUTE_36_NATIONAL_PARK_GATE_LINK = WarpLink(
         National_Park_Bug_Contest_Warp_Points.NATIONAL_PARK_BUG_CONTEST_TO_ROUTE_36_NATIONAL_PARK_GATE_1_WP,
@@ -3385,11 +3387,6 @@ class Violet_Nickname_Speech_House_Links(Enum):
         dual_width=True
     )
 
-
-class Route_28_Warp_Points:
-    pass
-
-
 class Victory_Road_Gate_Links(Enum):
 
     VICTORY_ROAD_GATE_TO_ROUTE_22_1_LINK = WarpLink(
@@ -3407,10 +3404,10 @@ class Victory_Road_Gate_Links(Enum):
         Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_GATE_5_WP,
         "VictoryRoadGate", 20, dual_width=True)
 
-    # VICTORY_ROAD_GATE_TO_ROUTE_28_2_LINK = WarpLink(
-    #     Victory_Road_Gate_Warp_Points.VICTORY_ROAD_GATE_TO_ROUTE_28_2_WP,
-    #     Route_28_Warp_Points.ROUTE_28_TO_VICTORY_ROAD_GATE_7_WP, #todo - might have to import route 28 (will probably keep route 28 vanilla though)
-    #     "VictoryRoadGate", 30, dual_width=True)
+    VICTORY_ROAD_GATE_TO_ROUTE_28_2_LINK = WarpLink(
+        Victory_Road_Gate_Warp_Points.VICTORY_ROAD_GATE_TO_ROUTE_28_2_WP,
+        Silver_Cave_Room_3_Warp_Points.SILVER_CAVE_ROOM_3_TO_SILVER_CAVE_ROOM_2_2_WP, #todo - might have to import route 28 (will probably keep route 28 vanilla though)
+        "VictoryRoadGate", 30, dual_width=True)
 
 class Victory_Road_Links(Enum):
 
@@ -3418,6 +3415,7 @@ class Victory_Road_Links(Enum):
         Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_GATE_5_WP,
         Victory_Road_Gate_Warp_Points.VICTORY_ROAD_GATE_TO_VICTORY_ROAD_1_WP,
         "VictoryRoad")
+    #TODO Include Victory Road
     #Leaving the interior vanilla
     # VICTORY_ROAD_TO_VICTORY_ROAD_3_LINK = WarpLink(
     #     Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_3_WP,

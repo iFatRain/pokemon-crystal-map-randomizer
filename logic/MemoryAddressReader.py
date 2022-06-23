@@ -13,10 +13,10 @@ def buildMemoryLocationsFromSym(detectedROMName):
         print("\nLoading Speedchoice 7.2 Scripts...")
         # file = os.path.join(os.path.dirname(os.path.realpath(__file__)), "crystal-speedchoice7.2.sym")
         file = os.path.join(os.path.dirname(sys.executable),"syms\\crystal-speedchoice7.2.sym")
-    elif detectedROMName == "Pokemon - Crystal Speedchoice Version 7.3":
-        print("\nLoading Speedchoice 7.3 Scripts...")
-        # file = os.path.join(os.path.dirname(os.path.realpath(__file__)), "crystal-speedchoice7.3.sym")
-        file = os.path.join(os.path.dirname(sys.executable),"syms\\crystal-speedchoice7.3.sym")
+    elif detectedROMName == "Pokemon - Crystal Speedchoice Version 7.31":
+        print("\nLoading Speedchoice 7.31 Scripts...")
+        # file = os.path.join(os.path.dirname(os.path.realpath(__file__)), "crystal-speedchoice7.31.sym")
+        file = os.path.join(os.path.dirname(sys.executable),"syms\\crystal-speedchoice7.31.sym")
     # else:
     #     file = "C:/Users/theje/PycharmProjects/pythonProject/logic/crystal-speedchoice7.2.sym"
     #     print("DIDN'T LOAD FULLY SUPPORTED ROM!!")
@@ -182,6 +182,28 @@ def buildMemoryLocationsFromSym(detectedROMName):
                 memoryMapScripts["RuinsOfAlphAerodactylChamber_MapScripts.FloorClosed"] = (int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 3
 
                 print(line.split(" ")[1], "is at", hex((int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 3))
+
+            if "EcruteakGymClosed" in line and "EcruteakGymClosedText" not in line:
+                memInfo = line.split(" ")[0]
+                bank, address = memInfo.split(":")[0], memInfo.split(":")[1]
+                memoryMapScripts["EcruteakGymClosed"] = (int(bank,16) * 0x4000) + int(address, 16) - 0x4000 + 30
+
+                print(line.split(" ")[1], "is at", hex((int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 30))
+
+            if "TrainerGruntM1.Script" in line:
+                memInfo = line.split(" ")[0]
+                bank, address = memInfo.split(":")[0], memInfo.split(":")[1]
+                memoryMapScripts["TrainerGruntM1.Script"] = (int(bank,16) * 0x4000) + int(address, 16) - 0x4000 + 92
+
+                print(line.split(" ")[1], "is at", hex((int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 92))
+
+
+            if "MountMoon_MapScripts.RivalEncounter" in line:
+                memInfo = line.split(" ")[0]
+                bank, address = memInfo.split(":")[0], memInfo.split(":")[1]
+                memoryMapScripts["MountMoon_MapScripts.RivalEncounter"] = (int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 1
+
+                print(line.split(" ")[1], "is at", hex((int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 1))
 
         memLoc.close() #memoryMapWarps,
     return memoryMapScripts
