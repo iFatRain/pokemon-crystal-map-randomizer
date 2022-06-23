@@ -7,7 +7,10 @@ This is a map randomizer for Pokemon Crystal.
 Currently supported ROMs:
 - Pokemon Crystal (Vanilla)
 - Pokemon Crystal Speedchoice ver 7.2
-- Pokemon Crystal Speedchoice ver 7.3
+- Pokemon Crystal Speedchoice ver 7.31
+
+NOTE ON UNSUPPORTED VERSIONS:
+The warp randomization *should* work with any base version that has not already had it's warp's modified. HOWEVER script support can only be assured for these 3 versions. UPR randomization of these 3 versions *should* still work 100% but will show as "Unsupported" within the application. When this happens just select the base version used prior to UPR randomization when the options appear. UPR versioning *should* work exactly the same as the base versions but since it is technically a modified ROM I can't promise that.
 
 <a download="iFat's Crystal Randomizer.zip" href="https://github.com/iFatRain/pokemon-crystal-map-randomizer/blob/main/iFat's%20Crystal%20Randomizer.zip">
     Download the randomizer here
@@ -16,7 +19,7 @@ Currently supported ROMs:
 Using the randomizer is as simple as running the program, and selecting your source ROM within the program. The program should be in the same directory as the syms folder. ie Randomizers/syms and Randomizers/program.exe
 
 To use with UPR or KIR:
-Apply UPR to Vanilla, Speedchoice 7.2/7.3 and then select that ROM as the input rom for the map randomizer. When loaded it will display "Unsupported ROM" and give you a list of options. Select which Base ROM you used to create the UPR randomization.
+Apply UPR to Vanilla, Speedchoice 7.2/7.31 and then select that ROM as the input rom for the map randomizer. When loaded it will display "Unsupported ROM" and give you a list of options. Select which Base ROM you used to create the UPR randomization.
 
 To use KIR: Use the appropriate version of KIR AFTER you have already randomized the warps. KIR support for map rando is still untested and experimental.
 
