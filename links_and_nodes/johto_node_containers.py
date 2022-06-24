@@ -298,12 +298,12 @@ class ImportantDeadEndNodes_Johto(Enum):
         [link for link in johto.Goldenrod_Magnet_Train_Station_Links]
     )
 
-    #TODO Technically Corridor
+    # TODO Technically Corridor
     Radio_Tower_1F_Node = Node(
         [link for link in johto.Radio_Tower_1F_Links]
     )
 
-    # TODO Technically a coridor after trigger
+    # TODO Technically a corridor after trigger
     Mahogany_Mart_Node = Node(
         [link for link in johto.Mahogany_Mart_Links]
     )

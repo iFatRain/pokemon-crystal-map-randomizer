@@ -155,6 +155,14 @@ def buildMemoryLocationsFromSym(detectedROMName):
 
                 print(line.split(" ")[1], "is at", hex((int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 153))
 
+            if "VictoryRoad_Blocks" in line and "Beta" not in line:
+                memInfo = line.split(" ")[0]
+                bank, address = memInfo.split(":")[0], memInfo.split(":")[1]
+                memoryMapScripts["VictoryRoad_Blocks"] = (int(bank, 16) * 0x4000) + int(address,16) - 0x4000 + 144
+
+                print(line.split(" ")[1], "is at", hex((int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 144))
+
+
             if "RuinsOfAlphKabutoChamber_MapScripts.FloorClosed" in line:
                 memInfo = line.split(" ")[0]
                 bank, address = memInfo.split(":")[0], memInfo.split(":")[1]

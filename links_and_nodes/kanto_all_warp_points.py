@@ -445,7 +445,7 @@ class Celadon_City_Links(Enum):
     CELADON_CITY_TO_CELADON_GYM_1_LINK = WarpLink(
         Celadon_City_Warp_Points.CELADON_CITY_TO_CELADON_GYM_1_WP,
         Celadon_Gym_Warp_Points.CELADON_GYM_TO_CELADON_CITY_8_WP,
-        "CeladonCity", 35
+        "CeladonCity", 35, locked_by=[Unlock_Keys.CAN_CUT]
     )
 
     CELADON_CITY_TO_CELADON_CAFE_1_LINK = WarpLink(

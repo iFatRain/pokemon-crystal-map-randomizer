@@ -364,7 +364,7 @@ class Blackthorn_City_Links(Enum):
     BLACKTHORN_CITY_TO_DRAGONS_DEN_1F_LINK = WarpLink(
         Blackthorn_City_Warp_Points.BLACKTHORN_CITY_TO_DRAGONS_DEN_1F_WP,
         Dragons_Den_1F_Warp_Points.DRAGONS_DEN_1F_TO_BLACKTHORN_CITY_8_WP,
-        "BlackthornCity" , 35, locked_by=[Unlock_Keys.GYM_BATTLE_8]
+        "BlackthornCity" , 35, locked_by=[Unlock_Keys.GYM_BATTLE_8, Unlock_Keys.CAN_SURF]
     )
 
 class Blackthorn_Dragon_Speech_House_Links(Enum):
@@ -3415,42 +3415,41 @@ class Victory_Road_Links(Enum):
         Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_GATE_5_WP,
         Victory_Road_Gate_Warp_Points.VICTORY_ROAD_GATE_TO_VICTORY_ROAD_1_WP,
         "VictoryRoad")
-    #TODO Include Victory Road
-    #Leaving the interior vanilla
-    # VICTORY_ROAD_TO_VICTORY_ROAD_3_LINK = WarpLink(
-    #     Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_3_WP,
-    #     Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_2_WP,
-    #     "VictoryRoad", 5)
-    #
-    # VICTORY_ROAD_TO_VICTORY_ROAD_2_LINK = WarpLink(
-    #     Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_2_WP,
-    #     Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_3_WP,
-    #     "VictoryRoad", 10)
-    #
-    # VICTORY_ROAD_TO_VICTORY_ROAD_5_LINK = WarpLink(
-    #     Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_5_WP,
-    #     Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_4_WP,
-    #     "VictoryRoad", 15)
-    #
-    # VICTORY_ROAD_TO_VICTORY_ROAD_4_LINK = WarpLink(
-    #     Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_4_WP,
-    #     Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_5_WP,
-    #     "VictoryRoad", 20)
-    #
-    # VICTORY_ROAD_TO_VICTORY_ROAD_7_LINK = WarpLink(
-    #     Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_7_WP,
-    #     Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_6_WP,
-    #     "VictoryRoad", 25)
-    #
-    # VICTORY_ROAD_TO_VICTORY_ROAD_6_LINK = WarpLink(
-    #     Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_6_WP,
-    #     Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_7_WP,
-    #     "VictoryRoad", 30)
-    #
-    # VICTORY_ROAD_TO_VICTORY_ROAD_9_LINK = WarpLink(
-    #     Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_9_WP,
-    #     Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_8_WP,
-    #     "VictoryRoad", 35)
+    #TODO Include Victory Road Nodes
+    VICTORY_ROAD_TO_VICTORY_ROAD_3_LINK = WarpLink(
+        Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_3_WP,
+        Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_2_WP,
+        "VictoryRoad", 5)
+
+    VICTORY_ROAD_TO_VICTORY_ROAD_2_LINK = WarpLink(
+        Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_2_WP,
+        Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_3_WP,
+        "VictoryRoad", 10)
+
+    VICTORY_ROAD_TO_VICTORY_ROAD_5_LINK = WarpLink(
+        Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_5_WP,
+        Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_4_WP,
+        "VictoryRoad", 15)
+
+    VICTORY_ROAD_TO_VICTORY_ROAD_4_LINK = WarpLink(
+        Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_4_WP,
+        Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_5_WP,
+        "VictoryRoad", 20)
+
+    VICTORY_ROAD_TO_VICTORY_ROAD_7_LINK = WarpLink(
+        Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_7_WP,
+        Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_6_WP,
+        "VictoryRoad", 25)
+
+    VICTORY_ROAD_TO_VICTORY_ROAD_6_LINK = WarpLink(
+        Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_6_WP,
+        Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_7_WP,
+        "VictoryRoad", 30)
+
+    VICTORY_ROAD_TO_VICTORY_ROAD_9_LINK = WarpLink(
+        Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_9_WP,
+        Victory_Road_Warp_Points.VICTORY_ROAD_TO_VICTORY_ROAD_8_WP,
+        "VictoryRoad", 35)
 
     VICTORY_ROAD_TO_ROUTE_23_3_LINK = WarpLink(
         Victory_Road_Warp_Points.VICTORY_ROAD_TO_ROUTE_23_3_WP,

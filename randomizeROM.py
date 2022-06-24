@@ -315,6 +315,12 @@ def randomizeROM(inputROM, settings):
     inputROM.read(8)
     inputROM.write(bytes.fromhex(getHex(90)))
 
+    print("\t Making Victory Road Usable")
+    inputROM.seek(scriptLocations["VictoryRoad_Blocks"])
+    inputROM.write(bytes.fromhex(getHex(2)))
+    inputROM.read(6)
+    inputROM.write(bytes.fromhex(getHex(2)))
+
     if settings[6] == 1:
         print("Fixing the Ruins of Alph FLoors")
         print("Fixing Aero")
