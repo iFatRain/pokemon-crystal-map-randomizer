@@ -14,7 +14,7 @@ import randomizeROM
 def displayMainWindow():
 
     mainWindow.geometry("800x460")
-    mainWindow.title("Pokemon Crystal Warp Randomizer v1.2.0-beta by iFatRain")
+    mainWindow.title("Pokemon Crystal Warp Randomizer v1.2.0 by iFatRain")
     mainWindow.configure(bg= UI_Colors.Lavender_Web.value)
     mainWindow.protocol("WM_DELETE_WINDOW", lambda:[mainWindow.destroy(), quit()])
 
@@ -206,7 +206,7 @@ def displaySeedInfoWindow(seed):
 
     seedInfoWindow = tk.Tk()
     seedInfoWindow.geometry("500x150")
-    seedInfoWindow.title("Pokemon Crystal Warp Randomizer v1.2.0-beta by iFatRain")
+    seedInfoWindow.title("Pokemon Crystal Warp Randomizer v1.2.0 by iFatRain")
     seedInfoWindow.configure(bg=UI_Colors.Lavender_Web.value)
     seedInfoWindow.protocol("WM_DELETE_WINDOW", lambda: [mainWindow.destroy(), seedInfoWindow.destroy(), quit()])
 
@@ -351,7 +351,7 @@ def createOutputLog(nodeList, settings, outputPath):
 
     allLinks.sort(key=sortingFunc)
     with open(outputPath, "w") as spoilerLog:
-        spoilerLog.write("Randomizer version: v1.2.0-beta\n")
+        spoilerLog.write("Randomizer version: v1.2.0\n")
         spoilerLog.write("Seed: " +  seedString.get() + "\n\n")
         spoilerLog.write("Version and settings chosen: ")
         for value in settings:
