@@ -16,7 +16,7 @@ class MajorNodes_Johto(Enum):
     Violet_City_Node = Node(
             [link for link in johto.Violet_City_Links]
         +   [johto.Route_36_Links.ROUTE_36_TO_ROUTE_36_RUINS_OF_ALPH_GATE_LINK]
-        +   [johto.Route_32_Links.ROUTE_32_TO_ROUTE_32_RUINS_OF_ALPH_GATE_LINK])
+        +   [link for link in johto.Route_32_Links])
 
     Azalea_Town_Node = Node([link for link in johto.Azalea_Town_Links] +
             [johto.Route_33_Links.ROUTE_33_TO_UNION_CAVE_1F_LINK])
@@ -46,7 +46,8 @@ class MajorNodes_Johto(Enum):
 
     Mahogany_Town_Node = Node(
         [link for link in johto.Mahogany_Town_Links] +
-        [johto.Route_42_Links.ROUTE_42_TO_MOUNT_MORTAR_1F_OUTSIDE_RIGHT_LINK]
+        [johto.Route_42_Links.ROUTE_42_TO_MOUNT_MORTAR_1F_OUTSIDE_RIGHT_LINK] +
+        [johto.Route_44_Links.ROUTE_44_TO_ICE_PATH_1F_LINK]
     )
 
     Blackthorn_City_Node = Node(list(itertools.chain(
@@ -98,10 +99,6 @@ class ImportantDeadEndNodes_Johto(Enum):
 
     Sprout_Tower_3F_Node = Node(
         [johto.Sprout_Tower_3F_Links.SPROUT_TOWER_3F_TO_SPROUT_TOWER_2F_LINK]
-    )
-
-    Route_44_Node = Node(
-        [johto.Route_44_Links.ROUTE_44_TO_ICE_PATH_1F_LINK]
     )
 
     Lances_Room_Node = Node(
@@ -382,6 +379,10 @@ class ImportantDeadEndNodes_Johto(Enum):
     Route_26_Heal_House_Interior_Node = Node(
         [johto.Route_26_Heal_House_Links.ROUTE_26_HEAL_HOUSE_TO_ROUTE_26_2_LINK]
     )
+
+    Victory_Road_Mid_Room_Item_Node = Node(
+        [johto.Victory_Road_Links.VICTORY_ROAD_TO_VICTORY_ROAD_7_LINK]
+    )
     
 class UnreachableUselessDeadEndNodes_Johto(Enum):
 
@@ -442,7 +443,9 @@ class UnreachableUselessDeadEndNodes_Johto(Enum):
 
 class ReachableUselessDeadEndNodes_Johto(Enum):
 
-
+    Victory_Road_Upper_Room_Useless_Node = Node(
+        [johto.Victory_Road_Links.VICTORY_ROAD_TO_VICTORY_ROAD_6_LINK]
+    )
 
     # route 27 tohjo fall entrance left
     Tohjo_Falls_Left_Node = Node(
@@ -558,8 +561,14 @@ class ReachableUselessDeadEndNodes_Johto(Enum):
 
 class TwoWayCorridorNodes_Johto(Enum):
 
-    Victory_Road_Cave_Node = Node(
-        [link for link in johto.Victory_Road_Links]
+    Victory_Road_Cave_J_Room_Node = Node(
+        [johto.Victory_Road_Links.VICTORY_ROAD_TO_VICTORY_ROAD_GATE_5_LINK,
+         johto.Victory_Road_Links.VICTORY_ROAD_TO_VICTORY_ROAD_3_LINK]
+    )
+
+    Victory_Road_Cave_Mid_Room_Node = Node(
+        [johto.Victory_Road_Links.VICTORY_ROAD_TO_VICTORY_ROAD_2_LINK,
+         johto.Victory_Road_Links.VICTORY_ROAD_TO_VICTORY_ROAD_5_LINK]
     )
 
     # route 27 tohjo fall entrance right to sandstorm house
@@ -794,11 +803,13 @@ class TwoWayCorridorNodes_Johto(Enum):
     Route_35_Node = Node(
         [link for link in johto.Route_35_Links]
     )
+    #
+    # Route_32_Node = Node(
+    #     [johto.Route_32_Links.ROUTE_32_TO_ROUTE_32_POKECENTER_LINK,
+    #      johto.Route_32_Links.ROUTE_32_TO_UNION_CAVE_LINK]
+    # )
 
-    Route_32_Node = Node(
-        [johto.Route_32_Links.ROUTE_32_TO_ROUTE_32_POKECENTER_LINK,
-         johto.Route_32_Links.ROUTE_32_TO_UNION_CAVE_LINK]
-    )
+
 
     Goldenrod_Underground_Corridor_Node = Node(
         [johto.Goldenrod_Underground_Links.GOLDENROD_UNDERGROUND_TO_GOLDENROD_UNDERGROUND_WAREHOUSE_STAIR_LINK,
@@ -929,6 +940,12 @@ class TwoWayCorridorNodes_Johto(Enum):
     )
 
 class HubNodes_Johto(Enum):
+
+    Victory_Road_Upper_Room_Hub_Node = Node(
+        [johto.Victory_Road_Links.VICTORY_ROAD_TO_VICTORY_ROAD_4_LINK,
+         johto.Victory_Road_Links.VICTORY_ROAD_TO_ROUTE_23_3_LINK,
+         johto.Victory_Road_Links.VICTORY_ROAD_TO_VICTORY_ROAD_9_LINK]
+    )
 
     Tin_Tower_4F_Node = Node(
         [link for link in johto.Tin_Tower_4F_Links]

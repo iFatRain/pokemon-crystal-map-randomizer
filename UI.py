@@ -13,7 +13,7 @@ import randomizeROM
 
 def displayMainWindow():
 
-    mainWindow.geometry("800x360")
+    mainWindow.geometry("800x460")
     mainWindow.title("Pokemon Crystal Warp Randomizer v1.2.0-beta by iFatRain")
     mainWindow.configure(bg= UI_Colors.Lavender_Web.value)
     mainWindow.protocol("WM_DELETE_WINDOW", lambda:[mainWindow.destroy(), quit()])
@@ -69,7 +69,7 @@ def displayMainWindow():
              text="Special Thanks to 3nt0n & Adysons",
              font=("Comic Sans MS", 8, ""),
              bg=UI_Colors.Lavender_Web.value,
-             fg="black").place(x=580, y=220)
+             fg="black").place(x=580, y=420)
 
     #
     #   Seed button and text/input
@@ -173,14 +173,32 @@ def displayMainWindow():
     puzzleSetting.place(x=30, y=290)
     Hovertip(puzzleSetting,"Removes the need to solve the Alph Ruin Puzzles\nDropdowns will become opened",500)
 
+    rivalFightSetting = tk.Checkbutton(mainWindow,
+                                  variable=rivalFightSkip,
+                                  text=" Remove Mt.Moon Rival Fight",
+                                  bg=UI_Colors.Lavender_Web.value,
+                                  font=("Comic Sans MS", 12, ""),
+                                  activebackground=UI_Colors.Lavender_Web.value)
+    rivalFightSetting.place(x=30, y=320)
+    Hovertip(rivalFightSetting, "Removes the rival fight from Mt.Moon", 500)
+
+    goldenrodTakeoverSetting = tk.Checkbutton(mainWindow,
+                                  variable=easyTakeover,
+                                  text=" Goldenrod Takeover Rockets Wander",
+                                  bg=UI_Colors.Lavender_Web.value,
+                                  font=("Comic Sans MS", 12, ""),
+                                  activebackground=UI_Colors.Lavender_Web.value)
+    goldenrodTakeoverSetting.place(x=30, y=350)
+    Hovertip(goldenrodTakeoverSetting, "Rocket Grunts no longer block entrances during Goldenrod Takeover\nInstead they are placed throughout and will roam the city", 500)
+
     levelSetting = tk.Checkbutton(mainWindow,
-                   variable=starterLevel,
-                   text=" Lvl 98 Starters for Testing",
-                   bg=UI_Colors.Lavender_Web.value,
-                   font=("Comic Sans MS", 12, ""),
-                   activebackground=UI_Colors.Lavender_Web.value)
-    levelSetting.place(x=30, y=320)
-    Hovertip(levelSetting,"Makes the 3 starters lv98\nThis setting is intended for TESTING ONLY",500)
+                                  variable=starterLevel,
+                                  text=" Lvl 98 Starters for Testing",
+                                  bg=UI_Colors.Lavender_Web.value,
+                                  font=("Comic Sans MS", 12, ""),
+                                  activebackground=UI_Colors.Lavender_Web.value)
+    levelSetting.place(x=30, y=380)
+    Hovertip(levelSetting, "Makes the 3 starters lv98\nThis setting is intended for TESTING ONLY", 500)
 
     mainWindow.mainloop()
 
@@ -252,6 +270,9 @@ def determineROM(rom_md5):
         case "acb7fc79e249271129082f73bb4bd2ba":
             loadedROMName.set("Pokemon - Crystal Speedchoice Version 7.31")
             supportedROM.set(True)
+        # case "958e6f4e49b6fc693099377dcff6b12f":
+        #     loadedROMName.set("Pokemon - Crystal Speedchoice Version BETA")
+        #     supportedROM.set(True)
         case _:
             loadedROMName.set("Unsupported ROM!")
             supportedROM.set(False)
@@ -287,7 +308,7 @@ def randomize(originalROM):
 
     # Creates a setting Array that we can pass into the other functions to do different things based on settings
     settings = [loadedROMName.get(), legendaryAvailability.get(), regionSplit.get(), litDarkCaves.get(), mapChanges.get(),
-                aidePokeball.get(), ruinPuzzles.get(), starterLevel.get()]
+                aidePokeball.get(), ruinPuzzles.get(), rivalFightSkip.get(), easyTakeover.get(), starterLevel.get()]
 
     # Remove the main window while we try the rando
     mainWindow.withdraw()
@@ -336,9 +357,14 @@ def createOutputLog(nodeList, settings, outputPath):
         for value in settings:
             spoilerLog.write('['+str(value)+']')
         spoilerLog.write("\n\n")
+        currentMap = str(link.value.OWN).split(".")[1].split("_TO_")[0]
         for link in allLinks:
             if link.value.OUTPUT_TO_LOG == False:
-                spoilerLog.write("\n" + str(link.value.OWN).split(".")[1].ljust(75, ".") + str(link.value.LINK).split(".")[1])
+                # print(str(link.value.OWN).split(".")[1].split("_TO_")[0])
+                if str(link.value.OWN).split(".")[1].split("_TO_")[0] != currentMap:
+                    currentMap = str(link.value.OWN).split(".")[1].split("_TO_")[0]
+                    spoilerLog.write("\n\n\nWarps for " + str(currentMap + "\n"))
+                spoilerLog.write("\n\t\t" + str(link.value.OWN).split(".")[1].ljust(75, ".") + str(link.value.LINK).split(".")[1])
                 link.value.OUTPUT_TO_LOG = True
         spoilerLog.close()
 
@@ -368,6 +394,9 @@ litDarkCaves = tk.IntVar()
 mapChanges = tk.IntVar()
 aidePokeball = tk.IntVar()
 ruinPuzzles = tk.IntVar()
+rivalFightSkip = tk.IntVar()
+easyTakeover = tk.IntVar()
+
 starterLevel = tk.IntVar()
 
 # ROM Variables
