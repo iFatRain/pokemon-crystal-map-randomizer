@@ -36,13 +36,17 @@ To use KIR: Use the appropriate version of KIR AFTER you have already randomized
 
 - Combined Regions - Randomizes both Johto and Kanto warps (if turned off, Kanto warps are only accessable after either getting 8 badges and using the victory gate or beating Lance and using the ship)
 
-- Lit Dark Caves - Dark places are lit up  (makes HM Flash unnecessary)
+- Lit Dark Caves - Dark places are lit up  (makes HM Flash unnecessary) **DOES NOT WORK IN VANILLA AS OF 1.2.0!**
 
 - Softlock Prevention Map Changes - Makes 2 small map changes (Mt Mortar, Vermilion) and a major change to Blackthorn to help prevent potential softlocks, detailed below.
 
 - Aide Gives Pokeballs at Start - Get 5 pokeballs at the start instead of the potion (turn off if you also use a full Item Randomizer) 
 
 - Presolved Ruins Puzzles - Ruins of Alphs puzzles don't need to be solved to open the hole
+
+- Remove Mt.Moon Rival Fight - Removes the rival fight that is activated when you enter any Mt.Moon enterance. Treats it as if you've already beaten him there.
+
+- Goldenrod Takeover Rockets Wander - Removes rockets from blocking off areas during Goldenrod Takeover, they will instead wander the city for immersion!
 
 - (Temporary Setting) Lv 98 Testing Starters - Make the starting Pokemon lvl 98 to aid in testing seeds while in development.
 
@@ -52,6 +56,8 @@ To use KIR: Use the appropriate version of KIR AFTER you have already randomized
 **Map changes:**
 
 * Ruins of Alph bottom - ledges removed
+* Victory Road Dropdown Area - ledges removed
+
 * Mt mortar - ledge removed (softlock prevention)
 * Vermilion - barrier next to Snorlax removed to prevent being trapped (softlock prevention)
 * Blackthorn City - Walkable path to Dragons Den entrance to prevent getting stuck after walking off old man (softlock prevention)
@@ -62,6 +68,8 @@ To use KIR: Use the appropriate version of KIR AFTER you have already randomized
 * Basement open without basement key!
 * The director always gives you the key card when talking to him 
 * Right guard in victory road gate removed
+* You can walk out of Mahogany to Ice Cave, you won't be stopped.
+* You can walk to Union Cave from Violet, you won't be reminded about the Egg.
 
 
 ### Vanilla/Unused Warps
@@ -75,14 +83,13 @@ Some warps are kept vanilla or are not fully randomized. Most of them could have
 - Goldenrod Radio Tower Interior - The rocket section would be much more complicated and might even be impossible in rare cases, so we decided to just keep those places vanilla.
 - Goldenrod Basement Puzzle Room connection to Director Room - see above
 - Mahogany Team Rocket HQ Interior - see above
-- Victory Road Interior - There is an item that is unaccessible if we randomize it, so the cave itself is vanilla. 
 
 - Important rooms on the SS Aqua to finish the ship quest - Guarantees that there is a way to travel between Johto and Kanto (mainly needed if 'Combined Regions' is not set)
 - Players Room on SS Aqua - Makes travel using the ship possible
 
 - Magnet Train connection - prevents forced one-ways; Pass is also very late game so for example the Goldenrod train would never be useful
 - Olivine port and Vermilion port - makes it easier to travel between Johto and Kanto 
-- All of Mt. Silver - There isn't much to randomize, also enables the usual 16 Badge enforcement for game completion
+- Red's room is behind the 16 badge Victory Road Gate Guard
 
 
 **Unused**:
@@ -130,8 +137,17 @@ A note on order of certain events:
 
 ### Known Bugs
 
-Currently no known bugs :) Please post them or DM iFatRain#7210 on discord if you find them.
 
+*CORRECTION TO THE 1.2.0 CHANGELOG*
+Skip Mt.Moon Rival Fight WORKS with Vanilla! Lit Dark Caves does NOT work with Vanilla, a fix will come in a future patch.
+
+For other bugs, Please post them or DM iFatRain#7210 on discord if you find them.
+
+
+ADDITIONAL CHANGES TO 1.2.0 LEFT OUT OF CHANGE LOG
+- Added better naming of the output log to mirror the ROM name, added in seed, settings, and version info for better recreation of bugs.
+- Added tooltips for the settings in UI
+- Added a Randomization Failed notification in the UI - If you see this, just rerun the program.
 
 ---
 Map randomizer created by IFatRain.
