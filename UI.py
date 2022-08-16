@@ -1,3 +1,4 @@
+import collections
 import hashlib
 import os
 import random
@@ -11,10 +12,12 @@ from idlelib.tooltip import Hovertip
 
 import randomizeROM
 
+version = "v2.0.0-alpha"
+
 def displayMainWindow():
 
     mainWindow.geometry("800x460")
-    mainWindow.title("Pokemon Crystal Warp Randomizer v1.2.0 by iFatRain")
+    mainWindow.title("Pokemon Crystal Warp Randomizer " + version + " by iFatRain")
     mainWindow.configure(bg= UI_Colors.Lavender_Web.value)
     mainWindow.protocol("WM_DELETE_WINDOW", lambda:[mainWindow.destroy(), quit()])
 
@@ -200,13 +203,23 @@ def displayMainWindow():
     levelSetting.place(x=30, y=380)
     Hovertip(levelSetting, "Makes the 3 starters lv98\nThis setting is intended for TESTING ONLY", 500)
 
+    cherrygroveMartSetting = tk.Checkbutton(mainWindow,
+                                  variable=newBarkAdded,
+                                  text=" Vanilla Cherrgrove Mart",
+                                  bg=UI_Colors.Lavender_Web.value,
+                                  font=("Comic Sans MS", 12, ""),
+                                  activebackground=UI_Colors.Lavender_Web.value)
+    cherrygroveMartSetting.place(x=30, y=410)
+    Hovertip(cherrygroveMartSetting, "Removes Cherrygrove Mart from the randomized pool\nUseful for races", 500)
+
+
     mainWindow.mainloop()
 
 def displaySeedInfoWindow(seed):
 
     seedInfoWindow = tk.Tk()
     seedInfoWindow.geometry("500x150")
-    seedInfoWindow.title("Pokemon Crystal Warp Randomizer v1.2.0 by iFatRain")
+    seedInfoWindow.title("Pokemon Crystal Warp Randomizer " + version + " by iFatRain")
     seedInfoWindow.configure(bg=UI_Colors.Lavender_Web.value)
     seedInfoWindow.protocol("WM_DELETE_WINDOW", lambda: [mainWindow.destroy(), seedInfoWindow.destroy(), quit()])
 
@@ -285,7 +298,8 @@ def loadAndDetermineROM():
     determineROM(str(hashlib.md5(open(originalROM, 'rb').read()).hexdigest()))
 
 def sortingFunc(input):
-    return str(input).split(".")[1]
+    print("Sorting by", input[0])
+    return input[0]
 
 def assignSeed():
     if seedString.get() == "":
@@ -308,7 +322,7 @@ def randomize(originalROM):
 
     # Creates a setting Array that we can pass into the other functions to do different things based on settings
     settings = [loadedROMName.get(), legendaryAvailability.get(), regionSplit.get(), litDarkCaves.get(), mapChanges.get(),
-                aidePokeball.get(), ruinPuzzles.get(), rivalFightSkip.get(), easyTakeover.get(), starterLevel.get()]
+                aidePokeball.get(), ruinPuzzles.get(), rivalFightSkip.get(), easyTakeover.get(), newBarkAdded.get(), starterLevel.get()]
 
     # Remove the main window while we try the rando
     mainWindow.withdraw()
@@ -325,7 +339,6 @@ def randomize(originalROM):
         with open(file=newROM, mode='r+b') as ROM:
             randomizedNodeList = randomizeROM.randomizeROM(ROM, settings)
     except:
-        # TODO Add a Fatal Error Screen
         print("Randomizer failed")
         traceback.print_exc()
         displaySeedInfoWindow("Randomizer Failed!!")
@@ -344,26 +357,20 @@ def randomize(originalROM):
     displaySeedInfoWindow(seedString.get())
 
 def createOutputLog(nodeList, settings, outputPath):
-    allLinks = []
-    for node in nodeList:
-        for link in node.value.LINKS:
-            allLinks.append(link)
 
-    allLinks.sort(key=sortingFunc)
+    nodeList.sort(key=sortingFunc)
+
     with open(outputPath, "w") as spoilerLog:
-        spoilerLog.write("Randomizer version: v1.2.0\n")
+        spoilerLog.write("Randomizer version:" + version + "\n")
         spoilerLog.write("Seed: " +  seedString.get() + "\n\n")
         spoilerLog.write("Version and settings chosen: ")
         for value in settings:
             spoilerLog.write('['+str(value)+']')
         spoilerLog.write("\n\n")
-        currentMap = str(link.value.OWN).split(".")[1].split("_TO_")[0]
-        for link in allLinks:
-            if link.value.OUTPUT_TO_LOG == False:
-                # print(str(link.value.OWN).split(".")[1].split("_TO_")[0])
-                if str(link.value.OWN).split(".")[1].split("_TO_")[0] != currentMap:
-                    currentMap = str(link.value.OWN).split(".")[1].split("_TO_")[0]
-                    spoilerLog.write("\n\n\nWarps for " + str(currentMap + "\n"))
+
+        for node in nodeList:
+            spoilerLog.write("\n\n\nWarps for " + str(node[0] + "\n"))
+            for link in node[1].LINKS:
                 spoilerLog.write("\n\t\t" + str(link.value.OWN).split(".")[1].ljust(75, ".") + str(link.value.LINK).split(".")[1])
                 link.value.OUTPUT_TO_LOG = True
         spoilerLog.close()
@@ -396,6 +403,8 @@ aidePokeball = tk.IntVar()
 ruinPuzzles = tk.IntVar()
 rivalFightSkip = tk.IntVar()
 easyTakeover = tk.IntVar()
+
+newBarkAdded = tk.IntVar()
 
 starterLevel = tk.IntVar()
 

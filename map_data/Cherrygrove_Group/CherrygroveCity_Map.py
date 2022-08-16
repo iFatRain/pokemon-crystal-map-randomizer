@@ -18,30 +18,30 @@ class CHERRYGROVE_CITY(IntEnum):
 
 class Cherrygrove_City_Warp_Points(Enum):
 
-    CHERRYGROVE_CITY_TO_CHERRYGROVE_MART_WP = WarpInstruction(
+    Cherrygrove_City_Mart_Entrance_WP = WarpInstruction(
         getHex(CHERRYGROVE_CITY.CHERRYGROVE_MART),
         getHex(mapGroup),
         getHex(specificMap))
 
-    CHERRYGROVE_CITY_TO_CHERRYGROVE_POKECENTER_1F_WP = WarpInstruction(
+    Cherrygrove_City_Pokecenter_Entrance_WP = WarpInstruction(
         getHex(CHERRYGROVE_CITY.CHERRYGROVE_POKECENTER_1F),
         getHex(mapGroup),
         getHex(specificMap),
         )
 
-    CHERRYGROVE_CITY_TO_CHERRYGROVE_GYM_SPEECH_HOUSE_WP = WarpInstruction(
+    Cherrygrove_City_West_House_Entrance_WP = WarpInstruction(
         getHex(CHERRYGROVE_CITY.CHERRYGROVE_GYM_SPEECH_HOUSE),
         getHex(mapGroup),
         getHex(specificMap),
         )
 
-    CHERRYGROVE_CITY_TO_GUIDE_GENTS_HOUSE_WP = WarpInstruction(
+    Cherrygrove_City_Guide_Gents_House_Entrance_WP = WarpInstruction(
         getHex(CHERRYGROVE_CITY.GUIDE_GENTS_HOUSE),
         getHex(mapGroup),
         getHex(specificMap),
         )
 
-    CHERRYGROVE_CITY_TO_CHERRYGROVE_EVOLUTION_SPEECH_HOUSE_WP = WarpInstruction(
+    Cherrygrove_City_East_House_Entrance_WP = WarpInstruction(
         getHex(CHERRYGROVE_CITY.CHERRYGROVE_EVOLUTION_SPEECH_HOUSE),
         getHex(mapGroup),
         getHex(specificMap),

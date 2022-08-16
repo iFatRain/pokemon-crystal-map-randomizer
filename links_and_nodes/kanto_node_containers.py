@@ -423,8 +423,6 @@ class UnreachableUselessDeadEndNodes_Kanto(Enum):
     # )
 
 
-
-
 class TwoWayCorridorNodes_Kanto(Enum):
 
     Silver_Cave_Room_1_Corridor_Node = Node(
@@ -655,10 +653,10 @@ class TwoWayCorridorNodes_Kanto(Enum):
         [kmd.Copycats_House_1F_Links.COPYCATS_HOUSE_1F_TO_SAFFRON_CITY_8_LINK, 
          kmd.Copycats_House_1F_Links.COPYCATS_HOUSE_1F_TO_COPYCATS_HOUSE_2F_1_LINK]
     )
-    Victory_Road_Gate_Kanto_Node = Node(
-        [johto.Victory_Road_Gate_Links.VICTORY_ROAD_GATE_TO_VICTORY_ROAD_1_LINK,
-         johto.Victory_Road_Gate_Links.VICTORY_ROAD_GATE_TO_ROUTE_22_1_LINK]
-    )
+    # Victory_Road_Gate_Kanto_Node = Node(
+    #     [johto.Victory_Road_Gate_Links.VICTORY_ROAD_GATE_TO_VICTORY_ROAD_1_LINK,
+    #      johto.Victory_Road_Gate_Links.VICTORY_ROAD_GATE_TO_ROUTE_22_1_LINK]
+    # )
 #Fast Ship F1 Corridor Outside Captains Room
     # Fast_Ship_1F_Corridor_Node = Node(
     #     [kmd.Fast_Ship_1F_Links.FAST_SHIP_1F_TO_FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN_5_LINK,

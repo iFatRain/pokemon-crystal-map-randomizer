@@ -4,52 +4,105 @@ import links_and_nodes.johto_all_warp_points
 import links_and_nodes.kanto_all_warp_points
 import links_and_nodes.johto_node_containers as Johto
 import links_and_nodes.kanto_node_containers as Kanto
+from links_and_nodes.johto_node_dictionary_containers import buildJohtoMajorNodes, buildJohtoHubs, buildJohtoImportantDeadEnds, buildJohtoReachableDeadEnds, buildJohtoUselessDeadEnds, buildJohtoCorridors
+from links_and_nodes.kanto_node_dictionary_containers import buildKantoMajorNodes, buildKantoHubNodes, buildKantoImportantDeadEnds, buildKantoUselessDeadEnds, buildKantoCorridors
 from logic import AutomaticWarpLocator
 from logic.MemoryAddressReader import buildMemoryLocationsFromSym
-from logic.NewRandomizerLogic import randomizationStep1, randomizationStep2, randomizationStep3, randomizationStep4, \
+from logic.DictionaryRandomizerLogic import randomizationStep1, randomizationStep2, randomizationStep3, randomizationStep4, \
     checkJohtoCompletability, randomizationStep5, checkKantoCompletability, checkFullCompletability
 from class_definitions import WarpInstruction, getHex
 
-def randomizeWarps(combinedRegions):
+# def randomizeWarps(combinedRegions, addNewBark):
+#     print("Randomizing..")
+#     if combinedRegions:
+#         combinedFullyCompletable = False
+#         while combinedFullyCompletable is False:
+#             if addNewBark:
+#                 print("ADDING NEWBARK")
+#                 randomizedNodes = randomizationStep1(list(Johto.MajorNodes_Johto) + list(Kanto.MajorNodes_Kanto))
+#             else:
+#                 randomizedNodes = randomizationStep1(list(Johto.MajorNodes_Johto) + list(Kanto.MajorNodes_Kanto))
+#             randomizedNodes = randomizationStep2(randomizedNodes, list(Johto.HubNodes_Johto) + list(Kanto.HubNodes_Kanto))
+#             randomizedNodes = randomizationStep3(randomizedNodes,
+#                                                  list(Johto.ImportantDeadEndNodes_Johto) + list(Kanto.ImportantDeadEndNodes_Kanto),
+#                                                  list(Johto.ReachableUselessDeadEndNodes_Johto) + list(Kanto.ReachableUselessDeadEndNodes_Kanto),
+#                                                  list(Johto.UnreachableUselessDeadEndNodes_Johto) + list(Kanto.UnreachableUselessDeadEndNodes_Kanto))
+#             randomizedNodes = randomizationStep4(randomizedNodes)
+#             randomizedNodes = randomizationStep5(randomizedNodes, list(Johto.TwoWayCorridorNodes_Johto) + list(Kanto.TwoWayCorridorNodes_Kanto))
+#             combinedFullyCompletable = checkFullCompletability(randomizedNodes)
+#
+#
+#
+#
+#
+#     else:
+#         johtoFullyCompletable = False
+#         while johtoFullyCompletable is False:
+#             randomizedJohto = randomizationStep1(list(Johto.MajorNodes_Johto))
+#             randomizedJohto = randomizationStep2(randomizedJohto, list(Johto.HubNodes_Johto))
+#             randomizedJohto = randomizationStep3(randomizedJohto, list(Johto.ImportantDeadEndNodes_Johto),
+#                                                  list(Johto.ReachableUselessDeadEndNodes_Johto),
+#                                                  list(Johto.UnreachableUselessDeadEndNodes_Johto))
+#             randomizedJohto = randomizationStep4(randomizedJohto)
+#             randomizedJohto = randomizationStep5(randomizedJohto, list(Johto.TwoWayCorridorNodes_Johto))
+#             johtoFullyCompletable = checkJohtoCompletability(randomizedJohto)
+#
+#         kantoFullyCompletable = False
+#         while kantoFullyCompletable is False:
+#             randomizedKanto = randomizationStep1(list(Kanto.MajorNodes_Kanto))
+#             randomizedKanto = randomizationStep2(randomizedKanto, list(Kanto.HubNodes_Kanto))
+#             randomizedKanto = randomizationStep3(randomizedKanto, list(Kanto.ImportantDeadEndNodes_Kanto),
+#                                                  list(Kanto.ReachableUselessDeadEndNodes_Kanto),
+#                                                  list(Kanto.UnreachableUselessDeadEndNodes_Kanto))
+#             randomizedKanto = randomizationStep4(randomizedKanto)
+#             randomizedKanto = randomizationStep5(randomizedKanto, list(Kanto.TwoWayCorridorNodes_Kanto))
+#
+#
+#             kantoFullyCompletable = checkKantoCompletability(randomizedKanto)
+#
+#         randomizedNodes = randomizedJohto + randomizedKanto
+#
+#
+#
+#     return randomizedNodes
+
+
+def randomizeWarpsNew(combinedRegions,unrandomMart):
     print("Randomizing..")
     if combinedRegions:
         combinedFullyCompletable = False
         while combinedFullyCompletable is False:
-            randomizedNodes = randomizationStep1(list(Johto.MajorNodes_Johto) + list(Kanto.MajorNodes_Kanto))
-            randomizedNodes = randomizationStep2(randomizedNodes, list(Johto.HubNodes_Johto) + list(Kanto.HubNodes_Kanto))
+            randomizedNodes = randomizationStep1(dict(**buildJohtoMajorNodes(unrandomMart),**buildKantoMajorNodes()))
+            randomizedNodes = randomizationStep2(randomizedNodes, dict(**buildJohtoHubs(),**buildKantoHubNodes()))
             randomizedNodes = randomizationStep3(randomizedNodes,
-                                                 list(Johto.ImportantDeadEndNodes_Johto) + list(Kanto.ImportantDeadEndNodes_Kanto),
-                                                 list(Johto.ReachableUselessDeadEndNodes_Johto) + list(Kanto.ReachableUselessDeadEndNodes_Kanto),
-                                                 list(Johto.UnreachableUselessDeadEndNodes_Johto) + list(Kanto.UnreachableUselessDeadEndNodes_Kanto))
+                                                 dict(**buildJohtoImportantDeadEnds(unrandomMart),**buildKantoImportantDeadEnds()),
+                                                 dict(**buildJohtoReachableDeadEnds()),
+                                                 dict(**buildJohtoUselessDeadEnds(),**buildKantoUselessDeadEnds()))
             randomizedNodes = randomizationStep4(randomizedNodes)
-            randomizedNodes = randomizationStep5(randomizedNodes, list(Johto.TwoWayCorridorNodes_Johto) + list(Kanto.TwoWayCorridorNodes_Kanto))
+            randomizedNodes = randomizationStep5(randomizedNodes, dict(**buildJohtoCorridors(),**buildKantoCorridors()))
             combinedFullyCompletable = checkFullCompletability(randomizedNodes)
-
-
-
-
 
     else:
         johtoFullyCompletable = False
         while johtoFullyCompletable is False:
-            randomizedJohto = randomizationStep1(list(Johto.MajorNodes_Johto))
-            randomizedJohto = randomizationStep2(randomizedJohto, list(Johto.HubNodes_Johto))
-            randomizedJohto = randomizationStep3(randomizedJohto, list(Johto.ImportantDeadEndNodes_Johto),
-                                                 list(Johto.ReachableUselessDeadEndNodes_Johto),
-                                                 list(Johto.UnreachableUselessDeadEndNodes_Johto))
+            randomizedJohto = randomizationStep1(buildJohtoMajorNodes(unrandomMart))
+            randomizedJohto = randomizationStep2(randomizedJohto, buildJohtoHubs())
+            randomizedJohto = randomizationStep3(randomizedJohto, buildJohtoImportantDeadEnds(unrandomMart),
+                                                 buildJohtoReachableDeadEnds(),
+                                                 buildJohtoUselessDeadEnds())
             randomizedJohto = randomizationStep4(randomizedJohto)
-            randomizedJohto = randomizationStep5(randomizedJohto, list(Johto.TwoWayCorridorNodes_Johto))
+            randomizedJohto = randomizationStep5(randomizedJohto, buildJohtoCorridors())
             johtoFullyCompletable = checkJohtoCompletability(randomizedJohto)
 
         kantoFullyCompletable = False
         while kantoFullyCompletable is False:
-            randomizedKanto = randomizationStep1(list(Kanto.MajorNodes_Kanto))
-            randomizedKanto = randomizationStep2(randomizedKanto, list(Kanto.HubNodes_Kanto))
-            randomizedKanto = randomizationStep3(randomizedKanto, list(Kanto.ImportantDeadEndNodes_Kanto),
-                                                 list(Kanto.ReachableUselessDeadEndNodes_Kanto),
-                                                 list(Kanto.UnreachableUselessDeadEndNodes_Kanto))
+            randomizedKanto = randomizationStep1(buildKantoMajorNodes())
+            randomizedKanto = randomizationStep2(randomizedKanto, buildKantoHubNodes())
+            randomizedKanto = randomizationStep3(randomizedKanto, buildKantoImportantDeadEnds(),
+                                                 dict(),
+                                                 buildKantoUselessDeadEnds())
             randomizedKanto = randomizationStep4(randomizedKanto)
-            randomizedKanto = randomizationStep5(randomizedKanto, list(Kanto.TwoWayCorridorNodes_Kanto))
+            randomizedKanto = randomizationStep5(randomizedKanto, buildKantoCorridors())
 
 
             kantoFullyCompletable = checkKantoCompletability(randomizedKanto)
@@ -133,7 +186,7 @@ def randomizeROM(inputROM, settings):
     startTime = time.time()
 
     print("Randomizing Warps..")
-    randomizedNodes = randomizeWarps(settings[2])
+    randomizedNodes = randomizeWarpsNew(settings[2],settings[9])
 
 
     print("Writing New Warps to ROM...")
@@ -146,8 +199,13 @@ def randomizeROM(inputROM, settings):
         warpLocations[key] = foundLocation + 5
     scriptLocations = buildMemoryLocationsFromSym(settings[0])
 
+
+    for key in warpLocations.keys():
+        print(key, " is at ",hex(warpLocations.get(key)))
+
+
     for node in randomizedNodes:
-        for link in node.value.LINKS:
+        for link in node[1].LINKS:
             memLocation = warpLocations[link.value.MEMORY_ORIGIN] + link.value.OFFSET
             inputROM.seek(memLocation)
             inputROM.write(WarpInstruction.getInstruction(link.value.LINK.value))
@@ -171,7 +229,7 @@ def randomizeROM(inputROM, settings):
     writeWarpRandoNonOptionalChanges(inputROM, warpLocations, scriptLocations, settings)
 
     if settings[1]:
-        enableLegendaries(inputROM, warpLocations, scriptLocations)
+        enableLegendaries(inputROM, warpLocations, scriptLocations,settings)
 
     if settings[3]:
         disableDarkMode(inputROM, warpLocations)
@@ -203,9 +261,9 @@ def randomizeROM(inputROM, settings):
 
     #For testing custom scripts/warps
     # inputROM.seek(warpLocations["CherrygroveCity"])
-    # inputROM.write(bytes.fromhex(getHex(1)))
-    # inputROM.write(bytes.fromhex(getHex(11)))
-    # inputROM.write(bytes.fromhex(getHex(2)))
+    # inputROM.write(bytes.fromhex(getHex(6)))
+    # inputROM.write(bytes.fromhex(getHex(8)))
+    # inputROM.write(bytes.fromhex(getHex(7)))
 
     inputROM.close()
 
@@ -225,22 +283,21 @@ def removeRivalInMoon(inputROM, warpLocations, scriptLocations):
     inputROM.write(bytes.fromhex(getHex(7)))
 
 def writeWarpRandoNonOptionalChanges(inputROM, warpLocations, scriptLocations, settings):
-    # print("My money don't jiggle jiggle")
-    # print(hex(warpLocations["AzaleaTown"]))
-    # inputROM.seek(warpLocations["AzaleaTown"] + 165)
-    # inputROM.write(bytes.fromhex(getHex(2)))
-    # inputROM.write(bytes.fromhex(getHex(17)))
-    # inputROM.read(11)
-    # inputROM.write(bytes.fromhex(getHex(2)))
-    # inputROM.write(bytes.fromhex(getHex(17)))
-    # inputROM.read(11)
-    # inputROM.write(bytes.fromhex(getHex(2)))
-    # inputROM.write(bytes.fromhex(getHex(17)))
-    # inputROM.read(11)
-    # inputROM.write(bytes.fromhex(getHex(2)))
-    # inputROM.write(bytes.fromhex(getHex(17)))
 
+    inputROM.seek(scriptLocations["No_Biking"])
+    inputROM.write(bytes.fromhex(getHex(8)))
+    inputROM.seek(scriptLocations["BikeFunction"])
+    inputROM.write(bytes.fromhex(getHex(0)))
 
+    #Makes the Goldenrod B1F basement door always open so you aren't blocked
+    inputROM.seek(scriptLocations["GoldenrodB1FDoorUnlock"])
+    inputROM.write(bytes.fromhex(getHex(9)))
+    inputROM.write(bytes.fromhex(getHex(7)))
+
+    #Makes slowpoke guard walk left/right so you aren't blocked
+    inputROM.seek(warpLocations["AzaleaTown"] + 113)
+    inputROM.write(bytes.fromhex(getHex(2)))
+    inputROM.write(bytes.fromhex(getHex(1)))
 
     # print("Mahogany: ", hex(warpLocations["MahoganyTown"]))
     inputROM.seek(warpLocations["MahoganyTown"] + 25)
@@ -389,14 +446,27 @@ def changeGoldenrodRockets(inputROM, warpLocations, scriptLocations):
     inputROM.write(bytes.fromhex(getHex(51)))
 
 
-def enableLegendaries(inputROM, warpLocations, scriptLocations):
+def enableLegendaries(inputROM, warpLocations, scriptLocations, settings):
     print("\tEnabling Always Catchable Setting")
+
     inputROM.seek(warpLocations["WhirlIslandLugiaChamber"] + 7)
     inputROM.write(bytes.fromhex(getHex(15)))
     inputROM.seek(scriptLocations["LugiaToggle"])
     inputROM.write(bytes.fromhex(getHex(18)))
+    #Change ho-oh, different in each version
     inputROM.seek(scriptLocations["HoOhToggle"])
-    inputROM.write(bytes.fromhex(getHex(88)))
+    inputROM.write(bytes.fromhex(getHex(62)))
+    if "Pokemon - Crystal Speedchoice 7.2" in settings[0]:
+        inputROM.seek(scriptLocations["HoOhToggle"])
+        inputROM.write(bytes.fromhex(getHex(88)))
+        inputROM.seek(scriptLocations["HoOhToggleE4"])
+        inputROM.write(bytes.fromhex(getHex(88)))
+    elif "Pokemon - Crystal Speeedchoice 7.3" in settings[0]:
+        inputROM.seek(scriptLocations["HoOhToggle"])
+        inputROM.write(bytes.fromhex(getHex(92)))
+        inputROM.seek(scriptLocations["HoOhToggleE4"])
+        inputROM.write(bytes.fromhex(getHex(92)))
+
 
 def presolveAlphRuins(inputROM, warpLocations, scriptLocations):
     print("Fixing the Ruins of Alph FLoors")
@@ -490,7 +560,7 @@ def catchEmAllBoi(inputROM, warpLocations, scriptLocations):
 def disableDarkMode(inputROM, warpLocations):
     print("Removing Flash Requirement in Dark Caves")
     # print(hex(warpLocations["DungeonsMapGroup"] +587)) #write 12, read 8, 9 times then read 35, then write, read 8, write, then read 72, write, read 8 , write
-    inputROM.seek(warpLocations["DungeonsMapGroup"] +587)
+    inputROM.seek(warpLocations["DungeonsMapGroup"] + 586)
     for i in range(9):
         inputROM.write(bytes.fromhex(getHex(18)))
         inputROM.read(8)

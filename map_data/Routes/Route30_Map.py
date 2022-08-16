@@ -15,12 +15,12 @@ class ROUTE_30(IntEnum):
 
 class Route_30_Warp_Points(Enum):
 
-    ROUTE_30_TO_ROUTE_30_BERRY_HOUSE_WP = WarpInstruction(
+    ROUTE_30_BERRY_HOUSE_ENTRANCE_WP = WarpInstruction(
         getHex(ROUTE_30.ROUTE_30_BERRY_HOUSE),
         getHex(mapGroup),
         getHex(specificMap))
 
-    ROUTE_30_TO_MR_POKEMONS_HOUSE_WP = WarpInstruction(
+    MR_POKEMONS_HOUSE_ENTRANCE_WP = WarpInstruction(
         getHex(ROUTE_30.MR_POKEMONS_HOUSE),
         getHex(mapGroup),
         getHex(specificMap))

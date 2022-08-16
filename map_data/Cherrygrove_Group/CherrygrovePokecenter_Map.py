@@ -16,13 +16,13 @@ class CHERRYGROVE_POKECENTER(IntEnum):
 
 class Cherrygrove_Pokecenter_Warp_Points(Enum):
 
-    CHERRYGROVE_POKECENTER_TO_CHERRYGROVE_CITY = WarpInstruction(
+    Cherrygrove_Pokecenter_Exit_WP = WarpInstruction(
         getHex(CHERRYGROVE_POKECENTER.CHERRYGROVE_CITY),
         getHex(mapGroup),
         getHex(specificMap),
         )
 
-    CHERRYGROVE_POKECENTER_TO_CHERRYGROVE_POKECENTER_2F_WP = WarpInstruction(
+    Cherrygrove_Pokecenter_Stairs_WP = WarpInstruction(
         getHex(CHERRYGROVE_POKECENTER.POKECENTER_2F),
         getHex(mapGroup),
         getHex(specificMap))

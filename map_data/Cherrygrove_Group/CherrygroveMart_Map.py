@@ -15,7 +15,7 @@ class CHERRYGROVE_MART(IntEnum):
 
 class Cherrygrove_Mart_Warp_Points(Enum):
 
-    CHERRYGROVE_MART_TO_CHERRYGROVE_CITY_WP = WarpInstruction(
+    Cherrygrove_City_Mart_Exit_WP = WarpInstruction(
         getHex(CHERRYGROVE_MART.CHERRYGROVE_CITY),
         getHex(mapGroup),
         getHex(specificMap),

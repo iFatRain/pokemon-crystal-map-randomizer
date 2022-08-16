@@ -7,16 +7,16 @@ def buildMemoryLocationsFromSym(detectedROMName):
     print(sys.executable)
     if detectedROMName == "Pokemon - Crystal Version 1.1":
         print("\nLoading Vanilla Scripts...")
-        # file = os.path.join(os.path.dirname(os.path.realpath(__file__)),"vanilla.sym")
-        file = os.path.join(os.path.dirname(sys.executable),"syms\\vanilla.sym")
+        file = os.path.join(os.path.dirname(os.path.realpath(__file__)),"vanilla.sym")
+        # file = os.path.join(os.path.dirname(sys.executable),"syms\\vanilla.sym")
     elif detectedROMName == "Pokemon - Crystal Speedchoice Version 7.2":
         print("\nLoading Speedchoice 7.2 Scripts...")
-        # file = os.path.join(os.path.dirname(os.path.realpath(__file__)), "crystal-speedchoice7.2.sym")
-        file = os.path.join(os.path.dirname(sys.executable),"syms\\crystal-speedchoice7.2.sym")
+        file = os.path.join(os.path.dirname(os.path.realpath(__file__)), "crystal-speedchoice7.2.sym")
+        # file = os.path.join(os.path.dirname(sys.executable),"syms\\crystal-speedchoice7.2.sym")
     elif detectedROMName == "Pokemon - Crystal Speedchoice Version 7.31":
         print("\nLoading Speedchoice 7.31 Scripts...")
-        # file = os.path.join(os.path.dirname(os.path.realpath(__file__)), "crystal-speedchoice7.31.sym")
-        file = os.path.join(os.path.dirname(sys.executable),"syms\\crystal-speedchoice7.31.sym")
+        file = os.path.join(os.path.dirname(os.path.realpath(__file__)), "crystal-speedchoice7.31.sym")
+        # file = os.path.join(os.path.dirname(sys.executable),"syms\\crystal-speedchoice7.31.sym")
 
     with open(file, "r") as memLoc:
 
@@ -36,6 +36,12 @@ def buildMemoryLocationsFromSym(detectedROMName):
                     bank, address = memInfo.split(":")[0], memInfo.split(":")[1]
                     memoryMapScripts["DirectorKeycard"] = (int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 11
                     print("DIRECTORS BADGE CHECK IS AT ",hex((int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 11))
+
+            if "GoldenrodDeptStoreB1F_MapScripts.ClearBoxes" in line:
+                memInfo = line.split(" ")[0]
+                bank, address = memInfo.split(":")[0], memInfo.split(":")[1]
+                memoryMapScripts["GoldenrodB1FDoorUnlock"] = (int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 +1
+                print("GoldenrodB1F DoorUnlock is at ", hex((int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 1))
 
             if "MapScripts.Lugia" in line:
                 memInfo = line.split(" ")[0]
@@ -107,12 +113,11 @@ def buildMemoryLocationsFromSym(detectedROMName):
                 if "MapScripts.NoE4Check" in line:
                     memInfo = line.split(" ")[0]
                     bank, address = memInfo.split(":")[0], memInfo.split(":")[1]
-                    memoryMapScripts["HoOhToggle"] = (int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 12
-            else:
-                if "MapScripts.HoOh" in line:
-                    memInfo = line.split(" ")[0]
-                    bank, address = memInfo.split(":")[0], memInfo.split(":")[1]
-                    memoryMapScripts["HoOhToggle"] = (int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 12
+                    memoryMapScripts["HoOhToggleE4"] = (int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 12
+            if "MapScripts.HoOh" in line:
+                memInfo = line.split(" ")[0]
+                bank, address = memInfo.split(":")[0], memInfo.split(":")[1]
+                memoryMapScripts["HoOhToggle"] = (int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 12
 
             if "InitializeEventsScript" in line and "InitializeEventsScriptStdScript" not in line and "SkipDirector" not in line:
                 memInfo = line.split(" ")[0]
@@ -209,6 +214,21 @@ def buildMemoryLocationsFromSym(detectedROMName):
                 memoryMapScripts["MountMoon_MapScripts"] = (int(bank, 16) * 0x4000) + int(address, 16) - 0x4000
 
                 print(line.split(" ")[1], "is at", hex((int(bank, 16) * 0x4000) + int(address, 16) - 0x4000))
+
+            #Bike Anywhere Scripts
+            if ".no_biking" in line: #Write a 8, original is 1
+                memInfo = line.split(" ")[0]
+                bank, address = memInfo.split(":")[0], memInfo.split(":")[1]
+                memoryMapScripts["No_Biking"] = (int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 4
+
+                print(line.split(" ")[1], "is at", hex((int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 4))
+
+            if "BikeFunction.CheckEnvironment" in line: #Write 0 original is 9
+                memInfo = line.split(" ")[0]
+                bank, address = memInfo.split(":")[0], memInfo.split(":")[1]
+                memoryMapScripts["BikeFunction"] = (int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 17
+
+                print(line.split(" ")[1], "is at", hex((int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 17))
 
         memLoc.close() #memoryMapWarps,
     return memoryMapScripts

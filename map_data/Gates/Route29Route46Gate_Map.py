@@ -16,12 +16,12 @@ class ROUTE_29_ROUTE_46_GATE(IntEnum):
 
 class Route_29_Route_46_Gate_Warp_Points(Enum):
 
-    ROUTE_29_ROUTE_46_GATE_TO_ROUTE_46_WP = WarpInstruction(
+    ROUTE_29_AND_46_GATE_EXIT_TO_ROUTE_46_WP = WarpInstruction(
         getHex(ROUTE_29_ROUTE_46_GATE.ROUTE_46),
         getHex(mapGroup),
         getHex(specificMap))
 
-    ROUTE_29_ROUTE_46_GATE_TO_ROUTE_29_WP = WarpInstruction(
+    ROUTE_29_AND_46_GATE_EXIT_TO_ROUTE_29_WP = WarpInstruction(
         getHex(ROUTE_29_ROUTE_46_GATE.ROUTE_29),
         getHex(mapGroup),
         getHex(specificMap))

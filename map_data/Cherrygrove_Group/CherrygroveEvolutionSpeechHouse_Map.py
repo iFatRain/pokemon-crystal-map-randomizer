@@ -15,7 +15,7 @@ class CHERRYGROVE_EVOLUITION_SPEECH_HOUSE(IntEnum):
 
 class Cherrygrove_Evolution_Speech_House_Warp_Points(Enum):
 
-    CHERRYGROVE_EVOLUTION_SPEECH_HOUSE_TO_CHERRYGROVE_CITY_WP = WarpInstruction(
+    Cherrygrove_City_East_House_Exit_WP = WarpInstruction(
         getHex(CHERRYGROVE_EVOLUITION_SPEECH_HOUSE.CHERRYGROVE_CITY),
         getHex(mapGroup),
         getHex(specificMap),

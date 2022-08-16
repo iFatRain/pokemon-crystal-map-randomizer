@@ -15,7 +15,7 @@ class GUIDE_GENTS_HOUSE(IntEnum):
 
 class Guide_Gents_House_Warp_Points(Enum):
 
-    GUIDE_GENTS_HOUSE_TO_CHERRYGROVE_CITY_WP = WarpInstruction(
+    Cherrygrove_City_Guide_Gents_House_Exit_WP = WarpInstruction(
         getHex(GUIDE_GENTS_HOUSE.CHERRYGROVE_CITY),
         getHex(mapGroup),
         getHex(specificMap),
