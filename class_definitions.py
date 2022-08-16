@@ -33,6 +33,7 @@ class Node:
         self.TOTAL_LINKS = len(links)
         self.USED_LINKS = 0
         self.HAS_LOCKED = False
+        self.ORIGINAL_TOTAL = len(links)
 
     def incrementUsedLinks(self, incrementAmount=1):
         self.USED_LINKS += incrementAmount

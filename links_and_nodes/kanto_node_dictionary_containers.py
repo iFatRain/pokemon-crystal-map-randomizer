@@ -6,8 +6,6 @@ from links_and_nodes import kanto_all_warp_points_dict, johto_all_warp_points_di
 kmd = kanto_all_warp_points_dict.buildKantoWarpLinks()
 johto = johto_all_warp_points_dict.buildJohtoWarpLinks()
 
-print(kmd)
-
 def buildKantoMajorNodes():
     MajorNodes_Kanto = dict()
 
@@ -30,16 +28,14 @@ def buildKantoMajorNodes():
     #Vermillion (note: snorlax key) excluded gym + route 6
     MajorNodes_Kanto['Vermilion City Node'] = Node(
             [kmd["Vermilion_City_Links"].get(key) for key in kmd["Vermilion_City_Links"] if key not in
-            [kmd["Vermilion_City_Links"].get("VERMILION_CITY_TO_VERMILION_GYM_1_LINK")] +
-             [kmd["Vermilion_City_Links"].get("VERMILION_CITY_TO_VERMILION_PORT_PASSAGE_1_LINK")]]
+            ["VERMILION_CITY_TO_VERMILION_GYM_1_LINK","VERMILION_CITY_TO_VERMILION_PORT_PASSAGE_1_LINK"]]
         +   [kmd["Route_6_Links"].get("ROUTE_6_TO_ROUTE_6_UNDERGROUND_PATH_ENTRANCE_1_LINK")]
         +   [kmd["Route_6_Links"].get("ROUTE_6_TO_ROUTE_6_SAFFRON_GATE_3_LINK")])
 
 
     #Celadon + route 8 and 16 gates
     MajorNodes_Kanto['Celadon City Node'] = Node(
-            [kmd["Celadon_City_Links"].get(key) for key in kmd["Celadon_City_Links"] if key not in
-            [kmd["Celadon_City_Links"].get("CELADON_CITY_TO_CELADON_GYM_1_LINK")]]
+            [kmd["Celadon_City_Links"].get(key) for key in kmd["Celadon_City_Links"] if key !="CELADON_CITY_TO_CELADON_GYM_1_LINK"]
         +   [kmd["Route_7_Links"].get("ROUTE_7_TO_ROUTE_7_SAFFRON_GATE_1_LINK")]
         +   [kmd["Route_16_Links"].get("ROUTE_16_TO_ROUTE_16_GATE_3_LINK")])
 
@@ -57,8 +53,7 @@ def buildKantoMajorNodes():
 
     #Fuchsia + gates
     MajorNodes_Kanto['Fuchsia City Node'] = Node(
-            [kmd["Fuchsia_City_Links"].get(key) for key in kmd["Fuchsia_City_Links"] if key not in
-            [kmd["Fuchsia_City_Links"].get("FUCHSIA_CITY_TO_FUCHSIA_MART_2_LINK")]]
+            [kmd["Fuchsia_City_Links"].get(key) for key in kmd["Fuchsia_City_Links"] if key != "FUCHSIA_CITY_TO_FUCHSIA_MART_2_LINK"]
         +   [kmd["Route_18_Links"].get("ROUTE_18_TO_ROUTE_17_ROUTE_18_GATE_3_LINK")])
 
     return MajorNodes_Kanto
@@ -701,12 +696,12 @@ def buildKantoHubNodes():
 #Fast Ship Hub
     HubNodes_Kanto['Fast Ship 1F Hub Node'] = Node(
         [kmd["Fast_Ship_1F_Links"].get(key) for key in kmd["Fast_Ship_1F_Links"] if key not in
-         [kmd["Fast_Ship_1F_Links"].get("FAST_SHIP_1F_TO_FAST_SHIP_CABINS_SW_SSW_NW_1_LINK"),
-          kmd["Fast_Ship_1F_Links"].get("FAST_SHIP_1F_TO_FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN_5_LINK"),
-          kmd["Fast_Ship_1F_Links"].get("FAST_SHIP_1F_TO_FAST_SHIP_B1F_1_LINK"),
-          kmd["Fast_Ship_1F_Links"].get("FAST_SHIP_1F_TO_FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN_3_LINK"),
-          kmd["Fast_Ship_1F_Links"].get("FAST_SHIP_1F_TO_FAST_SHIP_B1F_2_LINK"),
-          kmd["Fast_Ship_1F_Links"].get("FAST_SHIP_1F_TO_FAST_SHIP_CABINS_NNW_NNE_NE_3_LINK")]]
+         ["FAST_SHIP_1F_TO_FAST_SHIP_CABINS_SW_SSW_NW_1_LINK",
+          "FAST_SHIP_1F_TO_FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN_5_LINK",
+          "FAST_SHIP_1F_TO_FAST_SHIP_B1F_1_LINK",
+          "FAST_SHIP_1F_TO_FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN_3_LINK",
+          "FAST_SHIP_1F_TO_FAST_SHIP_B1F_2_LINK",
+          "FAST_SHIP_1F_TO_FAST_SHIP_CABINS_NNW_NNE_NE_3_LINK"]]
     )
 
 #Celadon Dept Store Hub

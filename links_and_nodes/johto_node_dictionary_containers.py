@@ -11,8 +11,8 @@ johto = johto_all_warp_points_dict.buildJohtoWarpLinks()
 def buildJohtoMajorNodes(excludeMart):
     MajorNodes_Johto = dict()
     MajorNodes_Johto['New Bark and Cherrygrove Node'] = Node(
-        [johto["Cherrygrove_City_Links"].get(key) for key in johto["Cherrygrove_City_Links"] if key is not johto["Cherrygrove_City_Links"].get("CHERRYGROVE_CITY_TO_CHERRYGROVE_MART_LINK")] +
-        [johto["Cherrygrove_City_Links"].get(key) for key in johto["Cherrygrove_City_Links"] if key is johto["Cherrygrove_City_Links"].get("CHERRYGROVE_CITY_TO_CHERRYGROVE_MART_LINK") and not excludeMart] +
+        [johto["Cherrygrove_City_Links"].get(key) for key in johto["Cherrygrove_City_Links"] if key != "CHERRYGROVE_CITY_TO_CHERRYGROVE_MART_LINK"] +
+        [johto["Cherrygrove_City_Links"].get(key) for key in johto["Cherrygrove_City_Links"] if key == "CHERRYGROVE_CITY_TO_CHERRYGROVE_MART_LINK" and not excludeMart] +
         [johto["Route_29_Links"].get(key) for key in johto["Route_29_Links"]] +
         [johto["Route_30_Links"].get(key) for key in johto["Route_30_Links"]]
 
@@ -35,15 +35,14 @@ def buildJohtoMajorNodes(excludeMart):
 
     MajorNodes_Johto['Ecruteak_City_Node'] = Node(
         [johto["Ecruteak_City_Links"].get(key) for key in johto["Ecruteak_City_Links"] if key not in
-            [johto["Ecruteak_City_Links"].get("ECRUTEAK_CITY_TO_TIN_TOWER_1F_LINK"),
-             johto["Ecruteak_City_Links"].get("ECRUTEAK_CITY_TO_WISE_TRIOS_ROOM_LINK")]
+            ["ECRUTEAK_CITY_TO_TIN_TOWER_1F_LINK","ECRUTEAK_CITY_TO_WISE_TRIOS_ROOM_LINK"]
          ]
     )
 
     MajorNodes_Johto['Olivine City, Route 38 and Route 39 Node'] = Node(
         [johto["Route_38_Links"].get(key) for key in johto["Route_38_Links"]] +
         [johto["Route_39_Links"].get(key) for key in johto["Route_39_Links"]] +
-        [johto["Olivine_City_Links"].get(key) for key in johto["Olivine_City_Links"] if key is not johto["Olivine_City_Links"].get("OLIVINE_CITY_TO_OLIVINE_PORT_PASSAGE_LINK")] +
+        [johto["Olivine_City_Links"].get(key) for key in johto["Olivine_City_Links"] if key != "OLIVINE_CITY_TO_OLIVINE_PORT_PASSAGE_LINK"] +
         [johto["Route_40_Links"].get("ROUTE_40_TO_ROUTE_40_BATTLE_TOWER_GATE_1_LINK")]
     )
 
@@ -64,7 +63,7 @@ def buildJohtoMajorNodes(excludeMart):
 
     return MajorNodes_Johto
 
-def buildJohtoImportantDeadEnds():
+def buildJohtoImportantDeadEnds(excludeMart):
     ImportantDeadEndNodes_Johto = dict()
 
     ImportantDeadEndNodes_Johto['Lighthouse 3F Middle Room Node'] = Node(
@@ -736,9 +735,8 @@ def buildJohtoCorridors():
         [johto["Route_31_Links"].get(key) for key in johto["Route_31_Links"]])
 
     TwoWayCorridorNodes_Johto['Ecruteak Wise Trio Room To Tin Tower Node'] = Node(
-        [johto[""].get(key) for key in johto["Ecruteak_City_Links"] if key in
-         [johto["Ecruteak_City_Links"].get("ECRUTEAK_CITY_TO_TIN_TOWER_1F_LINK"),
-          johto["Ecruteak_City_Links"].get("ECRUTEAK_CITY_TO_WISE_TRIOS_ROOM_LINK")]
+        [johto["Ecruteak_City_Links"].get(key) for key in johto["Ecruteak_City_Links"] if key in
+         ["ECRUTEAK_CITY_TO_TIN_TOWER_1F_LINK","ECRUTEAK_CITY_TO_WISE_TRIOS_ROOM_LINK"]
          ]
     )
 
@@ -1011,8 +1009,7 @@ def buildJohtoHubs():
     )
 
     HubNodes_Johto['Lighthouse 3F Node'] = Node(
-        [johto["Olivine_Lighthouse_3F_Links"].get(key) for key in johto["Olivine_Lighthouse_3F_Links"] if key not in
-         [johto["Olivine_Lighthouse_3F_Links"].get("OLIVINE_LIGHTHOUSE_3F_TO_4F_MIDDLE_STAIR_LINK")]]
+        [johto["Olivine_Lighthouse_3F_Links"].get(key) for key in johto["Olivine_Lighthouse_3F_Links"] if key != "OLIVINE_LIGHTHOUSE_3F_TO_4F_MIDDLE_STAIR_LINK"]
     )
 
     HubNodes_Johto['Lighthouse 4F Node'] = Node(
@@ -1035,7 +1032,7 @@ def buildJohtoHubs():
 
     HubNodes_Johto['Union Cave 1F (Hub) Node'] = Node(
         [johto["Union_Cave_1F_Links"].get(key) for key in johto["Union_Cave_1F_Links"]
-         if key is not johto["Union_Cave_1F_Links"].get("UNION_CAVE_1F_TO_UNION_CAVE_B1FB_LINK")]
+         if key != "UNION_CAVE_1F_TO_UNION_CAVE_B1FB_LINK"]
     )
     HubNodes_Johto['Indigo Plateau Pokecenter 1F Node'] = Node(
         [johto["Indigo_Plateau_Pokecenter_1F_Links"].get("INDIGO_PLATEAU_POKECENTER_1F_TO_ROUTE_23_1_LINK"),
@@ -1051,8 +1048,7 @@ def buildJohtoHubs():
 
     HubNodes_Johto['Ice Path B1F (Holes, Hub) Node'] = Node(
         [johto["Ice_Path_B1F_Links"].get(key) for key in johto["Ice_Path_B1F_Links"] if key not in
-         [johto["Ice_Path_B1F_Links"].get("ICE_PATH_B1F_TO_ICE_PATH_B2F_BLACKTHORN_SIDE_1_LINK"),
-          johto["Ice_Path_B1F_Links"].get("ICE_PATH_B1F_TO_ICE_PATH_1F_4_LINK")]
+         ["ICE_PATH_B1F_TO_ICE_PATH_B2F_BLACKTHORN_SIDE_1_LINK","ICE_PATH_B1F_TO_ICE_PATH_1F_4_LINK"]
          ]
     )
 

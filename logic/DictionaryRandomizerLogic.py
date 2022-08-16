@@ -20,16 +20,34 @@ def getRandomNode(nodeList, excludedNode = None):
             continue
         else:
             checkedNodes.append(sampleNode)
-            if sampleNode == excludedNode:
-                continue
+            if excludedNode is not None:
+                if sampleNode == excludedNode:
+                    continue
                 # Specific logic for making sure Radio Tower and Underground aren't placed in Goldenrod
-            # if excludedNode == links_and_nodes.johto_node_containers.ImportantDeadEndNodes_Johto.Radio_Tower_1F_Node or  excludedNode == links_and_nodes.johto_node_containers.TwoWayCorridorNodes_Johto.Goldenrod_Underground_Warehouse_Node:
-            #     if sampleNode == links_and_nodes.johto_node_containers.MajorNodes_Johto.Goldenrod_City_Node:
-            #         continue
+                if excludedNode[0] == "Radio_Tower_1F_Node" or excludedNode == "Goldenrod_Underground_Warehouse_Node":
+                    if sampleNode[0] == "Goldenrod_City_Node":
+                        continue
             # If we find a node that has an open link, we return that node
             if sampleNode[1].USED_LINKS != sampleNode[1].TOTAL_LINKS:
+                print("SAMPLE: ", sampleNode[0], "USED:TOTAL = ", sampleNode[1].USED_LINKS,":",sampleNode[1].TOTAL_LINKS)
+                updateUsedCount(sampleNode)
                 return sampleNode
     return None
+
+def updateUsedCount(nodeToUpdate):
+    usedCount = 0
+    for link in nodeToUpdate[1].LINKS:
+        if link.MODIFIED is True:
+            usedCount += 1
+    if usedCount != nodeToUpdate[1].USED_LINKS:
+        for link in nodeToUpdate[1].LINKS:
+            if link.MODIFIED is True:
+                print(link.OWN, " shows as modified")
+        raise Exception("Inaccurate Used Links for ", nodeToUpdate[0],". expected: ", nodeToUpdate[1].USED_LINKS, " found: ", usedCount)
+    else:
+        print("Used count checks out for ", nodeToUpdate[0],". expected: ", nodeToUpdate[1].USED_LINKS, " found: ", usedCount)
+    if nodeToUpdate[1].TOTAL_LINKS != nodeToUpdate[1].ORIGINAL_TOTAL:
+        raise Exception("Somehow more links were added to ", nodeToUpdate[0])
 
 
 def getRandomLinkOnlyIncluding(inputNode, inclusionList):
@@ -38,11 +56,11 @@ def getRandomLinkOnlyIncluding(inputNode, inclusionList):
         sampleLink = random.choice(inputNode[1].LINKS)
         if sampleLink not in inclusionList:
             continue
-        if sampleLink.value.MODIFIED == False:
-            if sampleLink.value.OWN.value.USED == True:
+        if sampleLink.MODIFIED == False:
+            if sampleLink.OWN.USED == True:
                 print("THIS LINKS VALUE HAS ALREADY BEEN USED")
-            sampleLink.value.MODIFIED = True
-            sampleLink.value.OWN.value.USED = True
+            sampleLink.MODIFIED = True
+            sampleLink.OWN.USED = True
             return sampleLink
 
 
@@ -56,9 +74,10 @@ def getRandomLink(inputNode):
             continue
         else:
             checkedLinks.append(sampleLink)
-            if sampleLink.value.MODIFIED == False:
+            if sampleLink.MODIFIED == False:
                 markLinkAsUsed(sampleLink)
                 return sampleLink
+    raise Exception("No unmodified link in", inputNode[0])
     return None
 
 def getRandomOverworldLink(inputNode):
@@ -112,8 +131,8 @@ def linkNodes(nodeA, nodeB):
 
     connectTwoLinks(randomLinkA, randomLinkB)
 
-    Node.incrementUsedLinks(nodeA.value)
-    Node.incrementUsedLinks(nodeB.value)
+    Node.incrementUsedLinks(nodeA)
+    Node.incrementUsedLinks(nodeB)
 
     return nodeA, nodeB
 
@@ -122,44 +141,46 @@ def linkOverworldNodes(nodeA, nodeB):
     print("\t",nodeA[0],"<===>", nodeB[0])
 
     # Specific logic to make sure that Goldenrod's overworld connections don't become locked behind rocket
-    # if nodeA is MajorNodes_Johto.Goldenrod_City_Node:
-    #     randomLinkA = getRandomLinkOnlyIncluding(nodeA,
-    #         [links_and_nodes.johto_all_warp_points.Goldenrod_City_Links.GOLDENROD_CITY_TO_ROUTE_35_GOLDENROD_GATE_LINK,
-    #          links_and_nodes.johto_all_warp_points.Goldenrod_City_Links.GOLDENROD_CITY_TO_GOLDENROD_GYM_LINK,
-    #          links_and_nodes.johto_all_warp_points.Goldenrod_City_Links.GOLDENROD_CITY_TO_GOLDENROD_POKECENTER_1F_LINK,
-    #          links_and_nodes.johto_all_warp_points.Goldenrod_City_Links.GOLDENROD_CITY_TO_GOLDENROD_DEPT_STORE_1F_LINK,
-    #          links_and_nodes.johto_all_warp_points.Goldenrod_City_Links.GOLDENROD_CITY_TO_RADIO_TOWER_1F_LINK,
-    #          links_and_nodes.johto_all_warp_points.Goldenrod_City_Links.GOLDENROD_CITY_TO_GOLDENROD_MAGNET_TRAIN_STATION_LINK])
-    #     randomLinkB = getRandomOverworldLink(nodeB)
-    # elif nodeB is MajorNodes_Johto.Goldenrod_City_Node:
-    #     randomLinkA = getRandomOverworldLink(nodeA)
-    #     randomLinkB = getRandomLinkOnlyIncluding(nodeB,
-    #         [links_and_nodes.johto_all_warp_points.Goldenrod_City_Links.GOLDENROD_CITY_TO_ROUTE_35_GOLDENROD_GATE_LINK,
-    #          links_and_nodes.johto_all_warp_points.Goldenrod_City_Links.GOLDENROD_CITY_TO_GOLDENROD_GYM_LINK,
-    #          links_and_nodes.johto_all_warp_points.Goldenrod_City_Links.GOLDENROD_CITY_TO_GOLDENROD_POKECENTER_1F_LINK,
-    #          links_and_nodes.johto_all_warp_points.Goldenrod_City_Links.GOLDENROD_CITY_TO_GOLDENROD_DEPT_STORE_1F_LINK,
-    #          links_and_nodes.johto_all_warp_points.Goldenrod_City_Links.GOLDENROD_CITY_TO_RADIO_TOWER_1F_LINK,
-    #          links_and_nodes.johto_all_warp_points.Goldenrod_City_Links.GOLDENROD_CITY_TO_GOLDENROD_MAGNET_TRAIN_STATION_LINK])
+    # if nodeA[0] == "Goldenrod_City_Node":
+    #     print("GOLDENROD CITY NODE A")
+    #     # randomLinkA = getRandomLinkOnlyIncluding(nodeA,
+    #     #     [links_and_nodes.johto_all_warp_points.Goldenrod_City_Links.GOLDENROD_CITY_TO_ROUTE_35_GOLDENROD_GATE_LINK,
+    #     #      links_and_nodes.johto_all_warp_points.Goldenrod_City_Links.GOLDENROD_CITY_TO_GOLDENROD_GYM_LINK,
+    #     #      links_and_nodes.johto_all_warp_points.Goldenrod_City_Links.GOLDENROD_CITY_TO_GOLDENROD_POKECENTER_1F_LINK,
+    #     #      links_and_nodes.johto_all_warp_points.Goldenrod_City_Links.GOLDENROD_CITY_TO_GOLDENROD_DEPT_STORE_1F_LINK,
+    #     #      links_and_nodes.johto_all_warp_points.Goldenrod_City_Links.GOLDENROD_CITY_TO_RADIO_TOWER_1F_LINK,
+    #     #      links_and_nodes.johto_all_warp_points.Goldenrod_City_Links.GOLDENROD_CITY_TO_GOLDENROD_MAGNET_TRAIN_STATION_LINK])
+    #     # randomLinkB = getRandomOverworldLink(nodeB)
+    # elif nodeB[0] == "Goldenrod_City_Node":
+    #     print("GOLDENROD CITY NODE B")
+        # randomLinkA = getRandomOverworldLink(nodeA)
+        # randomLinkB = getRandomLinkOnlyIncluding(nodeB,
+        #     [links_and_nodes.johto_all_warp_points.Goldenrod_City_Links.GOLDENROD_CITY_TO_ROUTE_35_GOLDENROD_GATE_LINK,
+        #      links_and_nodes.johto_all_warp_points.Goldenrod_City_Links.GOLDENROD_CITY_TO_GOLDENROD_GYM_LINK,
+        #      links_and_nodes.johto_all_warp_points.Goldenrod_City_Links.GOLDENROD_CITY_TO_GOLDENROD_POKECENTER_1F_LINK,
+        #      links_and_nodes.johto_all_warp_points.Goldenrod_City_Links.GOLDENROD_CITY_TO_GOLDENROD_DEPT_STORE_1F_LINK,
+        #      links_and_nodes.johto_all_warp_points.Goldenrod_City_Links.GOLDENROD_CITY_TO_RADIO_TOWER_1F_LINK,
+        #      links_and_nodes.johto_all_warp_points.Goldenrod_City_Links.GOLDENROD_CITY_TO_GOLDENROD_MAGNET_TRAIN_STATION_LINK])
 
     # else:
-    #     randomLinkA = getRandomOverworldLink(nodeA[1])
-    #     randomLinkB = getRandomOverworldLink(nodeB[1])
-    #
-    # connectTwoLinks(randomLinkA,randomLinkB)
-    #
-    # Node.incrementUsedLinks(nodeA[1])
-    # Node.incrementUsedLinks(nodeB[1])
+    randomLinkA = getRandomOverworldLink(nodeA[1])
+    randomLinkB = getRandomOverworldLink(nodeB[1])
+
+    connectTwoLinks(randomLinkA,randomLinkB)
+
+    Node.incrementUsedLinks(nodeA[1])
+    Node.incrementUsedLinks(nodeB[1])
 
     return nodeA, nodeB
 
 def markLinkAsUsed(inputLink):
     inputLink.MODIFIED = True
-    inputLink.OWN.value.USED = True
+    inputLink.OWN.USED = True
 
 def insertCorridorBetweenLinks(corridorToInsert, linkA, linkB):
-    if corridorToInsert is links_and_nodes.johto_all_warp_points.Ruins_Of_Alph_Kabuto_Chamber_Links:
-        entrancePoint = corridorToInsert.value.LINKS[0]
-        exitPoint = corridorToInsert.value.LINKS[1]
+    if corridorToInsert == "Ruins_Of_Alph_Kabuto_Chamber_Links":
+        entrancePoint = corridorToInsert.LINKS[0]
+        exitPoint = corridorToInsert.LINKS[1]
         connectTwoLinks(linkA, entrancePoint)
         connectTwoLinks(linkB, exitPoint)
 
@@ -173,16 +194,16 @@ def insertCorridorBetweenLinks(corridorToInsert, linkA, linkB):
 
 
 
-    print("\t[",linkA,"<===>",entrancePoint, "]   [", exitPoint,"<===>", linkB,"]")
+    print("\t[",outputify(linkA.OWN),"<===>",outputify(entrancePoint.OWN), "]   [", outputify(exitPoint.OWN),"<===>", outputify(linkB.OWN),"]")
 
 
 def findConnectedLink(randomizedNodes, linkA):
     for destinationNode in randomizedNodes:
         for reverseLink in destinationNode[1].LINKS:
 
-            if reverseLink.value.OWN == linkA.value.LINK and reverseLink.value.MODIFIED:
+            if reverseLink.OWN == linkA.LINK and reverseLink.MODIFIED:
                 linkB = reverseLink
-                print("Returning", reverseLink)
+                print("Returning", outputify(reverseLink.OWN))
                 return linkB
     print("I DIDNT FIND A LINK FOR SOME REASON")
 
@@ -212,6 +233,8 @@ def randomizationStep1(nodeGroups):
         unconnectedNodes.pop(unconnectedNodes.index(nodeB))
         connectedNodes.append(nodeB)
 
+    for node in connectedNodes:
+        updateUsedCount(node)
     return connectedNodes
 
 
@@ -225,7 +248,7 @@ def randomizationStep2(randomizedNodes, nodeGroups):
     # For each Overworld node, check the links to find which ones have the Overworld connection
     for sourceNode in randomizedNodes:
         for forwardLink in sourceNode[1].LINKS:
-            if forwardLink.value.MODIFIED and forwardLink not in changedLinks:
+            if forwardLink.MODIFIED is True and forwardLink not in changedLinks:
 
                 linkA = forwardLink
                 linkB = findConnectedLink(randomizedNodes,linkA)
@@ -241,12 +264,17 @@ def randomizationStep2(randomizedNodes, nodeGroups):
                 hubNodes.pop(hubNodes.index(unusedHubNode))
                 randomizedNodes.append(unusedHubNode)
 
+                for node in randomizedNodes:
+                    updateUsedCount(node)
                 # If we run out of hub nodes to place, this step is done
                 if len(hubNodes) == 0:
                     return randomizedNodes
 
+def outputify(input):
+    return str(input).split('.')[1].removesuffix('WP').replace('_',' ').title()
+
 def connectTwoLinks(linkA, linkB):
-    print("Connecting", linkA,linkB)
+    print("Connecting", outputify(linkA.OWN),outputify(linkB.OWN))
     linkA.LINK = linkB.OWN
     linkB.LINK = linkA.OWN
     markLinkAsUsed(linkA)
@@ -269,48 +297,72 @@ def randomizationStep3(randomizedNodes, important, reachableUseless, unreachable
     while len(deadEnds) != 0:
 
         deadEndNode = getRandomNode(deadEnds)
-        print("Dead End: ", deadEndNode)
+        print("Dead End: ", deadEndNode[0])
         linkA = deadEndNode[1].LINKS[0]
         destinationNode = getRandomNode(randomizedNodes, deadEndNode)
         linkB = getRandomLink(destinationNode)
 
 
         connectTwoLinks(linkA,linkB)
+
         Node.incrementUsedLinks(deadEndNode[1])
         Node.incrementUsedLinks(destinationNode[1])
+        print("----After Incrementing---")
+        print(deadEndNode[0], " has ", deadEndNode[1].USED_LINKS)
+        print(destinationNode[0], " has ", destinationNode[1].USED_LINKS)
 
         randomizedNodes.append(deadEndNode)
         deadEnds.pop(deadEnds.index(deadEndNode))
 
+        updateUsedCount(deadEndNode)
+        updateUsedCount(destinationNode)
+
         available -= 1
-        print("\t", linkA, "<===>", linkB, "There are still", available, "links left and ", len(deadEnds),
+        print("\t", outputify(linkA.OWN), "<===>", outputify(linkB.OWN), "There are still", available, "links left and ", len(deadEnds),
               "remaining IMPORTANT deadEnds")
         if available == 0:
             return randomizedNodes
 
+    for node in randomizedNodes:
+        updateUsedCount(node)
+
+
     print("Doing the Reachable")
     deadEnds = list(reachableUseless.items())
+
 
     while len(deadEnds) != 0:
 
         deadEndNode = getRandomNode(deadEnds)
         linkA = deadEndNode[1].LINKS[0]
+
         destinationNode = getRandomNode(randomizedNodes)
         linkB = getRandomLink(destinationNode)
 
+        print("DESTINATION?: ", destinationNode[0])
+
+
         connectTwoLinks(linkA, linkB)
+
         Node.incrementUsedLinks(deadEndNode[1])
         Node.incrementUsedLinks(destinationNode[1])
-
+        print("----After Incrementing---")
+        print(deadEndNode[0], " has ", deadEndNode[1].USED_LINKS)
+        print(destinationNode[0], " has ", destinationNode[1].USED_LINKS)
         randomizedNodes.append(deadEndNode)
         deadEnds.pop(deadEnds.index(deadEndNode))
 
+        updateUsedCount(deadEndNode)
+        updateUsedCount(destinationNode)
+
         available -= 1
-        print("\t", linkA, "<===>", linkB, "There are still", available, "links left and ", len(deadEnds),
+        print("\t", outputify(linkA.OWN), "<===>", outputify(linkB.OWN), "There are still", available, "links left and ", len(deadEnds),
               "remaining reachable deadEnds")
         if available == 0:
             return randomizedNodes
 
+    for node in randomizedNodes:
+        updateUsedCount(node)
     print("Doing the Unreachable")
     deadEnds = list(unreachableUseless.items())
     while len(deadEnds) != 0:
@@ -320,15 +372,27 @@ def randomizationStep3(randomizedNodes, important, reachableUseless, unreachable
         destinationNode = getRandomNode(randomizedNodes)
         linkB = getRandomLink(destinationNode)
 
+        print("DESTINATION?: ", destinationNode[0])
+        if "City Node" in destinationNode[0]:
+            for key in destinationNode[1].LINKS:
+                print(destinationNode[0], " ", key.OWN)
+
         connectTwoLinks(linkA, linkB)
+
         Node.incrementUsedLinks(deadEndNode[1])
         Node.incrementUsedLinks(destinationNode[1])
+        print("----After Incrementing---")
+        print(deadEndNode[0], " has ", deadEndNode[1].USED_LINKS)
+        print(destinationNode[0], " has ", destinationNode[1].USED_LINKS)
 
         randomizedNodes.append(deadEndNode)
         deadEnds.pop(deadEnds.index(deadEndNode))
 
+        updateUsedCount(deadEndNode)
+        updateUsedCount(destinationNode)
+
         available -= 1
-        print("\t", linkA, "<===>", linkB, "There are still", available, "links left and ", len(deadEnds),
+        print("\t", outputify(linkA.OWN), "<===>", outputify(linkB.OWN), "There are still", available, "links left and ", len(deadEnds),
               "remaining  useless deadEnds")
         if len(deadEnds) == 1 and available % 2 == 0:
             return randomizedNodes
@@ -364,11 +428,11 @@ def randomizationStep5(randomizedNodes, corridorInputList):
 def getRandomLinkFromList(inputList):
     while True:
         sampleLink = random.choice(inputList)
-        if sampleLink.value.MODIFIED == False:
-            if sampleLink.value.OWN.value.USED == True:
+        if sampleLink.MODIFIED == False:
+            if sampleLink.OWN.USED == True:
                 print("THIS LINKS VALUE HAS ALREADY BEEN USED")
-            sampleLink.value.MODIFIED = True
-            sampleLink.value.OWN.value.USED = True
+            sampleLink.MODIFIED = True
+            sampleLink.OWN.USED = True
             # print("Returning ", sampleLink)
             return sampleLink
 
@@ -377,7 +441,7 @@ def randomizationStep4(randomizedNodes):
     unchangedLinks = []
     for node in randomizedNodes:
         for link in node[1].LINKS:
-            if link.value.MODIFIED is False:
+            if link.MODIFIED is False:
                 unchangedLinks.append(link)
 
     for link in unchangedLinks:
@@ -435,36 +499,36 @@ def checkJohtoCompletability(randomizedNodes):
     while len(explorableNodes) != 0:
         for node in list(explorableNodes):
             # print(node)
-            # for additionalLink in node.value.LINKS:
+            # for additionalLink in node.LINKS:
                 # if additionalLink not in alreadyExploredLinks:
                     # print("      with a new link to ==>",additionalLink)
             for link in node[1].LINKS:
                 if link not in alreadyExploredLinks:
-                    if link.value.LOCKED_BY is None:
+                    if link.LOCKED_BY is None:
                         # print(link, "was unlocked so we're going to explore it")
                         alreadyExploredLinks.append(link)
-                        toBeExploredLinks.append(link.value.LINK)
-                        if link.value.UNLOCKS is not None:
+                        toBeExploredLinks.append(link.LINK)
+                        if link.UNLOCKS is not None:
 
-                            for key in link.value.UNLOCKS:
+                            for key in link.UNLOCKS:
                                 if key not in obtainedKeys:
-                                    print("We got ",key,"after visiting from",link.value.LINK)
+                                    print("We got ",key,"after visiting from",link.LINK)
                                     obtainedKeys.append(key)
 
                     else:
                         # print("\n",link,"was locked...")
-                        if all(neededKey in obtainedKeys for neededKey in link.value.LOCKED_BY):
+                        if all(neededKey in obtainedKeys for neededKey in link.LOCKED_BY):
                             # print("    ... but we have all the keys!!")
-                            # print("    ... now we can visit", link.value.LINK)
-                            # print("    ... and we should have key(s)",link.value.UNLOCKS)
+                            # print("    ... now we can visit", link.LINK)
+                            # print("    ... and we should have key(s)",link.UNLOCKS)
                             alreadyExploredLinks.append(link)
-                            toBeExploredLinks.append(link.value.LINK)
+                            toBeExploredLinks.append(link.LINK)
 
                             if link in lockedLinks:
                                 lockedLinks.remove(link)
                                 explorableNodes[explorableNodes.index(node)][1].HAS_LOCKED = False
-                            if link.value.UNLOCKS is not None:
-                                for key in link.value.UNLOCKS:
+                            if link.UNLOCKS is not None:
+                                for key in link.UNLOCKS:
                                     if key not in obtainedKeys:
                                         # print("We got ", key, "from an unlocked link")
                                         obtainedKeys.append(key)
@@ -497,7 +561,7 @@ def checkJohtoCompletability(randomizedNodes):
         newNodes = 0
         for node in list(nodesToCheck):
             for link in node[1].LINKS:
-                if link.value.OWN in toBeExploredLinks:
+                if link.OWN in toBeExploredLinks:
                     if node not in explorableNodes:
                         explorableNodes.append(node)
 
@@ -533,7 +597,7 @@ def checkJohtoCompletability(randomizedNodes):
             print("I couldn't ever get", key)
 
     # for link in lockedLinks:
-    #     print("This is locked:",link, " [hides]===>",link.value.LINK)
+    #     print("This is locked:",link, " [hides]===>",link.LINK)
     # print()
     # print()
     if completableSeed:
@@ -543,11 +607,11 @@ def checkJohtoCompletability(randomizedNodes):
         for node in randomizedNodes:
             node[1].USED_LINKS = 0
             for link in node[1].LINKS:
-                link.value.LINK.value.USED = False
-                link.value.LINK = link.value.DEFAULT_LINK
-                link.value.LINK.value.USED = False
-                link.value.OWN.value.USED = False
-                link.value.MODIFIED = False
+                link.LINK.USED = False
+                link.LINK = link.DEFAULT_LINK
+                link.LINK.USED = False
+                link.OWN.USED = False
+                link.MODIFIED = False
         print("-ERROR- -ERROR- -ERROR- CANT COMPLETE THE SEED -ERROR- -ERROR- -ERROR-")
 
     allItemsObtainable = all(key in obtainedKeys for key in Unlock_Keys)
@@ -580,7 +644,7 @@ def checkKantoCompletability(randomizedNodes):
                  Unlock_Keys.BADGE_15,
                  Unlock_Keys.BADGE_16]
 
-    explorableNodes = [node for node in nodesToCheck if node[0] == "Vermilion City Node" or node[0] == "Victory Road Gate Kanto Node"]
+    explorableNodes = [node for node in nodesToCheck if node[0] == "Vermilion_City_Node" or node[0] == "Victory_Road_Gate_Kanto_Node"]
     for node in explorableNodes:
         nodesToCheck.remove(node)
     #
@@ -596,31 +660,31 @@ def checkKantoCompletability(randomizedNodes):
                     print("      with a new link to ==>",additionalLink)
             for link in node[1].LINKS:
                 if link not in alreadyExploredLinks:
-                    if link.value.LOCKED_BY is None:
+                    if link.LOCKED_BY is None:
                         print(link, "was unlocked so we're going to explore it")
                         alreadyExploredLinks.append(link)
-                        toBeExploredLinks.append(link.value.LINK)
-                        if link.value.UNLOCKS is not None:
+                        toBeExploredLinks.append(link.LINK)
+                        if link.UNLOCKS is not None:
 
-                            for key in link.value.UNLOCKS:
+                            for key in link.UNLOCKS:
                                 if key not in obtainedKeys:
-                                    print("We got ",key,"after visiting from",link.value.LINK)
+                                    print("We got ",key,"after visiting from",link.LINK)
                                     obtainedKeys.append(key)
 
                     else:
                         print("\n",link,"was locked...")
-                        if all(neededKey in obtainedKeys for neededKey in link.value.LOCKED_BY):
+                        if all(neededKey in obtainedKeys for neededKey in link.LOCKED_BY):
                             print("    ... but we have all the keys!!")
-                            print("    ... now we can visit", link.value.LINK)
-                            print("    ... and we should have key(s)",link.value.UNLOCKS)
+                            print("    ... now we can visit", link.LINK)
+                            print("    ... and we should have key(s)",link.UNLOCKS)
                             alreadyExploredLinks.append(link)
-                            toBeExploredLinks.append(link.value.LINK)
+                            toBeExploredLinks.append(link.LINK)
 
                             if link in lockedLinks:
                                 lockedLinks.remove(link)
                                 explorableNodes[explorableNodes.index(node)][1].HAS_LOCKED = False
-                            if link.value.UNLOCKS is not None:
-                                for key in link.value.UNLOCKS:
+                            if link.UNLOCKS is not None:
+                                for key in link.UNLOCKS:
                                     if key not in obtainedKeys:
                                         print("We got ", key, "from an unlocked link")
                                         obtainedKeys.append(key)
@@ -653,7 +717,7 @@ def checkKantoCompletability(randomizedNodes):
         newNodes = 0
         for node in list(nodesToCheck):
             for link in node[1].LINKS:
-                if link.value.OWN in toBeExploredLinks:
+                if link.OWN in toBeExploredLinks:
                     if node not in explorableNodes:
                         explorableNodes.append(node)
 
@@ -690,7 +754,7 @@ def checkKantoCompletability(randomizedNodes):
             print("I couldn't ever get", key)
 
     for link in lockedLinks:
-        print("This is locked:",link, " [hides]===>",link.value.LINK)
+        print("This is locked:",link, " [hides]===>",link.LINK)
     # print()
     # print()
     if completableSeed:
@@ -700,11 +764,11 @@ def checkKantoCompletability(randomizedNodes):
         for node in randomizedNodes:
             node[1].USED_LINKS = 0
             for link in node[1].LINKS:
-                link.value.LINK.value.USED = False
-                link.value.LINK = link.value.DEFAULT_LINK
-                link.value.LINK.value.USED = False
-                link.value.OWN.value.USED = False
-                link.value.MODIFIED = False
+                link.LINK.USED = False
+                link.LINK = link.DEFAULT_LINK
+                link.LINK.USED = False
+                link.OWN.USED = False
+                link.MODIFIED = False
         print("-ERROR- -ERROR- -ERROR- CANT COMPLETE THE SEED -ERROR- -ERROR- -ERROR-")
 
     allItemsObtainable = all(key in obtainedKeys for key in Unlock_Keys)
@@ -763,36 +827,36 @@ def checkFullCompletability(randomizedNodes):
     while len(explorableNodes) != 0:
         for node in list(explorableNodes):
             # print(node)
-            # for additionalLink in node.value.LINKS:
+            # for additionalLink in node.LINKS:
                 # if additionalLink not in alreadyExploredLinks:
                     # print("      with a new link to ==>",additionalLink)
             for link in node[1].LINKS:
                 if link not in alreadyExploredLinks:
-                    if link.value.LOCKED_BY is None:
+                    if link.LOCKED_BY is None:
                         # print(link, "was unlocked so we're going to explore it")
                         alreadyExploredLinks.append(link)
-                        toBeExploredLinks.append(link.value.LINK)
-                        if link.value.UNLOCKS is not None:
+                        toBeExploredLinks.append(link.LINK)
+                        if link.UNLOCKS is not None:
 
-                            for key in link.value.UNLOCKS:
+                            for key in link.UNLOCKS:
                                 if key not in obtainedKeys:
-                                    print("We got ",key,"after visiting from",link.value.LINK)
+                                    print("We got ",key,"after visiting from",link.LINK)
                                     obtainedKeys.append(key)
 
                     else:
                         # print("\n",link,"was locked...")
-                        if all(neededKey in obtainedKeys for neededKey in link.value.LOCKED_BY):
+                        if all(neededKey in obtainedKeys for neededKey in link.LOCKED_BY):
                             # print("    ... but we have all the keys!!")
-                            # print("    ... now we can visit", link.value.LINK)
-                            # print("    ... and we should have key(s)",link.value.UNLOCKS)
+                            # print("    ... now we can visit", link.LINK)
+                            # print("    ... and we should have key(s)",link.UNLOCKS)
                             alreadyExploredLinks.append(link)
-                            toBeExploredLinks.append(link.value.LINK)
+                            toBeExploredLinks.append(link.LINK)
 
                             if link in lockedLinks:
                                 lockedLinks.remove(link)
                                 explorableNodes[explorableNodes.index(node)][1].HAS_LOCKED = False
-                            if link.value.UNLOCKS is not None:
-                                for key in link.value.UNLOCKS:
+                            if link.UNLOCKS is not None:
+                                for key in link.UNLOCKS:
                                     if key not in obtainedKeys:
                                         # print("We got ", key, "from an unlocked link")
                                         obtainedKeys.append(key)
@@ -825,7 +889,7 @@ def checkFullCompletability(randomizedNodes):
         newNodes = 0
         for node in list(nodesToCheck):
             for link in node[1].LINKS:
-                if link.value.OWN in toBeExploredLinks:
+                if link.OWN in toBeExploredLinks:
                     if node not in explorableNodes:
                         explorableNodes.append(node)
 
@@ -862,7 +926,7 @@ def checkFullCompletability(randomizedNodes):
             print("I couldn't ever get", key)
 
     # for link in lockedLinks:
-    #     print("This is locked:",link, " [hides]===>",link.value.LINK)
+    #     print("This is locked:",link, " [hides]===>",link.LINK)
     # print()
     # print()
     if completableSeed:
@@ -872,11 +936,11 @@ def checkFullCompletability(randomizedNodes):
         for node in randomizedNodes:
             node[1].USED_LINKS = 0
             for link in node[1].LINKS:
-                link.value.LINK.value.USED = False
-                link.value.LINK = link.value.DEFAULT_LINK
-                link.value.LINK.value.USED = False
-                link.value.OWN.value.USED = False
-                link.value.MODIFIED = False
+                link.LINK.USED = False
+                link.LINK = link.DEFAULT_LINK
+                link.LINK.USED = False
+                link.OWN.USED = False
+                link.MODIFIED = False
         print("-ERROR- -ERROR- -ERROR- CANT COMPLETE THE SEED -ERROR- -ERROR- -ERROR-")
         print("-ERROR- -ERROR- -ERROR- CANT COMPLETE THE SEED -ERROR- -ERROR- -ERROR-")
         print("-ERROR- -ERROR- -ERROR- CANT COMPLETE THE SEED -ERROR- -ERROR- -ERROR-")
@@ -941,6 +1005,19 @@ def checkForDualRequirements(firstKey, secondKey, keyList, keyToGive):
         if keyToGive not in keyList:
             keyList.append(keyToGive)
     return keyList
+
+from links_and_nodes.johto_node_dictionary_containers import buildJohtoMajorNodes, buildJohtoHubs, buildJohtoImportantDeadEnds, buildJohtoReachableDeadEnds, buildJohtoUselessDeadEnds, buildJohtoCorridors
+from links_and_nodes.kanto_node_dictionary_containers import buildKantoMajorNodes, buildKantoHubNodes, buildKantoImportantDeadEnds, buildKantoUselessDeadEnds, buildKantoCorridors
+
+randomizedNodes = randomizationStep1(dict(**buildJohtoMajorNodes(1),**buildKantoMajorNodes()))
+randomizedNodes = randomizationStep2(randomizedNodes, dict(**buildJohtoHubs(),**buildKantoHubNodes()))
+#
+randomizedNodes = randomizationStep3(randomizedNodes,
+                                     dict(**buildJohtoImportantDeadEnds(1),**buildKantoImportantDeadEnds()),
+                                     dict(**buildJohtoReachableDeadEnds()),
+                                     dict(**buildJohtoUselessDeadEnds(),**buildKantoUselessDeadEnds()))
+randomizedNodes = randomizationStep4(randomizedNodes)
+randomizedNodes = randomizationStep5(randomizedNodes, dict(**buildJohtoCorridors(),**buildKantoCorridors()))
 
 # completable = False
 # # fullyCompletable = False
