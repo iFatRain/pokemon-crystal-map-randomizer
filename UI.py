@@ -11,6 +11,7 @@ from tkinter import filedialog
 from idlelib.tooltip import Hovertip
 
 import randomizeROM
+from logic.DictionaryRandomizerLogic import outputify
 
 version = "v2.0.0-alpha"
 
@@ -298,7 +299,7 @@ def loadAndDetermineROM():
     determineROM(str(hashlib.md5(open(originalROM, 'rb').read()).hexdigest()))
 
 def sortingFunc(input):
-    print("Sorting by", input[0])
+    # print("Sorting by", input[0])
     return input[0]
 
 def assignSeed():
@@ -371,8 +372,8 @@ def createOutputLog(nodeList, settings, outputPath):
         for node in nodeList:
             spoilerLog.write("\n\n\nWarps for " + str(node[0] + "\n"))
             for link in node[1].LINKS:
-                spoilerLog.write("\n\t\t" + str(link.value.OWN).split(".")[1].ljust(75, ".") + str(link.value.LINK).split(".")[1])
-                link.value.OUTPUT_TO_LOG = True
+                spoilerLog.write("\n\t\t" + outputify(link.OWN).ljust(75, ".") + " " + outputify(link.LINK))
+                link.OUTPUT_TO_LOG = True
         spoilerLog.close()
 
 def main():

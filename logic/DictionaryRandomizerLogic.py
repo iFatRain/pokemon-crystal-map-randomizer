@@ -1,73 +1,54 @@
 import os
 import random
-
-import links_and_nodes.johto_all_warp_points
 from class_definitions import Unlock_Keys, Node
-# from links_and_nodes.johto_node_containers import MajorNodes_Johto, TwoWayCorridorNodes_Johto
-from links_and_nodes.johto_node_dictionary_containers import buildJohtoMajorNodes
-from links_and_nodes.kanto_node_containers import MajorNodes_Kanto, TwoWayCorridorNodes_Kanto
 
+#TODO ADD COMMENTED PROTOTYPES/available methods
 
-def getRandomNode(nodeList, excludedNode = None):
+def outputify(input):
+    return str(input).split('.')[1].removesuffix('WP').replace('_',' ').title()
+
+def validateNodeCounts(nodeToValidate):
+    usedCount = 0
+    for link in nodeToValidate[1].LINKS:
+        if link.MODIFIED is True:
+            usedCount += 1
+    if usedCount != nodeToValidate[1].USED_LINKS:
+        raise Exception("Inaccurate Used Links for ", nodeToValidate[0], ". expected: ", nodeToValidate[1].USED_LINKS, " found: ", usedCount)
+    if nodeToValidate[1].TOTAL_LINKS != nodeToValidate[1].ORIGINAL_TOTAL:
+        raise Exception("Somehow more links were added to ", nodeToValidate[0])
+
+def getRandomNode(nodePool, excludedNode = None):
     checkedNodes = []
 
     # While we haven't checked each node keep searching for a random unused node
-    while len(checkedNodes) != len(nodeList):
+    while len(checkedNodes) != len(nodePool):
 
+        sampleNode = random.choice(nodePool)  # Choose a random node from the nodePool
 
-        sampleNode = random.choice(nodeList)
         if sampleNode in checkedNodes:
-            continue
+            continue  # If we have already checked this node, go back to get a new sample
         else:
-            checkedNodes.append(sampleNode)
+            checkedNodes.append(sampleNode)  # Mark as checked by appending to our checkedNodes
             if excludedNode is not None:
                 if sampleNode == excludedNode:
                     continue
-                # Specific logic for making sure Radio Tower and Underground aren't placed in Goldenrod
-                if excludedNode[0] == "Radio_Tower_1F_Node" or excludedNode == "Goldenrod_Underground_Warehouse_Node":
-                    if sampleNode[0] == "Goldenrod_City_Node":
+                # Specific logic for making sure Radio Tower and Underground aren't placed in Goldenrod - Can be softlock without the setting
+                # TODO EXPLORE OPTION TO TURN THIS OFF IF THE WANDERING ROCKETS IS ENABLED
+                if excludedNode[0] == "Radio Tower 1F Node" or excludedNode == "Goldenrod Underground Warehouse Node": #TODO FIX THESE NODE NAMES, LIKELY INCORRECT
+                    if sampleNode[0] == "Goldenrod City Node":
                         continue
             # If we find a node that has an open link, we return that node
             if sampleNode[1].USED_LINKS != sampleNode[1].TOTAL_LINKS:
-                print("SAMPLE: ", sampleNode[0], "USED:TOTAL = ", sampleNode[1].USED_LINKS,":",sampleNode[1].TOTAL_LINKS)
-                updateUsedCount(sampleNode)
+                # Before we return the node, we want to validate that it's not had any unexpected modifications
+                validateNodeCounts(sampleNode)
                 return sampleNode
-    return None
-
-def updateUsedCount(nodeToUpdate):
-    usedCount = 0
-    for link in nodeToUpdate[1].LINKS:
-        if link.MODIFIED is True:
-            usedCount += 1
-    if usedCount != nodeToUpdate[1].USED_LINKS:
-        for link in nodeToUpdate[1].LINKS:
-            if link.MODIFIED is True:
-                print(link.OWN, " shows as modified")
-        raise Exception("Inaccurate Used Links for ", nodeToUpdate[0],". expected: ", nodeToUpdate[1].USED_LINKS, " found: ", usedCount)
-    else:
-        print("Used count checks out for ", nodeToUpdate[0],". expected: ", nodeToUpdate[1].USED_LINKS, " found: ", usedCount)
-    if nodeToUpdate[1].TOTAL_LINKS != nodeToUpdate[1].ORIGINAL_TOTAL:
-        raise Exception("Somehow more links were added to ", nodeToUpdate[0])
-
-
-def getRandomLinkOnlyIncluding(inputNode, inclusionList):
-    while True:
-        # print("Looking for a random link from",inputNode)
-        sampleLink = random.choice(inputNode[1].LINKS)
-        if sampleLink not in inclusionList:
-            continue
-        if sampleLink.MODIFIED == False:
-            if sampleLink.OWN.USED == True:
-                print("THIS LINKS VALUE HAS ALREADY BEEN USED")
-            sampleLink.MODIFIED = True
-            sampleLink.OWN.USED = True
-            return sampleLink
-
+    return None  # This shouldn't ever happen because of the validation
 
 def getRandomLink(inputNode):
+    validateNodeCounts(inputNode)  # Before we do anything, make sure node is good to go
     checkedLinks = []
     if inputNode[1].USED_LINKS == inputNode[1].TOTAL_LINKS:
-        return None
+        return None  # This should never happen with validation elsewhere
     while len(checkedLinks) != inputNode[1].TOTAL_LINKS:
         sampleLink = random.choice(inputNode[1].LINKS)
         if sampleLink in checkedLinks:
@@ -76,17 +57,17 @@ def getRandomLink(inputNode):
             checkedLinks.append(sampleLink)
             if sampleLink.MODIFIED == False:
                 markLinkAsUsed(sampleLink)
+                Node.incrementUsedLinks(inputNode[1])  # Before we return this link to be used, we make it known as such
                 return sampleLink
-    raise Exception("No unmodified link in", inputNode[0])
-    return None
+    return None  # Should never happen because validation elsewhere
 
 def getRandomOverworldLink(inputNode):
-
+    validateNodeCounts(inputNode)  # Before we do anything, make sure node is good to go
     checkedLinks = []
-    if inputNode.USED_LINKS == inputNode.TOTAL_LINKS:
-        return None
-    while len(checkedLinks) != inputNode.TOTAL_LINKS:
-        sampleLink = random.choice(inputNode.LINKS)
+    if inputNode[1].USED_LINKS == inputNode[1].TOTAL_LINKS:
+        return None  # This should never happen with validation elsewhere
+    while len(checkedLinks) != inputNode[1].TOTAL_LINKS:
+        sampleLink = random.choice(inputNode[1].LINKS)
         if sampleLink in checkedLinks:
             continue
         if sampleLink.LOCKED_BY is not None:
@@ -95,19 +76,9 @@ def getRandomOverworldLink(inputNode):
             checkedLinks.append(sampleLink)
             if sampleLink.MODIFIED == False:
                 markLinkAsUsed(sampleLink)
+                Node.incrementUsedLinks(inputNode[1])  # Before we return this link to be used, we make it known as such
                 return sampleLink
     return None
-
-
-def getRandomNodeIgnoringUsage(nodeList):
-    sampleNode = random.choice(nodeList)
-    return sampleNode
-
-
-
-def getRandomLinkIgnoreUsage(inputNode):
-        sampleLink = random.choice(inputNode[1].LINKS)
-        return sampleLink
 
 def getUnusedNode(nodeList):
     checkedNodes = []
@@ -119,6 +90,7 @@ def getUnusedNode(nodeList):
             checkedNodes.append(sampleNode)
             if sampleNode[1].USED_LINKS == 0:
                 return sampleNode
+    raise Exception("There was no unused node found in node list!")
     return None
 
 # This method has no restrictions for node linking
@@ -131,8 +103,8 @@ def linkNodes(nodeA, nodeB):
 
     connectTwoLinks(randomLinkA, randomLinkB)
 
-    Node.incrementUsedLinks(nodeA)
-    Node.incrementUsedLinks(nodeB)
+    Node.incrementUsedLinks(nodeA[1])
+    Node.incrementUsedLinks(nodeB[1])
 
     return nodeA, nodeB
 
@@ -163,13 +135,10 @@ def linkOverworldNodes(nodeA, nodeB):
         #      links_and_nodes.johto_all_warp_points.Goldenrod_City_Links.GOLDENROD_CITY_TO_GOLDENROD_MAGNET_TRAIN_STATION_LINK])
 
     # else:
-    randomLinkA = getRandomOverworldLink(nodeA[1])
-    randomLinkB = getRandomOverworldLink(nodeB[1])
+    randomLinkA = getRandomOverworldLink(nodeA)
+    randomLinkB = getRandomOverworldLink(nodeB)
 
     connectTwoLinks(randomLinkA,randomLinkB)
-
-    Node.incrementUsedLinks(nodeA[1])
-    Node.incrementUsedLinks(nodeB[1])
 
     return nodeA, nodeB
 
@@ -178,48 +147,44 @@ def markLinkAsUsed(inputLink):
     inputLink.OWN.USED = True
 
 def insertCorridorBetweenLinks(corridorToInsert, linkA, linkB):
-    if corridorToInsert == "Ruins_Of_Alph_Kabuto_Chamber_Links":
-        entrancePoint = corridorToInsert.LINKS[0]
-        exitPoint = corridorToInsert.LINKS[1]
-        connectTwoLinks(linkA, entrancePoint)
-        connectTwoLinks(linkB, exitPoint)
-
-    else:
-        entrancePoint = getRandomLink(corridorToInsert)
-        exitPoint = getRandomLink(corridorToInsert)
-        connectTwoLinks(linkA, entrancePoint)
-        connectTwoLinks(linkB, exitPoint)
-
-
-
-
-
-    print("\t[",outputify(linkA.OWN),"<===>",outputify(entrancePoint.OWN), "]   [", outputify(exitPoint.OWN),"<===>", outputify(linkB.OWN),"]")
+    entrancePoint = getRandomLink(corridorToInsert)
+    exitPoint = getRandomLink(corridorToInsert)
+    connectTwoLinks(linkA, entrancePoint)
+    connectTwoLinks(linkB, exitPoint)
+    print("\t Corridor Layout --> [",outputify(linkA.OWN),"<===>",outputify(entrancePoint.OWN), "]   [", outputify(exitPoint.OWN),"<===>", outputify(linkB.OWN),"]")
 
 
 def findConnectedLink(randomizedNodes, linkA):
     for destinationNode in randomizedNodes:
         for reverseLink in destinationNode[1].LINKS:
-
             if reverseLink.OWN == linkA.LINK and reverseLink.MODIFIED:
-                linkB = reverseLink
-                print("Returning", outputify(reverseLink.OWN))
-                return linkB
-    print("I DIDNT FIND A LINK FOR SOME REASON")
+                return reverseLink
+    raise Exception("The connected link for ", outputify(linkA.OWN), " was not found!")
+    return None
+
+def connectTwoLinks(linkA, linkB):
+    print("Connecting [", outputify(linkA.OWN),outputify(linkB.OWN),"]")
+    linkA.LINK = linkB.OWN
+    linkB.LINK = linkA.OWN
+
+def getAvailableLinkCount(randomizedNodes):
+    available = 0
+    for node in randomizedNodes:
+        available += node[1].TOTAL_LINKS - node[1].USED_LINKS
+    return available
 
 def randomizationStep1(nodeGroups):
     # Step 1 links the Major Nodes Directly (Cities + Their Walkable Overworld)
 
     unconnectedNodes = list(nodeGroups.items())
-    print("Unconnected = ",unconnectedNodes)
 
+    print("\n====Starting Overworld linking====\n")
     # From our major nodes, we randomly select one to begin linking
     randomStart = random.choice(unconnectedNodes)
     unconnectedNodes.pop(unconnectedNodes.index(randomStart))
     connectedNodes = [randomStart]
 
     # While we still have unconnected Major Nodes, we want to continue to connect
-    print("\n====Starting Overworld linking====\n")
     while len(unconnectedNodes) != 0:
 
         # We randomly select an already connected node to pair with an unconnected node
@@ -227,22 +192,17 @@ def randomizationStep1(nodeGroups):
         nodeB = getRandomNode(unconnectedNodes)
 
         # Link the two nodes together
-        nodeA, nodeB = linkOverworldNodes(nodeA,nodeB)
+        linkOverworldNodes(nodeA,nodeB)
 
         # Place the newly connected node into the connected list
         unconnectedNodes.pop(unconnectedNodes.index(nodeB))
         connectedNodes.append(nodeB)
-
-    for node in connectedNodes:
-        updateUsedCount(node)
     return connectedNodes
-
-
 
 def randomizationStep2(randomizedNodes, nodeGroups):
 
     print("\n Inserting Hubs\n")
-    hubNodes = list(nodeGroups.items())#list(HubNodes_Johto)
+    hubNodes = list(nodeGroups.items())
     changedLinks = []
 
     # For each Overworld node, check the links to find which ones have the Overworld connection
@@ -260,72 +220,52 @@ def randomizationStep2(randomizedNodes, nodeGroups):
                 changedLinks.append(linkA)
                 changedLinks.append(linkB)
 
-                Node.incrementUsedLinks(unusedHubNode[1], 2)
                 hubNodes.pop(hubNodes.index(unusedHubNode))
                 randomizedNodes.append(unusedHubNode)
 
                 for node in randomizedNodes:
-                    updateUsedCount(node)
+                    validateNodeCounts(node)
                 # If we run out of hub nodes to place, this step is done
                 if len(hubNodes) == 0:
                     return randomizedNodes
 
-def outputify(input):
-    return str(input).split('.')[1].removesuffix('WP').replace('_',' ').title()
 
-def connectTwoLinks(linkA, linkB):
-    print("Connecting", outputify(linkA.OWN),outputify(linkB.OWN))
-    linkA.LINK = linkB.OWN
-    linkB.LINK = linkA.OWN
-    markLinkAsUsed(linkA)
-    markLinkAsUsed(linkB)
+# def placeDeadend():
+#     deadEndNode = getRandomNode(deadEnds)
+#     linkA = deadEndNode[1].LINKS[0]
+#     if linkA.MODIFIED == False:
+#         markLinkAsUsed(linkA)
+#         Node.incrementUsedLinks(deadEndNode[1])
+#     destinationNode = getRandomNode(randomizedNodes, deadEndNode)
+#     linkB = getRandomLink(destinationNode)
+#     connectTwoLinks(linkA, linkB)
+#     randomizedNodes.append(deadEndNode)
+#     deadEnds.pop(deadEnds.index(deadEndNode))
 
-
-def getAvailableLinkCount(randomizedNodes):
-    available = 0
-    for node in randomizedNodes:
-        available += node[1].TOTAL_LINKS - node[1].USED_LINKS
-    return available
 
 def randomizationStep3(randomizedNodes, important, reachableUseless, unreachableUseless):
 
-
+#TODO Clean up duplication of the 3 stages of step 3
     available = getAvailableLinkCount(randomizedNodes)
-    deadEnds = list(important.items())#list(ImportantDeadEndNodes_Johto)
+    deadEnds = list(important.items())
 
     print("\nPlacing Dead Ends\n")
     while len(deadEnds) != 0:
 
         deadEndNode = getRandomNode(deadEnds)
-        print("Dead End: ", deadEndNode[0])
-        linkA = deadEndNode[1].LINKS[0]
+        linkA = getRandomLink(deadEndNode)
         destinationNode = getRandomNode(randomizedNodes, deadEndNode)
         linkB = getRandomLink(destinationNode)
-
-
         connectTwoLinks(linkA,linkB)
-
-        Node.incrementUsedLinks(deadEndNode[1])
-        Node.incrementUsedLinks(destinationNode[1])
-        print("----After Incrementing---")
-        print(deadEndNode[0], " has ", deadEndNode[1].USED_LINKS)
-        print(destinationNode[0], " has ", destinationNode[1].USED_LINKS)
-
         randomizedNodes.append(deadEndNode)
         deadEnds.pop(deadEnds.index(deadEndNode))
 
-        updateUsedCount(deadEndNode)
-        updateUsedCount(destinationNode)
-
         available -= 1
-        print("\t", outputify(linkA.OWN), "<===>", outputify(linkB.OWN), "There are still", available, "links left and ", len(deadEnds),
-              "remaining IMPORTANT deadEnds")
+        print("\t", outputify(linkA.OWN), "<===>", outputify(linkB.OWN), "There are still", available, "links left and ", len(deadEnds),"remaining IMPORTANT deadEnds")
         if available == 0:
             return randomizedNodes
-
     for node in randomizedNodes:
-        updateUsedCount(node)
-
+        validateNodeCounts(node)
 
     print("Doing the Reachable")
     deadEnds = list(reachableUseless.items())
@@ -334,66 +274,35 @@ def randomizationStep3(randomizedNodes, important, reachableUseless, unreachable
     while len(deadEnds) != 0:
 
         deadEndNode = getRandomNode(deadEnds)
-        linkA = deadEndNode[1].LINKS[0]
-
-        destinationNode = getRandomNode(randomizedNodes)
+        linkA = getRandomLink(deadEndNode)
+        destinationNode = getRandomNode(randomizedNodes, deadEndNode)
         linkB = getRandomLink(destinationNode)
-
-        print("DESTINATION?: ", destinationNode[0])
-
-
         connectTwoLinks(linkA, linkB)
-
-        Node.incrementUsedLinks(deadEndNode[1])
-        Node.incrementUsedLinks(destinationNode[1])
-        print("----After Incrementing---")
-        print(deadEndNode[0], " has ", deadEndNode[1].USED_LINKS)
-        print(destinationNode[0], " has ", destinationNode[1].USED_LINKS)
         randomizedNodes.append(deadEndNode)
         deadEnds.pop(deadEnds.index(deadEndNode))
 
-        updateUsedCount(deadEndNode)
-        updateUsedCount(destinationNode)
-
         available -= 1
-        print("\t", outputify(linkA.OWN), "<===>", outputify(linkB.OWN), "There are still", available, "links left and ", len(deadEnds),
-              "remaining reachable deadEnds")
+        print("\t", outputify(linkA.OWN), "<===>", outputify(linkB.OWN), "There are still", available, "links left and ", len(deadEnds),"remaining reachable deadEnds")
         if available == 0:
             return randomizedNodes
 
     for node in randomizedNodes:
-        updateUsedCount(node)
+        validateNodeCounts(node)
+
     print("Doing the Unreachable")
     deadEnds = list(unreachableUseless.items())
     while len(deadEnds) != 0:
 
         deadEndNode = getRandomNode(deadEnds)
-        linkA = deadEndNode[1].LINKS[0]
-        destinationNode = getRandomNode(randomizedNodes)
+        linkA = getRandomLink(deadEndNode)
+        destinationNode = getRandomNode(randomizedNodes, deadEndNode)
         linkB = getRandomLink(destinationNode)
-
-        print("DESTINATION?: ", destinationNode[0])
-        if "City Node" in destinationNode[0]:
-            for key in destinationNode[1].LINKS:
-                print(destinationNode[0], " ", key.OWN)
-
         connectTwoLinks(linkA, linkB)
-
-        Node.incrementUsedLinks(deadEndNode[1])
-        Node.incrementUsedLinks(destinationNode[1])
-        print("----After Incrementing---")
-        print(deadEndNode[0], " has ", deadEndNode[1].USED_LINKS)
-        print(destinationNode[0], " has ", destinationNode[1].USED_LINKS)
-
         randomizedNodes.append(deadEndNode)
         deadEnds.pop(deadEnds.index(deadEndNode))
 
-        updateUsedCount(deadEndNode)
-        updateUsedCount(destinationNode)
-
         available -= 1
-        print("\t", outputify(linkA.OWN), "<===>", outputify(linkB.OWN), "There are still", available, "links left and ", len(deadEnds),
-              "remaining  useless deadEnds")
+        print("\t", outputify(linkA.OWN), "<===>", outputify(linkB.OWN), "There are still", available, "links left and ", len(deadEnds),"remaining  useless deadEnds")
         if len(deadEnds) == 1 and available % 2 == 0:
             return randomizedNodes
         if available == 0:
@@ -401,7 +310,27 @@ def randomizationStep3(randomizedNodes, important, reachableUseless, unreachable
 
     return randomizedNodes
 
+def randomizationStep4(randomizedNodes):
+    print("\nThese are unlinked Nodes\n")
+    unchangedLinks = []
+    for node in randomizedNodes:
+        validateNodeCounts(node)
+        for link in node[1].LINKS:
+            if link.MODIFIED is False:
+                unchangedLinks.append(link)
 
+    for link in unchangedLinks:
+        print("\t",outputify(link.LINK))
+
+    while len(unchangedLinks) > 1:
+        linkA = getRandomLinkFromList(unchangedLinks)
+        linkB = getRandomLinkFromList(unchangedLinks)
+
+        connectTwoLinks(linkA,linkB)
+        unchangedLinks.remove(linkA)
+        unchangedLinks.remove(linkB)
+
+    return randomizedNodes
 
 def randomizationStep5(randomizedNodes, corridorInputList):
     corridorNodes = list(corridorInputList.items())
@@ -409,17 +338,12 @@ def randomizationStep5(randomizedNodes, corridorInputList):
     print("\nInserting Corridors\n")
     while len(corridorNodes) != 0:
 
-        randomTarget = getRandomNodeIgnoringUsage(randomizedNodes)
-        linkA = getRandomLinkIgnoreUsage(randomTarget)
+        linkA = random.choice(random.choice(randomizedNodes)[1].LINKS)  # This will randomly grab ANY link ignoring usage/modification
         linkB = findConnectedLink(randomizedNodes, linkA)
-        if linkB is None:
-            print(linkA, "was linked to", linkB)
         randomCorridor = getRandomNode(corridorNodes)
-
 
         insertCorridorBetweenLinks(randomCorridor, linkA, linkB)
 
-        Node.incrementUsedLinks(randomCorridor[1], 2)
         corridorNodes.pop(corridorNodes.index(randomCorridor))
         randomizedNodes.append(randomCorridor)
 
@@ -429,40 +353,14 @@ def getRandomLinkFromList(inputList):
     while True:
         sampleLink = random.choice(inputList)
         if sampleLink.MODIFIED == False:
-            if sampleLink.OWN.USED == True:
-                print("THIS LINKS VALUE HAS ALREADY BEEN USED")
             sampleLink.MODIFIED = True
-            sampleLink.OWN.USED = True
-            # print("Returning ", sampleLink)
+            sampleLink.USED = True
             return sampleLink
-
-def randomizationStep4(randomizedNodes):
-    print("\nThese are unlinked Nodes\n")
-    unchangedLinks = []
-    for node in randomizedNodes:
-        for link in node[1].LINKS:
-            if link.MODIFIED is False:
-                unchangedLinks.append(link)
-
-    for link in unchangedLinks:
-        print("\t",link)
-
-    while len(unchangedLinks) > 1:
-       # print("Getting first random unlinked")
-        linkA = getRandomLinkFromList(unchangedLinks)
-       # print("Getting second random unlinked")
-        linkB = getRandomLinkFromList(unchangedLinks)
-
-        connectTwoLinks(linkA,linkB)
-        unchangedLinks.remove(linkA)
-        unchangedLinks.remove(linkB)
-
-
-    return randomizedNodes
-
 
 def checkJohtoCompletability(randomizedNodes):
 
+
+    print("Starting Johto Check")
     nodesToCheck = list(randomizedNodes)
 
     completableSeed = False
@@ -491,6 +389,7 @@ def checkJohtoCompletability(randomizedNodes):
                 Unlock_Keys.HM_WHIRLPOOL]
 
     explorableNodes = [node for node in nodesToCheck if node[0] == "New Bark and Cherrygrove Node"]
+    print("Explorable!:", explorableNodes)
     nodesToCheck.remove(explorableNodes[0])
     #
     # while completableSeed
@@ -505,7 +404,7 @@ def checkJohtoCompletability(randomizedNodes):
             for link in node[1].LINKS:
                 if link not in alreadyExploredLinks:
                     if link.LOCKED_BY is None:
-                        # print(link, "was unlocked so we're going to explore it")
+                        print(link, "was unlocked so we're going to explore it")
                         alreadyExploredLinks.append(link)
                         toBeExploredLinks.append(link.LINK)
                         if link.UNLOCKS is not None:
@@ -644,7 +543,7 @@ def checkKantoCompletability(randomizedNodes):
                  Unlock_Keys.BADGE_15,
                  Unlock_Keys.BADGE_16]
 
-    explorableNodes = [node for node in nodesToCheck if node[0] == "Vermilion_City_Node" or node[0] == "Victory_Road_Gate_Kanto_Node"]
+    explorableNodes = [node for node in nodesToCheck if node[0] == "Vermilion City Node" or node[0] == "Victory Road Gate Kanto Node"]
     for node in explorableNodes:
         nodesToCheck.remove(node)
     #
@@ -777,7 +676,6 @@ def checkKantoCompletability(randomizedNodes):
 
     return completableSeed
 
-
 def checkFullCompletability(randomizedNodes):
 
     nodesToCheck = list(randomizedNodes)
@@ -844,7 +742,7 @@ def checkFullCompletability(randomizedNodes):
                                     obtainedKeys.append(key)
 
                     else:
-                        # print("\n",link,"was locked...")
+                        print("\n",link.OWN,"was locked...")
                         if all(neededKey in obtainedKeys for neededKey in link.LOCKED_BY):
                             # print("    ... but we have all the keys!!")
                             # print("    ... now we can visit", link.LINK)
@@ -861,7 +759,7 @@ def checkFullCompletability(randomizedNodes):
                                         # print("We got ", key, "from an unlocked link")
                                         obtainedKeys.append(key)
                         else:
-                            # print("   ... and we don't have the needed keys yet")
+                            print("   ... and we don't have the needed keys yet")
                             if link not in lockedLinks:
                                 lockedLinks.append(link)
                                 explorableNodes[explorableNodes.index(node)][1].HAS_LOCKED = True
@@ -910,8 +808,8 @@ def checkFullCompletability(randomizedNodes):
             if stuckCount > 6:
                 break
 
-        # print("Total nodes unlocked = ",len(fullyUnlockedNodes))
-        # print("Nodes not yet checked:", len(nodesToCheck))
+        print("Total nodes unlocked = ",len(fullyUnlockedNodes))
+        print("Nodes not yet checked:", len(nodesToCheck))
         print()
 
 
@@ -925,10 +823,10 @@ def checkFullCompletability(randomizedNodes):
         if key not in obtainedKeys:
             print("I couldn't ever get", key)
 
-    # for link in lockedLinks:
-    #     print("This is locked:",link, " [hides]===>",link.LINK)
-    # print()
-    # print()
+    for link in lockedLinks:
+        print("This is locked:",link.OWN, " [hides]===>",link.LINK)
+    print()
+    print()
     if completableSeed:
         print("This seed is completable!!!")
     else:
@@ -1006,18 +904,22 @@ def checkForDualRequirements(firstKey, secondKey, keyList, keyToGive):
             keyList.append(keyToGive)
     return keyList
 
-from links_and_nodes.johto_node_dictionary_containers import buildJohtoMajorNodes, buildJohtoHubs, buildJohtoImportantDeadEnds, buildJohtoReachableDeadEnds, buildJohtoUselessDeadEnds, buildJohtoCorridors
-from links_and_nodes.kanto_node_dictionary_containers import buildKantoMajorNodes, buildKantoHubNodes, buildKantoImportantDeadEnds, buildKantoUselessDeadEnds, buildKantoCorridors
-
-randomizedNodes = randomizationStep1(dict(**buildJohtoMajorNodes(1),**buildKantoMajorNodes()))
-randomizedNodes = randomizationStep2(randomizedNodes, dict(**buildJohtoHubs(),**buildKantoHubNodes()))
+# from links_and_nodes.johto_node_dictionary_containers import buildJohtoMajorNodes, buildJohtoHubs, buildJohtoImportantDeadEnds, buildJohtoReachableDeadEnds, buildJohtoUselessDeadEnds, buildJohtoCorridors
+# from links_and_nodes.kanto_node_dictionary_containers import buildKantoMajorNodes, buildKantoHubNodes, buildKantoImportantDeadEnds, buildKantoUselessDeadEnds, buildKantoCorridors
+# unrandomMart = False
+# combinedFullyCompletable = False
+# while not combinedFullyCompletable:
+#     randomizedNodes = randomizationStep1(dict(**buildJohtoMajorNodes(unrandomMart),**buildKantoMajorNodes()))
+#     randomizedNodes = randomizationStep2(randomizedNodes, dict(**buildJohtoHubs(),**buildKantoHubNodes()))
+#     randomizedNodes = randomizationStep3(randomizedNodes,
+#                                          dict(**buildJohtoImportantDeadEnds(unrandomMart),**buildKantoImportantDeadEnds()),
+#                                          dict(**buildJohtoReachableDeadEnds()),
+#                                          dict(**buildJohtoUselessDeadEnds(),**buildKantoUselessDeadEnds()))
+#     randomizedNodes = randomizationStep4(randomizedNodes)
+#     randomizedNodes = randomizationStep5(randomizedNodes, dict(**buildJohtoCorridors(),**buildKantoCorridors()))
+#     combinedFullyCompletable = checkFullCompletability(randomizedNodes)
 #
-randomizedNodes = randomizationStep3(randomizedNodes,
-                                     dict(**buildJohtoImportantDeadEnds(1),**buildKantoImportantDeadEnds()),
-                                     dict(**buildJohtoReachableDeadEnds()),
-                                     dict(**buildJohtoUselessDeadEnds(),**buildKantoUselessDeadEnds()))
-randomizedNodes = randomizationStep4(randomizedNodes)
-randomizedNodes = randomizationStep5(randomizedNodes, dict(**buildJohtoCorridors(),**buildKantoCorridors()))
+# print(combinedFullyCompletable)
 
 # completable = False
 # # fullyCompletable = False

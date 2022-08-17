@@ -13,8 +13,8 @@ def buildKantoMajorNodes():
     MajorNodes_Kanto['Pallet, Viridian, and Pewter Node'] = Node(
             [kmd["Pallet_Town_Links"].get(key) for key in kmd["Pallet_Town_Links"]]
         +   [kmd["Viridian_City_Links"].get(key) for key in kmd["Viridian_City_Links"]]
-        +   [kmd["Route_22_Links"].get("ROUTE_22_TO_VICTORY_ROAD_GATE_1_LINK")]
         +   [kmd["Pewter_City_Links"].get(key) for key in kmd["Pewter_City_Links"]]
+        +   [kmd["Route_22_Links"].get("ROUTE_22_TO_VICTORY_ROAD_GATE_1_LINK")]
         +   [kmd["Route_3_Links"].get("ROUTE_3_TO_MOUNT_MOON_1_LINK")])
 
     #Cerulean (note: block on underground) (bikeshop closed) + route 5
@@ -28,7 +28,8 @@ def buildKantoMajorNodes():
     #Vermillion (note: snorlax key) excluded gym + route 6
     MajorNodes_Kanto['Vermilion City Node'] = Node(
             [kmd["Vermilion_City_Links"].get(key) for key in kmd["Vermilion_City_Links"] if key not in
-            ["VERMILION_CITY_TO_VERMILION_GYM_1_LINK","VERMILION_CITY_TO_VERMILION_PORT_PASSAGE_1_LINK"]]
+                ["VERMILION_CITY_TO_VERMILION_GYM_1_LINK","VERMILION_CITY_TO_VERMILION_PORT_PASSAGE_1_LINK"]
+            ]
         +   [kmd["Route_6_Links"].get("ROUTE_6_TO_ROUTE_6_UNDERGROUND_PATH_ENTRANCE_1_LINK")]
         +   [kmd["Route_6_Links"].get("ROUTE_6_TO_ROUTE_6_SAFFRON_GATE_3_LINK")])
 
@@ -715,29 +716,3 @@ def buildKantoHubNodes():
     )
 
     return HubNodes_Kanto
-
-
-
-
-
-
-
-
-
-  
-
-# print("Printing Major Node Connection Numbers")
-# for node in MajorNodes:
-#     print(node["value.TOTAL_LINKS"]
-#
-# print("Printing Corridor Connection Numbers")
-# for node in TwoWayCorridorNodes:
-#     print(node["value.TOTAL_LINKS"]
-#
-# print("Printing Hub Node Connection Numbers")
-# for node in HubNodes:
-#     print(node["value.TOTAL_LINKS"]
-#
-# print("Printing Deadend Node Connection Numbers")
-# for node in DeadEndNodes:
-#     print(node["value.TOTAL_LINKS"]

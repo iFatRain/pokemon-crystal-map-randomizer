@@ -10,6 +10,7 @@ johto = johto_all_warp_points_dict.buildJohtoWarpLinks()
 
 def buildJohtoMajorNodes(excludeMart):
     MajorNodes_Johto = dict()
+
     MajorNodes_Johto['New Bark and Cherrygrove Node'] = Node(
         [johto["Cherrygrove_City_Links"].get(key) for key in johto["Cherrygrove_City_Links"] if key != "CHERRYGROVE_CITY_TO_CHERRYGROVE_MART_LINK"] +
         [johto["Cherrygrove_City_Links"].get(key) for key in johto["Cherrygrove_City_Links"] if key == "CHERRYGROVE_CITY_TO_CHERRYGROVE_MART_LINK" and not excludeMart] +
@@ -19,9 +20,9 @@ def buildJohtoMajorNodes(excludeMart):
     )
 
     MajorNodes_Johto['Violet City and Route 32 Node'] = Node(
-            [johto["Violet_City_Links"].get(key) for key in johto["Violet_City_Links"]]
-        +   [johto["Route_36_Links"].get("ROUTE_36_TO_ROUTE_36_RUINS_OF_ALPH_GATE_LINK")]
-        +   [johto["Route_32_Links"].get(key) for key in johto["Route_32_Links"]]
+        [johto["Violet_City_Links"].get(key) for key in johto["Violet_City_Links"]] +
+        [johto["Route_36_Links"].get("ROUTE_36_TO_ROUTE_36_RUINS_OF_ALPH_GATE_LINK")] +
+        [johto["Route_32_Links"].get(key) for key in johto["Route_32_Links"]]
     )
 
     MajorNodes_Johto['Azalea Town and Route 32 Node'] = Node(
@@ -36,7 +37,7 @@ def buildJohtoMajorNodes(excludeMart):
     MajorNodes_Johto['Ecruteak_City_Node'] = Node(
         [johto["Ecruteak_City_Links"].get(key) for key in johto["Ecruteak_City_Links"] if key not in
             ["ECRUTEAK_CITY_TO_TIN_TOWER_1F_LINK","ECRUTEAK_CITY_TO_WISE_TRIOS_ROOM_LINK"]
-         ]
+        ]
     )
 
     MajorNodes_Johto['Olivine City, Route 38 and Route 39 Node'] = Node(
@@ -134,8 +135,9 @@ def buildJohtoImportantDeadEnds(excludeMart):
     ImportantDeadEndNodes_Johto['Olivine Tims House Node'] = Node(
         [johto["Olivine_Tims_House_Links"].get(key) for key in johto["Olivine_Tims_House_Links"]])
 
-    ImportantDeadEndNodes_Johto['Cherrygrove Mart Node'] = Node(
-        [johto["Cherrygrove_Mart_Links"].get(key) for key in johto["Cherrygrove_Mart_Links"]])
+    if not excludeMart:
+        ImportantDeadEndNodes_Johto['Cherrygrove Mart Node'] = Node(
+            [johto["Cherrygrove_Mart_Links"].get(key) for key in johto["Cherrygrove_Mart_Links"]])
 
     ImportantDeadEndNodes_Johto['Route 30 Mr Pokemons House Node'] = Node(
         [johto["Mr_Pokemons_House_Links"].get(key) for key in johto["Mr_Pokemons_House_Links"]])
@@ -536,6 +538,7 @@ def buildJohtoReachableDeadEnds():
         [johto["Lake_Of_Rage_Links"].get("LAKE_OF_RAGE_TO_LAKE_OF_RAGE_HIDDEN_POWER_HOUSE_LINK")]
     )
 
+    # TODO Find a potential solution to use wise trio room
     # Ecruteak_Tin_Tower_Entrance_To_Wise_Trio_Room_Node = Node(
     #     [johto["Ecruteak_Tin_Tower_Entrance_Links"]ECRUTEAK_TIN_TOWER_ENTRANCE_TO_WISE_TRIOS_ROOM_LINK]
     # )
@@ -737,7 +740,7 @@ def buildJohtoCorridors():
     TwoWayCorridorNodes_Johto['Ecruteak Wise Trio Room To Tin Tower Node'] = Node(
         [johto["Ecruteak_City_Links"].get(key) for key in johto["Ecruteak_City_Links"] if key in
          ["ECRUTEAK_CITY_TO_TIN_TOWER_1F_LINK","ECRUTEAK_CITY_TO_WISE_TRIOS_ROOM_LINK"]
-         ]
+        ]
     )
 
     TwoWayCorridorNodes_Johto['Lighthouse 1F Node'] = Node(
@@ -819,7 +822,7 @@ def buildJohtoCorridors():
     TwoWayCorridorNodes_Johto['Route 35 Node'] = Node(
         [johto["Route_35_Links"].get(key) for key in johto["Route_35_Links"]]
     )
-    #
+    # Made part of Violet Node after change to the egg block trigger
     # Route_32_Node = Node(
     #     [johto["Route_32_Links"]ROUTE_32_TO_ROUTE_32_POKECENTER_LINK,
     #      johto["Route_32_Links"]ROUTE_32_TO_UNION_CAVE_LINK]
@@ -900,11 +903,12 @@ def buildJohtoCorridors():
          johto["Whirl_Island_SW_Links"].get("WHIRL_ISLAND_S_W_TO_ROUTE_41_3_LINK")]
     )
 
-
+    #TODO I think these got split into deadends
     # Dark_Cave_Violet_Entrance_From_Route_31_Node = Node(
     #     [johto["Dark_Cave_Violet_Entrance_Links"]DARK_CAVE_VIOLET_ENTRANCE_TO_ROUTE_31_LINK,
     #      johto["Dark_Cave_Violet_Entrance_Links"]DARK_CAVE_VIOLET_ENTRANCE_TO_ROUTE_46_LINK]
     # )
+
     TwoWayCorridorNodes_Johto['Tin Tower 2F Node'] = Node(
         [johto["Tin_Tower_2F_Links"].get("TIN_TOWER_2F_TO_TIN_TOWER_3F_1_LINK"),
          johto["Tin_Tower_2F_Links"].get("TIN_TOWER_2F_TO_TIN_TOWER_1F_3_LINK")]
@@ -1049,7 +1053,7 @@ def buildJohtoHubs():
     HubNodes_Johto['Ice Path B1F (Holes, Hub) Node'] = Node(
         [johto["Ice_Path_B1F_Links"].get(key) for key in johto["Ice_Path_B1F_Links"] if key not in
          ["ICE_PATH_B1F_TO_ICE_PATH_B2F_BLACKTHORN_SIDE_1_LINK","ICE_PATH_B1F_TO_ICE_PATH_1F_4_LINK"]
-         ]
+        ]
     )
 
     HubNodes_Johto['Goldenrod Dept Store Hub Node'] = Node(
@@ -1067,21 +1071,3 @@ def buildJohtoHubs():
     )
 
     return HubNodes_Johto
-
-
-
-# print("Printing Major Node Connection Numbers")
-# for node in MajorNodes_Johto:
-#     print(node.get("value.TOTAL_LINK"))
-#
-# print("Printing Corridor Connection Numbers")
-# for node in TwoWayCorridorNodes_Johto:
-#     print(node.get("value.TOTAL_LINK"))
-#
-# print("Printing Hub Node Connection Numbers")
-# for node in HubNodes:
-#     print(node.get("value.TOTAL_LINK"))
-#
-# print("Printing Deadend Node Connection Numbers")
-# for node in DeadEndNodes:
-#     print(node.get("value.TOTAL_LINK"))

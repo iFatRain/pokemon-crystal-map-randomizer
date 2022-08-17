@@ -4,7 +4,9 @@ import links_and_nodes.johto_all_warp_points
 import links_and_nodes.kanto_all_warp_points
 import links_and_nodes.johto_node_containers as Johto
 import links_and_nodes.kanto_node_containers as Kanto
+from links_and_nodes.johto_all_warp_points_dict import buildJohtoWarpLinks
 from links_and_nodes.johto_node_dictionary_containers import buildJohtoMajorNodes, buildJohtoHubs, buildJohtoImportantDeadEnds, buildJohtoReachableDeadEnds, buildJohtoUselessDeadEnds, buildJohtoCorridors
+from links_and_nodes.kanto_all_warp_points_dict import buildKantoWarpLinks
 from links_and_nodes.kanto_node_dictionary_containers import buildKantoMajorNodes, buildKantoHubNodes, buildKantoImportantDeadEnds, buildKantoUselessDeadEnds, buildKantoCorridors
 from logic import AutomaticWarpLocator
 from logic.MemoryAddressReader import buildMemoryLocationsFromSym
@@ -113,49 +115,49 @@ def randomizeWarpsNew(combinedRegions,unrandomMart):
 
     return randomizedNodes
 
-def checkForDoubles(inputLink, inputROM, warpLocations):
-    if inputLink is links_and_nodes.johto_all_warp_points.Ruins_Of_Alph_Ho_Oh_Chamber_Links.RUINS_OF_ALPH_HO_OH_CHAMBER_TO_RUINS_OF_ALPH_INNER_CHAMBER_2_LINK:
-        inputROM.seek(warpLocations[links_and_nodes.johto_all_warp_points.Ruins_Of_Alph_Ho_Oh_Item_Room_Links.RUINS_OF_ALPH_HO_OH_ITEM_ROOM_TO_RUINS_OF_ALPH_HO_OH_WORD_ROOM_1_LINK.value.MEMORY_ORIGIN]
-                      + links_and_nodes.johto_all_warp_points.Ruins_Of_Alph_Ho_Oh_Item_Room_Links.RUINS_OF_ALPH_HO_OH_ITEM_ROOM_TO_RUINS_OF_ALPH_HO_OH_WORD_ROOM_1_LINK.value.OFFSET)
-        inputROM.write(WarpInstruction.getInstruction(inputLink.value.LINK.value))
+def checkForDoubles(inputLink, inputROM, warpLocations, johtoWarps):
+    if inputLink is johtoWarps.get("RUINS_OF_ALPH_HO_OH_CHAMBER_TO_RUINS_OF_ALPH_INNER_CHAMBER_2_LINK"):
+        inputROM.seek(warpLocations[johtoWarps.get("RUINS_OF_ALPH_HO_OH_ITEM_ROOM_TO_RUINS_OF_ALPH_HO_OH_WORD_ROOM_1_LINK.MEMORY_ORIGIN")]
+                      + johtoWarps.get("RUINS_OF_ALPH_HO_OH_ITEM_ROOM_TO_RUINS_OF_ALPH_HO_OH_WORD_ROOM_1_LINK").OFFSET)
+        inputROM.write(WarpInstruction.getInstruction(inputLink.LINK))
         inputROM.read(2)
-        inputROM.write(WarpInstruction.getInstruction(inputLink.value.LINK.value))
+        inputROM.write(WarpInstruction.getInstruction(inputLink.LINK))
         print("Fixing Ho Oh Chamber Double!")
 
-    if inputLink is links_and_nodes.johto_all_warp_points.Ruins_Of_Alph_Kabuto_Chamber_Links.RUINS_OF_ALPH_KABUTO_CHAMBER_TO_RUINS_OF_ALPH_INNER_CHAMBER_4_LINK:
-        inputROM.seek(warpLocations[links_and_nodes.johto_all_warp_points.Ruins_Of_Alph_Kabuto_Item_Room_Links.RUINS_OF_ALPH_KABUTO_ITEM_ROOM_TO_RUINS_OF_ALPH_KABUTO_WORD_ROOM_1_LINK.value.MEMORY_ORIGIN]
-                      + links_and_nodes.johto_all_warp_points.Ruins_Of_Alph_Kabuto_Item_Room_Links.RUINS_OF_ALPH_KABUTO_ITEM_ROOM_TO_RUINS_OF_ALPH_KABUTO_WORD_ROOM_1_LINK.value.OFFSET)
-        inputROM.write(WarpInstruction.getInstruction(inputLink.value.LINK.value))
+    if inputLink is johtoWarps.get("RUINS_OF_ALPH_KABUTO_CHAMBER_TO_RUINS_OF_ALPH_INNER_CHAMBER_4_LINK"):
+        inputROM.seek(warpLocations[johtoWarps.get("RUINS_OF_ALPH_KABUTO_ITEM_ROOM_TO_RUINS_OF_ALPH_KABUTO_WORD_ROOM_1_LINK").MEMORY_ORIGIN]
+                      + johtoWarps.get("RUINS_OF_ALPH_KABUTO_ITEM_ROOM_TO_RUINS_OF_ALPH_KABUTO_WORD_ROOM_1_LINK").OFFSET)
+        inputROM.write(WarpInstruction.getInstruction(inputLink.LINK))
         inputROM.read(2)
-        inputROM.write(WarpInstruction.getInstruction(inputLink.value.LINK.value))
+        inputROM.write(WarpInstruction.getInstruction(inputLink.LINK))
         print("Fixing Kabuto Chamber Double!")
 
-    if inputLink is links_and_nodes.johto_all_warp_points.Ruins_Of_Alph_Aerodactyl_Chamber_Links.RUINS_OF_ALPH_AERODACTYL_CHAMBER_TO_RUINS_OF_ALPH_INNER_CHAMBER_8_LINK:
-        inputROM.seek(warpLocations[links_and_nodes.johto_all_warp_points.Ruins_Of_Alph_Aerodactyl_Item_Room_Links.RUINS_OF_ALPH_AERODACTYL_ITEM_ROOM_TO_RUINS_OF_ALPH_AERODACTYL_WORD_ROOM_1_LINK.value.MEMORY_ORIGIN]
-                      + links_and_nodes.johto_all_warp_points.Ruins_Of_Alph_Aerodactyl_Item_Room_Links.RUINS_OF_ALPH_AERODACTYL_ITEM_ROOM_TO_RUINS_OF_ALPH_AERODACTYL_WORD_ROOM_1_LINK.value.OFFSET)
-        inputROM.write(WarpInstruction.getInstruction(inputLink.value.LINK.value))
+    if inputLink is johtoWarps.get("RUINS_OF_ALPH_AERODACTYL_CHAMBER_TO_RUINS_OF_ALPH_INNER_CHAMBER_8_LINK"):
+        inputROM.seek(warpLocations[johtoWarps.get("RUINS_OF_ALPH_AERODACTYL_ITEM_ROOM_TO_RUINS_OF_ALPH_AERODACTYL_WORD_ROOM_1_LINK").MEMORY_ORIGIN]
+                      + johtoWarps.get("RUINS_OF_ALPH_AERODACTYL_ITEM_ROOM_TO_RUINS_OF_ALPH_AERODACTYL_WORD_ROOM_1_LINK").OFFSET)
+        inputROM.write(WarpInstruction.getInstruction(inputLink.LINK))
         inputROM.read(2)
-        inputROM.write(WarpInstruction.getInstruction(inputLink.value.LINK.value))
+        inputROM.write(WarpInstruction.getInstruction(inputLink.LINK))
         print("Fixing Aero Chamber Double!")
 
-    if inputLink is links_and_nodes.johto_all_warp_points.Ruins_Of_Alph_Omanyte_Chamber_Links.RUINS_OF_ALPH_OMANYTE_CHAMBER_TO_RUINS_OF_ALPH_INNER_CHAMBER_6_LINK:
-        inputROM.seek(warpLocations[links_and_nodes.johto_all_warp_points.Ruins_Of_Alph_Omanyte_Item_Room_Links.RUINS_OF_ALPH_OMANYTE_ITEM_ROOM_TO_RUINS_OF_ALPH_OMANYTE_WORD_ROOM_1_LINK.value.MEMORY_ORIGIN]
-                      + links_and_nodes.johto_all_warp_points.Ruins_Of_Alph_Omanyte_Item_Room_Links.RUINS_OF_ALPH_OMANYTE_ITEM_ROOM_TO_RUINS_OF_ALPH_OMANYTE_WORD_ROOM_1_LINK.value.OFFSET)
-        inputROM.write(WarpInstruction.getInstruction(inputLink.value.LINK.value))
+    if inputLink is johtoWarps.get("RUINS_OF_ALPH_OMANYTE_CHAMBER_TO_RUINS_OF_ALPH_INNER_CHAMBER_6_LINK"):
+        inputROM.seek(warpLocations[johtoWarps.get("RUINS_OF_ALPH_OMANYTE_ITEM_ROOM_TO_RUINS_OF_ALPH_OMANYTE_WORD_ROOM_1_LINK").MEMORY_ORIGIN]
+                      + johtoWarps.get("RUINS_OF_ALPH_OMANYTE_ITEM_ROOM_TO_RUINS_OF_ALPH_OMANYTE_WORD_ROOM_1_LINK").OFFSET)
+        inputROM.write(WarpInstruction.getInstruction(inputLink.LINK))
         inputROM.read(2)
-        inputROM.write(WarpInstruction.getInstruction(inputLink.value.LINK.value))
+        inputROM.write(WarpInstruction.getInstruction(inputLink.LINK))
         print("Fixing Omanyte Chamber Double!")
 
-    if inputLink is links_and_nodes.johto_all_warp_points.Tin_Tower_1F_Links.TIN_TOWER_1F_TO_ECRUTEAK_CITY_LINK:
-        inputROM.seek(warpLocations[links_and_nodes.johto_all_warp_points.Tin_Tower_1F_Links.TIN_TOWER_1F_TO_ECRUTEAK_CITY_LINK.value.MEMORY_ORIGIN] + 10)
-        inputROM.write(WarpInstruction.getInstruction(inputLink.value.LINK.value))
+    if inputLink is johtoWarps.get("TIN_TOWER_1F_TO_ECRUTEAK_CITY_LINK"):
+        inputROM.seek(warpLocations[johtoWarps.get("TIN_TOWER_1F_TO_ECRUTEAK_CITY_LINK").MEMORY_ORIGIN] + 10)
+        inputROM.write(WarpInstruction.getInstruction(inputLink.LINK))
         print("Fixing Rear Stairs of Tin Tower 1F")
 
 def reassignWarp(inputROM, link, memLocation, locationOfWarpScript, bytesToFind):
     inputROM.seek(memLocation - 2)
     y_coord = inputROM.read(1)
     x_coord = inputROM.read(1)
-    dest_map = WarpInstruction.getInstruction(link.value.OWN.value)[1::]
+    dest_map = WarpInstruction.getInstruction(link.OWN)[1::]
     inputROM.seek(locationOfWarpScript)
     script = inputROM.read(150)
     dynamicOffset = script.find(bytesToFind)
@@ -166,20 +168,21 @@ def reassignWarp(inputROM, link, memLocation, locationOfWarpScript, bytesToFind)
     inputROM.write(y_coord)
     inputROM.seek(locationOfWarpScript + dynamicOffset)
 
-def directConnectRed(inputROM, warpLocations):
-    link = links_and_nodes.johto_all_warp_points.Victory_Road_Gate_Links.VICTORY_ROAD_GATE_TO_ROUTE_28_2_LINK
-    inputROM.seek(warpLocations[link.value.MEMORY_ORIGIN] + link.value.OFFSET)
-    inputROM.write(WarpInstruction.getInstruction(link.value.LINK.value))
-    if link.value.DUAL_WIDTH is True:
-        inputROM.read(2)
-        inputROM.write(WarpInstruction.getInstruction(link.value.LINK.value))
+def directConnectRed(inputROM, warpLocations, johtoWarps, kantoWarps):
 
-    link = links_and_nodes.kanto_all_warp_points.Silver_Cave_Room_3_Links.SILVER_CAVE_ROOM_3_TO_SILVER_CAVE_ROOM_2_2_LINK
-    inputROM.seek(warpLocations[link.value.MEMORY_ORIGIN] + link.value.OFFSET)
-    inputROM.write(WarpInstruction.getInstruction(link.value.LINK.value))
-    if link.value.DUAL_WIDTH is True:
+    link = johtoWarps.get("Victory_Road_Gate_Links").get("VICTORY_ROAD_GATE_TO_ROUTE_28_2_LINK")
+    inputROM.seek(warpLocations[link.MEMORY_ORIGIN] + link.OFFSET)
+    inputROM.write(WarpInstruction.getInstruction(link.LINK.value))
+    if link.DUAL_WIDTH is True:
         inputROM.read(2)
-        inputROM.write(WarpInstruction.getInstruction(link.value.LINK.value))
+        inputROM.write(WarpInstruction.getInstruction(link.LINK.value))
+
+    link = kantoWarps.get("Silver_Cave_Room_3_Links").get("SILVER_CAVE_ROOM_3_TO_SILVER_CAVE_ROOM_2_2_LINK")
+    inputROM.seek(warpLocations[link.MEMORY_ORIGIN] + link.OFFSET)
+    inputROM.write(WarpInstruction.getInstruction(link.LINK.value))
+    if link.DUAL_WIDTH is True:
+        inputROM.read(2)
+        inputROM.write(WarpInstruction.getInstruction(link.LINK.value))
 
 def randomizeROM(inputROM, settings):
 
@@ -188,8 +191,6 @@ def randomizeROM(inputROM, settings):
     print("Randomizing Warps..")
     randomizedNodes = randomizeWarpsNew(settings[2],settings[9])
 
-
-    print("Writing New Warps to ROM...")
     rom = inputROM.read()
     lookupDict = AutomaticWarpLocator.getLookupDict()
     warpLocations = dict()
@@ -200,28 +201,32 @@ def randomizeROM(inputROM, settings):
     scriptLocations = buildMemoryLocationsFromSym(settings[0])
 
 
-    for key in warpLocations.keys():
-        print(key, " is at ",hex(warpLocations.get(key)))
+    # for key in warpLocations.keys():
+    #     print(key, " is at ",hex(warpLocations.get(key)))
+    johtoWarps = buildJohtoWarpLinks()
+    kantoWarps = buildKantoWarpLinks()
 
-
+    print("Writing New Warps to ROM...")
     for node in randomizedNodes:
         for link in node[1].LINKS:
-            memLocation = warpLocations[link.value.MEMORY_ORIGIN] + link.value.OFFSET
+            memLocation = warpLocations[link.MEMORY_ORIGIN] + link.OFFSET
             inputROM.seek(memLocation)
-            inputROM.write(WarpInstruction.getInstruction(link.value.LINK.value))
-            if link.value.DUAL_WIDTH is True:
+            inputROM.write(WarpInstruction.getInstruction(link.LINK.value))
+            if link.DUAL_WIDTH is True:
                 inputROM.read(2)
-                inputROM.write(WarpInstruction.getInstruction(link.value.LINK.value))
+                inputROM.write(WarpInstruction.getInstruction(link.LINK.value))
 
-            checkForDoubles(link, inputROM, warpLocations)
+            checkForDoubles(link, inputROM, warpLocations, johtoWarps)
 
-            if link.value.LINK == links_and_nodes.johto_all_warp_points.Ecruteak_Gym_Warp_Points.ECRUTEAK_GYM_TO_ECRUTEAK_CITY_WP:
+
+            if link.LINK == johtoWarps.get("Ecruteak_Gym_Links").get("ECRUTEAK_GYM_TO_ECRUTEAK_CITY_LINK"):
+                print("REASSIGNING WARP")
                 reassignWarp(inputROM, link, memLocation, scriptLocations["EcruteakGymClosed"], b'\x04\t\x06\x1b')
-            if link.value.LINK == links_and_nodes.johto_all_warp_points.Slowpoke_Well_B1F_Warp_Points.SLOWPOKE_WELL_B1F_TO_AZALEA_TOWN_6_WP:
-
+            if link.LINK == johtoWarps.get("Slowpoke_Well_B1F_Links").get("SLOWPOKE_WELL_B1F_TO_AZALEA_TOWN_LINK"):
+                print("REASSIGNING WARP")
                 reassignWarp(inputROM, link, memLocation, scriptLocations["TrainerGruntM1.Script"], b'\x08\x04\x03\x03')
 
-    directConnectRed(inputROM, warpLocations)
+    directConnectRed(inputROM, warpLocations, johtoWarps, kantoWarps)
 
     randomizeTime = time.time() - startTime
     print("Time to randomize warps and write to ROM:", randomizeTime,"seconds")
