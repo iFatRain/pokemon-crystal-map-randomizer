@@ -13,7 +13,7 @@ class SEAFOAM_GYM(IntEnum):
 
 class Seafoam_Gym_Warp_Points(Enum): 
 
-	SEAFOAM_GYM_TO_ROUTE_20_1_WP = WarpInstruction( 
+	Seafoam_Gym_Exit_WP = WarpInstruction(
 		getHex(SEAFOAM_GYM.ROUTE_20_1), 
 		getHex(mapGroup),
 		getHex(specificMap)

@@ -15,7 +15,7 @@ class KURTS_HOUSE(IntEnum):
 
 class Kurts_House_Warp_Points(Enum):
 
-    KURTS_HOUSE_TO_AZALEA_TOWN_WP = WarpInstruction(
+    Kurts_House_Exit_WP = WarpInstruction(
         getHex(KURTS_HOUSE.AZALEA_TOWN),
         getHex(mapGroup),
         getHex(specificMap))

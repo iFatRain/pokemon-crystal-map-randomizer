@@ -15,7 +15,7 @@ class CELADON_CAFE(IntEnum):
 
 class Celadon_Cafe_Warp_Points(Enum): 
 
-	CELADON_CAFE_TO_CELADON_CITY_9_WP = WarpInstruction( 
+	Celadon_City_Cafe_Exit_WP = WarpInstruction(
 		getHex(CELADON_CAFE.CELADON_CITY_9), 
 		getHex(mapGroup),
 		getHex(specificMap)

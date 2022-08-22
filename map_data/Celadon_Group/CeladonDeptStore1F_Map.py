@@ -16,21 +16,21 @@ class CELADON_DEPT_STORE_1F(IntEnum):
 
 class Celadon_Dept_Store_1F_Warp_Points(Enum): 
 
-	CELADON_DEPT_STORE_1F_TO_CELADON_CITY_1_WP = WarpInstruction( 
+	Celadon_City_Dept_Store_1F_Exit_WP = WarpInstruction(
 		getHex(CELADON_DEPT_STORE_1F.CELADON_CITY_1), 
 		getHex(mapGroup),
 		getHex(specificMap)
 		) 
 
-	CELADON_DEPT_STORE_1F_TO_CELADON_DEPT_STORE_2F_2_WP = WarpInstruction( 
+	Celadon_City_Dept_Store_1F_Stairs_WP = WarpInstruction(
 		getHex(CELADON_DEPT_STORE_1F.CELADON_DEPT_STORE_2F_2), 
 		getHex(mapGroup),
 		getHex(specificMap)
 		) 
-
-	CELADON_DEPT_STORE_1F_TO_CELADON_DEPT_STORE_ELEVATOR_1_WP = WarpInstruction( 
-		getHex(CELADON_DEPT_STORE_1F.CELADON_DEPT_STORE_ELEVATOR_1), 
-		getHex(mapGroup),
-		getHex(specificMap)
-		) 
+	# Elevator Is Unused
+	# CELADON_DEPT_STORE_1F_TO_CELADON_DEPT_STORE_ELEVATOR_1_WP = WarpInstruction(
+	# 	getHex(CELADON_DEPT_STORE_1F.CELADON_DEPT_STORE_ELEVATOR_1),
+	# 	getHex(mapGroup),
+	# 	getHex(specificMap)
+	# 	)
 

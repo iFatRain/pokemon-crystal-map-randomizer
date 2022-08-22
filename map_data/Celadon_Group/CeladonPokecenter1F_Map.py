@@ -15,13 +15,13 @@ class CELADON_POKECENTER_1F(IntEnum):
 
 class Celadon_Pokecenter_1F_Warp_Points(Enum): 
 
-	CELADON_POKECENTER_1F_TO_CELADON_CITY_5_WP = WarpInstruction( 
+	Celadon_City_Pokecenter_Exit_WP = WarpInstruction(
 		getHex(CELADON_POKECENTER_1F.CELADON_CITY_5), 
 		getHex(mapGroup),
 		getHex(specificMap)
 		) 
 
-	CELADON_POKECENTER_1F_TO_POKECENTER_2F_1_WP = WarpInstruction( 
+	Celadon_City_Pokecenter_Stairs_WP = WarpInstruction(
 		getHex(CELADON_POKECENTER_1F.POKECENTER_2F_1), 
 		getHex(mapGroup),
 		getHex(specificMap)

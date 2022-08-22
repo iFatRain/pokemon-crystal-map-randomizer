@@ -15,7 +15,7 @@ class EARLS_POKEMON_ACADEMY(IntEnum):
 
 class Earls_Pokemon_Academy_Warp_Points(Enum):
 
-    EARLS_POKEMON_ACADEMY_TO_VIOLET_CITY_WP = WarpInstruction(
+    Violet_City_School_Exit_WP = WarpInstruction(
         getHex(EARLS_POKEMON_ACADEMY.VIOLET_CITY),
         getHex(mapGroup),
         getHex(specificMap),

@@ -13,7 +13,7 @@ class CERULEAN_MART(IntEnum):
 
 class Cerulean_Mart_Warp_Points(Enum): 
 
-	CERULEAN_MART_TO_CERULEAN_CITY_6_WP = WarpInstruction( 
+	Cerulean_City_Mart_Exit_WP = WarpInstruction(
 		getHex(CERULEAN_MART.CERULEAN_CITY_6), 
 		getHex(mapGroup),
 		getHex(specificMap)

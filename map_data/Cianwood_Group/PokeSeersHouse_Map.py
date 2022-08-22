@@ -15,7 +15,7 @@ class POKE_SEERS_HOUSE(IntEnum):
 
 class Poke_Seers_House_Warp_Points(Enum):
 
-    POKE_SEERS_HOUSE_TO_CIANWOOD_CITY_WP = WarpInstruction(
+    Cianwood_City_Poke_Seers_House_Exit_WP = WarpInstruction(
         getHex(POKE_SEERS_HOUSE.CIANWOOD_CITY),
         getHex(mapGroup),
         getHex(specificMap))

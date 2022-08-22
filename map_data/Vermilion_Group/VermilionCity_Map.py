@@ -19,57 +19,57 @@ class VERMILION_CITY(IntEnum):
 	DIGLETTS_CAVE_1 = 10
 
 
-class Vermilion_City_Warp_Points(Enum): 
+class Vermilion_City_Warp_Points(Enum):
 
-	VERMILION_CITY_TO_VERMILION_FISHING_SPEECH_HOUSE_1_WP = WarpInstruction( 
+	Vermilion_City_Fishing_Speech_House_Entrance_WP = WarpInstruction(
 		getHex(VERMILION_CITY.VERMILION_FISHING_SPEECH_HOUSE_1), 
 		getHex(mapGroup),
 		getHex(specificMap)
 		) 
 
-	VERMILION_CITY_TO_VERMILION_POKECENTER_1F_1_WP = WarpInstruction( 
+	Vermilion_City_Pokecenter_Entrance_WP = WarpInstruction(
 		getHex(VERMILION_CITY.VERMILION_POKECENTER_1F_1), 
 		getHex(mapGroup),
 		getHex(specificMap)
 		) 
 
-	VERMILION_CITY_TO_POKEMON_FAN_CLUB_1_WP = WarpInstruction( 
+	Pokemon_Fan_Club_Entrance_WP = WarpInstruction(
 		getHex(VERMILION_CITY.POKEMON_FAN_CLUB_1), 
 		getHex(mapGroup),
 		getHex(specificMap)
 		) 
 
-	VERMILION_CITY_TO_VERMILION_MAGNET_TRAIN_SPEECH_HOUSE_1_WP = WarpInstruction( 
+	Vermilion_City_Magnet_Train_Speech_House_Entrance_WP = WarpInstruction(
 		getHex(VERMILION_CITY.VERMILION_MAGNET_TRAIN_SPEECH_HOUSE_1), 
 		getHex(mapGroup),
 		getHex(specificMap)
 		) 
 
-	VERMILION_CITY_TO_VERMILION_MART_2_WP = WarpInstruction( 
+	Vermilion_City_Mart_Entrance_WP = WarpInstruction(
 		getHex(VERMILION_CITY.VERMILION_MART_2), 
 		getHex(mapGroup),
 		getHex(specificMap)
 		) 
 
-	VERMILION_CITY_TO_VERMILION_DIGLETTS_CAVE_SPEECH_HOUSE_1_WP = WarpInstruction( 
+	Vermilion_City_Digletts_Cave_Speech_House_Entrance_WP = WarpInstruction(
 		getHex(VERMILION_CITY.VERMILION_DIGLETTS_CAVE_SPEECH_HOUSE_1), 
 		getHex(mapGroup),
 		getHex(specificMap)
 		) 
 
-	VERMILION_CITY_TO_VERMILION_GYM_1_WP = WarpInstruction( 
+	Vermilion_City_Gym_Entrance_WP = WarpInstruction(
 		getHex(VERMILION_CITY.VERMILION_GYM_1), 
 		getHex(mapGroup),
 		getHex(specificMap)
 		) 
 
-	VERMILION_CITY_TO_VERMILION_PORT_PASSAGE_1_WP = WarpInstruction( 
+	Vermilion_City_To_Port_Passage_WP = WarpInstruction(
 		getHex(VERMILION_CITY.VERMILION_PORT_PASSAGE_1), 
 		getHex(mapGroup),
 		getHex(specificMap)
 		) 
 
-	VERMILION_CITY_TO_DIGLETTS_CAVE_1_WP = WarpInstruction( 
+	Vermilion_City_Digletts_Cave_Entrance_WP = WarpInstruction(
 		getHex(VERMILION_CITY.DIGLETTS_CAVE_1), 
 		getHex(mapGroup),
 		getHex(specificMap)

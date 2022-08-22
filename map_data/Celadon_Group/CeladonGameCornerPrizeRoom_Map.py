@@ -15,7 +15,7 @@ class CELADON_GAME_CORNER_PRIZE_ROOM(IntEnum):
 
 class Celadon_Game_Corner_Prize_Room_Warp_Points(Enum): 
 
-	CELADON_GAME_CORNER_PRIZE_ROOM_TO_CELADON_CITY_7_WP = WarpInstruction( 
+	Celadon_City_Game_Corner_Prize_Room_Exit_WP = WarpInstruction(
 		getHex(CELADON_GAME_CORNER_PRIZE_ROOM.CELADON_CITY_7), 
 		getHex(mapGroup),
 		getHex(specificMap)

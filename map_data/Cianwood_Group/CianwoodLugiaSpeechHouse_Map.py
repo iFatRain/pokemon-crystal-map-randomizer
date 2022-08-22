@@ -15,7 +15,7 @@ class CIANWOOD_LUGIA_SPEECH_HOUSE(IntEnum):
 
 class Cianwood_Lugia_Speech_House_Warp_Points(Enum):
 
-    CIANWOOD_LUGIA_SPEECH_HOUSE_TO_CIANWOOD_CITY_WP = WarpInstruction(
+    Cianwood_City_Lugia_Speech_House_Exit_WP = WarpInstruction(
         getHex(CIANWOOD_LUGIA_SPEECH_HOUSE.CIANWOOD_CITY),
         getHex(mapGroup),
         getHex(specificMap))

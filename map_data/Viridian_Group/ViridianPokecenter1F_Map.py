@@ -14,14 +14,14 @@ class VIRIDIAN_POKECENTER_1F(IntEnum):
 
 class Viridian_Pokecenter_1F_Warp_Points(Enum): 
 
-	VIRIDIAN_POKECENTER_1F_TO_VIRIDIAN_CITY_5_WP = WarpInstruction( 
+	Viridian_City_Pokecenter_Exit_WP = WarpInstruction(
 		getHex(VIRIDIAN_POKECENTER_1F.VIRIDIAN_CITY_5), 
 		getHex(mapGroup),
 		getHex(specificMap)
 		) 
 
 
-	VIRIDIAN_POKECENTER_1F_TO_POKECENTER_2F_1_WP = WarpInstruction( 
+	Viridian_City_Pokecenter_Stairs_WP = WarpInstruction(
 		getHex(VIRIDIAN_POKECENTER_1F.POKECENTER_2F_1), 
 		getHex(mapGroup),
 		getHex(specificMap)

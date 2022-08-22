@@ -16,7 +16,7 @@ class BLACKTHORN_GYM_1F(IntEnum):
 
 class Blackthorn_Gym_1F_Warp_Points(Enum):
 
-    BLACKTHORN_GYM_1F_TO_BLACKTHORN_CITY_WP = WarpInstruction(
+    Blackthorn_City_Gym_Exit_WP = WarpInstruction(
         getHex(BLACKTHORN_GYM_1F.BLACKTHORN_CITY),
         getHex(mapGroup),
         getHex(specificMap))

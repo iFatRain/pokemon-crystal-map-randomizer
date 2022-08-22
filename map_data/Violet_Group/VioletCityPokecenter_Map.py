@@ -16,13 +16,13 @@ class VIOLET_POKECENTER(IntEnum):
 
 class Violet_Pokecenter_Warp_Points(Enum):
 
-    VIOLET_POKECENTER_TO_VIOLET_CITY_WP = WarpInstruction(
+    Violet_City_Pokecenter_Exit_WP = WarpInstruction(
         getHex(VIOLET_POKECENTER.VIOLET_CITY),
         getHex(mapGroup),
         getHex(specificMap),
         )
 
-    VIOLET_POKECENTER_TO_VIOLET_POKECENTER_2F_WP = WarpInstruction(
+    Violet_City_Pokecenter_Stairs_WP = WarpInstruction(
         getHex(VIOLET_POKECENTER.POKECENTER_2F),
         getHex(mapGroup),
         getHex(specificMap))

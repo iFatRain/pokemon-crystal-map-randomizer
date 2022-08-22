@@ -15,13 +15,13 @@ class VERMILION_PORT(IntEnum):
 
 class Vermilion_Port_Warp_Points(Enum): 
 
-	VERMILION_PORT_TO_VERMILION_PORT_PASSAGE_5_WP = WarpInstruction( 
+	Vermilion_Port_To_Port_Passage_WP = WarpInstruction(
 		getHex(VERMILION_PORT.VERMILION_PORT_PASSAGE_5), 
 		getHex(mapGroup),
 		getHex(specificMap)
 		) 
 
-	VERMILION_PORT_TO_FAST_SHIP_1F_1_WP = WarpInstruction( 
+	Vermilion_Port_To_Fast_Ship_WP = WarpInstruction(
 		getHex(VERMILION_PORT.FAST_SHIP_1F_1), 
 		getHex(mapGroup),
 		getHex(specificMap)

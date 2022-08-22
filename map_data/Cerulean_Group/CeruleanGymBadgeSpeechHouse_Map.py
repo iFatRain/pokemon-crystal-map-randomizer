@@ -13,7 +13,7 @@ class CERULEAN_GYM_BADGE_SPEECH_HOUSE(IntEnum):
 
 class Cerulean_Gym_Badge_Speech_House_Warp_Points(Enum): 
 
-	CERULEAN_GYM_BADGE_SPEECH_HOUSE_TO_CERULEAN_CITY_1_WP = WarpInstruction( 
+	Cerulean_City_Gym_Badge_Speech_House_Exit_WP = WarpInstruction(
 		getHex(CERULEAN_GYM_BADGE_SPEECH_HOUSE.CERULEAN_CITY_1), 
 		getHex(mapGroup),
 		getHex(specificMap)

@@ -15,7 +15,7 @@ class CELADON_GAME_CORNER(IntEnum):
 
 class Celadon_Game_Corner_Warp_Points(Enum): 
 
-	CELADON_GAME_CORNER_TO_CELADON_CITY_6_WP = WarpInstruction( 
+	Celadon_City_Game_Corner_Exit_WP = WarpInstruction(
 		getHex(CELADON_GAME_CORNER.CELADON_CITY_6), 
 		getHex(mapGroup),
 		getHex(specificMap)

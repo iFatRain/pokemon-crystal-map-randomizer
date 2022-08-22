@@ -15,7 +15,7 @@ class AZALEA_GYM(IntEnum):
 
 class Azalea_Gym_Warp_Points(Enum):
 
-    AZALEA_GYM_TO_AZALEA_TOWN_WP = WarpInstruction(
+    Azalea_Gym_Exit_WP = WarpInstruction(
         getHex(AZALEA_GYM.AZALEA_TOWN),
         getHex(mapGroup),
         getHex(specificMap))

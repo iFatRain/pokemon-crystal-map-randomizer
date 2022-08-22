@@ -13,7 +13,7 @@ class VIRIDIAN_GYM(IntEnum):
 
 class Viridian_Gym_Warp_Points(Enum): 
 
-	VIRIDIAN_GYM_TO_VIRIDIAN_CITY_1_WP = WarpInstruction( 
+	Viridian_City_Gym_Exit_WP = WarpInstruction(
 		getHex(VIRIDIAN_GYM.VIRIDIAN_CITY_1), 
 		getHex(mapGroup),
 		getHex(specificMap)

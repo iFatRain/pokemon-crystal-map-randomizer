@@ -17,31 +17,31 @@ class VIRIDIAN_CITY(IntEnum):
 
 class Viridian_City_Warp_Points(Enum): 
 
-	VIRIDIAN_CITY_TO_VIRIDIAN_GYM_1_WP = WarpInstruction( 
+	Viridian_City_Gym_Entrance_WP = WarpInstruction(
 		getHex(VIRIDIAN_CITY.VIRIDIAN_GYM_1), 
 		getHex(mapGroup),
 		getHex(specificMap)
 		) 
 
-	VIRIDIAN_CITY_TO_VIRIDIAN_NICKNAME_SPEECH_HOUSE_1_WP = WarpInstruction( 
+	Viridian_City_Nickname_Speech_House_Entrance_WP = WarpInstruction(
 		getHex(VIRIDIAN_CITY.VIRIDIAN_NICKNAME_SPEECH_HOUSE_1), 
 		getHex(mapGroup),
 		getHex(specificMap)
 		) 
 
-	VIRIDIAN_CITY_TO_TRAINER_HOUSE_1F_1_WP = WarpInstruction( 
+	Trainer_House_Entrance_WP = WarpInstruction(
 		getHex(VIRIDIAN_CITY.TRAINER_HOUSE_1F_1), 
 		getHex(mapGroup),
 		getHex(specificMap)
 		) 
 
-	VIRIDIAN_CITY_TO_VIRIDIAN_MART_2_WP = WarpInstruction( 
+	Viridian_City_Mart_Entrance_WP = WarpInstruction(
 		getHex(VIRIDIAN_CITY.VIRIDIAN_MART_2), 
 		getHex(mapGroup),
 		getHex(specificMap)
 		) 
 
-	VIRIDIAN_CITY_TO_VIRIDIAN_POKECENTER_1F_1_WP = WarpInstruction( 
+	Viridian_City_Pokecenter_Entrance_WP = WarpInstruction(
 		getHex(VIRIDIAN_CITY.VIRIDIAN_POKECENTER_1F_1), 
 		getHex(mapGroup),
 		getHex(specificMap)

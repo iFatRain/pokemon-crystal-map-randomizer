@@ -15,7 +15,7 @@ class MANIAS_HOUSE(IntEnum):
 
 class Manias_House_Warp_Points(Enum):
 
-    MANIAS_HOUSE_TO_CIANWOOD_CITY_WP = WarpInstruction(
+    Cianwood_City_Shuckle_House_Exit_WP = WarpInstruction(
         getHex(MANIAS_HOUSE.CIANWOOD_CITY),
         getHex(mapGroup),
         getHex(specificMap))

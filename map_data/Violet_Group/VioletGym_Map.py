@@ -15,7 +15,7 @@ class VIOLET_GYM(IntEnum):
 
 class Violet_Gym_Warp_Points(Enum):
 
-    VIOLET_GYM_TO_VIOLET_CITY_WP = WarpInstruction(
+    Violet_City_Gym_Exit_WP = WarpInstruction(
         getHex(VIOLET_GYM.VIOLET_CITY),
         getHex(mapGroup),
         getHex(specificMap),

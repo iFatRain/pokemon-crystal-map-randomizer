@@ -13,7 +13,7 @@ class TRAINER_HOUSE_B1F(IntEnum):
 
 class Trainer_House_B1F_Warp_Points(Enum): 
 
-	TRAINER_HOUSE_B1F_TO_TRAINER_HOUSE_1F_3_WP = WarpInstruction( 
+	Trainer_House_B1F_Stairs_WP = WarpInstruction(
 		getHex(TRAINER_HOUSE_B1F.TRAINER_HOUSE_1F_3), 
 		getHex(mapGroup),
 		getHex(specificMap)

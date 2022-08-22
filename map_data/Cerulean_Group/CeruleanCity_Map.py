@@ -18,37 +18,37 @@ class CERULEAN_CITY(IntEnum):
 
 class Cerulean_City_Warp_Points(Enum): 
 
-	CERULEAN_CITY_TO_CERULEAN_GYM_BADGE_SPEECH_HOUSE_1_WP = WarpInstruction( 
+	Cerulean_City_Gym_Badge_Speech_House_Entrance_WP = WarpInstruction(
 		getHex(CERULEAN_CITY.CERULEAN_GYM_BADGE_SPEECH_HOUSE_1), 
 		getHex(mapGroup),
 		getHex(specificMap)
 		) 
 
-	CERULEAN_CITY_TO_CERULEAN_POLICE_STATION_1_WP = WarpInstruction( 
+	Cerulean_City_Police_Station_Entrance_WP = WarpInstruction(
 		getHex(CERULEAN_CITY.CERULEAN_POLICE_STATION_1), 
 		getHex(mapGroup),
 		getHex(specificMap)
 		) 
 
-	CERULEAN_CITY_TO_CERULEAN_TRADE_SPEECH_HOUSE_1_WP = WarpInstruction( 
+	Cerulean_City_Trade_Speech_House_Entrance_WP = WarpInstruction(
 		getHex(CERULEAN_CITY.CERULEAN_TRADE_SPEECH_HOUSE_1), 
 		getHex(mapGroup),
 		getHex(specificMap)
 		) 
 
-	CERULEAN_CITY_TO_CERULEAN_POKECENTER_1F_1_WP = WarpInstruction( 
+	Cerulean_City_Pokecenter_Entrance_WP = WarpInstruction(
 		getHex(CERULEAN_CITY.CERULEAN_POKECENTER_1F_1), 
 		getHex(mapGroup),
 		getHex(specificMap)
 		) 
 
-	CERULEAN_CITY_TO_CERULEAN_GYM_1_WP = WarpInstruction( 
+	Cerulean_City_Gym_Entrance_WP = WarpInstruction(
 		getHex(CERULEAN_CITY.CERULEAN_GYM_1), 
 		getHex(mapGroup),
 		getHex(specificMap)
 		) 
 
-	CERULEAN_CITY_TO_CERULEAN_MART_2_WP = WarpInstruction( 
+	Cerulean_City_Mart_Entrance_WP = WarpInstruction(
 		getHex(CERULEAN_CITY.CERULEAN_MART_2), 
 		getHex(mapGroup),
 		getHex(specificMap)

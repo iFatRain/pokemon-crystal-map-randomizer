@@ -14,7 +14,7 @@ class POWER_PLANT(IntEnum):
 
 class Power_Plant_Warp_Points(Enum): 
 
-	POWER_PLANT_TO_ROUTE_10_NORTH_2_WP = WarpInstruction( 
+	Power_Plant_Exit_WP = WarpInstruction(
 		getHex(POWER_PLANT.ROUTE_10_NORTH_2), 
 		getHex(mapGroup),
 		getHex(specificMap)

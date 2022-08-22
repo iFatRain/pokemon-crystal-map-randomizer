@@ -16,7 +16,7 @@ class BLACKTHORN_EMYS_HOUSE(IntEnum):
 
 class Blackthorn_Emys_House_Warp_Points(Enum):
 
-    BLACKTHORN_EMYS_HOUSE_TO_BLACKTHORN_CITY_WP = WarpInstruction(
+    Blackthorn_City_Emys_House_Exit_WP = WarpInstruction(
         getHex(BLACKTHORN_EMYS_HOUSE.BLACKTHORN_CITY),
         getHex(mapGroup),
         getHex(specificMap))

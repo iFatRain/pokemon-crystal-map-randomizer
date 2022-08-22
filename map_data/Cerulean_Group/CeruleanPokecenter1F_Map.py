@@ -14,13 +14,13 @@ class CERULEAN_POKECENTER_1F(IntEnum):
 
 class Cerulean_Pokecenter_1F_Warp_Points(Enum): 
 
-	CERULEAN_POKECENTER_1F_TO_CERULEAN_CITY_4_WP = WarpInstruction( 
+	Cerulean_City_Pokecenter_Exit_WP = WarpInstruction(
 		getHex(CERULEAN_POKECENTER_1F.CERULEAN_CITY_4), 
 		getHex(mapGroup),
 		getHex(specificMap)
 		) 
 
-	CERULEAN_POKECENTER_1F_TO_POKECENTER_2F_1_WP = WarpInstruction( 
+	Cerulean_City_Pokecenter_Stairs_WP = WarpInstruction(
 		getHex(CERULEAN_POKECENTER_1F.POKECENTER_2F_1), 
 		getHex(mapGroup),
 		getHex(specificMap)

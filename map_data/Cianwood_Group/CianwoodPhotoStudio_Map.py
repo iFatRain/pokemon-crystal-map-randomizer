@@ -15,7 +15,7 @@ class CIANWOOD_PHOTO_STUDIO(IntEnum):
 
 class Cianwood_Photo_Studio_Warp_Points(Enum):
 
-    CIANWOOD_PHOTO_STUDIO_TO_CIANWOOD_CITY_WP = WarpInstruction(
+    Cianwood_City_Photo_Studio_Exit_WP = WarpInstruction(
         getHex(CIANWOOD_PHOTO_STUDIO.CIANWOOD_CITY),
         getHex(mapGroup),
         getHex(specificMap))

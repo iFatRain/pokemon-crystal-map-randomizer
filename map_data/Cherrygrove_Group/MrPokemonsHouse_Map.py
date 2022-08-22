@@ -15,7 +15,7 @@ class MR_POKEMONS_HOUSE(IntEnum):
 
 class Mr_Pokemons_House_Warp_Points(Enum):
 
-    MR_POKEMONS_HOUSE_EXIT_WP = WarpInstruction(
+    Mr_Pokemons_House_Exit_WP = WarpInstruction(
         getHex(MR_POKEMONS_HOUSE.ROUTE_30),
         getHex(mapGroup),
         getHex(specificMap),

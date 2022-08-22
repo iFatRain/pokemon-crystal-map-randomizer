@@ -13,7 +13,7 @@ class CERULEAN_GYM(IntEnum):
 
 class Cerulean_Gym_Warp_Points(Enum): 
 
-	CERULEAN_GYM_TO_CERULEAN_CITY_5_WP = WarpInstruction( 
+	Cerulean_City_Gym_Exit_WP = WarpInstruction(
 		getHex(CERULEAN_GYM.CERULEAN_CITY_5), 
 		getHex(mapGroup),
 		getHex(specificMap)

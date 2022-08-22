@@ -16,12 +16,12 @@ class CIANWOOD_POKECENTER_1F(IntEnum):
 
 class Cianwood_Pokecenter_Warp_Points(Enum):
 
-    CIANWOOD_POKECENTER_1F_TO_CIANWOOD_CITY_WP = WarpInstruction(
+    Cianwood_City_Pokecenter_Exit_WP = WarpInstruction(
         getHex(CIANWOOD_POKECENTER_1F.CIANWOOD_CITY),
         getHex(mapGroup),
         getHex(specificMap))
 
-    CIANWOOD_POKECENTER_TO_CIANWOOD_POKECENTER_2F_WP = WarpInstruction(
+    Cianwood_City_Pokecenter_Stairs_WP = WarpInstruction(
         getHex(CIANWOOD_POKECENTER_1F.POKECENTER_2F),
         getHex(mapGroup),
         getHex(specificMap))

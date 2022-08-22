@@ -17,25 +17,25 @@ class CELADON_MANSION_2F(IntEnum):
 
 class Celadon_Mansion_2F_Warp_Points(Enum): 
 
-	CELADON_MANSION_2F_TO_CELADON_MANSION_1F_4_WP = WarpInstruction( 
+	Celadon_City_Mansion_2F_Far_Left_Stairs_WP = WarpInstruction(
 		getHex(CELADON_MANSION_2F.CELADON_MANSION_1F_4), 
 		getHex(mapGroup),
 		getHex(specificMap)
 		) 
 
-	CELADON_MANSION_2F_TO_CELADON_MANSION_3F_2_WP = WarpInstruction( 
+	Celadon_City_Mansion_2F_Left_Center_Stairs_WP = WarpInstruction(
 		getHex(CELADON_MANSION_2F.CELADON_MANSION_3F_2), 
 		getHex(mapGroup),
 		getHex(specificMap)
 		) 
 
-	CELADON_MANSION_2F_TO_CELADON_MANSION_3F_3_WP = WarpInstruction( 
+	Celadon_City_Mansion_2F_Right_Center_Stairs_WP = WarpInstruction(
 		getHex(CELADON_MANSION_2F.CELADON_MANSION_3F_3), 
 		getHex(mapGroup),
 		getHex(specificMap)
 		) 
 
-	CELADON_MANSION_2F_TO_CELADON_MANSION_1F_5_WP = WarpInstruction( 
+	Celadon_City_Mansion_2F_Far_Right_Stairs_WP = WarpInstruction(
 		getHex(CELADON_MANSION_2F.CELADON_MANSION_1F_5), 
 		getHex(mapGroup),
 		getHex(specificMap)

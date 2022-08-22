@@ -15,7 +15,7 @@ class VIOLET_MART(IntEnum):
 
 class Violet_Mart_Warp_Points(Enum):
 
-    VIOLET_MART_TO_VIOLET_CITY_WP = WarpInstruction(
+    Violet_City_Mart_Exit_WP = WarpInstruction(
         getHex(VIOLET_MART.VIOLET_CITY),
         getHex(mapGroup),
         getHex(specificMap),

@@ -15,7 +15,7 @@ class CHARCOAL_KILN(IntEnum):
 
 class Charcoal_Kiln_Warp_Points(Enum):
 
-    CHARCOAL_KILN_TO_AZALEA_TOWN_WP = WarpInstruction(
+    Charcoal_Kiln_Exit_WP = WarpInstruction(
         getHex(CHARCOAL_KILN.AZALEA_TOWN),
         getHex(mapGroup),
         getHex(specificMap))

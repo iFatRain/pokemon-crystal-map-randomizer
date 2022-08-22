@@ -13,7 +13,7 @@ class VERMILION_FISHING_SPEECH_HOUSE(IntEnum):
 
 class Vermilion_Fishing_Speech_House_Warp_Points(Enum): 
 
-	VERMILION_FISHING_SPEECH_HOUSE_TO_VERMILION_CITY_1_WP = WarpInstruction( 
+	Vermilion_City_Fishing_Speech_House_Exit_WP = WarpInstruction(
 		getHex(VERMILION_FISHING_SPEECH_HOUSE.VERMILION_CITY_1), 
 		getHex(mapGroup),
 		getHex(specificMap)

@@ -13,7 +13,7 @@ class VERMILION_DIGLETTS_CAVE_SPEECH_HOUSE(IntEnum):
 
 class Vermilion_Digletts_Cave_Speech_House_Warp_Points(Enum): 
 
-	VERMILION_DIGLETTS_CAVE_SPEECH_HOUSE_TO_VERMILION_CITY_6_WP = WarpInstruction( 
+	Vermilion_City_Digletts_Cave_Speech_House_Exit_WP = WarpInstruction(
 		getHex(VERMILION_DIGLETTS_CAVE_SPEECH_HOUSE.VERMILION_CITY_6), 
 		getHex(mapGroup),
 		getHex(specificMap)

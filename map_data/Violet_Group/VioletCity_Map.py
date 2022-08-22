@@ -23,51 +23,51 @@ class VIOLET_CITY(IntEnum):
 
 class Violet_City_Warp_Points(Enum):
 
-    VIOLET_CITY_TO_VIOLET_MART_WP = WarpInstruction(
+    Violet_City_Mart_Entrance_WP = WarpInstruction(
         getHex(VIOLET_CITY.VIOLET_MART),
         getHex(mapGroup),
         getHex(specificMap),
         )
 
-    VIOLET_CITY_TO_VIOLET_GYM_WP = WarpInstruction(
+    Violet_City_Gym_Entrance_WP = WarpInstruction(
         getHex(VIOLET_CITY.VIOLET_GYM),
         getHex(mapGroup),
         getHex(specificMap),
         )
 
-    VIOLET_CITY_TO_EARLS_POKEMON_ACADEMY_WP = WarpInstruction(
+    Violet_City_School_Entrance_WP = WarpInstruction(
         getHex(VIOLET_CITY.EARLS_POKEMON_ACADEMY),
         getHex(mapGroup),
         getHex(specificMap),
         )
 
 
-    VIOLET_CITY_TO_NICKNAME_SPEECH_HOUSE_WP = WarpInstruction(
+    Violet_City_Nickname_Speech_House_Entrance_WP = WarpInstruction(
         getHex(VIOLET_CITY.VIOLET_NICKNAME_SPEECH_HOUSE),
         getHex(mapGroup),
         getHex(specificMap),
         )
 
 
-    VIOLET_CITY_TO_VIOLET_POKECENTER_1F_WP = WarpInstruction(
+    Violet_City_Pokecenter_Entrance_WP = WarpInstruction(
         getHex(VIOLET_CITY.VIOLET_POKECENTER_1F),
         getHex(mapGroup),
         getHex(specificMap),
         )
 
-    VIOLET_CITY_TO_VIOLET_KYLES_HOUSE_WP = WarpInstruction(
+    Violet_Trade_House_Entrance_WP = WarpInstruction(
         getHex(VIOLET_CITY.VIOLET_KYLES_HOUSE),
         getHex(mapGroup),
         getHex(specificMap),
         )
 
-    VIOLET_CITY_TO_SPROUT_TOWER_1F_WP = WarpInstruction(
+    Sprout_Tower_1F_Entrance_WP = WarpInstruction(
         getHex(VIOLET_CITY.SPROUT_TOWER_1F),
         getHex(mapGroup),
         getHex(specificMap),
         )
 
-    VIOLET_CITY_ROUTE_31_VIOLET_GATE_WP = WarpInstruction(
+    Violet_City_Route_31_Gate_Violet_City_Entrance_WP = WarpInstruction(
         getHex(VIOLET_CITY.ROUTE_31_VIOLET_GATE),
         getHex(mapGroup),
         getHex(specificMap),

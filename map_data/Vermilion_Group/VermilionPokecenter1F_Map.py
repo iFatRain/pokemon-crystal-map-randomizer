@@ -14,14 +14,14 @@ class VERMILION_POKECENTER_1F(IntEnum):
 
 class Vermilion_Pokecenter_1F_Warp_Points(Enum): 
 
-	VERMILION_POKECENTER_1F_TO_VERMILION_CITY_2_WP = WarpInstruction( 
+	Vermilion_City_Pokecenter_Exit_WP = WarpInstruction(
 		getHex(VERMILION_POKECENTER_1F.VERMILION_CITY_2), 
 		getHex(mapGroup),
 		getHex(specificMap)
 		) 
 
 
-	VERMILION_POKECENTER_1F_TO_POKECENTER_2F_1_WP = WarpInstruction( 
+	Vermilion_City_Pokecenter_Stairs_WP = WarpInstruction(
 		getHex(VERMILION_POKECENTER_1F.POKECENTER_2F_1), 
 		getHex(mapGroup),
 		getHex(specificMap)

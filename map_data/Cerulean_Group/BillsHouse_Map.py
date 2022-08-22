@@ -13,7 +13,7 @@ class BILLS_HOUSE(IntEnum):
 
 class Bills_House_Warp_Points(Enum): 
 
-	BILLS_HOUSE_TO_ROUTE_25_1_WP = WarpInstruction( 
+	Bills_House_Exit_WP = WarpInstruction(
 		getHex(BILLS_HOUSE.ROUTE_25_1), 
 		getHex(mapGroup),
 		getHex(specificMap)

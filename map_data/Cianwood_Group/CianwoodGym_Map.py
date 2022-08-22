@@ -15,7 +15,7 @@ class CIANWOOD_GYM(IntEnum):
 
 class Cianwood_Gym_Warp_Points(Enum):
 
-    CIANWOOD_GYM_TO_CIANWOOD_CITY_WP = WarpInstruction(
+    Cianwood_City_Gym_Exit_WP = WarpInstruction(
         getHex(CIANWOOD_GYM.CIANWOOD_CITY),
         getHex(mapGroup),
         getHex(specificMap))

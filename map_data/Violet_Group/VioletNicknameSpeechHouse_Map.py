@@ -16,7 +16,7 @@ class VIOLET_NICKNAME_SPEECH_HOUSE(IntEnum):
 
 class Violet_Nickname_Speech_House_Warp_Points(Enum):
 
-    VIOLET_NICKNAME_SPEECH_HOUSE_TO_VIOLET_CITY_WP = WarpInstruction(
+    Violet_City_Nickname_Speech_House_Exit_WP = WarpInstruction(
         getHex(VIOLET_NICKNAME_SPEECH_HOUSE.VIOLET_CITY),
         getHex(mapGroup),
         getHex(specificMap),

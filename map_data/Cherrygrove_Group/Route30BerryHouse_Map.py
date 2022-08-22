@@ -15,7 +15,7 @@ class ROUTE_30_BERRY_HOUSE(IntEnum):
 
 class Route_30_Berry_House_Warp_Points(Enum):
 
-    ROUTE_30_BERRY_HOUSE_EXIT_WP = WarpInstruction(
+    Route_30_Berry_House_Exit_WP = WarpInstruction(
         getHex(ROUTE_30_BERRY_HOUSE.ROUTE_30),
         getHex(mapGroup),
         getHex(specificMap),

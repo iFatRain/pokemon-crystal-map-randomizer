@@ -13,7 +13,7 @@ class POKEMON_FAN_CLUB(IntEnum):
 
 class Pokemon_Fan_Club_Warp_Points(Enum): 
 
-	POKEMON_FAN_CLUB_TO_VERMILION_CITY_3_WP = WarpInstruction( 
+	Pokemon_Fan_Club_Exit_WP = WarpInstruction(
 		getHex(POKEMON_FAN_CLUB.VERMILION_CITY_3), 
 		getHex(mapGroup),
 		getHex(specificMap)

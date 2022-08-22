@@ -16,25 +16,25 @@ class VERMILION_PORT_PASSAGE(IntEnum):
 
 class Vermilion_Port_Passage_Warp_Points(Enum): 
 
-	VERMILION_PORT_PASSAGE_TO_VERMILION_CITY_8_WP = WarpInstruction( 
+	Vermilion_Upper_Port_Passage_To_Vermilion_City_WP = WarpInstruction(
 		getHex(VERMILION_PORT_PASSAGE.VERMILION_CITY_8), 
 		getHex(mapGroup),
 		getHex(specificMap)
 		) 
 
-	VERMILION_PORT_PASSAGE_TO_VERMILION_PORT_PASSAGE_4_WP = WarpInstruction( 
+	Vermilion_Upper_Port_Passage_To_Underground_Passage_North_WP = WarpInstruction(
 		getHex(VERMILION_PORT_PASSAGE.VERMILION_PORT_PASSAGE_4), 
 		getHex(mapGroup),
 		getHex(specificMap)
 		) 
 
-	VERMILION_PORT_PASSAGE_TO_VERMILION_PORT_PASSAGE_3_WP = WarpInstruction( 
+	Vermilion_Underground_Passage_North_To_Upper_Port_Passage_WP = WarpInstruction(
 		getHex(VERMILION_PORT_PASSAGE.VERMILION_PORT_PASSAGE_3), 
 		getHex(mapGroup),
 		getHex(specificMap)
 		) 
 
-	VERMILION_PORT_PASSAGE_TO_VERMILION_PORT_1_WP = WarpInstruction( 
+	Vermilion_Port_Passage_To_Vermilion_Port_WP = WarpInstruction(
 		getHex(VERMILION_PORT_PASSAGE.VERMILION_PORT_1), 
 		getHex(mapGroup),
 		getHex(specificMap)

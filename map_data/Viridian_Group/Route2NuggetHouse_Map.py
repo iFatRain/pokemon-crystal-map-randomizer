@@ -13,7 +13,7 @@ class ROUTE_2_NUGGET_HOUSE(IntEnum):
 
 class Route_2_Nugget_House_Warp_Points(Enum): 
 
-	ROUTE_2_NUGGET_HOUSE_TO_ROUTE_2_1_WP = WarpInstruction( 
+	Route_2_Nugget_House_Exit_WP = WarpInstruction(
 		getHex(ROUTE_2_NUGGET_HOUSE.ROUTE_2_1), 
 		getHex(mapGroup),
 		getHex(specificMap)

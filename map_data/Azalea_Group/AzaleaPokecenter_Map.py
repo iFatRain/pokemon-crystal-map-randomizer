@@ -16,12 +16,12 @@ class AZALEA_POKECENTER(IntEnum):
 
 class Azalea_Pokecenter_Warp_Points(Enum):
 
-    AZALEA_POKECENTER_TO_AZALEA_TOWN_WP = WarpInstruction(
+    Azalea_Pokecenter_Exit_WP = WarpInstruction(
         getHex(AZALEA_POKECENTER.AZALEA_TOWN),
         getHex(mapGroup),
         getHex(specificMap))
 
-    AZALEA_POKECENTER_TO_AZALEA_POKECENTER_2F_WP = WarpInstruction(
+    Azalea_Pokecenter_Stairs_WP = WarpInstruction(
         getHex(AZALEA_POKECENTER.POKECENTER_2F),
         getHex(mapGroup),
         getHex(specificMap))

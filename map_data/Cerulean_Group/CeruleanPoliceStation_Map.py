@@ -14,7 +14,7 @@ class CERULEAN_POLICE_STATION(IntEnum):
 
 class Cerulean_Police_Station_Warp_Points(Enum): 
 
-	CERULEAN_POLICE_STATION_TO_CERULEAN_CITY_2_WP = WarpInstruction( 
+	Cerulean_City_Police_Station_Exit_WP = WarpInstruction(
 		getHex(CERULEAN_POLICE_STATION.CERULEAN_CITY_2), 
 		getHex(mapGroup),
 		getHex(specificMap)

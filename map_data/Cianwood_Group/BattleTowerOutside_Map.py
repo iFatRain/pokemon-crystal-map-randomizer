@@ -15,13 +15,13 @@ class BATTLE_TOWER_OUTSIDE(IntEnum):
 
 class Battle_Tower_Outside_Warp_Points(Enum): 
 
-	BATTLE_TOWER_OUTSIDE_TO_ROUTE_40_BATTLE_TOWER_GATE_3_WP = WarpInstruction( 
+	Battle_Tower_Outside_To_Gate_WP = WarpInstruction(
 		getHex(BATTLE_TOWER_OUTSIDE.ROUTE_40_BATTLE_TOWER_GATE_3), 
 		getHex(mapGroup),
 		getHex(specificMap)
 		)
 
-	BATTLE_TOWER_OUTSIDE_TO_BATTLE_TOWER_1F_1_WP = WarpInstruction( 
+	Battle_Tower_Outside_To_Battle_Tower_WP = WarpInstruction(
 		getHex(BATTLE_TOWER_OUTSIDE.BATTLE_TOWER_1F_1), 
 		getHex(mapGroup),
 		getHex(specificMap)

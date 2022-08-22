@@ -13,7 +13,7 @@ class VIRIDIAN_NICKNAME_SPEECH_HOUSE(IntEnum):
 
 class Viridian_Nickname_Speech_House_Warp_Points(Enum): 
 
-	VIRIDIAN_NICKNAME_SPEECH_HOUSE_TO_VIRIDIAN_CITY_2_WP = WarpInstruction( 
+	Viridian_City_Nickname_Speech_House_Exit_WP = WarpInstruction(
 		getHex(VIRIDIAN_NICKNAME_SPEECH_HOUSE.VIRIDIAN_CITY_2), 
 		getHex(mapGroup),
 		getHex(specificMap)

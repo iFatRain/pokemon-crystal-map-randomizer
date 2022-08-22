@@ -21,37 +21,37 @@ class CIANWOOD_CITY(IntEnum):
 
 class Cianwood_City_Warp_Points(Enum):
 
-    CIANWOOD_CITY_TO_MANIAS_HOUSE_WP = WarpInstruction(
+    Cianwood_City_Shuckle_House_Entrance_WP = WarpInstruction(
         getHex(CIANWOOD_CITY.MANIAS_HOUSE),
         getHex(mapGroup),
         getHex(specificMap))
 
-    CIANWOOD_CITY_TO_CIANWOOD_GYM_WP = WarpInstruction(
+    Cianwood_City_Gym_Entrance_WP = WarpInstruction(
         getHex(CIANWOOD_CITY.CIANWOOD_GYM),
         getHex(mapGroup),
         getHex(specificMap))
 
-    CIANWOOD_CITY_TO_CIANWOOD_POKECENTER_1F_WP = WarpInstruction(
+    Cianwood_City_Pokecenter_Entrance_WP = WarpInstruction(
         getHex(CIANWOOD_CITY.CIANWOOD_POKECENTER_1F),
         getHex(mapGroup),
         getHex(specificMap))
 
-    CIANWOOD_CITY_TO_CIANWOOD_PHARMACY_WP = WarpInstruction(
+    Cianwood_City_Pharmacy_Entrance_WP = WarpInstruction(
         getHex(CIANWOOD_CITY.CIANWOOD_PHARMACY),
         getHex(mapGroup),
         getHex(specificMap))
 
-    CIANWOOD_CITY_TO_CIANWOOD_PHOTO_STUDIO_WP = WarpInstruction(
+    Cianwood_City_Photo_Studio_Entrance_WP = WarpInstruction(
         getHex(CIANWOOD_CITY.CIANWOOD_PHOTO_STUDIO),
         getHex(mapGroup),
         getHex(specificMap))
 
-    CIANWOOD_CITY_TO_CIANWOOD_LUGIA_SPEECH_HOUSE_WP = WarpInstruction(
+    Cianwood_City_Lugia_Speech_House_Entrance_WP = WarpInstruction(
         getHex(CIANWOOD_CITY.CIANWOOD_LUGIA_SPEECH_HOUSE),
         getHex(mapGroup),
         getHex(specificMap))
 
-    CIANWOOD_CITY_TO_POKE_SEERS_HOUSE_WP = WarpInstruction(
+    Cianwood_City_Poke_Seers_House_Entrance_WP = WarpInstruction(
         getHex(CIANWOOD_CITY.POKE_SEERS_HOUSE),
         getHex(mapGroup),
         getHex(specificMap))

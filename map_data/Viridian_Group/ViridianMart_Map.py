@@ -13,7 +13,7 @@ class VIRIDIAN_MART(IntEnum):
 
 class Viridian_Mart_Warp_Points(Enum): 
 
-	VIRIDIAN_MART_TO_VIRIDIAN_CITY_4_WP = WarpInstruction( 
+	Viridian_City_Mart_Exit_WP = WarpInstruction(
 		getHex(VIRIDIAN_MART.VIRIDIAN_CITY_4), 
 		getHex(mapGroup),
 		getHex(specificMap)

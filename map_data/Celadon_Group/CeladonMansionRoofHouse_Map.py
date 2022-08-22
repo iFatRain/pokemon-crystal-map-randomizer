@@ -14,7 +14,7 @@ class CELADON_MANSION_ROOF_HOUSE(IntEnum):
 
 class Celadon_Mansion_Roof_House_Warp_Points(Enum): 
 
-	CELADON_MANSION_ROOF_HOUSE_TO_CELADON_MANSION_ROOF_3_WP = WarpInstruction( 
+	Celadon_City_Mansion_Roof_House_Exit_WP = WarpInstruction(
 		getHex(CELADON_MANSION_ROOF_HOUSE.CELADON_MANSION_ROOF_3), 
 		getHex(mapGroup),
 		getHex(specificMap)

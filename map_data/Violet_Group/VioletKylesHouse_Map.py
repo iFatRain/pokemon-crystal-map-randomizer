@@ -15,7 +15,7 @@ class VIOLET_KYLES_HOUSE(IntEnum):
 
 class Violet_Kyles_House_Warp_Points(Enum):
 
-    VIOLET_KYLES_HOUSE_TO_VIOLET_CITY_WP = WarpInstruction(
+    Violet_City_Trade_House_Exit_WP = WarpInstruction(
         getHex(VIOLET_KYLES_HOUSE.VIOLET_CITY),
         getHex(mapGroup),
         getHex(specificMap),

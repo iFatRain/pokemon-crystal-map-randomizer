@@ -15,7 +15,7 @@ class CIANWOOD_PHARMACY(IntEnum):
 
 class Cianwood_Pharmacy_Warp_Points(Enum):
 
-    CIANWOOD_PHARMACY_TO_CIANWOOD_CITY_WP = WarpInstruction(
+    Cianwood_City_Pharmacy_Exit_WP = WarpInstruction(
         getHex(CIANWOOD_PHARMACY.CIANWOOD_CITY),
         getHex(mapGroup),
         getHex(specificMap))

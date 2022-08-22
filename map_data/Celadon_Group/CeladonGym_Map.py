@@ -15,7 +15,7 @@ class CELADON_GYM(IntEnum):
 
 class Celadon_Gym_Warp_Points(Enum): 
 
-	CELADON_GYM_TO_CELADON_CITY_8_WP = WarpInstruction( 
+	Celadon_City_Gym_Exit_WP = WarpInstruction(
 		getHex(CELADON_GYM.CELADON_CITY_8), 
 		getHex(mapGroup),
 		getHex(specificMap)

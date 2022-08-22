@@ -22,42 +22,42 @@ class BLACKTHORN_CITY(IntEnum):
 
 class Blackthorn_City_Warp_Points(Enum):
 
-    BLACKTHORN_CITY_TO_BLACKTHORN_GYM_1F_WP = WarpInstruction(
+    Blackthorn_City_Gym_Entrance_WP = WarpInstruction(
         getHex(BLACKTHORN_CITY.BLACKTHORN_GYM_1F),
         getHex(mapGroup),
         getHex(specificMap))
 
-    BLACKTHORN_CITY_TO_BLACKTHORN_DRAGON_SPEECH_HOUSE_WP = WarpInstruction(
+    Blackthorn_City_Dragon_Speech_House_Entrance_WP = WarpInstruction(
         getHex(BLACKTHORN_CITY.BLACKTHORN_DRAGON_SPEECH_HOUSE),
         getHex(mapGroup),
         getHex(specificMap))
 
-    BLACKTHORN_CITY_TO_BLACKTHORN_EMYS_HOUSE_WP = WarpInstruction(
+    Blackthorn_City_Emys_House_Entrance_WP = WarpInstruction(
         getHex(BLACKTHORN_CITY.BLACKTHORN_EMYS_HOUSE),
         getHex(mapGroup),
         getHex(specificMap))
 
-    BLACKTHORN_CITY_TO_BLACKTHORN_MART_WP = WarpInstruction(
+    Blackthorn_City_Mart_Entrance_WP = WarpInstruction(
         getHex(BLACKTHORN_CITY.BLACKTHORN_MART),
         getHex(mapGroup),
         getHex(specificMap))
 
-    BLACKTHORN_CITY_TO_BLACKTHORN_POKECENTER_1F_WP = WarpInstruction(
+    Blackthorn_City_Pokecenter_Entrance_WP = WarpInstruction(
         getHex(BLACKTHORN_CITY.BLACKTHORN_POKECENTER_1F),
         getHex(mapGroup),
         getHex(specificMap))
 
-    BLACKTHORN_CITY_TO_MOVE_DELETERS_HOUSE_WP = WarpInstruction(
+    Move_Deleters_House_Entrance_WP = WarpInstruction(
         getHex(BLACKTHORN_CITY.MOVE_DELETERS_HOUSE),
         getHex(mapGroup),
         getHex(specificMap))
 
-    BLACKTHORN_CITY_TO_ICE_PATH_1F_WP = WarpInstruction(
+    Blackthorn_City_Ice_Path_Entrance_WP = WarpInstruction(
         getHex(BLACKTHORN_CITY.ICE_PATH_1F),
         getHex(mapGroup),
         getHex(specificMap))
 
-    BLACKTHORN_CITY_TO_DRAGONS_DEN_1F_WP = WarpInstruction(
+    Blackthorn_City_Dragons_Den_Entrance_WP = WarpInstruction(
         getHex(BLACKTHORN_CITY.DRAGONS_DEN_1F),
         getHex(mapGroup),
         getHex(specificMap))

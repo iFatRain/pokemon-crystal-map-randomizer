@@ -14,7 +14,7 @@ class CERULEAN_TRADE_SPEECH_HOUSE(IntEnum):
 
 class Cerulean_Trade_Speech_House_Warp_Points(Enum): 
 
-	CERULEAN_TRADE_SPEECH_HOUSE_TO_CERULEAN_CITY_3_WP = WarpInstruction( 
+	Cerulean_City_Trade_Speech_House_Exit_WP = WarpInstruction(
 		getHex(CERULEAN_TRADE_SPEECH_HOUSE.CERULEAN_CITY_3), 
 		getHex(mapGroup),
 		getHex(specificMap)

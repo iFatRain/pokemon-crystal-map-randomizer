@@ -13,7 +13,7 @@ class CINNABAR_ISLAND(IntEnum):
 
 class Cinnabar_Island_Warp_Points(Enum): 
 
-	CINNABAR_ISLAND_TO_CINNABAR_POKECENTER_1F_1_WP = WarpInstruction( 
+	Cinnabar_Island_Pokecenter_Entrance_WP = WarpInstruction(
 		getHex(CINNABAR_ISLAND.CINNABAR_POKECENTER_1F_1), 
 		getHex(mapGroup),
 		getHex(specificMap)

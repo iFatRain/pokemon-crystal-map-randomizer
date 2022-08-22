@@ -17,12 +17,12 @@ class BLACKTHORN_POKECENTER_1F(IntEnum):
 
 class Blackthorn_Pokecenter_Warp_Points(Enum):
 
-    BLACKTHORN_POKECENTER_1F_TO_BLACKTHORN_CITY_WP = WarpInstruction(
+    Blackthorn_City_Pokecenter_Exit_WP = WarpInstruction(
         getHex(BLACKTHORN_POKECENTER_1F.BLACKTHORN_CITY),
         getHex(mapGroup),
         getHex(specificMap))
 
-    BLACKTHORN_POKECENTER_TO_BLACKTHORN_POKECENTER_2F_WP = WarpInstruction(
+    Blackthorn_City_Pokecenter_Stairs_WP = WarpInstruction(
         getHex(BLACKTHORN_POKECENTER_1F.POKECENTER_2F),
         getHex(mapGroup),
         getHex(specificMap))

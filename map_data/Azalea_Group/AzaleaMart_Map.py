@@ -15,7 +15,7 @@ class AZALEA_MART(IntEnum):
 
 class Azalea_Mart_Warp_Points(Enum):
 
-    AZALEA_MART_TO_AZALEA_TOWN_WP = WarpInstruction(
+    Azalea_Mart_Exit_WP = WarpInstruction(
         getHex(AZALEA_MART.AZALEA_TOWN),
         getHex(mapGroup),
         getHex(specificMap))

@@ -13,7 +13,7 @@ class VERMILION_MART(IntEnum):
 
 class Vermilion_Mart_Warp_Points(Enum): 
 
-	VERMILION_MART_TO_VERMILION_CITY_5_WP = WarpInstruction( 
+	Vermilion_City_Mart_Exit_WP = WarpInstruction(
 		getHex(VERMILION_MART.VERMILION_CITY_5), 
 		getHex(mapGroup),
 		getHex(specificMap)

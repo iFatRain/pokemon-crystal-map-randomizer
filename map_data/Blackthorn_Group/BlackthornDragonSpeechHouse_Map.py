@@ -16,7 +16,7 @@ class BLACKTHORN_DRAGON_SPEECH_HOUSE(IntEnum):
 
 class Blackthorn_Dragon_Speech_House_Warp_Points(Enum):
 
-    BLACKTHORN_DRAGON_SPEECH_HOUSE_TO_BLACKTHORN_CITY_WP = WarpInstruction(
+    Blackthorn_City_Dragon_Speech_House_Exit_WP = WarpInstruction(
         getHex(BLACKTHORN_DRAGON_SPEECH_HOUSE.BLACKTHORN_CITY),
         getHex(mapGroup),
         getHex(specificMap))

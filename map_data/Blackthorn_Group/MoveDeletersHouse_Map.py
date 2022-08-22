@@ -16,7 +16,7 @@ class MOVE_DELETERS_HOUSE(IntEnum):
 
 class Move_Deleters_House_Warp_Points(Enum):
 
-    MOVE_DELETERS_HOUSE_TO_BLACKTHORN_CITY_WP = WarpInstruction(
+    Move_Deleters_House_Exit_WP = WarpInstruction(
         getHex(MOVE_DELETERS_HOUSE.BLACKTHORN_CITY),
         getHex(mapGroup),
         getHex(specificMap))

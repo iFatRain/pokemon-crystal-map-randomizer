@@ -13,7 +13,7 @@ class VERMILION_MAGNET_TRAIN_SPEECH_HOUSE(IntEnum):
 
 class Vermilion_Magnet_Train_Speech_House_Warp_Points(Enum): 
 
-	VERMILION_MAGNET_TRAIN_SPEECH_HOUSE_TO_VERMILION_CITY_4_WP = WarpInstruction( 
+	Vermilion_City_Magnet_Train_Speech_House_Exit_WP = WarpInstruction(
 		getHex(VERMILION_MAGNET_TRAIN_SPEECH_HOUSE.VERMILION_CITY_4), 
 		getHex(mapGroup),
 		getHex(specificMap)
