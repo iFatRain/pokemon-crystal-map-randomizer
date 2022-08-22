@@ -307,22 +307,22 @@ def buildKantoWarpLinks():
     Silver_Cave_Item_Rooms_Links = dict()
 
     Celadon_Cafe_Links["CELADON_CAFE_TO_CELADON_CITY_9_LINK"] = WarpLink(
-        Celadon_Cafe_Warp_Points.CELADON_CAFE_TO_CELADON_CITY_9_WP,
-        Celadon_City_Warp_Points.CELADON_CITY_TO_CELADON_CAFE_1_WP,
+        Celadon_Cafe_Warp_Points.Celadon_City_Cafe_Exit_WP,
+        Celadon_City_Warp_Points.Celadon_City_Cafe_Entrance_WP,
         "CeladonCafe", dual_width= True
     )
 
 
 
     Celadon_Dept_Store_1F_Links["CELADON_DEPT_STORE_1F_TO_CELADON_CITY_1_LINK"] = WarpLink(
-        Celadon_Dept_Store_1F_Warp_Points.CELADON_DEPT_STORE_1F_TO_CELADON_CITY_1_WP,
-        Celadon_City_Warp_Points.CELADON_CITY_TO_CELADON_DEPT_STORE_1F_1_WP,
+        Celadon_Dept_Store_1F_Warp_Points.Celadon_City_Dept_Store_1F_Exit_WP,
+        Celadon_City_Warp_Points.Celadon_City_Dept_Store_1F_Entrance_WP,
         "CeladonDeptStore1F", dual_width= True
     )
 
     Celadon_Dept_Store_1F_Links["CELADON_DEPT_STORE_1F_TO_CELADON_DEPT_STORE_2F_2_LINK"] = WarpLink(
-        Celadon_Dept_Store_1F_Warp_Points.CELADON_DEPT_STORE_1F_TO_CELADON_DEPT_STORE_2F_2_WP,
-        Celadon_Dept_Store_2F_Warp_Points.CELADON_DEPT_STORE_2F_TO_CELADON_DEPT_STORE_1F_3_WP,
+        Celadon_Dept_Store_1F_Warp_Points.Celadon_City_Dept_Store_1F_Stairs_WP,
+        Celadon_Dept_Store_2F_Warp_Points.Celadon_City_Dept_Store_2F_Right_Stairs_WP,
         "CeladonDeptStore1F", 10
     )
 
@@ -330,14 +330,14 @@ def buildKantoWarpLinks():
 
 
     Celadon_Dept_Store_2F_Links["CELADON_DEPT_STORE_2F_TO_CELADON_DEPT_STORE_3F_1_LINK"] = WarpLink(
-        Celadon_Dept_Store_2F_Warp_Points.CELADON_DEPT_STORE_2F_TO_CELADON_DEPT_STORE_3F_1_WP,
-        Celadon_Dept_Store_3F_Warp_Points.CELADON_DEPT_STORE_3F_TO_CELADON_DEPT_STORE_2F_1_WP,
+        Celadon_Dept_Store_2F_Warp_Points.Celadon_City_Dept_Store_2F_Left_Stairs_WP,
+        Celadon_Dept_Store_3F_Warp_Points.Celadon_City_Dept_Store_3F_Left_Stairs_WP,
         "CeladonDeptStore2F"
     )
 
     Celadon_Dept_Store_2F_Links["CELADON_DEPT_STORE_2F_TO_CELADON_DEPT_STORE_1F_3_LINK"] = WarpLink(
-        Celadon_Dept_Store_2F_Warp_Points.CELADON_DEPT_STORE_2F_TO_CELADON_DEPT_STORE_1F_3_WP,
-        Celadon_Dept_Store_1F_Warp_Points.CELADON_DEPT_STORE_1F_TO_CELADON_DEPT_STORE_2F_2_WP,
+        Celadon_Dept_Store_2F_Warp_Points.Celadon_City_Dept_Store_2F_Right_Stairs_WP,
+        Celadon_Dept_Store_1F_Warp_Points.Celadon_City_Dept_Store_1F_Stairs_WP,
         "CeladonDeptStore2F", 5
     )
 
@@ -345,14 +345,14 @@ def buildKantoWarpLinks():
 
 
     Celadon_Dept_Store_3F_Links["CELADON_DEPT_STORE_3F_TO_CELADON_DEPT_STORE_2F_1_LINK"] = WarpLink(
-        Celadon_Dept_Store_3F_Warp_Points.CELADON_DEPT_STORE_3F_TO_CELADON_DEPT_STORE_2F_1_WP,
-        Celadon_Dept_Store_2F_Warp_Points.CELADON_DEPT_STORE_2F_TO_CELADON_DEPT_STORE_3F_1_WP,
+        Celadon_Dept_Store_3F_Warp_Points.Celadon_City_Dept_Store_3F_Left_Stairs_WP,
+        Celadon_Dept_Store_2F_Warp_Points.Celadon_City_Dept_Store_2F_Left_Stairs_WP,
         "CeladonDeptStore3F"
     )
 
     Celadon_Dept_Store_3F_Links["CELADON_DEPT_STORE_3F_TO_CELADON_DEPT_STORE_4F_2_LINK"] = WarpLink(
-        Celadon_Dept_Store_3F_Warp_Points.CELADON_DEPT_STORE_3F_TO_CELADON_DEPT_STORE_4F_2_WP,
-        Celadon_Dept_Store_4F_Warp_Points.CELADON_DEPT_STORE_4F_TO_CELADON_DEPT_STORE_3F_2_WP,
+        Celadon_Dept_Store_3F_Warp_Points.Celadon_City_Dept_Store_3F_Right_Stairs_WP,
+        Celadon_Dept_Store_4F_Warp_Points.Celadon_City_Dept_Store_4F_Right_Stairs_WP,
         "CeladonDeptStore3F", 5
     )
 
@@ -360,14 +360,14 @@ def buildKantoWarpLinks():
 
 
     Celadon_Dept_Store_4F_Links["CELADON_DEPT_STORE_4F_TO_CELADON_DEPT_STORE_5F_1_LINK"] = WarpLink(
-        Celadon_Dept_Store_4F_Warp_Points.CELADON_DEPT_STORE_4F_TO_CELADON_DEPT_STORE_5F_1_WP,
-        Celadon_Dept_Store_5F_Warp_Points.CELADON_DEPT_STORE_5F_TO_CELADON_DEPT_STORE_4F_1_WP,
+        Celadon_Dept_Store_4F_Warp_Points.Celadon_City_Dept_Store_4F_Left_Stairs_WP,
+        Celadon_Dept_Store_5F_Warp_Points.Celadon_City_Dept_Store_5F_Left_Stairs_WP,
         "CeladonDeptStore4F"
     )
 
     Celadon_Dept_Store_4F_Links["CELADON_DEPT_STORE_4F_TO_CELADON_DEPT_STORE_3F_2_LINK"] = WarpLink(
-        Celadon_Dept_Store_4F_Warp_Points.CELADON_DEPT_STORE_4F_TO_CELADON_DEPT_STORE_3F_2_WP,
-        Celadon_Dept_Store_3F_Warp_Points.CELADON_DEPT_STORE_3F_TO_CELADON_DEPT_STORE_4F_2_WP,
+        Celadon_Dept_Store_4F_Warp_Points.Celadon_City_Dept_Store_4F_Right_Stairs_WP,
+        Celadon_Dept_Store_3F_Warp_Points.Celadon_City_Dept_Store_3F_Right_Stairs_WP,
         "CeladonDeptStore4F", 5
     )
 
@@ -375,14 +375,14 @@ def buildKantoWarpLinks():
 
 
     Celadon_Dept_Store_5F_Links["CELADON_DEPT_STORE_5F_TO_CELADON_DEPT_STORE_4F_1_LINK"] = WarpLink(
-        Celadon_Dept_Store_5F_Warp_Points.CELADON_DEPT_STORE_5F_TO_CELADON_DEPT_STORE_4F_1_WP,
-        Celadon_Dept_Store_4F_Warp_Points.CELADON_DEPT_STORE_4F_TO_CELADON_DEPT_STORE_5F_1_WP,
+        Celadon_Dept_Store_5F_Warp_Points.Celadon_City_Dept_Store_5F_Left_Stairs_WP,
+        Celadon_Dept_Store_4F_Warp_Points.Celadon_City_Dept_Store_4F_Left_Stairs_WP,
         "CeladonDeptStore5F"
     )
 
     Celadon_Dept_Store_5F_Links["CELADON_DEPT_STORE_5F_TO_CELADON_DEPT_STORE_6F_1_LINK"] = WarpLink(
-        Celadon_Dept_Store_5F_Warp_Points.CELADON_DEPT_STORE_5F_TO_CELADON_DEPT_STORE_6F_1_WP,
-        Celadon_Dept_Store_6F_Warp_Points.CELADON_DEPT_STORE_6F_TO_CELADON_DEPT_STORE_5F_2_WP,
+        Celadon_Dept_Store_5F_Warp_Points.Celadon_City_Dept_Store_5F_Right_Stairs_WP,
+        Celadon_Dept_Store_6F_Warp_Points.Celadon_City_Dept_Store_6F_Stairs_WP,
         "CeladonDeptStore5F", 5
     )
 
@@ -390,8 +390,8 @@ def buildKantoWarpLinks():
 
 
     Celadon_Dept_Store_6F_Links["CELADON_DEPT_STORE_6F_TO_CELADON_DEPT_STORE_5F_2_LINK"] = WarpLink(
-        Celadon_Dept_Store_6F_Warp_Points.CELADON_DEPT_STORE_6F_TO_CELADON_DEPT_STORE_5F_2_WP,
-        Celadon_Dept_Store_5F_Warp_Points.CELADON_DEPT_STORE_5F_TO_CELADON_DEPT_STORE_6F_1_WP,
+        Celadon_Dept_Store_6F_Warp_Points.Celadon_City_Dept_Store_6F_Stairs_WP,
+        Celadon_Dept_Store_5F_Warp_Points.Celadon_City_Dept_Store_5F_Right_Stairs_WP,
         "CeladonDeptStore6F"
     )
 
@@ -399,143 +399,141 @@ def buildKantoWarpLinks():
 
 
     Celadon_Game_Corner_Links["CELADON_GAME_CORNER_TO_CELADON_CITY_6_LINK"] = WarpLink(
-        Celadon_Game_Corner_Warp_Points.CELADON_GAME_CORNER_TO_CELADON_CITY_6_WP,
-        Celadon_City_Warp_Points.CELADON_CITY_TO_CELADON_GAME_CORNER_1_WP,
+        Celadon_Game_Corner_Warp_Points.Celadon_City_Game_Corner_Exit_WP,
+        Celadon_City_Warp_Points.Celadon_City_Game_Corner_Entrance_WP,
         "CeladonGameCorner", dual_width= True
     )
 
 
 
     Celadon_Game_Corner_Prize_Room_Links["CELADON_GAME_CORNER_PRIZE_ROOM_TO_CELADON_CITY_7_LINK"] = WarpLink(
-        Celadon_Game_Corner_Prize_Room_Warp_Points.CELADON_GAME_CORNER_PRIZE_ROOM_TO_CELADON_CITY_7_WP,
-        Celadon_City_Warp_Points.CELADON_CITY_TO_CELADON_GAME_CORNER_PRIZE_ROOM_1_WP,
+        Celadon_Game_Corner_Prize_Room_Warp_Points.Celadon_City_Game_Corner_Prize_Room_Exit_WP,
+        Celadon_City_Warp_Points.Celadon_City_Game_Corner_Prize_Room_Entrance_WP,
         "CeladonGameCornerPrizeRoom", dual_width= True
     )
 
 
 
     Celadon_Gym_Links["CELADON_GYM_TO_CELADON_CITY_8_LINK"] = WarpLink(
-        Celadon_Gym_Warp_Points.CELADON_GYM_TO_CELADON_CITY_8_WP,
-        Celadon_City_Warp_Points.CELADON_CITY_TO_CELADON_GYM_1_WP,
+        Celadon_Gym_Warp_Points.Celadon_City_Gym_Exit_WP,
+        Celadon_City_Warp_Points.Celadon_City_Gym_Entrance_WP,
         "CeladonGym", dual_width= True, unlocks=[Unlock_Keys.BADGE_12]
     )
 
  # 1-4 ,2-3
 
     Celadon_Mansion_1F_Links["CELADON_MANSION_1F_TO_CELADON_CITY_2_LINK"] = WarpLink(
-        Celadon_Mansion_1F_Warp_Points.CELADON_MANSION_1F_TO_CELADON_CITY_2_WP,
-        Celadon_City_Warp_Points.CELADON_CITY_TO_CELADON_MANSION_1F_1_WP,
+        Celadon_Mansion_1F_Warp_Points.Celadon_City_Mansion_1F_Front_Exit_WP,
+        Celadon_City_Warp_Points.Celadon_City_Mansion_1F_Front_Entrance_WP,
         "CeladonMansion1F", dual_width= True
     )
 
     Celadon_Mansion_1F_Links["CELADON_MANSION_1F_TO_CELADON_CITY_3_LINK"] = WarpLink(# backside
-        Celadon_Mansion_1F_Warp_Points.CELADON_MANSION_1F_TO_CELADON_CITY_3_WP,
-        Celadon_City_Warp_Points.CELADON_CITY_TO_CELADON_MANSION_1F_3_WP,
+        Celadon_Mansion_1F_Warp_Points.Celadon_City_Mansion_1F_Rear_Exit_Central_Stairs_WP,
+        Celadon_City_Warp_Points.Celadon_City_Mansion_1F_Rear_Entrance_WP,
         "CeladonMansion1F", 10
     )
 
     Celadon_Mansion_1F_Links["CELADON_MANSION_1F_TO_CELADON_MANSION_2F_1_LINK"] = WarpLink( #
-        Celadon_Mansion_1F_Warp_Points.CELADON_MANSION_1F_TO_CELADON_MANSION_2F_1_WP,
-        Celadon_Mansion_2F_Warp_Points.CELADON_MANSION_2F_TO_CELADON_MANSION_1F_4_WP,
+        Celadon_Mansion_1F_Warp_Points.Celadon_City_Mansion_1F_Left_Stairs_WP,
+        Celadon_Mansion_2F_Warp_Points.Celadon_City_Mansion_2F_Far_Left_Stairs_WP,
         "CeladonMansion1F", 15
     )
 
     Celadon_Mansion_1F_Links["CELADON_MANSION_1F_TO_CELADON_MANSION_2F_4_LINK"] = WarpLink(
-        Celadon_Mansion_1F_Warp_Points.CELADON_MANSION_1F_TO_CELADON_MANSION_2F_4_WP,
-        Celadon_Mansion_2F_Warp_Points.CELADON_MANSION_2F_TO_CELADON_MANSION_1F_5_WP,
+        Celadon_Mansion_1F_Warp_Points.Celadon_City_Mansion_1F_Right_Stairs_WP,
+        Celadon_Mansion_2F_Warp_Points.Celadon_City_Mansion_2F_Far_Right_Stairs_WP,
         "CeladonMansion1F", 20
     )
 
  # 1-2,3-4
 
     Celadon_Mansion_2F_Links["CELADON_MANSION_2F_TO_CELADON_MANSION_1F_4_LINK"] = WarpLink(#
-        Celadon_Mansion_2F_Warp_Points.CELADON_MANSION_2F_TO_CELADON_MANSION_1F_4_WP,
-        Celadon_Mansion_1F_Warp_Points.CELADON_MANSION_1F_TO_CELADON_MANSION_2F_1_WP,
+        Celadon_Mansion_2F_Warp_Points.Celadon_City_Mansion_2F_Far_Left_Stairs_WP,
+        Celadon_Mansion_1F_Warp_Points.Celadon_City_Mansion_1F_Left_Stairs_WP,
         "CeladonMansion2F"
     )
 
     Celadon_Mansion_2F_Links["CELADON_MANSION_2F_TO_CELADON_MANSION_3F_2_LINK"] = WarpLink(#
-        Celadon_Mansion_2F_Warp_Points.CELADON_MANSION_2F_TO_CELADON_MANSION_3F_2_WP,
-        Celadon_Mansion_3F_Warp_Points.CELADON_MANSION_3F_TO_CELADON_MANSION_2F_2_WP,
+        Celadon_Mansion_2F_Warp_Points.Celadon_City_Mansion_2F_Far_Left_Stairs_WP,
+        Celadon_Mansion_3F_Warp_Points.Celadon_City_Mansion_3F_Left_Center_Stairs_WP,
         "CeladonMansion2F", 5
     )
 
     Celadon_Mansion_2F_Links["CELADON_MANSION_2F_TO_CELADON_MANSION_3F_3_LINK"] = WarpLink(
-        Celadon_Mansion_2F_Warp_Points.CELADON_MANSION_2F_TO_CELADON_MANSION_3F_3_WP,
-        Celadon_Mansion_3F_Warp_Points.CELADON_MANSION_3F_TO_CELADON_MANSION_2F_3_WP,
+        Celadon_Mansion_2F_Warp_Points.Celadon_City_Mansion_2F_Right_Center_Stairs_WP,
+        Celadon_Mansion_3F_Warp_Points.Celadon_City_Mansion_3F_Right_Center_Stairs_WP,
         "CeladonMansion2F", 10
     )
 
     Celadon_Mansion_2F_Links["CELADON_MANSION_2F_TO_CELADON_MANSION_1F_5_LINK"] = WarpLink(
-        Celadon_Mansion_2F_Warp_Points.CELADON_MANSION_2F_TO_CELADON_MANSION_1F_5_WP,
-        Celadon_Mansion_1F_Warp_Points.CELADON_MANSION_1F_TO_CELADON_MANSION_2F_4_WP,
+        Celadon_Mansion_2F_Warp_Points.Celadon_City_Mansion_2F_Far_Right_Stairs_WP,
+        Celadon_Mansion_1F_Warp_Points.Celadon_City_Mansion_1F_Right_Stairs_WP,
         "CeladonMansion2F", 15
     )
 
  # 1-2, 3-4
 
     Celadon_Mansion_3F_Links["CELADON_MANSION_3F_TO_CELADON_MANSION_ROOF_1_LINK"] = WarpLink(#
-        Celadon_Mansion_3F_Warp_Points.CELADON_MANSION_3F_TO_CELADON_MANSION_ROOF_1_WP,
-        Celadon_Mansion_Roof_Warp_Points.CELADON_MANSION_ROOF_TO_CELADON_MANSION_3F_1_WP,
+        Celadon_Mansion_3F_Warp_Points.Celadon_City_Mansion_3F_Far_Left_Stairs_WP,
+        Celadon_Mansion_Roof_Warp_Points.Celadon_City_Mansion_Roof_Left_Stairs_WP,
         "CeladonMansion3F",  unlocks=[]
     )
 
     Celadon_Mansion_3F_Links["CELADON_MANSION_3F_TO_CELADON_MANSION_2F_2_LINK"] = WarpLink(#
-        Celadon_Mansion_3F_Warp_Points.CELADON_MANSION_3F_TO_CELADON_MANSION_2F_2_WP,
-        Celadon_Mansion_2F_Warp_Points.CELADON_MANSION_2F_TO_CELADON_MANSION_3F_2_WP,
+        Celadon_Mansion_3F_Warp_Points.Celadon_City_Mansion_3F_Left_Center_Stairs_WP,
+        Celadon_Mansion_2F_Warp_Points.Celadon_City_Mansion_2F_Far_Left_Stairs_WP,
         "CeladonMansion3F", 5
     )
 
     Celadon_Mansion_3F_Links["CELADON_MANSION_3F_TO_CELADON_MANSION_2F_3_LINK"] = WarpLink(
-        Celadon_Mansion_3F_Warp_Points.CELADON_MANSION_3F_TO_CELADON_MANSION_2F_3_WP,
-        Celadon_Mansion_2F_Warp_Points.CELADON_MANSION_2F_TO_CELADON_MANSION_3F_3_WP,
+        Celadon_Mansion_3F_Warp_Points.Celadon_City_Mansion_3F_Right_Center_Stairs_WP,
+        Celadon_Mansion_2F_Warp_Points.Celadon_City_Mansion_2F_Right_Center_Stairs_WP,
         "CeladonMansion3F", 10
     )
 
     Celadon_Mansion_3F_Links["CELADON_MANSION_3F_TO_CELADON_MANSION_ROOF_2_LINK"] = WarpLink(
-        Celadon_Mansion_3F_Warp_Points.CELADON_MANSION_3F_TO_CELADON_MANSION_ROOF_2_WP,
-        Celadon_Mansion_Roof_Warp_Points.CELADON_MANSION_ROOF_TO_CELADON_MANSION_3F_4_WP,
+        Celadon_Mansion_3F_Warp_Points.Celadon_City_Mansion_3F_Far_Right_Stairs_WP,
+        Celadon_Mansion_Roof_Warp_Points.Celadon_City_Mansion_Roof_Left_Stairs_WP,
         "CeladonMansion3F", 15
     )
 
-
-
-    Celadon_Mansion_Roof_House_Links["CELADON_MANSION_ROOF_HOUSE_TO_CELADON_MANSION_ROOF_3_LINK"] = WarpLink(#
-        Celadon_Mansion_Roof_House_Warp_Points.CELADON_MANSION_ROOF_HOUSE_TO_CELADON_MANSION_ROOF_3_WP,
-        Celadon_Mansion_Roof_Warp_Points.CELADON_MANSION_ROOF_TO_CELADON_MANSION_ROOF_HOUSE_1_WP,
+    Celadon_Mansion_Roof_House_Links["CELADON_MANSION_ROOF_HOUSE_TO_CELADON_MANSION_ROOF_3_LINK"] = WarpLink(
+        Celadon_Mansion_Roof_House_Warp_Points.Celadon_City_Mansion_Roof_House_Exit_WP,
+        Celadon_Mansion_Roof_Warp_Points.Celadon_City_Mansion_Roof_House_Entrance_WP,
         "CeladonMansionRoofHouse", dual_width= True
     )
 
  # 1-3, 2x
 
     Celadon_Mansion_Roof_Links["CELADON_MANSION_ROOF_TO_CELADON_MANSION_3F_1_LINK"] = WarpLink(#
-        Celadon_Mansion_Roof_Warp_Points.CELADON_MANSION_ROOF_TO_CELADON_MANSION_3F_1_WP,
-        Celadon_Mansion_3F_Warp_Points.CELADON_MANSION_3F_TO_CELADON_MANSION_ROOF_1_WP,
+        Celadon_Mansion_Roof_Warp_Points.Celadon_City_Mansion_Roof_Left_Stairs_WP,
+        Celadon_Mansion_3F_Warp_Points.Celadon_City_Mansion_3F_Far_Left_Stairs_WP,
         "CeladonMansionRoof"
     )
 
     Celadon_Mansion_Roof_Links["CELADON_MANSION_ROOF_TO_CELADON_MANSION_3F_4_LINK"] = WarpLink(
-        Celadon_Mansion_Roof_Warp_Points.CELADON_MANSION_ROOF_TO_CELADON_MANSION_3F_4_WP,
-        Celadon_Mansion_3F_Warp_Points.CELADON_MANSION_3F_TO_CELADON_MANSION_ROOF_2_WP,
+        Celadon_Mansion_Roof_Warp_Points.Celadon_City_Mansion_Roof_Left_Stairs_WP,
+        Celadon_Mansion_3F_Warp_Points.Celadon_City_Mansion_3F_Far_Right_Stairs_WP,
         "CeladonMansionRoof", 5
     )
 
     Celadon_Mansion_Roof_Links["CELADON_MANSION_ROOF_TO_CELADON_MANSION_ROOF_HOUSE_1_LINK"] = WarpLink(#
-        Celadon_Mansion_Roof_Warp_Points.CELADON_MANSION_ROOF_TO_CELADON_MANSION_ROOF_HOUSE_1_WP,
-        Celadon_Mansion_Roof_House_Warp_Points.CELADON_MANSION_ROOF_HOUSE_TO_CELADON_MANSION_ROOF_3_WP,
+        Celadon_Mansion_Roof_Warp_Points.Celadon_City_Mansion_Roof_House_Entrance_WP,
+        Celadon_Mansion_Roof_House_Warp_Points.Celadon_City_Mansion_Roof_House_Exit_WP,
         "CeladonMansionRoof", 10
     )
 
 
 
     Celadon_Pokecenter_1F_Links["CELADON_POKECENTER_1F_TO_CELADON_CITY_5_LINK"] = WarpLink(
-        Celadon_Pokecenter_1F_Warp_Points.CELADON_POKECENTER_1F_TO_CELADON_CITY_5_WP,
-        Celadon_City_Warp_Points.CELADON_CITY_TO_CELADON_POKECENTER_1F_1_WP,
+        Celadon_Pokecenter_1F_Warp_Points.Celadon_City_Pokecenter_Exit_WP,
+        Celadon_City_Warp_Points.Celadon_City_Pokecenter_Entrance_WP,
         "CeladonPokecenter1F", dual_width= True
     )
 
     Celadon_Pokecenter_1F_Links["CELADON_POKECENTER_1F_TO_POKECENTER_2F_1_LINK"] = WarpLink(
-        Celadon_Pokecenter_1F_Warp_Points.CELADON_POKECENTER_1F_TO_POKECENTER_2F_1_WP,
+        Celadon_Pokecenter_1F_Warp_Points.Celadon_City_Pokecenter_Stairs_WP,
         Pokecenter_2F_Warp_Points.POKECENTER_2F_TO_POKECENTER_1F_WP,
         "CeladonPokecenter1F", 10
     )
@@ -544,50 +542,50 @@ def buildKantoWarpLinks():
 
 
     Celadon_City_Links["CELADON_CITY_TO_CELADON_DEPT_STORE_1F_1_LINK"] = WarpLink(
-        Celadon_City_Warp_Points.CELADON_CITY_TO_CELADON_DEPT_STORE_1F_1_WP,
-        Celadon_Dept_Store_1F_Warp_Points.CELADON_DEPT_STORE_1F_TO_CELADON_CITY_1_WP,
+        Celadon_City_Warp_Points.Celadon_City_Dept_Store_1F_Entrance_WP,
+        Celadon_Dept_Store_1F_Warp_Points.Celadon_City_Dept_Store_1F_Exit_WP,
         "CeladonCity"
     )
 
     Celadon_City_Links["CELADON_CITY_TO_CELADON_MANSION_1F_1LINK"] = WarpLink(
-        Celadon_City_Warp_Points.CELADON_CITY_TO_CELADON_MANSION_1F_1_WP,
-        Celadon_Mansion_1F_Warp_Points.CELADON_MANSION_1F_TO_CELADON_CITY_2_WP,
+        Celadon_City_Warp_Points.Celadon_City_Mansion_1F_Front_Entrance_WP,
+        Celadon_Mansion_1F_Warp_Points.Celadon_City_Mansion_1F_Front_Exit_WP,
         "CeladonCity", 5
     )
 
     Celadon_City_Links["CELADON_CITY_TO_CELADON_MANSION_1F_3_LINK"] = WarpLink(
-        Celadon_City_Warp_Points.CELADON_CITY_TO_CELADON_MANSION_1F_3_WP,
-        Celadon_Mansion_1F_Warp_Points.CELADON_MANSION_1F_TO_CELADON_CITY_3_WP,
+        Celadon_City_Warp_Points.Celadon_City_Mansion_1F_Rear_Entrance_WP,
+        Celadon_Mansion_1F_Warp_Points.Celadon_City_Mansion_1F_Rear_Exit_Central_Stairs_WP,
         "CeladonCity", 10, dual_width= True
     )
 
     Celadon_City_Links["CELADON_CITY_TO_CELADON_POKECENTER_1F_1_LINK"] = WarpLink(
-        Celadon_City_Warp_Points.CELADON_CITY_TO_CELADON_POKECENTER_1F_1_WP,
-        Celadon_Pokecenter_1F_Warp_Points.CELADON_POKECENTER_1F_TO_CELADON_CITY_5_WP,
+        Celadon_City_Warp_Points.Celadon_City_Pokecenter_Entrance_WP,
+        Celadon_Pokecenter_1F_Warp_Points.Celadon_City_Pokecenter_Exit_WP,
         "CeladonCity", 20
     )
 
     Celadon_City_Links["CELADON_CITY_TO_CELADON_GAME_CORNER_1_LINK"] = WarpLink(
-        Celadon_City_Warp_Points.CELADON_CITY_TO_CELADON_GAME_CORNER_1_WP,
-        Celadon_Game_Corner_Warp_Points.CELADON_GAME_CORNER_TO_CELADON_CITY_6_WP,
+        Celadon_City_Warp_Points.Celadon_City_Game_Corner_Entrance_WP,
+        Celadon_Game_Corner_Warp_Points.Celadon_City_Game_Corner_Exit_WP,
         "CeladonCity", 25
     )
 
     Celadon_City_Links["CELADON_CITY_TO_CELADON_GAME_CORNER_PRIZE_ROOM_1_LINK"] = WarpLink(
-        Celadon_City_Warp_Points.CELADON_CITY_TO_CELADON_GAME_CORNER_PRIZE_ROOM_1_WP,
-        Celadon_Game_Corner_Prize_Room_Warp_Points.CELADON_GAME_CORNER_PRIZE_ROOM_TO_CELADON_CITY_7_WP,
+        Celadon_City_Warp_Points.Celadon_City_Game_Corner_Prize_Room_Entrance_WP,
+        Celadon_Game_Corner_Prize_Room_Warp_Points.Celadon_City_Game_Corner_Prize_Room_Exit_WP,
         "CeladonCity", 30
     )
 
     Celadon_City_Links["CELADON_CITY_TO_CELADON_GYM_1_LINK"] = WarpLink(
-        Celadon_City_Warp_Points.CELADON_CITY_TO_CELADON_GYM_1_WP,
-        Celadon_Gym_Warp_Points.CELADON_GYM_TO_CELADON_CITY_8_WP,
+        Celadon_City_Warp_Points.Celadon_City_Gym_Entrance_WP,
+        Celadon_Gym_Warp_Points.Celadon_City_Gym_Exit_WP,
         "CeladonCity", 35, locked_by=[Unlock_Keys.CAN_CUT]
     )
 
     Celadon_City_Links["CELADON_CITY_TO_CELADON_CAFE_1_LINK"] = WarpLink(
-        Celadon_City_Warp_Points.CELADON_CITY_TO_CELADON_CAFE_1_WP,
-        Celadon_Cafe_Warp_Points.CELADON_CAFE_TO_CELADON_CITY_9_WP,
+        Celadon_City_Warp_Points.Celadon_City_Cafe_Entrance_WP,
+        Celadon_Cafe_Warp_Points.Celadon_City_Cafe_Exit_WP,
         "CeladonCity", 40
     )
 
@@ -599,7 +597,7 @@ def buildKantoWarpLinks():
 
 
     Bills_House_Links["BILLS_HOUSE_TO_ROUTE_25_1_LINK"] = WarpLink(
-        Bills_House_Warp_Points.BILLS_HOUSE_TO_ROUTE_25_1_WP,
+        Bills_House_Warp_Points.Bills_House_Exit_WP,
         Route_25_Warp_Points.ROUTE_25_TO_BILLS_HOUSE_1_WP,
         "BillsHouse", dual_width= True
     )
@@ -607,37 +605,37 @@ def buildKantoWarpLinks():
 
 
     Cerulean_Gym_Badge_Speech_House_Links["CERULEAN_GYM_BADGE_SPEECH_HOUSE_TO_CERULEAN_CITY_1_LINK"] = WarpLink(
-        Cerulean_Gym_Badge_Speech_House_Warp_Points.CERULEAN_GYM_BADGE_SPEECH_HOUSE_TO_CERULEAN_CITY_1_WP,
-        Cerulean_City_Warp_Points.CERULEAN_CITY_TO_CERULEAN_GYM_BADGE_SPEECH_HOUSE_1_WP,
+        Cerulean_Gym_Badge_Speech_House_Warp_Points.Cerulean_City_Gym_Badge_Speech_House_Exit_WP,
+        Cerulean_City_Warp_Points.Cerulean_City_Gym_Badge_Speech_House_Entrance_WP,
         "CeruleanGymBadgeSpeechHouse", dual_width= True
     )
 
 
 
     Cerulean_Gym_Links["CERULEAN_GYM_TO_CERULEAN_CITY_5_LINK"] = WarpLink(
-        Cerulean_Gym_Warp_Points.CERULEAN_GYM_TO_CERULEAN_CITY_5_WP,
-        Cerulean_City_Warp_Points.CERULEAN_CITY_TO_CERULEAN_GYM_1_WP,
+        Cerulean_Gym_Warp_Points.Cerulean_City_Gym_Exit_WP,
+        Cerulean_City_Warp_Points.Cerulean_City_Gym_Entrance_WP,
         "CeruleanGym", dual_width= True, unlocks=[Unlock_Keys.CERULEAN_GYM_ACCESS]
     )
 
 
 
     Cerulean_Mart_Links["CERULEAN_MART_TO_CERULEAN_CITY_6_LINK"] = WarpLink(
-        Cerulean_Mart_Warp_Points.CERULEAN_MART_TO_CERULEAN_CITY_6_WP,
-        Cerulean_City_Warp_Points.CERULEAN_CITY_TO_CERULEAN_MART_2_WP,
+        Cerulean_Mart_Warp_Points.Cerulean_City_Mart_Exit_WP,
+        Cerulean_City_Warp_Points.Cerulean_City_Mart_Entrance_WP,
         "CeruleanMart", dual_width= True
     )
 
 
 
     Cerulean_Pokecenter_1F_Links["CERULEAN_POKECENTER_1F_TO_CERULEAN_CITY_4_LINK"] = WarpLink(
-        Cerulean_Pokecenter_1F_Warp_Points.CERULEAN_POKECENTER_1F_TO_CERULEAN_CITY_4_WP,
-        Cerulean_City_Warp_Points.CERULEAN_CITY_TO_CERULEAN_POKECENTER_1F_1_WP,
+        Cerulean_Pokecenter_1F_Warp_Points.Cerulean_City_Pokecenter_Exit_WP,
+        Cerulean_City_Warp_Points.Cerulean_City_Pokecenter_Entrance_WP,
         "CeruleanPokecenter1F", dual_width= True
     )
 
     Cerulean_Pokecenter_1F_Links["CERULEAN_POKECENTER_1F_TO_POKECENTER_2F_1_LINK"] = WarpLink(
-        Cerulean_Pokecenter_1F_Warp_Points.CERULEAN_POKECENTER_1F_TO_POKECENTER_2F_1_WP,
+        Cerulean_Pokecenter_1F_Warp_Points.Cerulean_City_Pokecenter_Stairs_WP,
         Pokecenter_2F_Warp_Points.POKECENTER_2F_TO_POKECENTER_1F_WP,
         "CeruleanPokecenter1F", 10
     )
@@ -646,23 +644,23 @@ def buildKantoWarpLinks():
 
 
     Cerulean_Police_Station_Links["CERULEAN_POLICE_STATION_TO_CERULEAN_CITY_2_LINK"] = WarpLink(
-        Cerulean_Police_Station_Warp_Points.CERULEAN_POLICE_STATION_TO_CERULEAN_CITY_2_WP,
-        Cerulean_City_Warp_Points.CERULEAN_CITY_TO_CERULEAN_POLICE_STATION_1_WP,
+        Cerulean_Police_Station_Warp_Points.Cerulean_City_Police_Station_Exit_WP,
+        Cerulean_City_Warp_Points.Cerulean_City_Police_Station_Entrance_WP,
         "CeruleanPoliceStation", dual_width= True
     )
 
 
 
     Cerulean_Trade_Speech_House_Links["CERULEAN_TRADE_SPEECH_HOUSE_TO_CERULEAN_CITY_3_LINK"] = WarpLink(
-        Cerulean_Trade_Speech_House_Warp_Points.CERULEAN_TRADE_SPEECH_HOUSE_TO_CERULEAN_CITY_3_WP,
-        Cerulean_City_Warp_Points.CERULEAN_CITY_TO_CERULEAN_TRADE_SPEECH_HOUSE_1_WP,
+        Cerulean_Trade_Speech_House_Warp_Points.Cerulean_City_Trade_Speech_House_Exit_WP,
+        Cerulean_City_Warp_Points.Cerulean_City_Trade_Speech_House_Entrance_WP,
         "CeruleanTradeSpeechHouse", dual_width= True
     )
 
 
 
     Power_Plant_Links["POWER_PLANT_TO_ROUTE_10_NORTH_2_LINK"] = WarpLink(
-        Power_Plant_Warp_Points.POWER_PLANT_TO_ROUTE_10_NORTH_2_WP,
+        Power_Plant_Warp_Points.Power_Plant_Exit_WP,
         Route_10_North_Warp_Points.ROUTE_10_NORTH_TO_POWER_PLANT_1_WP,
         "PowerPlant", dual_width= True, unlocks=[Unlock_Keys.POWER_PLANT_ACCESS]
     )
@@ -671,38 +669,38 @@ def buildKantoWarpLinks():
 
 
     Cerulean_City_Links["CERULEAN_CITY_TO_CERULEAN_GYM_BADGE_SPEECH_HOUSE_1_LINK"] = WarpLink(
-        Cerulean_City_Warp_Points.CERULEAN_CITY_TO_CERULEAN_GYM_BADGE_SPEECH_HOUSE_1_WP,
-        Cerulean_Gym_Badge_Speech_House_Warp_Points.CERULEAN_GYM_BADGE_SPEECH_HOUSE_TO_CERULEAN_CITY_1_WP,
+        Cerulean_City_Warp_Points.Cerulean_City_Gym_Badge_Speech_House_Entrance_WP,
+        Cerulean_Gym_Badge_Speech_House_Warp_Points.Cerulean_City_Gym_Badge_Speech_House_Exit_WP,
         "CeruleanCity"
     )
 
     Cerulean_City_Links["CERULEAN_CITY_TO_CERULEAN_POLICE_STATION_1_LINK"] = WarpLink(
-        Cerulean_City_Warp_Points.CERULEAN_CITY_TO_CERULEAN_POLICE_STATION_1_WP,
-        Cerulean_Police_Station_Warp_Points.CERULEAN_POLICE_STATION_TO_CERULEAN_CITY_2_WP,
+        Cerulean_City_Warp_Points.Cerulean_City_Police_Station_Entrance_WP,
+        Cerulean_Police_Station_Warp_Points.Cerulean_City_Police_Station_Exit_WP,
         "CeruleanCity", 5
     )
 
     Cerulean_City_Links["CERULEAN_CITY_TO_CERULEAN_TRADE_SPEECH_HOUSE_1_LINK"] = WarpLink(
-        Cerulean_City_Warp_Points.CERULEAN_CITY_TO_CERULEAN_TRADE_SPEECH_HOUSE_1_WP,
-        Cerulean_Trade_Speech_House_Warp_Points.CERULEAN_TRADE_SPEECH_HOUSE_TO_CERULEAN_CITY_3_WP,
+        Cerulean_City_Warp_Points.Cerulean_City_Trade_Speech_House_Entrance_WP,
+        Cerulean_Trade_Speech_House_Warp_Points.Cerulean_City_Trade_Speech_House_Exit_WP,
         "CeruleanCity", 10
     )
 
     Cerulean_City_Links["CERULEAN_CITY_TO_CERULEAN_POKECENTER_1F_1_LINK"] = WarpLink(
-        Cerulean_City_Warp_Points.CERULEAN_CITY_TO_CERULEAN_POKECENTER_1F_1_WP,
-        Cerulean_Pokecenter_1F_Warp_Points.CERULEAN_POKECENTER_1F_TO_CERULEAN_CITY_4_WP,
+        Cerulean_City_Warp_Points.Cerulean_City_Pokecenter_Entrance_WP,
+        Cerulean_Pokecenter_1F_Warp_Points.Cerulean_City_Pokecenter_Exit_WP,
         "CeruleanCity", 15
     )
 
     Cerulean_City_Links["CERULEAN_CITY_TO_CERULEAN_GYM_1_LINK"] = WarpLink(
-        Cerulean_City_Warp_Points.CERULEAN_CITY_TO_CERULEAN_GYM_1_WP,
-        Cerulean_Gym_Warp_Points.CERULEAN_GYM_TO_CERULEAN_CITY_5_WP,
+        Cerulean_City_Warp_Points.Cerulean_City_Gym_Entrance_WP,
+        Cerulean_Gym_Warp_Points.Cerulean_City_Gym_Exit_WP,
         "CeruleanCity", 20
     )
 
     Cerulean_City_Links["CERULEAN_CITY_TO_CERULEAN_MART_2_LINK"] = WarpLink(
-        Cerulean_City_Warp_Points.CERULEAN_CITY_TO_CERULEAN_MART_2_WP,
-        Cerulean_Mart_Warp_Points.CERULEAN_MART_TO_CERULEAN_CITY_6_WP,
+        Cerulean_City_Warp_Points.Cerulean_City_Mart_Entrance_WP,
+        Cerulean_Mart_Warp_Points.Cerulean_City_Mart_Exit_WP,
         "CeruleanCity", 25
     )
 
@@ -715,13 +713,13 @@ def buildKantoWarpLinks():
 
 
     Cinnabar_Pokecenter_1F_Links["CINNABAR_POKECENTER_1F_TO_CINNABAR_ISLAND_1_LINK"] = WarpLink(
-        Cinnabar_Pokecenter_1F_Warp_Points.CINNABAR_POKECENTER_1F_TO_CINNABAR_ISLAND_1_WP,
-        Cinnabar_Island_Warp_Points.CINNABAR_ISLAND_TO_CINNABAR_POKECENTER_1F_1_WP,
+        Cinnabar_Pokecenter_1F_Warp_Points.Cinnabar_Island_Pokecenter_Exit_WP,
+        Cinnabar_Island_Warp_Points.Cinnabar_Island_Pokecenter_Entrance_WP,
         "CinnabarPokecenter1F", dual_width= True
     )
 
     Cinnabar_Pokecenter_1F_Links["CINNABAR_POKECENTER_1F_TO_POKECENTER_2F_1_LINK"] = WarpLink(
-        Cinnabar_Pokecenter_1F_Warp_Points.CINNABAR_POKECENTER_1F_TO_POKECENTER_2F_1_WP,
+        Cinnabar_Pokecenter_1F_Warp_Points.Cinnabar_Island_Pokecenter_Stairs_WP,
         Pokecenter_2F_Warp_Points.POKECENTER_2F_TO_POKECENTER_1F_WP,
         "CinnabarPokecenter1F", 10
     )
@@ -730,7 +728,7 @@ def buildKantoWarpLinks():
 
 
     Seafoam_Gym_Links["SEAFOAM_GYM_TO_ROUTE_20_1_LINK"] = WarpLink(
-        Seafoam_Gym_Warp_Points.SEAFOAM_GYM_TO_ROUTE_20_1_WP,
+        Seafoam_Gym_Warp_Points.Seafoam_Gym_Exit_WP,
         Route_20_Warp_Points.ROUTE_20_TO_SEAFOAM_GYM_1_WP,
         "SeafoamGym", unlocks=[Unlock_Keys.BADGE_15]
     )
@@ -738,8 +736,8 @@ def buildKantoWarpLinks():
 
 
     Cinnabar_Island_Links["CINNABAR_ISLAND_TO_CINNABAR_POKECENTER_1F_1_LINK"] = WarpLink(
-        Cinnabar_Island_Warp_Points.CINNABAR_ISLAND_TO_CINNABAR_POKECENTER_1F_1_WP,
-        Cinnabar_Pokecenter_1F_Warp_Points.CINNABAR_POKECENTER_1F_TO_CINNABAR_ISLAND_1_WP,
+        Cinnabar_Island_Warp_Points.Cinnabar_Island_Pokecenter_Entrance_WP,
+        Cinnabar_Pokecenter_1F_Warp_Points.Cinnabar_Island_Pokecenter_Exit_WP,
         "CinnabarIsland", unlocks=[Unlock_Keys.FOUND_BLUE]
     )
 
@@ -1294,61 +1292,61 @@ def buildKantoWarpLinks():
 
 
     Pokemon_Fan_Club_Links["POKEMON_FAN_CLUB_TO_VERMILION_CITY_3_LINK"] = WarpLink(
-        Pokemon_Fan_Club_Warp_Points.POKEMON_FAN_CLUB_TO_VERMILION_CITY_3_WP,
-        Vermilion_City_Warp_Points.VERMILION_CITY_TO_POKEMON_FAN_CLUB_1_WP,
+        Pokemon_Fan_Club_Warp_Points.Pokemon_Fan_Club_Exit_WP,
+        Vermilion_City_Warp_Points.Pokemon_Fan_Club_Entrance_WP,
         "PokemonFanClub", dual_width= True
     )
 
 
 
     Vermilion_Digletts_Cave_Speech_House_Links["VERMILION_DIGLETTS_CAVE_SPEECH_HOUSE_TO_VERMILION_CITY_6_LINK"] = WarpLink(
-        Vermilion_Digletts_Cave_Speech_House_Warp_Points.VERMILION_DIGLETTS_CAVE_SPEECH_HOUSE_TO_VERMILION_CITY_6_WP,
-        Vermilion_City_Warp_Points.VERMILION_CITY_TO_VERMILION_DIGLETTS_CAVE_SPEECH_HOUSE_1_WP,
+        Vermilion_Digletts_Cave_Speech_House_Warp_Points.Vermilion_City_Digletts_Cave_Speech_House_Exit_WP,
+        Vermilion_City_Warp_Points.Vermilion_City_Digletts_Cave_Speech_House_Entrance_WP,
         "VermilionDiglettsCaveSpeechHouse", dual_width= True
     )
 
 
 
     Vermilion_Fishing_Speech_House_Links["VERMILION_FISHING_SPEECH_HOUSE_TO_VERMILION_CITY_1_LINK"] = WarpLink(
-        Vermilion_Fishing_Speech_House_Warp_Points.VERMILION_FISHING_SPEECH_HOUSE_TO_VERMILION_CITY_1_WP,
-        Vermilion_City_Warp_Points.VERMILION_CITY_TO_VERMILION_FISHING_SPEECH_HOUSE_1_WP,
+        Vermilion_Fishing_Speech_House_Warp_Points.Vermilion_City_Fishing_Speech_House_Exit_WP,
+        Vermilion_City_Warp_Points.Vermilion_City_Fishing_Speech_House_Entrance_WP,
         "VermilionFishingSpeechHouse", dual_width= True
     )
 
 
 
     Vermilion_Gym_Links["VERMILION_GYM_TO_VERMILION_CITY_7_LINK"] = WarpLink(
-        Vermilion_Gym_Warp_Points.VERMILION_GYM_TO_VERMILION_CITY_7_WP,
-        Vermilion_City_Warp_Points.VERMILION_CITY_TO_VERMILION_GYM_1_WP,
+        Vermilion_Gym_Warp_Points.Vermilion_City_Gym_Exit_WP,
+        Vermilion_City_Warp_Points.Vermilion_City_Gym_Entrance_WP,
         "VermilionGym", dual_width= True, unlocks=[Unlock_Keys.BADGE_9]
     )
 
 
 
     Vermilion_Magnet_Train_Speech_House_Links["VERMILION_MAGNET_TRAIN_SPEECH_HOUSE_TO_VERMILION_CITY_4_LINK"] = WarpLink(
-        Vermilion_Magnet_Train_Speech_House_Warp_Points.VERMILION_MAGNET_TRAIN_SPEECH_HOUSE_TO_VERMILION_CITY_4_WP,
-        Vermilion_City_Warp_Points.VERMILION_CITY_TO_VERMILION_MAGNET_TRAIN_SPEECH_HOUSE_1_WP,
+        Vermilion_Magnet_Train_Speech_House_Warp_Points.Vermilion_City_Magnet_Train_Speech_House_Exit_WP,
+        Vermilion_City_Warp_Points.Vermilion_City_Magnet_Train_Speech_House_Entrance_WP,
         "VermilionMagnetTrainSpeechHouse", dual_width= True
     )
 
 
 
     Vermilion_Mart_Links["VERMILION_MART_TO_VERMILION_CITY_5_LINK"] = WarpLink(
-        Vermilion_Mart_Warp_Points.VERMILION_MART_TO_VERMILION_CITY_5_WP,
-        Vermilion_City_Warp_Points.VERMILION_CITY_TO_VERMILION_MART_2_WP,
+        Vermilion_Mart_Warp_Points.Vermilion_City_Mart_Exit_WP,
+        Vermilion_City_Warp_Points.Vermilion_City_Mart_Entrance_WP,
         "VermilionMart", dual_width= True
     )
 
 
 
     Vermilion_Pokecenter_1F_Links["VERMILION_POKECENTER_1F_TO_VERMILION_CITY_2_LINK"] = WarpLink(
-        Vermilion_Pokecenter_1F_Warp_Points.VERMILION_POKECENTER_1F_TO_VERMILION_CITY_2_WP,
-        Vermilion_City_Warp_Points.VERMILION_CITY_TO_VERMILION_POKECENTER_1F_1_WP,
+        Vermilion_Pokecenter_1F_Warp_Points.Vermilion_City_Pokecenter_Exit_WP,
+        Vermilion_City_Warp_Points.Vermilion_City_Pokecenter_Entrance_WP,
         "VermilionPokecenter1F", dual_width= True
     )
 
     Vermilion_Pokecenter_1F_Links["VERMILION_POKECENTER_1F_TO_POKECENTER_2F_1_LINK"] = WarpLink(
-        Vermilion_Pokecenter_1F_Warp_Points.VERMILION_POKECENTER_1F_TO_POKECENTER_2F_1_WP,
+        Vermilion_Pokecenter_1F_Warp_Points.Vermilion_City_Pokecenter_Stairs_WP,
         Pokecenter_2F_Warp_Points.POKECENTER_2F_TO_POKECENTER_1F_WP,
         "VermilionPokecenter1F", 10
     )
@@ -1356,14 +1354,14 @@ def buildKantoWarpLinks():
 
 
     Vermilion_Port_Links["VERMILION_PORT_TO_VERMILION_PORT_PASSAGE_5_LINK"] = WarpLink(
-        Vermilion_Port_Warp_Points.VERMILION_PORT_TO_VERMILION_PORT_PASSAGE_5_WP,
-        Vermilion_Port_Passage_Warp_Points.VERMILION_PORT_PASSAGE_TO_VERMILION_PORT_1_WP,
+        Vermilion_Port_Warp_Points.Vermilion_Port_To_Port_Passage_WP,
+        Vermilion_Port_Passage_Warp_Points.Vermilion_Port_Passage_To_Vermilion_Port_WP,
         "VermilionPort"
     )
 
 #We dont randomize ship entrance/exit
     #["VERMILION_PORT_TO_FAST_SHIP_1F_1_LINK"]= WarpLink(
-    #    Vermilion_Port_Warp_Points.VERMILION_PORT_TO_FAST_SHIP_1F_1_WP,
+    #    Vermilion_Port_Warp_Points.Vermilion_Port_To_Fast_Ship_WP,
     #    Vermilion_City_Warp_Points.VERMILION_CITY_TO_VERMILION_POKECENTER_1F_1_WP,
     #    "VermilionPort", 5
     #)
@@ -1372,26 +1370,26 @@ def buildKantoWarpLinks():
  # 1-3,4-5
 
     Vermilion_Port_Passage_Links["VERMILION_PORT_PASSAGE_TO_VERMILION_CITY_8_LINK"] = WarpLink(
-        Vermilion_Port_Passage_Warp_Points.VERMILION_PORT_PASSAGE_TO_VERMILION_CITY_8_WP,
-        Vermilion_City_Warp_Points.VERMILION_CITY_TO_VERMILION_PORT_PASSAGE_1_WP,
+        Vermilion_Port_Passage_Warp_Points.Vermilion_Upper_Port_Passage_To_Vermilion_City_WP,
+        Vermilion_City_Warp_Points.Vermilion_City_To_Port_Passage_WP,
         "VermilionPortPassage", dual_width= True
     )
 
     Vermilion_Port_Passage_Links["VERMILION_PORT_PASSAGE_TO_VERMILION_PORT_PASSAGE_4_LINK"] = WarpLink(
-        Vermilion_Port_Passage_Warp_Points.VERMILION_PORT_PASSAGE_TO_VERMILION_PORT_PASSAGE_4_WP,
-        Vermilion_Port_Passage_Warp_Points.VERMILION_PORT_PASSAGE_TO_VERMILION_PORT_PASSAGE_3_WP,
+        Vermilion_Port_Passage_Warp_Points.Vermilion_Upper_Port_Passage_To_Underground_Passage_North_WP,
+        Vermilion_Port_Passage_Warp_Points.Vermilion_Underground_Passage_North_To_Upper_Port_Passage_WP,
         "VermilionPortPassage", 10
     )
 
     Vermilion_Port_Passage_Links["VERMILION_PORT_PASSAGE_TO_VERMILION_PORT_PASSAGE_3_LINK"] = WarpLink(
-        Vermilion_Port_Passage_Warp_Points.VERMILION_PORT_PASSAGE_TO_VERMILION_PORT_PASSAGE_3_WP,
-        Vermilion_Port_Passage_Warp_Points.VERMILION_PORT_PASSAGE_TO_VERMILION_PORT_PASSAGE_4_WP,
+        Vermilion_Port_Passage_Warp_Points.Vermilion_Underground_Passage_North_To_Upper_Port_Passage_WP,
+        Vermilion_Port_Passage_Warp_Points.Vermilion_Upper_Port_Passage_To_Underground_Passage_North_WP,
         "VermilionPortPassage", 15
     )
 
     Vermilion_Port_Passage_Links["VERMILION_PORT_PASSAGE_TO_VERMILION_PORT_1_LINK"] = WarpLink(
-        Vermilion_Port_Passage_Warp_Points.VERMILION_PORT_PASSAGE_TO_VERMILION_PORT_1_WP,
-        Vermilion_Port_Warp_Points.VERMILION_PORT_TO_VERMILION_PORT_PASSAGE_5_WP,
+        Vermilion_Port_Passage_Warp_Points.Vermilion_Port_Passage_To_Vermilion_Port_WP,
+        Vermilion_Port_Warp_Points.Vermilion_Port_To_Port_Passage_WP,
         "VermilionPortPassage", 20
     )
 
@@ -1400,55 +1398,55 @@ def buildKantoWarpLinks():
 
 
     Vermilion_City_Links["VERMILION_CITY_TO_VERMILION_FISHING_SPEECH_HOUSE_1_LINK"] = WarpLink(
-        Vermilion_City_Warp_Points.VERMILION_CITY_TO_VERMILION_FISHING_SPEECH_HOUSE_1_WP,
-        Vermilion_Fishing_Speech_House_Warp_Points.VERMILION_FISHING_SPEECH_HOUSE_TO_VERMILION_CITY_1_WP,
+        Vermilion_City_Warp_Points.Vermilion_City_Fishing_Speech_House_Entrance_WP,
+        Vermilion_Fishing_Speech_House_Warp_Points.Vermilion_City_Fishing_Speech_House_Exit_WP,
         "VermilionCity"
     )
 
     Vermilion_City_Links["VERMILION_CITY_TO_VERMILION_POKECENTER_1F_1_LINK"] = WarpLink(
-        Vermilion_City_Warp_Points.VERMILION_CITY_TO_VERMILION_POKECENTER_1F_1_WP,
-        Vermilion_Pokecenter_1F_Warp_Points.VERMILION_POKECENTER_1F_TO_VERMILION_CITY_2_WP,
+        Vermilion_City_Warp_Points.Vermilion_City_Pokecenter_Entrance_WP,
+        Vermilion_Pokecenter_1F_Warp_Points.Vermilion_City_Pokecenter_Exit_WP,
         "VermilionCity", 5
     )
 
     Vermilion_City_Links["VERMILION_CITY_TO_POKEMON_FAN_CLUB_1_LINK"] = WarpLink(
-        Vermilion_City_Warp_Points.VERMILION_CITY_TO_POKEMON_FAN_CLUB_1_WP,
-        Pokemon_Fan_Club_Warp_Points.POKEMON_FAN_CLUB_TO_VERMILION_CITY_3_WP,
+        Vermilion_City_Warp_Points.Pokemon_Fan_Club_Entrance_WP,
+        Pokemon_Fan_Club_Warp_Points.Pokemon_Fan_Club_Exit_WP,
         "VermilionCity", 10
     )
 
     Vermilion_City_Links["VERMILION_CITY_TO_VERMILION_MAGNET_TRAIN_SPEECH_HOUSE_1_LINK"] = WarpLink(
-        Vermilion_City_Warp_Points.VERMILION_CITY_TO_VERMILION_MAGNET_TRAIN_SPEECH_HOUSE_1_WP,
-        Vermilion_Magnet_Train_Speech_House_Warp_Points.VERMILION_MAGNET_TRAIN_SPEECH_HOUSE_TO_VERMILION_CITY_4_WP,
+        Vermilion_City_Warp_Points.Vermilion_City_Magnet_Train_Speech_House_Entrance_WP,
+        Vermilion_Magnet_Train_Speech_House_Warp_Points.Vermilion_City_Magnet_Train_Speech_House_Exit_WP,
         "VermilionCity", 15
     )
 
     Vermilion_City_Links["VERMILION_CITY_TO_VERMILION_MART_2_LINK"] = WarpLink(
-        Vermilion_City_Warp_Points.VERMILION_CITY_TO_VERMILION_MART_2_WP,
-        Vermilion_Mart_Warp_Points.VERMILION_MART_TO_VERMILION_CITY_5_WP,
+        Vermilion_City_Warp_Points.Vermilion_City_Mart_Entrance_WP,
+        Vermilion_Mart_Warp_Points.Vermilion_City_Mart_Exit_WP,
         "VermilionCity", 20
     )
 
     Vermilion_City_Links["VERMILION_CITY_TO_VERMILION_DIGLETTS_CAVE_SPEECH_HOUSE_1_LINK"] = WarpLink(
-        Vermilion_City_Warp_Points.VERMILION_CITY_TO_VERMILION_DIGLETTS_CAVE_SPEECH_HOUSE_1_WP,
-        Vermilion_Digletts_Cave_Speech_House_Warp_Points.VERMILION_DIGLETTS_CAVE_SPEECH_HOUSE_TO_VERMILION_CITY_6_WP,
+        Vermilion_City_Warp_Points.Vermilion_City_Digletts_Cave_Speech_House_Entrance_WP,
+        Vermilion_Digletts_Cave_Speech_House_Warp_Points.Vermilion_City_Digletts_Cave_Speech_House_Exit_WP,
         "VermilionCity", 25
     )
 
     Vermilion_City_Links["VERMILION_CITY_TO_VERMILION_GYM_1_LINK"] = WarpLink(
-        Vermilion_City_Warp_Points.VERMILION_CITY_TO_VERMILION_GYM_1_WP,
-        Vermilion_Gym_Warp_Points.VERMILION_GYM_TO_VERMILION_CITY_7_WP,
+        Vermilion_City_Warp_Points.Vermilion_City_Gym_Entrance_WP,
+        Vermilion_Gym_Warp_Points.Vermilion_City_Gym_Exit_WP,
         "VermilionCity", 30, locked_by=[Unlock_Keys.CAN_SURF_OR_CUT]
     )
 
     Vermilion_City_Links["VERMILION_CITY_TO_VERMILION_PORT_PASSAGE_1_LINK"] = WarpLink(
-        Vermilion_City_Warp_Points.VERMILION_CITY_TO_VERMILION_PORT_PASSAGE_1_WP,
-        Vermilion_Port_Passage_Warp_Points.VERMILION_PORT_PASSAGE_TO_VERMILION_CITY_8_WP,
+        Vermilion_City_Warp_Points.Vermilion_City_To_Port_Passage_WP,
+        Vermilion_Port_Passage_Warp_Points.Vermilion_Upper_Port_Passage_To_Vermilion_City_WP,
         "VermilionCity", 35, dual_width= True
     )
 
     Vermilion_City_Links["VERMILION_CITY_TO_DIGLETTS_CAVE_1_LINK"] = WarpLink(
-        Vermilion_City_Warp_Points.VERMILION_CITY_TO_DIGLETTS_CAVE_1_WP,
+        Vermilion_City_Warp_Points.Vermilion_City_Digletts_Cave_Entrance_WP,
         Digletts_Cave_Warp_Points.DIGLETTS_CAVE_TO_VERMILION_CITY_10_WP,
         "VermilionCity", 45, locked_by=[Unlock_Keys.EXPN_CARD, Unlock_Keys.RADIO_CARD]
     )
@@ -1461,7 +1459,7 @@ def buildKantoWarpLinks():
 
 
     Route_2_Nugget_House_Links["ROUTE_2_NUGGET_HOUSE_TO_ROUTE_2_1_LINK"] = WarpLink(
-        Route_2_Nugget_House_Warp_Points.ROUTE_2_NUGGET_HOUSE_TO_ROUTE_2_1_WP,
+        Route_2_Nugget_House_Warp_Points.Route_2_Nugget_House_Exit_WP,
         Route_2_Warp_Points.ROUTE_2_TO_ROUTE_2_NUGGET_HOUSE_1_WP,
         "Route2NuggetHouse", dual_width= True
     )
@@ -1469,30 +1467,30 @@ def buildKantoWarpLinks():
 
 
     Trainer_House_1F_Links["TRAINER_HOUSE_1F_TO_VIRIDIAN_CITY_3_LINK"] = WarpLink(
-        Trainer_House_1F_Warp_Points.TRAINER_HOUSE_1F_TO_VIRIDIAN_CITY_3_WP,
-        Viridian_City_Warp_Points.VIRIDIAN_CITY_TO_TRAINER_HOUSE_1F_1_WP,
+        Trainer_House_1F_Warp_Points.Trainer_House_1F_Exit_WP,
+        Viridian_City_Warp_Points.Trainer_House_Entrance_WP,
         "TrainerHouse1F", dual_width= True
     )
 
     Trainer_House_1F_Links["TRAINER_HOUSE_1F_TO_TRAINER_HOUSE_B1F_1_LINK"] = WarpLink(
-        Trainer_House_1F_Warp_Points.TRAINER_HOUSE_1F_TO_TRAINER_HOUSE_B1F_1_WP,
-        Trainer_House_B1F_Warp_Points.TRAINER_HOUSE_B1F_TO_TRAINER_HOUSE_1F_3_WP,
+        Trainer_House_1F_Warp_Points.Trainer_House_1F_Stairs_WP,
+        Trainer_House_B1F_Warp_Points.Trainer_House_B1F_Stairs_WP,
         "TrainerHouse1F", 10
     )
 
 
 
     Trainer_House_B1F_Links["TRAINER_HOUSE_B1F_TO_TRAINER_HOUSE_1F_3_LINK"] = WarpLink(
-        Trainer_House_B1F_Warp_Points.TRAINER_HOUSE_B1F_TO_TRAINER_HOUSE_1F_3_WP,
-        Trainer_House_1F_Warp_Points.TRAINER_HOUSE_1F_TO_TRAINER_HOUSE_B1F_1_WP,
+        Trainer_House_B1F_Warp_Points.Trainer_House_B1F_Stairs_WP,
+        Trainer_House_1F_Warp_Points.Trainer_House_1F_Stairs_WP,
         "TrainerHouseB1F"
     )
 
 
 
     Viridian_Gym_Links["VIRIDIAN_GYM_TO_VIRIDIAN_CITY_1_LINK"] = WarpLink(
-        Viridian_Gym_Warp_Points.VIRIDIAN_GYM_TO_VIRIDIAN_CITY_1_WP,
-        Viridian_City_Warp_Points.VIRIDIAN_CITY_TO_VIRIDIAN_GYM_1_WP,
+        Viridian_Gym_Warp_Points.Viridian_City_Gym_Exit_WP,
+        Viridian_City_Warp_Points.Viridian_City_Gym_Entrance_WP,
         "ViridianGym", dual_width= True, unlocks=[Unlock_Keys.BADGE_16],
         locked_by=[Unlock_Keys.FOUND_BLUE]
     )
@@ -1500,29 +1498,29 @@ def buildKantoWarpLinks():
 
 
     Viridian_Mart_Links["VIRIDIAN_MART_TO_VIRIDIAN_CITY_4_LINK"] = WarpLink(
-        Viridian_Mart_Warp_Points.VIRIDIAN_MART_TO_VIRIDIAN_CITY_4_WP,
-        Viridian_City_Warp_Points.VIRIDIAN_CITY_TO_VIRIDIAN_MART_2_WP,
+        Viridian_Mart_Warp_Points.Viridian_City_Mart_Exit_WP,
+        Viridian_City_Warp_Points.Viridian_City_Mart_Entrance_WP,
         "ViridianMart", dual_width= True
     )
 
 
 
     Viridian_Nickname_Speech_House_Links["VIRIDIAN_NICKNAME_SPEECH_HOUSE_TO_VIRIDIAN_CITY_2_LINK"] = WarpLink(
-        Viridian_Nickname_Speech_House_Warp_Points.VIRIDIAN_NICKNAME_SPEECH_HOUSE_TO_VIRIDIAN_CITY_2_WP,
-        Viridian_City_Warp_Points.VIRIDIAN_CITY_TO_VIRIDIAN_NICKNAME_SPEECH_HOUSE_1_WP,
+        Viridian_Nickname_Speech_House_Warp_Points.Viridian_City_Nickname_Speech_House_Exit_WP,
+        Viridian_City_Warp_Points.Viridian_City_Nickname_Speech_House_Entrance_WP,
         "ViridianNicknameSpeechHouse", dual_width= True
     )
 
 
 
     Viridian_Pokecenter_1F_Links["VIRIDIAN_POKECENTER_1F_TO_VIRIDIAN_CITY_5_LINK"] = WarpLink(
-        Viridian_Pokecenter_1F_Warp_Points.VIRIDIAN_POKECENTER_1F_TO_VIRIDIAN_CITY_5_WP,
-        Viridian_City_Warp_Points.VIRIDIAN_CITY_TO_VIRIDIAN_POKECENTER_1F_1_WP,
+        Viridian_Pokecenter_1F_Warp_Points.Viridian_City_Pokecenter_Exit_WP,
+        Viridian_City_Warp_Points.Viridian_City_Pokecenter_Entrance_WP,
         "ViridianPokecenter1F", dual_width= True
     )
 
     Viridian_Pokecenter_1F_Links["VIRIDIAN_POKECENTER_1F_TO_POKECENTER_2F_1_LINK"] = WarpLink(
-        Viridian_Pokecenter_1F_Warp_Points.VIRIDIAN_POKECENTER_1F_TO_POKECENTER_2F_1_WP,
+        Viridian_Pokecenter_1F_Warp_Points.Viridian_City_Pokecenter_Stairs_WP,
         Pokecenter_2F_Warp_Points.POKECENTER_2F_TO_POKECENTER_1F_WP,
         "ViridianPokecenter1F", 10
     )
@@ -1530,32 +1528,32 @@ def buildKantoWarpLinks():
 
 
     Viridian_City_Links["VIRIDIAN_CITY_TO_VIRIDIAN_GYM_1_LINK"] = WarpLink(
-        Viridian_City_Warp_Points.VIRIDIAN_CITY_TO_VIRIDIAN_GYM_1_WP,
-        Viridian_Gym_Warp_Points.VIRIDIAN_GYM_TO_VIRIDIAN_CITY_1_WP,
+        Viridian_City_Warp_Points.Viridian_City_Gym_Entrance_WP,
+        Viridian_Gym_Warp_Points.Viridian_City_Gym_Exit_WP,
         "ViridianCity"
     )
 
     Viridian_City_Links["VIRIDIAN_CITY_TO_VIRIDIAN_NICKNAME_SPEECH_HOUSE_1_LINK"] = WarpLink(
-        Viridian_City_Warp_Points.VIRIDIAN_CITY_TO_VIRIDIAN_NICKNAME_SPEECH_HOUSE_1_WP,
-        Viridian_Nickname_Speech_House_Warp_Points.VIRIDIAN_NICKNAME_SPEECH_HOUSE_TO_VIRIDIAN_CITY_2_WP,
+        Viridian_City_Warp_Points.Viridian_City_Nickname_Speech_House_Entrance_WP,
+        Viridian_Nickname_Speech_House_Warp_Points.Viridian_City_Nickname_Speech_House_Exit_WP,
         "ViridianCity", 5
     )
 
     Viridian_City_Links["VIRIDIAN_CITY_TO_TRAINER_HOUSE_1F_1_LINK"] = WarpLink(
-        Viridian_City_Warp_Points.VIRIDIAN_CITY_TO_TRAINER_HOUSE_1F_1_WP,
-        Trainer_House_1F_Warp_Points.TRAINER_HOUSE_1F_TO_VIRIDIAN_CITY_3_WP,
+        Viridian_City_Warp_Points.Trainer_House_Entrance_WP,
+        Trainer_House_1F_Warp_Points.Trainer_House_1F_Exit_WP,
         "ViridianCity", 10
     )
 
     Viridian_City_Links["VIRIDIAN_CITY_TO_VIRIDIAN_MART_2_LINK"] = WarpLink(
-        Viridian_City_Warp_Points.VIRIDIAN_CITY_TO_VIRIDIAN_MART_2_WP,
-        Viridian_Mart_Warp_Points.VIRIDIAN_MART_TO_VIRIDIAN_CITY_4_WP,
+        Viridian_City_Warp_Points.Viridian_City_Mart_Entrance_WP,
+        Viridian_Mart_Warp_Points.Viridian_City_Mart_Exit_WP,
         "ViridianCity", 15
     )
 
     Viridian_City_Links["VIRIDIAN_CITY_TO_VIRIDIAN_POKECENTER_1F_1_LINK"] = WarpLink(
-        Viridian_City_Warp_Points.VIRIDIAN_CITY_TO_VIRIDIAN_POKECENTER_1F_1_WP,
-        Viridian_Pokecenter_1F_Warp_Points.VIRIDIAN_POKECENTER_1F_TO_VIRIDIAN_CITY_5_WP,
+        Viridian_City_Warp_Points.Viridian_City_Pokecenter_Entrance_WP,
+        Viridian_Pokecenter_1F_Warp_Points.Viridian_City_Pokecenter_Exit_WP,
         "ViridianCity", 20
     )
 
@@ -1570,7 +1568,7 @@ def buildKantoWarpLinks():
 
     Digletts_Cave_Links["DIGLETTS_CAVE_TO_VERMILION_CITY_10_LINK"] = WarpLink(
         Digletts_Cave_Warp_Points.DIGLETTS_CAVE_TO_VERMILION_CITY_10_WP,
-        Vermilion_City_Warp_Points.VERMILION_CITY_TO_DIGLETTS_CAVE_1_WP,
+        Vermilion_City_Warp_Points.Vermilion_City_Digletts_Cave_Entrance_WP,
         "DiglettsCave"
     )
 
@@ -1908,7 +1906,7 @@ def buildKantoWarpLinks():
 
     Route_2_Links["ROUTE_2_TO_ROUTE_2_NUGGET_HOUSE_1_LINK"] = WarpLink(
         Route_2_Warp_Points.ROUTE_2_TO_ROUTE_2_NUGGET_HOUSE_1_WP,
-        Route_2_Nugget_House_Warp_Points.ROUTE_2_NUGGET_HOUSE_TO_ROUTE_2_1_WP,
+        Route_2_Nugget_House_Warp_Points.Route_2_Nugget_House_Exit_WP,
         "Route2"
     )
 
@@ -2050,7 +2048,7 @@ def buildKantoWarpLinks():
 
     Route_10_North_Links["ROUTE_10_NORTH_TO_POWER_PLANT_1_LINK"] = WarpLink(
         Route_10_North_Warp_Points.ROUTE_10_NORTH_TO_POWER_PLANT_1_WP,
-        Power_Plant_Warp_Points.POWER_PLANT_TO_ROUTE_10_NORTH_2_WP,
+        Power_Plant_Warp_Points.Power_Plant_Exit_WP,
         "Route10North", 5
     )
 
@@ -2159,7 +2157,7 @@ def buildKantoWarpLinks():
 
     Route_20_Links["ROUTE_20_TO_SEAFOAM_GYM_1_LINK"] = WarpLink(
         Route_20_Warp_Points.ROUTE_20_TO_SEAFOAM_GYM_1_WP,
-        Seafoam_Gym_Warp_Points.SEAFOAM_GYM_TO_ROUTE_20_1_WP,
+        Seafoam_Gym_Warp_Points.Seafoam_Gym_Exit_WP,
         "Route20"
     )
 
@@ -2167,7 +2165,7 @@ def buildKantoWarpLinks():
 
     Route_22_Links["ROUTE_22_TO_VICTORY_ROAD_GATE_1_LINK"] = WarpLink(
         Route_22_Warp_Points.ROUTE_22_TO_VICTORY_ROAD_GATE_1_WP, #todo victory road gate
-        Celadon_City_Warp_Points.CELADON_CITY_TO_CELADON_DEPT_STORE_1F_1_WP,
+        Celadon_City_Warp_Points.Celadon_City_Dept_Store_1F_Entrance_WP,
         "Route22"
     )
 
@@ -2175,7 +2173,7 @@ def buildKantoWarpLinks():
 
     Route_25_Links["ROUTE_25_TO_BILLS_HOUSE_1_LINK"] = WarpLink(
         Route_25_Warp_Points.ROUTE_25_TO_BILLS_HOUSE_1_WP,
-        Bills_House_Warp_Points.BILLS_HOUSE_TO_ROUTE_25_1_WP,
+        Bills_House_Warp_Points.Bills_House_Exit_WP,
         "Route25"
     )
 

@@ -427,27 +427,27 @@ def buildJohtoWarpLinks():
     
 
     Azalea_Gym_Links["AZALEA_GYM_TO_AZALEA_TOWN_LINK"] = WarpLink(
-        Azalea_Gym_Warp_Points.AZALEA_GYM_TO_AZALEA_TOWN_WP,
-        Azalea_Town_Warp_Points.AZALEA_TOWN_TO_AZALEA_GYM_WP,
+        Azalea_Gym_Warp_Points.Azalea_Gym_Exit_WP,
+        Azalea_Town_Warp_Points.Azalea_Gym_Entrance_WP,
         "AzaleaGym", dual_width= True, unlocks=[Unlock_Keys.BADGE_2]
     )
 
 
     Azalea_Mart_Links["AZALEA_MART_TO_AZALEA_TOWN_LINK"] = WarpLink(
-        Azalea_Mart_Warp_Points.AZALEA_MART_TO_AZALEA_TOWN_WP,
-        Azalea_Town_Warp_Points.AZALEA_TOWN_TO_AZALEA_MART_WP,
+        Azalea_Mart_Warp_Points.Azalea_Mart_Exit_WP,
+        Azalea_Town_Warp_Points.Azalea_Mart_Entrance_WP,
         "AzaleaMart", dual_width=True
     )
 
     
 
     Azalea_Pokecenter_Links["AZALEA_POKECENTER_TO_AZALEA_TOWN_LINK"] = WarpLink(
-        Azalea_Pokecenter_Warp_Points.AZALEA_POKECENTER_TO_AZALEA_TOWN_WP,
-        Azalea_Town_Warp_Points.AZALEA_TOWN_TO_AZALEA_POKECENTER_1F_WP,
+        Azalea_Pokecenter_Warp_Points.Azalea_Pokecenter_Exit_WP,
+        Azalea_Town_Warp_Points.Azalea_Pokecenter_Entrance_WP,
         "AzaleaPokecenter1F", dual_width=True
     )
     Azalea_Pokecenter_Links["AZALEA_POKECENTER_1F_TO_AZALEA_POKECENTER_2F_LINK"] = WarpLink(
-        Azalea_Pokecenter_Warp_Points.AZALEA_POKECENTER_TO_AZALEA_POKECENTER_2F_WP,
+        Azalea_Pokecenter_Warp_Points.Azalea_Pokecenter_Stairs_WP,
         Pokecenter_2F_Warp_Points.POKECENTER_2F_TO_POKECENTER_1F_WP,
         "AzaleaPokecenter1F", 10
     )
@@ -455,44 +455,44 @@ def buildJohtoWarpLinks():
     
 
     Azalea_Town_Links["AZALEA_TOWN_TO_AZALEA_POKECENTER_1F_LINK"] = WarpLink(
-        Azalea_Town_Warp_Points.AZALEA_TOWN_TO_AZALEA_POKECENTER_1F_WP,
-        Azalea_Pokecenter_Warp_Points.AZALEA_POKECENTER_TO_AZALEA_TOWN_WP,
+        Azalea_Town_Warp_Points.Azalea_Pokecenter_Entrance_WP,
+        Azalea_Pokecenter_Warp_Points.Azalea_Pokecenter_Exit_WP,
         "AzaleaTown"
     )
 
     Azalea_Town_Links["AZALEA_TOWN_TO_CHARCOAL_KILN_LINK"] = WarpLink(
-        Azalea_Town_Warp_Points.AZALEA_TOWN_TO_CHARCOAL_KILN_WP,
-        Charcoal_Kiln_Warp_Points.CHARCOAL_KILN_TO_AZALEA_TOWN_WP,
+        Azalea_Town_Warp_Points.Charcoal_Kiln_Entrance_WP,
+        Charcoal_Kiln_Warp_Points.Charcoal_Kiln_Exit_WP,
         "AzaleaTown" , 5
     )
 
     Azalea_Town_Links["AZALEA_TOWN_TO_AZALEA_MART_LINK"] = WarpLink(
-        Azalea_Town_Warp_Points.AZALEA_TOWN_TO_AZALEA_MART_WP,
-        Azalea_Mart_Warp_Points.AZALEA_MART_TO_AZALEA_TOWN_WP,
+        Azalea_Town_Warp_Points.Azalea_Mart_Entrance_WP,
+        Azalea_Mart_Warp_Points.Azalea_Mart_Exit_WP,
         "AzaleaTown" , 10
     )
 
     Azalea_Town_Links["AZALEA_TOWN_TO_KURTS_LINK"] = WarpLink(
-        Azalea_Town_Warp_Points.AZALEA_TOWN_TO_KURTS_HOUSE_WP,
-        Kurts_House_Warp_Points.KURTS_HOUSE_TO_AZALEA_TOWN_WP,
+        Azalea_Town_Warp_Points.Kurts_House_Entrance_WP,
+        Kurts_House_Warp_Points.Kurts_House_Exit_WP,
         "AzaleaTown" , 15
     )
 
     Azalea_Town_Links["AZALEA_TOWN_TO_AZALEA_GYM_LINK"] = WarpLink(
-        Azalea_Town_Warp_Points.AZALEA_TOWN_TO_AZALEA_GYM_WP,
-        Azalea_Gym_Warp_Points.AZALEA_GYM_TO_AZALEA_TOWN_WP,
+        Azalea_Town_Warp_Points.Azalea_Gym_Entrance_WP,
+        Azalea_Gym_Warp_Points.Azalea_Gym_Exit_WP,
         "AzaleaTown" , 20, locked_by=[Unlock_Keys.CAN_CLEAR_SLOWPOKE_WELL]
     )
 
     Azalea_Town_Links["AZALEA_TOWN_TO_SLOWPOKE_WELL_B1F_LINK"] = WarpLink(
-        Azalea_Town_Warp_Points.AZALEA_TOWN_TO_SLOWPOKE_WELL_B1F_WP,
+        Azalea_Town_Warp_Points.Slowpoke_Well_B1F_Entrance_WP,
         Slowpoke_Well_B1F_Warp_Points.SLOWPOKE_WELL_B1F_TO_AZALEA_TOWN_6_WP,
         "AzaleaTown" , 25, locked_by=[Unlock_Keys.KURTS_HOUSE_FOUND]
     )
 
 
     Azalea_Town_Links["AZALEA_TOWN_TO_ILEX_FOREST_AZALEA_GATE_LINK"] = WarpLink(
-        Azalea_Town_Warp_Points.AZALEA_TOWN_TO_ILEX_FOREST_AZALEA_GATE_WP,
+        Azalea_Town_Warp_Points.Azalea_Town_Ilex_Forest_Gate_Azalea_Entrance_WP,
         Ilex_Forest_Azalea_Gate_Warp_Points.ILEX_FOREST_AZALEA_GATE_TO_AZALEA_TOWN_WP,
         "AzaleaTown" , 30, dual_width=True
     )
@@ -500,16 +500,16 @@ def buildJohtoWarpLinks():
     
 
     Charcoal_Kiln_Links["CHARCOAL_KILN_TO_AZALEA_TOWN_LINK"] = WarpLink(
-        Charcoal_Kiln_Warp_Points.CHARCOAL_KILN_TO_AZALEA_TOWN_WP,
-        Azalea_Town_Warp_Points.AZALEA_TOWN_TO_CHARCOAL_KILN_WP,
+        Charcoal_Kiln_Warp_Points.Charcoal_Kiln_Exit_WP,
+        Azalea_Town_Warp_Points.Charcoal_Kiln_Entrance_WP,
         "CharcoalKiln", dual_width=True
     )
 
     
 
     Kurts_House_Links["KURTS_HOUSE_TO_AZALEA_TOWN_LINK"] = WarpLink(
-        Kurts_House_Warp_Points.KURTS_HOUSE_TO_AZALEA_TOWN_WP,
-        Azalea_Town_Warp_Points.AZALEA_TOWN_TO_KURTS_HOUSE_WP,
+        Kurts_House_Warp_Points.Kurts_House_Exit_WP,
+        Azalea_Town_Warp_Points.Kurts_House_Entrance_WP,
         "KurtsHouse", dual_width=True, unlocks=[Unlock_Keys.KURTS_HOUSE_FOUND]
     )
 
@@ -520,49 +520,49 @@ def buildJohtoWarpLinks():
     
 
     Blackthorn_City_Links["BLACKTHORN_CITY_TO_BLACKTHORN_GYM_1F_LINK"] = WarpLink(
-        Blackthorn_City_Warp_Points.BLACKTHORN_CITY_TO_BLACKTHORN_GYM_1F_WP,
-        Blackthorn_Gym_1F_Warp_Points.BLACKTHORN_GYM_1F_TO_BLACKTHORN_CITY_WP,
+        Blackthorn_City_Warp_Points.Blackthorn_City_Gym_Entrance_WP,
+        Blackthorn_Gym_1F_Warp_Points.Blackthorn_City_Gym_Exit_WP,
         "BlackthornCity", locked_by=[Unlock_Keys.CAN_CLEAR_RADIO_TOWER_ROCKETS],
     )
 
     Blackthorn_City_Links["BLACKTHORN_CITY_TO_BLACKTHORN_DRAGON_SPEECH_HOUSE_LINK"] = WarpLink(
-        Blackthorn_City_Warp_Points.BLACKTHORN_CITY_TO_BLACKTHORN_DRAGON_SPEECH_HOUSE_WP,
-        Blackthorn_Dragon_Speech_House_Warp_Points.BLACKTHORN_DRAGON_SPEECH_HOUSE_TO_BLACKTHORN_CITY_WP,
+        Blackthorn_City_Warp_Points.Blackthorn_City_Dragon_Speech_House_Entrance_WP,
+        Blackthorn_Dragon_Speech_House_Warp_Points.Blackthorn_City_Dragon_Speech_House_Exit_WP,
         "BlackthornCity" , 5
     )
 
     Blackthorn_City_Links["BLACKTHORN_CITY_TO_BLACKTHORN_EMYS_HOUSE_LINK"] = WarpLink(
-        Blackthorn_City_Warp_Points.BLACKTHORN_CITY_TO_BLACKTHORN_EMYS_HOUSE_WP,
-        Blackthorn_Emys_House_Warp_Points.BLACKTHORN_EMYS_HOUSE_TO_BLACKTHORN_CITY_WP,
+        Blackthorn_City_Warp_Points.Blackthorn_City_Emys_House_Entrance_WP,
+        Blackthorn_Emys_House_Warp_Points.Blackthorn_City_Emys_House_Exit_WP,
         "BlackthornCity" , 10
     )
 
     Blackthorn_City_Links["BLACKTHORN_CITY_TO_BLACKTHORN_MART_LINK"] = WarpLink(
-        Blackthorn_City_Warp_Points.BLACKTHORN_CITY_TO_BLACKTHORN_MART_WP,
-        Blackthorn_Mart_Warp_Points.BLACKTHORN_MART_TO_BLACKTHORN_CITY_WP,
+        Blackthorn_City_Warp_Points.Blackthorn_City_Mart_Entrance_WP,
+        Blackthorn_Mart_Warp_Points.Blackthorn_City_Mart_Exit_WP,
         "BlackthornCity" , 15
     )
 
     Blackthorn_City_Links["BLACKTHORN_CITY_TO_BLACKTHORN_POKECENTER_1F_LINK"] = WarpLink(
-        Blackthorn_City_Warp_Points.BLACKTHORN_CITY_TO_BLACKTHORN_POKECENTER_1F_WP,
-        Blackthorn_Pokecenter_Warp_Points.BLACKTHORN_POKECENTER_1F_TO_BLACKTHORN_CITY_WP,
+        Blackthorn_City_Warp_Points.Blackthorn_City_Pokecenter_Entrance_WP,
+        Blackthorn_Pokecenter_Warp_Points.Blackthorn_City_Pokecenter_Exit_WP,
         "BlackthornCity" , 20
     )
 
     Blackthorn_City_Links["BLACKTHORN_CITY_TO_MOVE_DELETERS_HOUSE_LINK"] = WarpLink(
-        Blackthorn_City_Warp_Points.BLACKTHORN_CITY_TO_MOVE_DELETERS_HOUSE_WP,
-        Move_Deleters_House_Warp_Points.MOVE_DELETERS_HOUSE_TO_BLACKTHORN_CITY_WP,
+        Blackthorn_City_Warp_Points.Move_Deleters_House_Entrance_WP,
+        Move_Deleters_House_Warp_Points.Move_Deleters_House_Exit_WP,
         "BlackthornCity" , 25
     )
 
     Blackthorn_City_Links["BLACKTHORN_CITY_TO_ICE_PATH_1F_LINK"] = WarpLink(
-        Blackthorn_City_Warp_Points.BLACKTHORN_CITY_TO_ICE_PATH_1F_WP,
+        Blackthorn_City_Warp_Points.Blackthorn_City_Ice_Path_Entrance_WP,
         Ice_Path_1F_Warp_Points.ICE_PATH_1F_TO_BLACKTHORN_CITY_7_WP,
         "BlackthornCity" , 30
     )
 
     Blackthorn_City_Links["BLACKTHORN_CITY_TO_DRAGONS_DEN_1F_LINK"] = WarpLink(
-        Blackthorn_City_Warp_Points.BLACKTHORN_CITY_TO_DRAGONS_DEN_1F_WP,
+        Blackthorn_City_Warp_Points.Blackthorn_City_Dragons_Den_Entrance_WP,
         Dragons_Den_1F_Warp_Points.DRAGONS_DEN_1F_TO_BLACKTHORN_CITY_8_WP,
         "BlackthornCity" , 35, locked_by=[Unlock_Keys.GYM_BATTLE_8, Unlock_Keys.CAN_SURF]
     )
@@ -570,24 +570,24 @@ def buildJohtoWarpLinks():
     
 
     Blackthorn_Dragon_Speech_House_Links["BLACKTHORN_DRAGON_SPEECH_HOUSE_TO_BLACKTHORN_CITY_LINK"] = WarpLink(
-        Blackthorn_Dragon_Speech_House_Warp_Points.BLACKTHORN_DRAGON_SPEECH_HOUSE_TO_BLACKTHORN_CITY_WP,
-        Blackthorn_City_Warp_Points.BLACKTHORN_CITY_TO_BLACKTHORN_DRAGON_SPEECH_HOUSE_WP,
+        Blackthorn_Dragon_Speech_House_Warp_Points.Blackthorn_City_Dragon_Speech_House_Exit_WP,
+        Blackthorn_City_Warp_Points.Blackthorn_City_Dragon_Speech_House_Entrance_WP,
         "BlackthornDragonSpeechHouse", dual_width=True
     )
 
     
 
     Blackthorn_Emys_House_Links["BLACKTHORN_EMYS_HOUSE_TO_BLACKTHORN_CITY_LINK"] = WarpLink(
-        Blackthorn_Emys_House_Warp_Points.BLACKTHORN_EMYS_HOUSE_TO_BLACKTHORN_CITY_WP,
-        Blackthorn_City_Warp_Points.BLACKTHORN_CITY_TO_BLACKTHORN_EMYS_HOUSE_WP,
+        Blackthorn_Emys_House_Warp_Points.Blackthorn_City_Emys_House_Exit_WP,
+        Blackthorn_City_Warp_Points.Blackthorn_City_Emys_House_Entrance_WP,
         "BlackthornEmysHouse", dual_width=True
     )
 
     
 
     Blackthorn_Gym_Links["BLACKTHORN_GYM_1F_TO_BLACKTHORN_CITY_LINK"] = WarpLink(
-        Blackthorn_Gym_1F_Warp_Points.BLACKTHORN_GYM_1F_TO_BLACKTHORN_CITY_WP,
-        Blackthorn_City_Warp_Points.BLACKTHORN_CITY_TO_BLACKTHORN_GYM_1F_WP,
+        Blackthorn_Gym_1F_Warp_Points.Blackthorn_City_Gym_Exit_WP,
+        Blackthorn_City_Warp_Points.Blackthorn_City_Gym_Entrance_WP,
         "BlackthornGym1F", dual_width=True, unlocks=[Unlock_Keys.GYM_BATTLE_8],
         locked_by=[Unlock_Keys.CAN_USE_STRENGTH]
     )
@@ -595,21 +595,21 @@ def buildJohtoWarpLinks():
     
 
     Blackthorn_Mart_Links["BLACKTHORN_MART_TO_BLACKTHORN_CITY_LINK"] = WarpLink(
-        Blackthorn_Mart_Warp_Points.BLACKTHORN_MART_TO_BLACKTHORN_CITY_WP,
-        Blackthorn_City_Warp_Points.BLACKTHORN_CITY_TO_BLACKTHORN_MART_WP,
+        Blackthorn_Mart_Warp_Points.Blackthorn_City_Mart_Exit_WP,
+        Blackthorn_City_Warp_Points.Blackthorn_City_Mart_Entrance_WP,
         "BlackthornMart", dual_width=True
     )
 
     
 
     Blackthorn_Pokecenter_Links["BLACKTHORN_POKECENTER_1F_TO_BLACKTHORN_CITY_LINK"] = WarpLink(
-        Blackthorn_Pokecenter_Warp_Points.BLACKTHORN_POKECENTER_1F_TO_BLACKTHORN_CITY_WP,
-        Blackthorn_City_Warp_Points.BLACKTHORN_CITY_TO_BLACKTHORN_POKECENTER_1F_WP,
+        Blackthorn_Pokecenter_Warp_Points.Blackthorn_City_Pokecenter_Exit_WP,
+        Blackthorn_City_Warp_Points.Blackthorn_City_Pokecenter_Entrance_WP,
         "BlackthornPokecenter1F", dual_width=True
     )
 
     Blackthorn_Pokecenter_Links["BLACKTHORN_POKECENTER_1F_TO_BLACKTHORN_POKECENTER_2F_LINK"] = WarpLink(
-        Blackthorn_Pokecenter_Warp_Points.BLACKTHORN_POKECENTER_TO_BLACKTHORN_POKECENTER_2F_WP,
+        Blackthorn_Pokecenter_Warp_Points.Blackthorn_City_Pokecenter_Stairs_WP,
         Pokecenter_2F_Warp_Points.POKECENTER_2F_TO_POKECENTER_1F_WP,
         "BlackthornPokecenter1F", 10
     )
@@ -617,8 +617,8 @@ def buildJohtoWarpLinks():
     
 
     Move_Deleters_House_Links["MOVE_DELETERS_HOUSE_TO_BLACKTHORN_CITY_LINK"] = WarpLink(
-        Move_Deleters_House_Warp_Points.MOVE_DELETERS_HOUSE_TO_BLACKTHORN_CITY_WP,
-        Blackthorn_City_Warp_Points.BLACKTHORN_CITY_TO_MOVE_DELETERS_HOUSE_WP,
+        Move_Deleters_House_Warp_Points.Move_Deleters_House_Exit_WP,
+        Blackthorn_City_Warp_Points.Move_Deleters_House_Entrance_WP,
         "MoveDeletersHouse", dual_width=True
     )
 
@@ -711,7 +711,7 @@ def buildJohtoWarpLinks():
     
 
     Mr_Pokemons_House_Links["MR_POKEMONS_HOUSE_TO_ROUTE_30_LINK"] = WarpLink(
-        Mr_Pokemons_House_Warp_Points.MR_POKEMONS_HOUSE_EXIT_WP,
+        Mr_Pokemons_House_Warp_Points.Mr_Pokemons_House_Exit_WP,
         Route_30_Warp_Points.MR_POKEMONS_HOUSE_ENTRANCE_WP,
         "MrPokemonsHouse",
         dual_width=True
@@ -720,7 +720,7 @@ def buildJohtoWarpLinks():
     
 
     Route_30_Berry_House_Links["ROUTE_30_BERRY_HOUSE_TO_ROUTE_30_LINK"] = WarpLink(
-        Route_30_Berry_House_Warp_Points.ROUTE_30_BERRY_HOUSE_EXIT_WP,
+        Route_30_Berry_House_Warp_Points.Route_30_Berry_House_Exit_WP,
         Route_30_Warp_Points.ROUTE_30_BERRY_HOUSE_ENTRANCE_WP,
         "Route30BerryHouse",
         dual_width=True
@@ -732,46 +732,46 @@ def buildJohtoWarpLinks():
     
 
     Cianwood_City_Links["CIANWOOD_CITY_TO_MANIAS_HOUSE_LINK"] = WarpLink(
-        Cianwood_City_Warp_Points.CIANWOOD_CITY_TO_MANIAS_HOUSE_WP,
-        Manias_House_Warp_Points.MANIAS_HOUSE_TO_CIANWOOD_CITY_WP,
+        Cianwood_City_Warp_Points.Cianwood_City_Shuckle_House_Entrance_WP,
+        Manias_House_Warp_Points.Cianwood_City_Shuckle_House_Exit_WP,
         "CianwoodCity",unlocks=[Unlock_Keys.FOUND_CIANWOOD]
     )
     Cianwood_City_Links["CIANWOOD_CITY_TO_CIANWOOD_GYM_LINK"] = WarpLink(
-        Cianwood_City_Warp_Points.CIANWOOD_CITY_TO_CIANWOOD_GYM_WP,
-        Cianwood_Gym_Warp_Points.CIANWOOD_GYM_TO_CIANWOOD_CITY_WP,
+        Cianwood_City_Warp_Points.Cianwood_City_Gym_Entrance_WP,
+        Cianwood_Gym_Warp_Points.Cianwood_City_Gym_Exit_WP,
         "CianwoodCity" , 5,unlocks=[Unlock_Keys.FOUND_CIANWOOD]
     )
     Cianwood_City_Links["CIANWOOD_CITY_TO_CIANWOOD_POKECENTER_1F_LINK"] = WarpLink(
-        Cianwood_City_Warp_Points.CIANWOOD_CITY_TO_CIANWOOD_POKECENTER_1F_WP,
-        Cianwood_Pokecenter_Warp_Points.CIANWOOD_POKECENTER_1F_TO_CIANWOOD_CITY_WP,
+        Cianwood_City_Warp_Points.Cianwood_City_Pokecenter_Entrance_WP,
+        Cianwood_Pokecenter_Warp_Points.Cianwood_City_Pokecenter_Exit_WP,
         "CianwoodCity" , 10,unlocks=[Unlock_Keys.FOUND_CIANWOOD]
     )
     Cianwood_City_Links["CIANWOOD_CITY_TO_CIANWOOD_PHARMACY_LINK"] = WarpLink(
-        Cianwood_City_Warp_Points.CIANWOOD_CITY_TO_CIANWOOD_PHARMACY_WP,
-        Cianwood_Pharmacy_Warp_Points.CIANWOOD_PHARMACY_TO_CIANWOOD_CITY_WP,
+        Cianwood_City_Warp_Points.Cianwood_City_Pharmacy_Entrance_WP,
+        Cianwood_Pharmacy_Warp_Points.Cianwood_City_Pharmacy_Exit_WP,
         "CianwoodCity" , 15,unlocks=[Unlock_Keys.FOUND_CIANWOOD]
     )
     Cianwood_City_Links["CIANWOOD_CITY_TO_CIANWOOD_PHOTO_STUDIO_LINK"] = WarpLink(
-        Cianwood_City_Warp_Points.CIANWOOD_CITY_TO_CIANWOOD_PHOTO_STUDIO_WP,
-        Cianwood_Photo_Studio_Warp_Points.CIANWOOD_PHOTO_STUDIO_TO_CIANWOOD_CITY_WP,
+        Cianwood_City_Warp_Points.Cianwood_City_Photo_Studio_Entrance_WP,
+        Cianwood_Photo_Studio_Warp_Points.Cianwood_City_Photo_Studio_Exit_WP,
         "CianwoodCity" , 20,unlocks=[Unlock_Keys.FOUND_CIANWOOD]
     )
     Cianwood_City_Links["CIANWOOD_CITY_TO_CIANWOOD_LUGIA_SPEECH_HOUSE_LINK"] = WarpLink(
-        Cianwood_City_Warp_Points.CIANWOOD_CITY_TO_CIANWOOD_LUGIA_SPEECH_HOUSE_WP,
-        Cianwood_Lugia_Speech_House_Warp_Points.CIANWOOD_LUGIA_SPEECH_HOUSE_TO_CIANWOOD_CITY_WP,
+        Cianwood_City_Warp_Points.Cianwood_City_Lugia_Speech_House_Entrance_WP,
+        Cianwood_Lugia_Speech_House_Warp_Points.Cianwood_City_Lugia_Speech_House_Exit_WP,
         "CianwoodCity" , 25,unlocks=[Unlock_Keys.FOUND_CIANWOOD]
     )
     Cianwood_City_Links["CIANWOOD_CITY_TO_POKE_SEERS_HOUSE_LINK"] = WarpLink(
-        Cianwood_City_Warp_Points.CIANWOOD_CITY_TO_POKE_SEERS_HOUSE_WP,
-        Poke_Seers_House_Warp_Points.POKE_SEERS_HOUSE_TO_CIANWOOD_CITY_WP,
+        Cianwood_City_Warp_Points.Cianwood_City_Poke_Seers_House_Entrance_WP,
+        Poke_Seers_House_Warp_Points.Cianwood_City_Poke_Seers_House_Exit_WP,
         "CianwoodCity" , 30,unlocks=[Unlock_Keys.FOUND_CIANWOOD]
     )
 
     
 
     Cianwood_Gym_Links["CIANWOOD_GYM_TO_CIANWOOD_CITY_LINK"] = WarpLink(
-        Cianwood_Gym_Warp_Points.CIANWOOD_GYM_TO_CIANWOOD_CITY_WP,
-        Cianwood_City_Warp_Points.CIANWOOD_CITY_TO_CIANWOOD_GYM_WP,
+        Cianwood_Gym_Warp_Points.Cianwood_City_Gym_Exit_WP,
+        Cianwood_City_Warp_Points.Cianwood_City_Gym_Entrance_WP,
         "CianwoodGym", dual_width=True, unlocks=[Unlock_Keys.BADGE_5],
         locked_by=[Unlock_Keys.CAN_USE_STRENGTH]
     )
@@ -779,16 +779,16 @@ def buildJohtoWarpLinks():
     
 
     Cianwood_Lugia_Speech_House_Links["CIANWOOD_LUGIA_SPEECH_HOUSE_TO_CIANWOOD_CITY_LINK"] = WarpLink(
-        Cianwood_Lugia_Speech_House_Warp_Points.CIANWOOD_LUGIA_SPEECH_HOUSE_TO_CIANWOOD_CITY_WP,
-        Cianwood_City_Warp_Points.CIANWOOD_CITY_TO_CIANWOOD_LUGIA_SPEECH_HOUSE_WP,
+        Cianwood_Lugia_Speech_House_Warp_Points.Cianwood_City_Lugia_Speech_House_Exit_WP,
+        Cianwood_City_Warp_Points.Cianwood_City_Lugia_Speech_House_Entrance_WP,
         "CianwoodLugiaSpeechHouse", dual_width=True
     )
 
     
 
     Cianwood_Pharmacy_Links["CIANWOOD_PHARMACY_TO_CIANWOOD_CITY_LINK"] = WarpLink(
-        Cianwood_Pharmacy_Warp_Points.CIANWOOD_PHARMACY_TO_CIANWOOD_CITY_WP,
-        Cianwood_City_Warp_Points.CIANWOOD_CITY_TO_CIANWOOD_PHARMACY_WP,
+        Cianwood_Pharmacy_Warp_Points.Cianwood_City_Pharmacy_Exit_WP,
+        Cianwood_City_Warp_Points.Cianwood_City_Pharmacy_Entrance_WP,
         "CianwoodPharmacy", dual_width=True, unlocks=[Unlock_Keys.CIANNWOOD_PHARMACY_FOUND]
     )
 
@@ -802,13 +802,13 @@ def buildJohtoWarpLinks():
     
 
     Cianwood_Pokecenter_Links["Cianwood_Pokecenter_LinksCIANWOOD_POKECENTER_1F_TO_CIANWOOD_CITY_LINK"] = WarpLink(
-        Cianwood_Pokecenter_Warp_Points.CIANWOOD_POKECENTER_1F_TO_CIANWOOD_CITY_WP,
-        Cianwood_City_Warp_Points.CIANWOOD_CITY_TO_CIANWOOD_POKECENTER_1F_WP,
+        Cianwood_Pokecenter_Warp_Points.Cianwood_City_Pokecenter_Exit_WP,
+        Cianwood_City_Warp_Points.Cianwood_City_Pokecenter_Entrance_WP,
         "CianwoodPokecenter1F", dual_width=True
     )
 
     Cianwood_Pokecenter_Links["CIANWOOD_POKECENTER_1F_TO_CIANWOOD_POKECENTER_2F_LINK"] = WarpLink(
-        Cianwood_Pokecenter_Warp_Points.CIANWOOD_POKECENTER_TO_CIANWOOD_POKECENTER_2F_WP,
+        Cianwood_Pokecenter_Warp_Points.Cianwood_City_Pokecenter_Stairs_WP,
         Pokecenter_2F_Warp_Points.POKECENTER_2F_TO_POKECENTER_1F_WP,
         "CianwoodPokecenter1F", 10
     )
@@ -816,16 +816,16 @@ def buildJohtoWarpLinks():
     
 
     Manias_House_Links["MANIAS_HOUSE_TO_CIANWOOD_CITY"] = WarpLink(
-        Manias_House_Warp_Points.MANIAS_HOUSE_TO_CIANWOOD_CITY_WP,
-        Cianwood_City_Warp_Points.CIANWOOD_CITY_TO_MANIAS_HOUSE_WP,
+        Manias_House_Warp_Points.Cianwood_City_Shuckle_House_Exit_WP,
+        Cianwood_City_Warp_Points.Cianwood_City_Shuckle_House_Entrance_WP,
         "ManiasHouse", dual_width=True
     )
 
     
 
     Poke_Seers_House_Links["POKE_SEERS_HOUSE_TO_CIANWOOD_CITY_LINK"] = WarpLink(
-        Poke_Seers_House_Warp_Points.POKE_SEERS_HOUSE_TO_CIANWOOD_CITY_WP,
-        Cianwood_City_Warp_Points.CIANWOOD_CITY_TO_POKE_SEERS_HOUSE_WP,
+        Poke_Seers_House_Warp_Points.Cianwood_City_Poke_Seers_House_Exit_WP,
+        Cianwood_City_Warp_Points.Cianwood_City_Poke_Seers_House_Entrance_WP,
         "PokeSeersHouse", dual_width=True
     )
 
@@ -962,7 +962,7 @@ def buildJohtoWarpLinks():
 
     Ice_Path_1F_Links["ICE_PATH_1F_TO_BLACKTHORN_CITY_7_LINK"] = WarpLink(
         Ice_Path_1F_Warp_Points.ICE_PATH_1F_TO_BLACKTHORN_CITY_7_WP,
-        Blackthorn_City_Warp_Points.BLACKTHORN_CITY_TO_ICE_PATH_1F_WP,
+        Blackthorn_City_Warp_Points.Blackthorn_City_Ice_Path_Entrance_WP,
         "IcePath1F", 5
     )
 
@@ -1326,7 +1326,7 @@ def buildJohtoWarpLinks():
     
     Slowpoke_Well_B1F_Links["SLOWPOKE_WELL_B1F_TO_AZALEA_TOWN_LINK"] = WarpLink(
         Slowpoke_Well_B1F_Warp_Points.SLOWPOKE_WELL_B1F_TO_AZALEA_TOWN_6_WP,
-        Azalea_Town_Warp_Points.AZALEA_TOWN_TO_SLOWPOKE_WELL_B1F_WP,
+        Azalea_Town_Warp_Points.Slowpoke_Well_B1F_Entrance_WP,
         "SlowpokeWellB1F", unlocks=[Unlock_Keys.SLOWPOKE_WELL_FOUND]
     )
 
@@ -1347,7 +1347,7 @@ def buildJohtoWarpLinks():
 
     Dragons_Den_1F_Links["DRAGONS_DEN_1F_TO_BLACKTHORN_CITY_8_LINK"] = WarpLink(
         Dragons_Den_1F_Warp_Points.DRAGONS_DEN_1F_TO_BLACKTHORN_CITY_8_WP,
-        Blackthorn_City_Warp_Points.BLACKTHORN_CITY_TO_DRAGONS_DEN_1F_WP,
+        Blackthorn_City_Warp_Points.Blackthorn_City_Dragons_Den_Entrance_WP,
         "DragonsDen1F"
     )
 
@@ -1393,7 +1393,7 @@ def buildJohtoWarpLinks():
     
     Sprout_Tower_1F_Links["SPROUT_TOWER_1F_TO_VIOLET_CITY_LINK"] = WarpLink(
         Sprout_Tower_1F_Warp_Points.SPROUT_TOWER_1F_TO_VIOLET_CITY_WP,
-        Violet_City_Warp_Points.VIOLET_CITY_TO_SPROUT_TOWER_1F_WP,
+        Violet_City_Warp_Points.Sprout_Tower_1F_Entrance_WP,
         "SproutTower1F", dual_width=True
     )
     Sprout_Tower_1F_Links["SPROUT_TOWER_1F_TO_SPROUT_TOWER_2FA_LINK"] = WarpLink(
@@ -2138,7 +2138,7 @@ def buildJohtoWarpLinks():
 
     Ilex_Forest_Azalea_Gate_Links["ILEX_FOREST_AZALEA_GATE_TO_AZALEA_TOWN"] = WarpLink(
         Ilex_Forest_Azalea_Gate_Warp_Points.ILEX_FOREST_AZALEA_GATE_TO_AZALEA_TOWN_WP,
-        Azalea_Town_Warp_Points.AZALEA_TOWN_TO_ILEX_FOREST_AZALEA_GATE_WP,
+        Azalea_Town_Warp_Points.Azalea_Town_Ilex_Forest_Gate_Azalea_Entrance_WP,
         "IlexForestAzaleaGate" , 10,
         dual_width=True
     )
@@ -2163,7 +2163,7 @@ def buildJohtoWarpLinks():
 
     Route_31_Violet_Gate_Links["ROUTE_31_VIOLET_GATE_TO_VIOLET_CITY_LINK"] = WarpLink(
         Route_31_Violet_Gate_Warp_Points.ROUTE_31_VIOLET_GATE_TO_VIOLET_CITY_WP,
-        Violet_City_Warp_Points.VIOLET_CITY_ROUTE_31_VIOLET_GATE_WP,
+        Violet_City_Warp_Points.Violet_City_Route_31_Gate_Violet_City_Entrance_WP,
         "Route31VioletGate",
         dual_width=True
     )
@@ -3225,13 +3225,13 @@ def buildJohtoWarpLinks():
 
     Route_30_Links["ROUTE_30_TO_ROUTE_30_BERRY_HOUSE_LINK"] = WarpLink(
         Route_30_Warp_Points.ROUTE_30_BERRY_HOUSE_ENTRANCE_WP,
-        Route_30_Berry_House_Warp_Points.ROUTE_30_BERRY_HOUSE_EXIT_WP,
+        Route_30_Berry_House_Warp_Points.Route_30_Berry_House_Exit_WP,
         "Route30"
     )
 
     Route_30_Links["ROUTE_30_TO_MR_POKEMONS_HOUSE_LINK"] = WarpLink(
         Route_30_Warp_Points.MR_POKEMONS_HOUSE_ENTRANCE_WP,
-        Mr_Pokemons_House_Warp_Points.MR_POKEMONS_HOUSE_EXIT_WP,
+        Mr_Pokemons_House_Warp_Points.Mr_Pokemons_House_Exit_WP,
         "Route30" , 5
     )
 
@@ -3371,33 +3371,33 @@ def buildJohtoWarpLinks():
     
     Route_40_Links["ROUTE_40_TO_ROUTE_40_BATTLE_TOWER_GATE_1_LINK"] = WarpLink(
         Route_40_Warp_Points.ROUTE_40_TO_ROUTE_40_BATTLE_TOWER_GATE_1_WP,
-        Route_40_Battle_Tower_Gate_Warp_Points.ROUTE_40_BATTLE_TOWER_GATE_TO_ROUTE_40_1_WP,
+        Route_40_Battle_Tower_Gate_Warp_Points.Route_40_Battle_Tower_Gate_South_Exit_To_Route_40_WP,
         "Route40"
     )
     
     Route_40_Battle_Tower_Gate_Links["ROUTE_40_BATTLE_TOWER_GATE_TO_ROUTE_40_1_LINK"] = WarpLink(
-        Route_40_Battle_Tower_Gate_Warp_Points.ROUTE_40_BATTLE_TOWER_GATE_TO_ROUTE_40_1_WP,
+        Route_40_Battle_Tower_Gate_Warp_Points.Route_40_Battle_Tower_Gate_South_Exit_To_Route_40_WP,
         Route_40_Warp_Points.ROUTE_40_TO_ROUTE_40_BATTLE_TOWER_GATE_1_WP,
         "Route40BattleTowerGate", dual_width=True
     )
 
     Route_40_Battle_Tower_Gate_Links["ROUTE_40_BATTLE_TOWER_GATE_TO_BATTLE_TOWER_OUTSIDE_1_LINK"] = WarpLink(
-        Route_40_Battle_Tower_Gate_Warp_Points.ROUTE_40_BATTLE_TOWER_GATE_TO_BATTLE_TOWER_OUTSIDE_1_WP,
-        Battle_Tower_Outside_Warp_Points.BATTLE_TOWER_OUTSIDE_TO_ROUTE_40_BATTLE_TOWER_GATE_3_WP,
+        Route_40_Battle_Tower_Gate_Warp_Points.Route_40_Battle_Tower_Gate_North_Exit_To_Battle_Tower_Outside_WP,
+        Battle_Tower_Outside_Warp_Points.Battle_Tower_Outside_To_Gate_WP,
         "Route40BattleTowerGate", 10,dual_width=True
     )
 
 
     
     Battle_Tower_Outside_Links["BATTLE_TOWER_OUTSIDE_TO_ROUTE_40_BATTLE_TOWER_GATE_3_LINK"] = WarpLink(
-        Battle_Tower_Outside_Warp_Points.BATTLE_TOWER_OUTSIDE_TO_ROUTE_40_BATTLE_TOWER_GATE_3_WP,
-        Route_40_Battle_Tower_Gate_Warp_Points.ROUTE_40_BATTLE_TOWER_GATE_TO_BATTLE_TOWER_OUTSIDE_1_WP,
+        Battle_Tower_Outside_Warp_Points.Battle_Tower_Outside_To_Gate_WP,
+        Route_40_Battle_Tower_Gate_Warp_Points.Route_40_Battle_Tower_Gate_North_Exit_To_Battle_Tower_Outside_WP,
         "BattleTowerOutside",dual_width=True
     )
 
     Battle_Tower_Outside_Links["BATTLE_TOWER_OUTSIDE_TO_BATTLE_TOWER_1F_1_LINK"] = WarpLink(
-        Battle_Tower_Outside_Warp_Points.BATTLE_TOWER_OUTSIDE_TO_BATTLE_TOWER_1F_1_WP,
-        Battle_Tower_Outside_Warp_Points.BATTLE_TOWER_OUTSIDE_TO_BATTLE_TOWER_1F_1_WP, # wrong but overwritten always
+        Battle_Tower_Outside_Warp_Points.Battle_Tower_Outside_To_Battle_Tower_WP,
+        Battle_Tower_Outside_Warp_Points.Battle_Tower_Outside_To_Battle_Tower_WP, # wrong but overwritten always
         "BattleTowerOutside", 10, dual_width=True
     )
 
@@ -3480,49 +3480,49 @@ def buildJohtoWarpLinks():
     
 
     Violet_City_Links["VIOLET_CITY_TO_VIOLET_MART_LINK"] = WarpLink(
-        Violet_City_Warp_Points.VIOLET_CITY_TO_VIOLET_MART_WP,
-        Violet_Mart_Warp_Points.VIOLET_MART_TO_VIOLET_CITY_WP,
+        Violet_City_Warp_Points.Violet_City_Mart_Entrance_WP,
+        Violet_Mart_Warp_Points.Violet_City_Mart_Exit_WP,
         "VioletCity"
     )
 
     Violet_City_Links["VIOLET_CITY_TO_VIOLET_GYM_LINK"] = WarpLink(
-        Violet_City_Warp_Points.VIOLET_CITY_TO_VIOLET_GYM_WP,
-        Violet_Gym_Warp_Points.VIOLET_GYM_TO_VIOLET_CITY_WP,
+        Violet_City_Warp_Points.Violet_City_Gym_Entrance_WP,
+        Violet_Gym_Warp_Points.Violet_City_Gym_Exit_WP,
         "VioletCity" , 5
     )
 
     Violet_City_Links["VIOLET_CITY_TO_EARLS_POKEMON_ACADEMY_LINK"] = WarpLink(
-        Violet_City_Warp_Points.VIOLET_CITY_TO_EARLS_POKEMON_ACADEMY_WP,
-        Earls_Pokemon_Academy_Warp_Points.EARLS_POKEMON_ACADEMY_TO_VIOLET_CITY_WP,
+        Violet_City_Warp_Points.Violet_City_School_Entrance_WP,
+        Earls_Pokemon_Academy_Warp_Points.Violet_City_School_Exit_WP,
         "VioletCity" , 10
     )
 
     Violet_City_Links["VIOLET_CITY_TO_GUIDE_NICKNAME_SPEECH_HOUSE_LINK"] = WarpLink(
-        Violet_City_Warp_Points.VIOLET_CITY_TO_NICKNAME_SPEECH_HOUSE_WP,
-        Violet_Nickname_Speech_House_Warp_Points.VIOLET_NICKNAME_SPEECH_HOUSE_TO_VIOLET_CITY_WP,
+        Violet_City_Warp_Points.Violet_City_Nickname_Speech_House_Entrance_WP,
+        Violet_Nickname_Speech_House_Warp_Points.Violet_City_Nickname_Speech_House_Exit_WP,
         "VioletCity" , 15
     )
 
     Violet_City_Links["VIOLET_CITY_TO_VIOLET_POKECENTER_1F_LINK"] = WarpLink(
-        Violet_City_Warp_Points.VIOLET_CITY_TO_VIOLET_POKECENTER_1F_WP,
-        Violet_Pokecenter_Warp_Points.VIOLET_POKECENTER_TO_VIOLET_CITY_WP,
+        Violet_City_Warp_Points.Violet_City_Pokecenter_Entrance_WP,
+        Violet_Pokecenter_Warp_Points.Violet_City_Pokecenter_Exit_WP,
         "VioletCity" , 20
     )
 
     Violet_City_Links["VIOLET_CITY_TO_VIOLET_KYLES_HOUSE_LINK"] = WarpLink(
-        Violet_City_Warp_Points.VIOLET_CITY_TO_VIOLET_KYLES_HOUSE_WP,
-        Violet_Kyles_House_Warp_Points.VIOLET_KYLES_HOUSE_TO_VIOLET_CITY_WP,
+        Violet_City_Warp_Points.Violet_Trade_House_Entrance_WP,
+        Violet_Kyles_House_Warp_Points.Violet_City_Trade_House_Exit_WP,
         "VioletCity" , 25
     )
 
     Violet_City_Links["VIOLET_CITY_TO_SPROUT_TOWER_1F_LINK"] = WarpLink(
-        Violet_City_Warp_Points.VIOLET_CITY_TO_SPROUT_TOWER_1F_WP,
+        Violet_City_Warp_Points.Sprout_Tower_1F_Entrance_WP,
         Sprout_Tower_1F_Warp_Points.SPROUT_TOWER_1F_TO_VIOLET_CITY_WP,
         "VioletCity" , 30
     )
 
     Violet_City_Links["VIOLET_CITY_ROUTE_31_VIOLET_GATE_LINK"] = WarpLink(
-        Violet_City_Warp_Points.VIOLET_CITY_ROUTE_31_VIOLET_GATE_WP,
+        Violet_City_Warp_Points.Violet_City_Route_31_Gate_Violet_City_Entrance_WP,
         Route_31_Violet_Gate_Warp_Points.ROUTE_31_VIOLET_GATE_TO_VIOLET_CITY_WP,
         "VioletCity" , 35,
         dual_width=True
@@ -3531,8 +3531,8 @@ def buildJohtoWarpLinks():
     
 
     Earls_Pokemon_Academy_Links["EARLS_POKEMON_ACADEMY_TO_VIOLET_CITY_LINK"] = WarpLink(
-        Earls_Pokemon_Academy_Warp_Points.EARLS_POKEMON_ACADEMY_TO_VIOLET_CITY_WP,
-        Violet_City_Warp_Points.VIOLET_CITY_TO_EARLS_POKEMON_ACADEMY_WP,
+        Earls_Pokemon_Academy_Warp_Points.Violet_City_School_Exit_WP,
+        Violet_City_Warp_Points.Violet_City_School_Entrance_WP,
         "EarlsPokemonAcademy",
         dual_width=True
     )
@@ -3540,8 +3540,8 @@ def buildJohtoWarpLinks():
     
 
     Violet_City_Mart_Links["VIOLET_MART_TO_VIOLET_CITY_LINK"] = WarpLink(
-        Violet_Mart_Warp_Points.VIOLET_MART_TO_VIOLET_CITY_WP,
-        Violet_City_Warp_Points.VIOLET_CITY_TO_VIOLET_MART_WP,
+        Violet_Mart_Warp_Points.Violet_City_Mart_Exit_WP,
+        Violet_City_Warp_Points.Violet_City_Mart_Entrance_WP,
         "VioletMart",
         dual_width=True
     )
@@ -3549,14 +3549,14 @@ def buildJohtoWarpLinks():
     
 
     Violet_City_Pokecenter_Links["VIOLET_POKECENTER_TO_VIOLET_CITY_LINK"] = WarpLink(
-        Violet_Pokecenter_Warp_Points.VIOLET_POKECENTER_TO_VIOLET_CITY_WP,
-        Violet_City_Warp_Points.VIOLET_CITY_TO_VIOLET_POKECENTER_1F_WP,
+        Violet_Pokecenter_Warp_Points.Violet_City_Pokecenter_Exit_WP,
+        Violet_City_Warp_Points.Violet_City_Pokecenter_Entrance_WP,
         "VioletPokecenter1F",
         dual_width=True
     )
 
     Violet_City_Pokecenter_Links["VIOLET_POKECENTER_1F_TO_VIOLET_POKECENTER_2F_LINK"] = WarpLink(
-        Violet_Pokecenter_Warp_Points.VIOLET_POKECENTER_TO_VIOLET_POKECENTER_2F_WP,
+        Violet_Pokecenter_Warp_Points.Violet_City_Pokecenter_Stairs_WP,
         Pokecenter_2F_Warp_Points.POKECENTER_2F_TO_POKECENTER_1F_WP,
         "VioletPokecenter1F", 10
     )
@@ -3564,8 +3564,8 @@ def buildJohtoWarpLinks():
     
 
     Violet_City_Gym_Links["VIOLET_GYM_TO_VIOLET_CITY_LINK"] = WarpLink(
-        Violet_Gym_Warp_Points.VIOLET_GYM_TO_VIOLET_CITY_WP,
-        Violet_City_Warp_Points.VIOLET_CITY_TO_VIOLET_GYM_WP,
+        Violet_Gym_Warp_Points.Violet_City_Gym_Exit_WP,
+        Violet_City_Warp_Points.Violet_City_Gym_Entrance_WP,
         "VioletGym",
         dual_width=True, unlocks=[Unlock_Keys.BADGE_1]
     )
@@ -3573,8 +3573,8 @@ def buildJohtoWarpLinks():
     
 
     Violet_City_Kyles_House_Links["VIOLET_KYLES_HOUSE_TO_VIOLET_CITY_LINK"] = WarpLink(
-        Violet_Kyles_House_Warp_Points.VIOLET_KYLES_HOUSE_TO_VIOLET_CITY_WP,
-        Violet_City_Warp_Points.VIOLET_CITY_TO_VIOLET_KYLES_HOUSE_WP,
+        Violet_Kyles_House_Warp_Points.Violet_City_Trade_House_Exit_WP,
+        Violet_City_Warp_Points.Violet_Trade_House_Entrance_WP,
         "VioletKylesHouse",
         dual_width=True
     )
@@ -3582,8 +3582,8 @@ def buildJohtoWarpLinks():
     
 
     Violet_Nickname_Speech_House_Links["VIOLET_NICKNAME_SPEECH_HOUSE_TO_VIOLET_CITY_LINK"] = WarpLink(
-        Violet_Nickname_Speech_House_Warp_Points.VIOLET_NICKNAME_SPEECH_HOUSE_TO_VIOLET_CITY_WP,
-        Violet_City_Warp_Points.VIOLET_CITY_TO_NICKNAME_SPEECH_HOUSE_WP,
+        Violet_Nickname_Speech_House_Warp_Points.Violet_City_Nickname_Speech_House_Exit_WP,
+        Violet_City_Warp_Points.Violet_City_Nickname_Speech_House_Entrance_WP,
         "VioletNicknameSpeechHouse",
         dual_width=True
     )
