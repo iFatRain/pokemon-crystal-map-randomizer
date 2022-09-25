@@ -7,16 +7,16 @@ def buildMemoryLocationsFromSym(detectedROMName):
     print(sys.executable)
     if detectedROMName == "Pokemon - Crystal Version 1.1":
         print("\nLoading Vanilla Scripts...")
-        file = os.path.join(os.path.dirname(os.path.realpath(__file__)),"vanilla.sym")
-        # file = os.path.join(os.path.dirname(sys.executable),"syms\\vanilla.sym")
+        # file = os.path.join(os.path.dirname(os.path.realpath(__file__)),"vanilla.sym")
+        file = os.path.join(os.path.dirname(sys.executable),"syms\\vanilla.sym")
     elif detectedROMName == "Pokemon - Crystal Speedchoice Version 7.2":
         print("\nLoading Speedchoice 7.2 Scripts...")
-        file = os.path.join(os.path.dirname(os.path.realpath(__file__)), "crystal-speedchoice7.2.sym")
-        # file = os.path.join(os.path.dirname(sys.executable),"syms\\crystal-speedchoice7.2.sym")
+        # file = os.path.join(os.path.dirname(os.path.realpath(__file__)), "crystal-speedchoice7.2.sym")
+        file = os.path.join(os.path.dirname(sys.executable),"syms\\crystal-speedchoice7.2.sym")
     elif detectedROMName == "Pokemon - Crystal Speedchoice Version 7.31":
         print("\nLoading Speedchoice 7.31 Scripts...")
-        file = os.path.join(os.path.dirname(os.path.realpath(__file__)), "crystal-speedchoice7.31.sym")
-        # file = os.path.join(os.path.dirname(sys.executable),"syms\\crystal-speedchoice7.31.sym")
+        # file = os.path.join(os.path.dirname(os.path.realpath(__file__)), "crystal-speedchoice7.31.sym")
+        file = os.path.join(os.path.dirname(sys.executable),"syms\\crystal-speedchoice7.31.sym")
 
     with open(file, "r") as memLoc:
 

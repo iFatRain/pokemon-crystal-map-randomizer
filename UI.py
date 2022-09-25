@@ -319,22 +319,30 @@ def randomize(originalROM):
         elif baseROM.get() == 3:
             loadedROMName.set("Pokemon - Crystal Speedchoice Version 7.31")
 
-    assignSeed()
 
-    # Creates a setting Array that we can pass into the other functions to do different things based on settings
-    settings = [loadedROMName.get(), legendaryAvailability.get(), regionSplit.get(), litDarkCaves.get(), mapChanges.get(),
-                aidePokeball.get(), ruinPuzzles.get(), rivalFightSkip.get(), easyTakeover.get(), newBarkAdded.get(), starterLevel.get()]
+
+
 
     # Remove the main window while we try the rando
     mainWindow.withdraw()
-
     # Create the output file for new rom.
     # Starts of as a duplicate of the original then we randomize it.
-    newROM = ""
-    while newROM == "" or newROM == originalROM:
-       newROM = filedialog.asksaveasfilename(defaultextension=".gbc")
+    newROM = None
+    while newROM == None or newROM == originalROM:
+        newROM = filedialog.asksaveasfilename(defaultextension=".gbc")
+        if newROM == "":
+            mainWindow.deiconify()
+            return
+
+
     shutil.copy(originalROM, newROM)
 
+    # Creates a setting Array that we can pass into the other functions to do different things based on settings
+    settings = [loadedROMName.get(), legendaryAvailability.get(), regionSplit.get(), litDarkCaves.get(),
+                mapChanges.get(),
+                aidePokeball.get(), ruinPuzzles.get(), rivalFightSkip.get(), easyTakeover.get(), newBarkAdded.get(),
+                starterLevel.get()]
+    assignSeed()
     # Try to randomize, catch failures to avoid a hung process
     try:
         with open(file=newROM, mode='r+b') as ROM:

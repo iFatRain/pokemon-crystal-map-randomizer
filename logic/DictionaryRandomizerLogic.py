@@ -448,7 +448,7 @@ def checkJohtoCompletability(randomizedNodes):
             if Unlock_Keys.HAS_7_BADGES not in obtainedKeys:
                 obtainedKeys.append(Unlock_Keys.HAS_7_BADGES)
 
-        if len(obtainedBadges) == 8 and all(neededHM in obtainedKeys for neededHM in listOfHM):
+        if len(obtainedBadges) == 8 and all(neededHM in obtainedKeys for neededHM in listOfHM) and Unlock_Keys.VICTORY_ROAD_GATE_ACCESS and Unlock_Keys.GYM_BATTLE_8:
             completableSeed = True
 
 
@@ -775,7 +775,7 @@ def checkFullCompletability(randomizedNodes):
             if Unlock_Keys.HAS_7_BADGES not in obtainedKeys:
                 obtainedKeys.append(Unlock_Keys.HAS_7_BADGES)
 
-        if len(obtainedBadges) == 16 and all(neededHM in obtainedKeys for neededHM in listOfHM) and Unlock_Keys.VICTORY_ROAD_GATE_ACCESS in obtainedKeys:
+        if len(obtainedBadges) == 16 and all(neededHM in obtainedKeys for neededHM in listOfHM) and Unlock_Keys.VICTORY_ROAD_GATE_ACCESS and Unlock_Keys.GYM_BATTLE_8 in obtainedKeys:
             completableSeed = True
 
 
