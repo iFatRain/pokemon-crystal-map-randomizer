@@ -279,10 +279,10 @@ def randomizeROM(inputROM, settings):
         inputROM.write(bytes.fromhex(getHex(98)))
 
     #For testing custom scripts/warps
-    inputROM.seek(warpLocations["CherrygroveCity"])
-    inputROM.write(bytes.fromhex(getHex(1)))
-    inputROM.write(bytes.fromhex(getHex(3)))
-    inputROM.write(bytes.fromhex(getHex(30)))
+    # inputROM.seek(warpLocations["CherrygroveCity"])
+    # inputROM.write(bytes.fromhex(getHex(1)))
+    # inputROM.write(bytes.fromhex(getHex(3)))
+    # inputROM.write(bytes.fromhex(getHex(30)))
 
     inputROM.close()
 
