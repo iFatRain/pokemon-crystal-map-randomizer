@@ -12,7 +12,7 @@ Currently supported ROMs:
 NOTE ON UNSUPPORTED VERSIONS:
 The warp randomization *should* work with any base version that has not already had it's warp's modified. HOWEVER script support can only be assured for these 3 versions. UPR randomization of these 3 versions *should* still work 100% but will show as "Unsupported" within the application. When this happens just select the base version used prior to UPR randomization when the options appear. UPR versioning *should* work exactly the same as the base versions but since it is technically a modified ROM I can't promise that.
 
-<a download="iFat's Crystal Randomizer.zip" href="https://github.com/iFatRain/pokemon-crystal-map-randomizer/blob/main/iFat's%20Crystal%20Randomizer.zip">
+<a download="iFat's Crystal Randomizer.zip" href="https://github.com/iFatRain/pokemon-crystal-map-randomizer/releases/tag/v2.0.0">
     Download the randomizer here
 </a>
 
