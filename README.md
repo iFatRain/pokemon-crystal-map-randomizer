@@ -137,17 +137,12 @@ A note on order of certain events:
 
 ### Known Bugs
 
-
-*CORRECTION TO THE 1.2.0 CHANGELOG*
-Skip Mt.Moon Rival Fight WORKS with Vanilla! Lit Dark Caves does NOT work with Vanilla, a fix will come in a future patch.
+-None currently as of 2.0.0
 
 For other bugs, Please post them or DM iFatRain#7210 on discord if you find them.
 
 
-ADDITIONAL CHANGES TO 1.2.0 LEFT OUT OF CHANGE LOG
-- Added better naming of the output log to mirror the ROM name, added in seed, settings, and version info for better recreation of bugs.
-- Added tooltips for the settings in UI
-- Added a Randomization Failed notification in the UI - If you see this, just rerun the program.
+
 
 ---
 Map randomizer created by IFatRain.
