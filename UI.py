@@ -13,7 +13,7 @@ from idlelib.tooltip import Hovertip
 import randomizeROM
 from logic.DictionaryRandomizerLogic import outputify
 
-version = "v2.0.0-alpha"
+version = "v2.1.0"
 
 def displayMainWindow():
 

@@ -455,7 +455,7 @@ def buildKantoWarpLinks():
     )
 
     Celadon_Mansion_2F_Links["CELADON_MANSION_2F_TO_CELADON_MANSION_3F_2_LINK"] = WarpLink(#
-        Celadon_Mansion_2F_Warp_Points.Celadon_City_Mansion_2F_Far_Left_Stairs_WP,
+        Celadon_Mansion_2F_Warp_Points.Celadon_City_Mansion_2F_Left_Center_Stairs_WP,
         Celadon_Mansion_3F_Warp_Points.Celadon_City_Mansion_3F_Left_Center_Stairs_WP,
         "CeladonMansion2F", 5
     )
@@ -482,7 +482,7 @@ def buildKantoWarpLinks():
 
     Celadon_Mansion_3F_Links["CELADON_MANSION_3F_TO_CELADON_MANSION_2F_2_LINK"] = WarpLink(#
         Celadon_Mansion_3F_Warp_Points.Celadon_City_Mansion_3F_Left_Center_Stairs_WP,
-        Celadon_Mansion_2F_Warp_Points.Celadon_City_Mansion_2F_Far_Left_Stairs_WP,
+        Celadon_Mansion_2F_Warp_Points.Celadon_City_Mansion_2F_Left_Center_Stairs_WP,
         "CeladonMansion3F", 5
     )
 
@@ -494,7 +494,7 @@ def buildKantoWarpLinks():
 
     Celadon_Mansion_3F_Links["CELADON_MANSION_3F_TO_CELADON_MANSION_ROOF_2_LINK"] = WarpLink(
         Celadon_Mansion_3F_Warp_Points.Celadon_City_Mansion_3F_Far_Right_Stairs_WP,
-        Celadon_Mansion_Roof_Warp_Points.Celadon_City_Mansion_Roof_Left_Stairs_WP,
+        Celadon_Mansion_Roof_Warp_Points.Celadon_City_Mansion_Roof_Right_Stairs_WP,
         "CeladonMansion3F", 15
     )
 
@@ -513,7 +513,7 @@ def buildKantoWarpLinks():
     )
 
     Celadon_Mansion_Roof_Links["CELADON_MANSION_ROOF_TO_CELADON_MANSION_3F_4_LINK"] = WarpLink(
-        Celadon_Mansion_Roof_Warp_Points.Celadon_City_Mansion_Roof_Left_Stairs_WP,
+        Celadon_Mansion_Roof_Warp_Points.Celadon_City_Mansion_Roof_Right_Stairs_WP,
         Celadon_Mansion_3F_Warp_Points.Celadon_City_Mansion_3F_Far_Right_Stairs_WP,
         "CeladonMansionRoof", 5
     )
@@ -547,7 +547,7 @@ def buildKantoWarpLinks():
         "CeladonCity"
     )
 
-    Celadon_City_Links["CELADON_CITY_TO_CELADON_MANSION_1F_1LINK"] = WarpLink(
+    Celadon_City_Links["CELADON_CITY_TO_CELADON_MANSION_1F_1_LINK"] = WarpLink(
         Celadon_City_Warp_Points.Celadon_City_Mansion_1F_Front_Entrance_WP,
         Celadon_Mansion_1F_Warp_Points.Celadon_City_Mansion_1F_Front_Exit_WP,
         "CeladonCity", 5
