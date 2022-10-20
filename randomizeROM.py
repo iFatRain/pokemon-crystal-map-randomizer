@@ -473,18 +473,23 @@ def enableLegendaries(inputROM, warpLocations, scriptLocations, settings):
     inputROM.seek(scriptLocations["LugiaToggle"])
     inputROM.write(bytes.fromhex(getHex(18)))
     #Change ho-oh, different in each version
-    inputROM.seek(scriptLocations["HoOhToggle"])
-    inputROM.write(bytes.fromhex(getHex(62)))
-    if "Pokemon - Crystal Speedchoice 7.2" in settings[0]:
+    if "1.1" in settings[0]:
+        print("Doing Vanilla Ho-OH")
+        inputROM.seek(scriptLocations["HoOhToggle"])
+        inputROM.write(bytes.fromhex(getHex(62)))
+    elif "7.2" in settings[0]:
+        print("Doing Speedchoice 7.2 Ho-OH")
         inputROM.seek(scriptLocations["HoOhToggle"])
         inputROM.write(bytes.fromhex(getHex(88)))
         inputROM.seek(scriptLocations["HoOhToggleE4"])
         inputROM.write(bytes.fromhex(getHex(88)))
-    elif "Pokemon - Crystal Speeedchoice 7.3" in settings[0]:
+    elif "7.31" in settings[0]:
+        print("Doing Speedchoice 7.31 Ho-OH")
         inputROM.seek(scriptLocations["HoOhToggle"])
         inputROM.write(bytes.fromhex(getHex(92)))
         inputROM.seek(scriptLocations["HoOhToggleE4"])
         inputROM.write(bytes.fromhex(getHex(92)))
+    print("Done Enabling Legendaries")
 
 
 def presolveAlphRuins(inputROM, warpLocations, scriptLocations):

@@ -13,7 +13,7 @@ from idlelib.tooltip import Hovertip
 import randomizeROM
 from logic.DictionaryRandomizerLogic import outputify
 
-version = "v2.1.0"
+version = "v2.1.1"
 
 def displayMainWindow():
 
@@ -195,23 +195,25 @@ def displayMainWindow():
     goldenrodTakeoverSetting.place(x=30, y=350)
     Hovertip(goldenrodTakeoverSetting, "Rocket Grunts no longer block entrances during Goldenrod Takeover\nInstead they are placed throughout and will roam the city", 500)
 
-    levelSetting = tk.Checkbutton(mainWindow,
-                                  variable=starterLevel,
-                                  text=" Lvl 98 Starters for Testing",
-                                  bg=UI_Colors.Lavender_Web.value,
-                                  font=("Comic Sans MS", 12, ""),
-                                  activebackground=UI_Colors.Lavender_Web.value)
-    levelSetting.place(x=30, y=380)
-    Hovertip(levelSetting, "Makes the 3 starters lv98\nThis setting is intended for TESTING ONLY", 500)
-
     cherrygroveMartSetting = tk.Checkbutton(mainWindow,
                                   variable=newBarkAdded,
                                   text=" Vanilla Cherrgrove Mart",
                                   bg=UI_Colors.Lavender_Web.value,
                                   font=("Comic Sans MS", 12, ""),
                                   activebackground=UI_Colors.Lavender_Web.value)
-    cherrygroveMartSetting.place(x=30, y=410)
+    cherrygroveMartSetting.place(x=30, y=380)
     Hovertip(cherrygroveMartSetting, "Removes Cherrygrove Mart from the randomized pool\nUseful for races", 500)
+
+    levelSetting = tk.Checkbutton(mainWindow,
+                                  variable=starterLevel,
+                                  text=" Lvl 98 Starters for Testing",
+                                  bg=UI_Colors.Lavender_Web.value,
+                                  font=("Comic Sans MS", 12, ""),
+                                  activebackground=UI_Colors.Lavender_Web.value)
+    levelSetting.place(x=30, y=410)
+    Hovertip(levelSetting, "Makes the 3 starters lv98\nThis setting is intended for TESTING ONLY", 500)
+
+
 
 
     mainWindow.mainloop()
