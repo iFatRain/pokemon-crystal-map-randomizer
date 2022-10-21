@@ -13,7 +13,7 @@ from idlelib.tooltip import Hovertip
 import randomizeROM
 from logic.DictionaryRandomizerLogic import outputify
 
-version = "v2.1.1"
+version = "v2.1.2"
 
 def displayMainWindow():
 
@@ -427,4 +427,5 @@ loadedROMPath = tk.StringVar()
 supportedROM = tk.BooleanVar()
 supportedROM.set(False)
 
-
+if __name__ == '__main__':
+    main()

@@ -5,18 +5,24 @@ def buildMemoryLocationsFromSym(detectedROMName):
     memoryMapWarps = dict()
     memoryMapScripts = dict()
     print(sys.executable)
+
+    sym_path = None
+    is_syms = os.path.isdir("syms")
+    if not is_syms:
+        sym_path = os.path.realpath(__file__)
+    else:
+        sym_path = "."
+
     if detectedROMName == "Pokemon - Crystal Version 1.1":
-        print("\nLoading Vanilla Scripts...")
-        file = os.path.join(os.path.dirname(os.path.realpath(__file__)),"vanilla.sym")
-        # file = os.path.join(os.path.dirname(sys.executable),"syms\\vanilla.sym")
+        file = os.path.join(sym_path,"syms\\vanilla.sym")
     elif detectedROMName == "Pokemon - Crystal Speedchoice Version 7.2":
         print("\nLoading Speedchoice 7.2 Scripts...")
-        file = os.path.join(os.path.dirname(os.path.realpath(__file__)), "crystal-speedchoice7.2.sym")
-        # file = os.path.join(os.path.dirname(sys.executable),"syms\\crystal-speedchoice7.2.sym")
+        # file = os.path.join(os.path.dirname(os.path.realpath(__file__)), "crystal-speedchoice7.2.sym")
+        file = os.path.join(sym_path,"syms\\crystal-speedchoice7.2.sym")
     elif detectedROMName == "Pokemon - Crystal Speedchoice Version 7.31":
         print("\nLoading Speedchoice 7.31 Scripts...")
-        file = os.path.join(os.path.dirname(os.path.realpath(__file__)), "crystal-speedchoice7.31.sym")
-        # file = os.path.join(os.path.dirname(sys.executable),"syms\\crystal-speedchoice7.31.sym")
+        # file = os.path.join(os.path.dirname(os.path.realpath(__file__)), "crystal-speedchoice7.31.sym")
+        file = os.path.join(sym_path,"syms\\crystal-speedchoice7.31.sym")
 
     with open(file, "r") as memLoc:
 
@@ -118,6 +124,11 @@ def buildMemoryLocationsFromSym(detectedROMName):
                 memInfo = line.split(" ")[0]
                 bank, address = memInfo.split(":")[0], memInfo.split(":")[1]
                 memoryMapScripts["HoOhToggle"] = (int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 12
+
+            if "TinTowerRoof_MapScripts.Appear" in line:
+                memInfo = line.split(" ")[0]
+                bank, address = memInfo.split(":")[0], memInfo.split(":")[1]
+                memoryMapScripts["HoOhAddress"] = (int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 0 #Start of line
 
             if "InitializeEventsScript" in line and "InitializeEventsScriptStdScript" not in line and "SkipDirector" not in line:
                 memInfo = line.split(" ")[0]

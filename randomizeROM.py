@@ -232,7 +232,7 @@ def randomizeROM(inputROM, settings):
 
             checkForDoubles(link, inputROM, warpLocations, johtoWarps)
 
-
+            #TODO investigate these with the changed speedchoice
             if link.LINK == johtoWarps.get("Ecruteak_Gym_Links").get("ECRUTEAK_GYM_TO_ECRUTEAK_CITY_LINK").OWN:
                 print("REASSIGNING ECRUTEAK KICKOUT WARP")
                 reassignWarp(inputROM, link, memLocation, scriptLocations["EcruteakGymClosed"], b'\x04\t\x06\x1b')
@@ -465,6 +465,13 @@ def changeGoldenrodRockets(inputROM, warpLocations, scriptLocations):
     inputROM.write(bytes.fromhex(getHex(51)))
 
 
+def AddressToIntValues(address):
+    bank_size = 0x4000
+    value = (address % bank_size) + bank_size
+    bytes_return = value.to_bytes(2, byteorder='little')
+    return bytes_return
+
+
 def enableLegendaries(inputROM, warpLocations, scriptLocations, settings):
     print("\tEnabling Always Catchable Setting")
 
@@ -485,10 +492,14 @@ def enableLegendaries(inputROM, warpLocations, scriptLocations, settings):
         inputROM.write(bytes.fromhex(getHex(88)))
     elif "7.31" in settings[0]:
         print("Doing Speedchoice 7.31 Ho-OH")
+        print(scriptLocations["HoOhToggle"],scriptLocations["HoOhToggleE4"])
         inputROM.seek(scriptLocations["HoOhToggle"])
-        inputROM.write(bytes.fromhex(getHex(92)))
+        appearAddress = scriptLocations["HoOhAddress"]
+        bytes_result = AddressToIntValues(appearAddress)
+        #Convert appear address to bytes from the label it jumps to, and use this!
+        inputROM.write(bytes_result)
         inputROM.seek(scriptLocations["HoOhToggleE4"])
-        inputROM.write(bytes.fromhex(getHex(92)))
+        inputROM.write(bytes_result)
     print("Done Enabling Legendaries")
 
 
