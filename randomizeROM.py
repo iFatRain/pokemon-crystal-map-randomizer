@@ -198,7 +198,7 @@ def directConnectRed(inputROM, warpLocations, johtoWarps, kantoWarps):
         inputROM.read(2)
         inputROM.write(WarpInstruction.getInstruction(link.LINK.value))
 
-def randomizeROM(inputROM, settings):
+def randomizeROM(inputROM, settings, customPath):
 
     startTime = time.time()
 
@@ -212,7 +212,7 @@ def randomizeROM(inputROM, settings):
 
         foundLocation = rom.find(lookupDict[key])
         warpLocations[key] = foundLocation + 5
-    scriptLocations = buildMemoryLocationsFromSym(settings[0])
+    scriptLocations = buildMemoryLocationsFromSym(settings[0], customPath)
 
 
     # for key in warpLocations.keys():

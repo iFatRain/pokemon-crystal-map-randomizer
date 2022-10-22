@@ -15,8 +15,21 @@ from logic.DictionaryRandomizerLogic import outputify
 
 version = "v2.1.2"
 
-def displayMainWindow():
+def VersionCallback(selection):
+    if selection == "Vanilla":
+        loadedROMName.set("Pokemon - Crystal Version 1.1")
+    elif selection == "SC 7.2":
+        loadedROMName.set("Pokemon - Crystal Speedchoice Version 7.2")
+    elif selection == "SC 7.3":
+        loadedROMName.set("Pokemon - Crystal Speedchoice Version 7.31")
+    elif selection == "SC 7.4":
+        loadedROMName.set("Pokemon - Crystal Speedchoice Version 7.4")
+    elif selection == "Custom":
+        # Ask the user to choose the sym file
+        loadedROMName.set("Custom")
+        customPath.set(filedialog.askopenfilename())
 
+def displayMainWindow():
     mainWindow.geometry("800x460")
     mainWindow.title("Pokemon Crystal Warp Randomizer " + version + " by iFatRain")
     mainWindow.configure(bg= UI_Colors.Lavender_Web.value)
@@ -26,6 +39,12 @@ def displayMainWindow():
                                          text="Pick base version:",
                                          bg=UI_Colors.Lavender_Web.value,
                                          font=("Comic Sans MS", 12, ""))
+
+
+    versionVariable.set("Unknown")
+    Options = ["Vanilla", "SC 7.2", "SC 7.3", "SC 7.4", "Custom"]
+    versionOptions = tk.OptionMenu(mainWindow, versionVariable, *Options, command=VersionCallback)
+    versionOptions.pack()
 
     baseOptions_Vanilla     = tk.Radiobutton(mainWindow,
                                                text="Vanilla",
@@ -49,6 +68,14 @@ def displayMainWindow():
                                              activebackground=UI_Colors.Lavender_Web.value,
                                              variable=baseROM,
                                              value=3)
+
+    baseOptions_Custom = tk.Radiobutton(mainWindow,
+                                                text="Custom",
+                                                font=("Comic Sans MS", 12, ""),
+                                                bg=UI_Colors.Lavender_Web.value,
+                                                activebackground=UI_Colors.Lavender_Web.value,
+                                                variable=baseROM,
+                                                value=4)
 
 
     tk.Label(mainWindow,
@@ -114,7 +141,7 @@ def displayMainWindow():
               bg=UI_Colors.Han_Blue.value,
               fg=UI_Colors.Minion_Yellow.value,
               command=lambda:[loadAndDetermineROM(), displayBaseOptions(baseOptions_Vanilla,baseOptions_Speedchoice7p2,
-                  baseOptions_Speedchoice7p3,baseOptions_Label)]).place(x=40, y=70)
+                  baseOptions_Speedchoice7p3,baseOptions_Custom,versionOptions,baseOptions_Label)]).place(x=40, y=70)
 
     tk.Label(mainWindow,
              textvariable=loadedROMName,
@@ -259,18 +286,21 @@ def displaySeedInfoWindow(seed):
 
     seedInfoWindow.mainloop()
 
-def displayBaseOptions(vanilla, speedchoice7p2,speedchoice7p3,label):
+def displayBaseOptions(vanilla, speedchoice7p2,speedchoice7p3,custom,versionOptions,label):
     if not supportedROM.get():
         label.place(x=160, y=110)
-        vanilla.place(x=300,y=110)
-        speedchoice7p2.place(x=380,y=110)
-        speedchoice7p3.place(x=460, y=110)
+        #vanilla.place(x=300,y=110)
+        #speedchoice7p2.place(x=380,y=110)
+        #speedchoice7p3.place(x=460, y=110)
+        versionOptions.place(x=350, y=110)
+        #custom.place(x=560, y=110)
 
     else:
         label.place_forget()
         vanilla.place_forget()
         speedchoice7p2.place_forget()
         speedchoice7p3.place_forget()
+        custom.place_forget()
 
 def determineROM(rom_md5):
     # vanillaROM_MD5 = "301899b8087289a6436b0a241fbbb474"
@@ -309,20 +339,15 @@ def assignSeed():
         seedString.set(str(random.randint(-sys.maxsize, sys.maxsize)))
     random.seed(seedString.get())
 
+
 def randomize(originalROM):
     #Checks if an supported ROM was loaded, if not checks for Base Option Selection
     if not supportedROM.get():
-        if baseROM.get() == 0:
+        versionOption = versionVariable.get()
+        if versionOption == "Unknown" and len(customPath.get()) == 0:
             return
-        elif baseROM.get() == 1:
-            loadedROMName.set("Pokemon - Crystal Version 1.1")
-        elif baseROM.get() == 2:
-            loadedROMName.set("Pokemon - Crystal Speedchoice Version 7.2")
-        elif baseROM.get() == 3:
-            loadedROMName.set("Pokemon - Crystal Speedchoice Version 7.31")
 
-
-
+    #Moved the code from here to the callback function
 
 
     # Remove the main window while we try the rando
@@ -348,7 +373,7 @@ def randomize(originalROM):
     # Try to randomize, catch failures to avoid a hung process
     try:
         with open(file=newROM, mode='r+b') as ROM:
-            randomizedNodeList = randomizeROM.randomizeROM(ROM, settings)
+            randomizedNodeList = randomizeROM.randomizeROM(ROM, settings, customPath.get())
     except:
         print("Randomizer failed")
         traceback.print_exc()
@@ -425,7 +450,9 @@ loadedROMName = tk.StringVar()
 loadedROMName.set("No ROM Loaded!")
 loadedROMPath = tk.StringVar()
 supportedROM = tk.BooleanVar()
+versionVariable = tk.StringVar(mainWindow)
 supportedROM.set(False)
+customPath = tk.StringVar()
 
-if __name__ == '__main__':
-    main()
+#if __name__ == '__main__':
+#    main()

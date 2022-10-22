@@ -1,10 +1,9 @@
 import os, sys
 
 
-def buildMemoryLocationsFromSym(detectedROMName):
+def buildMemoryLocationsFromSym(detectedROMName, custom_path=None):
     memoryMapWarps = dict()
     memoryMapScripts = dict()
-    print(sys.executable)
 
     sym_path = None
     is_syms = os.path.isdir("syms")
@@ -23,6 +22,11 @@ def buildMemoryLocationsFromSym(detectedROMName):
         print("\nLoading Speedchoice 7.31 Scripts...")
         # file = os.path.join(os.path.dirname(os.path.realpath(__file__)), "crystal-speedchoice7.31.sym")
         file = os.path.join(sym_path,"syms\\crystal-speedchoice7.31.sym")
+    elif detectedROMName == "Pokemon - Crystal Speedchoice Version 7.4":
+        print("\nLoading Speedchoice 7.4 Scripts...")
+        file = os.path.join(sym_path,"syms\\crystal-speedchoice7.4.sym")
+    elif detectedROMName == "Custom" and custom_path is not None:
+        file = custom_path
 
     with open(file, "r") as memLoc:
 
