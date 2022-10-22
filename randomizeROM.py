@@ -484,19 +484,11 @@ def enableLegendaries(inputROM, warpLocations, scriptLocations, settings):
         print("Doing Vanilla Ho-OH")
         inputROM.seek(scriptLocations["HoOhToggle"])
         inputROM.write(bytes.fromhex(getHex(62)))
-    elif "7.2" in settings[0]:
-        print("Doing Speedchoice 7.2 Ho-OH")
-        inputROM.seek(scriptLocations["HoOhToggle"])
-        inputROM.write(bytes.fromhex(getHex(88)))
-        inputROM.seek(scriptLocations["HoOhToggleE4"])
-        inputROM.write(bytes.fromhex(getHex(88)))
-    elif "7.31" in settings[0]:
-        print("Doing Speedchoice 7.31 Ho-OH")
-        print(scriptLocations["HoOhToggle"],scriptLocations["HoOhToggleE4"])
+    elif "Speedchoice" in settings[0]:
         inputROM.seek(scriptLocations["HoOhToggle"])
         appearAddress = scriptLocations["HoOhAddress"]
         bytes_result = AddressToIntValues(appearAddress)
-        #Convert appear address to bytes from the label it jumps to, and use this!
+        # Convert appear address to bytes from the label it jumps to, and use this!
         inputROM.write(bytes_result)
         inputROM.seek(scriptLocations["HoOhToggleE4"])
         inputROM.write(bytes_result)
