@@ -485,13 +485,18 @@ def enableLegendaries(inputROM, warpLocations, scriptLocations, settings):
         inputROM.seek(scriptLocations["HoOhToggle"])
         inputROM.write(bytes.fromhex(getHex(62)))
     elif "Speedchoice" in settings[0]:
-        inputROM.seek(scriptLocations["HoOhToggle"])
+        #inputROM.seek(scriptLocations["HoOhToggleE4"])
+        noE4Address = scriptLocations["NoE4Address"]
+        e4_bytes_result = AddressToIntValues(noE4Address)
         appearAddress = scriptLocations["HoOhAddress"]
-        bytes_result = AddressToIntValues(appearAddress)
+        appear_bytes_result = AddressToIntValues(appearAddress)
         # Convert appear address to bytes from the label it jumps to, and use this!
-        inputROM.write(bytes_result)
         inputROM.seek(scriptLocations["HoOhToggleE4"])
-        inputROM.write(bytes_result)
+        #If user does not have Rainbow Wing check, replace NoAppear with Appear
+        inputROM.write(appear_bytes_result)
+        inputROM.seek(scriptLocations["HoOhToggle"])
+        #If user has not beaten E4, jump to NoE4 Check -- where checks if Ho-Oh already beaten
+        inputROM.write(e4_bytes_result)
     print("Done Enabling Legendaries")
 
 

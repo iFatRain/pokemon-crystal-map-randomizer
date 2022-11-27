@@ -123,10 +123,14 @@ def buildMemoryLocationsFromSym(detectedROMName, custom_path=None):
                 if "MapScripts.NoE4Check" in line:
                     memInfo = line.split(" ")[0]
                     bank, address = memInfo.split(":")[0], memInfo.split(":")[1]
+                    #Address of NoE4CheckLabel
+                    memoryMapScripts["NoE4Address"] = (int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 0
+                    #Location of NoAppear (Rainbow Wing check)
                     memoryMapScripts["HoOhToggleE4"] = (int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 12
             if "MapScripts.HoOh" in line:
                 memInfo = line.split(" ")[0]
                 bank, address = memInfo.split(":")[0], memInfo.split(":")[1]
+                #Location of NoAppear (E4 Check)
                 memoryMapScripts["HoOhToggle"] = (int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 12
 
             if "TinTowerRoof_MapScripts.Appear" in line:

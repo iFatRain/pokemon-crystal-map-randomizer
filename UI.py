@@ -224,7 +224,7 @@ def displayMainWindow():
 
     cherrygroveMartSetting = tk.Checkbutton(mainWindow,
                                   variable=newBarkAdded,
-                                  text=" Vanilla Cherrgrove Mart",
+                                  text=" Vanilla Cherrygrove Mart",
                                   bg=UI_Colors.Lavender_Web.value,
                                   font=("Comic Sans MS", 12, ""),
                                   activebackground=UI_Colors.Lavender_Web.value)
@@ -316,7 +316,7 @@ def determineROM(rom_md5):
         case "acb7fc79e249271129082f73bb4bd2ba":
             loadedROMName.set("Pokemon - Crystal Speedchoice Version 7.31")
             supportedROM.set(True)
-        case "d41f2e17b03c183213d3dd39e49fd0c8":
+        case "1b6fae80832f0d8d6d028fce09ad68dc":
             loadedROMName.set("Pokemon - Crystal Speedchoice Version 7.4")
             supportedROM.set(True)
         # case "958e6f4e49b6fc693099377dcff6b12f":
