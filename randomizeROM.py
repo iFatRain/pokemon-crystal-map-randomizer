@@ -255,6 +255,7 @@ def randomizeROM(inputROM, settings, customPath):
 
     if settings[4]:
         doMapChanges(inputROM, warpLocations, scriptLocations)
+        reduceVisibilityDragonsDen(inputROM, warpLocations, scriptLocations)
 
     if settings[5]:
         catchEmAllBoi(inputROM, warpLocations,scriptLocations)
@@ -287,6 +288,26 @@ def randomizeROM(inputROM, settings, customPath):
     inputROM.close()
 
     return randomizedNodes
+
+
+def reduceVisibilityDragonsDen(inputROM, warpLocations, scriptLocations):
+
+    # 1 byte of filler (1)
+    # 1 count byte, 2 warp events 1 + (1 + 5 + 5) = 12
+    # 1 count event, 1 co-ord event  12 + (1 + 8) = 21
+    # 1 count byte, 4 bg_events 21 + (1 + (4 * 5)) = 42
+    # 1 count event, Skip 3 object events 42 + (1 + (3 * 13)) =  82
+    # Skip to 11th byte for sight range 82 + 9?? = 91
+
+    inputROM.seek(scriptLocations["DragonsDenB1F_MapEvents"] + 91)
+
+    #Finding 1626049, expecting 1626040 (+11?)
+
+    # Should default to 4
+    value = inputROM.read(1)
+    inputROM.seek(scriptLocations["DragonsDenB1F_MapEvents"] + 91)
+
+    inputROM.write(bytes.fromhex(getHex(3)))
 
 def removeRivalInMoon(inputROM, warpLocations, scriptLocations):
     print("Removing Mt.Moon Rival Fight")
@@ -491,10 +512,10 @@ def enableLegendaries(inputROM, warpLocations, scriptLocations, settings):
         appearAddress = scriptLocations["HoOhAddress"]
         appear_bytes_result = AddressToIntValues(appearAddress)
         # Convert appear address to bytes from the label it jumps to, and use this!
-        inputROM.seek(scriptLocations["HoOhToggleE4"])
+        inputROM.seek(scriptLocations["HoOhToggle"])
         #If user does not have Rainbow Wing check, replace NoAppear with Appear
         inputROM.write(appear_bytes_result)
-        inputROM.seek(scriptLocations["HoOhToggle"])
+        inputROM.seek(scriptLocations["HoOhToggleE4"])
         #If user has not beaten E4, jump to NoE4 Check -- where checks if Ho-Oh already beaten
         inputROM.write(e4_bytes_result)
     print("Done Enabling Legendaries")

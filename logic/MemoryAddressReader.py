@@ -234,6 +234,13 @@ def buildMemoryLocationsFromSym(detectedROMName, custom_path=None):
 
                 print(line.split(" ")[1], "is at", hex((int(bank, 16) * 0x4000) + int(address, 16) - 0x4000))
 
+            if "DragonsDenB1F_MapEvents" in line and "." not in line:
+                memInfo = line.split(" ")[0]
+                bank, address = memInfo.split(":")[0], memInfo.split(":")[1]
+                memoryMapScripts["DragonsDenB1F_MapEvents"] = (int(bank, 16) * 0x4000) + int(address, 16) - 0x4000
+
+                print(line.split(" ")[1], "is at", hex((int(bank, 16) * 0x4000) + int(address, 16) - 0x4000))
+
             #Bike Anywhere Scripts
             if ".no_biking" in line: #Write a 8, original is 1
                 memInfo = line.split(" ")[0]
