@@ -496,10 +496,14 @@ def AddressToIntValues(address):
 def enableLegendaries(inputROM, warpLocations, scriptLocations, settings):
     print("\tEnabling Always Catchable Setting")
 
+    lugiaAppearAddress = scriptLocations["LugiaAddress"]
+    lugia_appear_bytes_result = AddressToIntValues(lugiaAppearAddress)
+    inputROM.seek(scriptLocations["LugiaToggle"])
+    inputROM.write(lugia_appear_bytes_result)
+
     inputROM.seek(warpLocations["WhirlIslandLugiaChamber"] + 7)
     inputROM.write(bytes.fromhex(getHex(15)))
-    inputROM.seek(scriptLocations["LugiaToggle"])
-    inputROM.write(bytes.fromhex(getHex(18)))
+
     #Change ho-oh, different in each version
     if "1.1" in settings[0]:
         print("Doing Vanilla Ho-OH")

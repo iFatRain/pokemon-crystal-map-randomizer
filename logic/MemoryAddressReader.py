@@ -8,9 +8,10 @@ def buildMemoryLocationsFromSym(detectedROMName, custom_path=None):
     sym_path = None
     is_syms = os.path.isdir("syms")
     if not is_syms:
-        sym_path = os.path.realpath(__file__)
+        sym_path = "logic"
     else:
         sym_path = "."
+
 
     if detectedROMName == "Pokemon - Crystal Version 1.1":
         file = os.path.join(sym_path,"syms\\vanilla.sym")
@@ -59,6 +60,11 @@ def buildMemoryLocationsFromSym(detectedROMName, custom_path=None):
                 memoryMapScripts["LugiaToggle"] = (int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 12
                 #print("LugiaToggle is at", hex((int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 12))
 
+            if "WhirlIslandLugiaChamber_MapScripts.Appear" in line:
+                memInfo = line.split(" ")[0]
+                bank, address = memInfo.split(":")[0], memInfo.split(":")[1]
+                memoryMapScripts["LugiaAddress"] = (int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 0 #Start of line
+
             if "sRoomDoors" in line:
                 memInfo = line.split(" ")[0]
                 bank, address = memInfo.split(":")[0], memInfo.split(":")[1]
@@ -92,13 +98,13 @@ def buildMemoryLocationsFromSym(detectedROMName, custom_path=None):
             if "AideScript_GivePotion" in line:
                 memInfo = line.split(" ")[0]
                 bank, address = memInfo.split(":")[0], memInfo.split(":")[1]
-                memoryMapScripts[line.split(" ")[1]] = (int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 6
-                #print(line.split(" ")[1], "is at", hex((int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 6))
+                #TODO FIx, 9 for speedchocie 7.4
 
-            if "AideScript_GivePotion" in line:
-                memInfo = line.split(" ")[0]
-                bank, address = memInfo.split(":")[0], memInfo.split(":")[1]
-                memoryMapScripts[line.split(" ")[1]] = (int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 6
+                byteOffset = 6
+                if detectedROMName == "Pokemon - Crystal Speedchoice Version 7.4":
+                    byteOffset += 3 # Speedchoice 7.4 added additional bytes for re-obtaining the item
+
+                memoryMapScripts[line.split(" ")[1]] = (int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + byteOffset
                 #print(line.split(" ")[1], "is at", hex((int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 6))
 
             if "CyndaquilPokeBallScript" in line:
