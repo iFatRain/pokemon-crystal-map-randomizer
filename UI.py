@@ -316,7 +316,7 @@ def determineROM(rom_md5):
         case "acb7fc79e249271129082f73bb4bd2ba":
             loadedROMName.set("Pokemon - Crystal Speedchoice Version 7.31")
             supportedROM.set(True)
-        case "c61bc12f89aa45bb014e8417776a3b64":
+        case "1b8acc55329bb111a7fd9d5bab80fd19":
             loadedROMName.set("Pokemon - Crystal Speedchoice Version 7.4")
             supportedROM.set(True)
         # case "958e6f4e49b6fc693099377dcff6b12f":
