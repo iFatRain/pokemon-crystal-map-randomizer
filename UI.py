@@ -305,7 +305,7 @@ def displayBaseOptions(vanilla, speedchoice7p2,speedchoice7p3,custom,versionOpti
 def determineROM(rom_md5):
     # vanillaROM_MD5 = "301899b8087289a6436b0a241fbbb474"
     # 7.2 confirmed = "79369a19272472ae254b5b6abc32e9cd"
-    print(rom_md5)
+    print("romMD5=",rom_md5)
     match rom_md5:
         case "301899b8087289a6436b0a241fbbb474":
             loadedROMName.set("Pokemon - Crystal Version 1.1")
@@ -316,7 +316,7 @@ def determineROM(rom_md5):
         case "acb7fc79e249271129082f73bb4bd2ba":
             loadedROMName.set("Pokemon - Crystal Speedchoice Version 7.31")
             supportedROM.set(True)
-        case "80cfa67331de6289cab8102d6adea4f4":
+        case "2d6355542f023611990c9a673cc308a8":
             loadedROMName.set("Pokemon - Crystal Speedchoice Version 7.4")
             supportedROM.set(True)
         # case "958e6f4e49b6fc693099377dcff6b12f":
