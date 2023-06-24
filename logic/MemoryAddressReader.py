@@ -23,9 +23,9 @@ def buildMemoryLocationsFromSym(detectedROMName, custom_path=None):
         print("\nLoading Speedchoice 7.31 Scripts...")
         # file = os.path.join(os.path.dirname(os.path.realpath(__file__)), "crystal-speedchoice7.31.sym")
         file = os.path.join(sym_path,"syms\\crystal-speedchoice7.31.sym")
-    elif detectedROMName == "Pokemon - Crystal Speedchoice Version 7.4":
-        print("\nLoading Speedchoice 7.4 Scripts...")
-        file = os.path.join(sym_path,"syms\\crystal-speedchoice7.4.sym")
+    elif detectedROMName == "Pokemon - Crystal Speedchoice Version 8":
+        print("\nLoading Speedchoice 8 Scripts...")
+        file = os.path.join(sym_path,"syms\\crystal-speedchoice8.sym")
     elif detectedROMName == "Custom" and custom_path is not None:
         file = custom_path
 
@@ -98,10 +98,8 @@ def buildMemoryLocationsFromSym(detectedROMName, custom_path=None):
             if "AideScript_GivePotion" in line:
                 memInfo = line.split(" ")[0]
                 bank, address = memInfo.split(":")[0], memInfo.split(":")[1]
-                #TODO FIx, 9 for speedchocie 7.4
-
                 byteOffset = 6
-                if detectedROMName == "Pokemon - Crystal Speedchoice Version 7.4":
+                if detectedROMName == "Pokemon - Crystal Speedchoice Version 8":
                     byteOffset += 3 # Speedchoice 7.4 added additional bytes for re-obtaining the item
 
                 memoryMapScripts[line.split(" ")[1]] = (int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + byteOffset

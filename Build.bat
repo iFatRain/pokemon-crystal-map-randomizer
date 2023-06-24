@@ -1,4 +1,6 @@
 pyinstaller iFatRainsCrystalWarpRandomizer.pyw
-mkdir dist\syms
+mkdir dist\iFatRainsCrystalWarpRandomizer\syms
 
-Xcopy "logic\syms\*.sym" "dist\syms" /i /y
+Xcopy "logic\syms\*.sym" "dist\iFatRainsCrystalWarpRandomizer\syms" /i /y
+
+pause

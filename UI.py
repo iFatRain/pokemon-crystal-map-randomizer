@@ -22,8 +22,8 @@ def VersionCallback(selection):
         loadedROMName.set("Pokemon - Crystal Speedchoice Version 7.2")
     elif selection == "SC 7.3":
         loadedROMName.set("Pokemon - Crystal Speedchoice Version 7.31")
-    elif selection == "SC 7.4":
-        loadedROMName.set("Pokemon - Crystal Speedchoice Version 7.4")
+    elif selection == "SC 8":
+        loadedROMName.set("Pokemon - Crystal Speedchoice Version 8")
     elif selection == "Custom":
         # Ask the user to choose the sym file
         loadedROMName.set("Custom")
@@ -42,7 +42,7 @@ def displayMainWindow():
 
 
     versionVariable.set("Unknown")
-    Options = ["Vanilla", "SC 7.2", "SC 7.3", "SC 7.4"]
+    Options = ["Vanilla", "SC 7.2", "SC 7.3", "SC 8"]
     versionOptions = tk.OptionMenu(mainWindow, versionVariable, *Options, command=VersionCallback)
     versionOptions.pack()
 
@@ -316,8 +316,8 @@ def determineROM(rom_md5):
         case "acb7fc79e249271129082f73bb4bd2ba":
             loadedROMName.set("Pokemon - Crystal Speedchoice Version 7.31")
             supportedROM.set(True)
-        case "2d6355542f023611990c9a673cc308a8":
-            loadedROMName.set("Pokemon - Crystal Speedchoice Version 7.4")
+        case "d3fa4c02fa905b5dbd0efe81e04a576d":
+            loadedROMName.set("Pokemon - Crystal Speedchoice Version 8")
             supportedROM.set(True)
         # case "958e6f4e49b6fc693099377dcff6b12f":
         #     loadedROMName.set("Pokemon - Crystal Speedchoice Version BETA")
