@@ -198,7 +198,7 @@ def directConnectRed(inputROM, warpLocations, johtoWarps, kantoWarps):
         inputROM.read(2)
         inputROM.write(WarpInstruction.getInstruction(link.LINK.value))
 
-def randomizeROM(inputROM, settings):
+def randomizeROM(inputROM, settings, customPath):
 
     startTime = time.time()
 
@@ -212,7 +212,7 @@ def randomizeROM(inputROM, settings):
 
         foundLocation = rom.find(lookupDict[key])
         warpLocations[key] = foundLocation + 5
-    scriptLocations = buildMemoryLocationsFromSym(settings[0])
+    scriptLocations = buildMemoryLocationsFromSym(settings[0], customPath)
 
 
     # for key in warpLocations.keys():
@@ -232,7 +232,7 @@ def randomizeROM(inputROM, settings):
 
             checkForDoubles(link, inputROM, warpLocations, johtoWarps)
 
-
+            #TODO investigate these with the changed speedchoice
             if link.LINK == johtoWarps.get("Ecruteak_Gym_Links").get("ECRUTEAK_GYM_TO_ECRUTEAK_CITY_LINK").OWN:
                 print("REASSIGNING ECRUTEAK KICKOUT WARP")
                 reassignWarp(inputROM, link, memLocation, scriptLocations["EcruteakGymClosed"], b'\x04\t\x06\x1b')
@@ -255,6 +255,7 @@ def randomizeROM(inputROM, settings):
 
     if settings[4]:
         doMapChanges(inputROM, warpLocations, scriptLocations)
+        reduceVisibilityDragonsDen(inputROM, warpLocations, scriptLocations)
 
     if settings[5]:
         catchEmAllBoi(inputROM, warpLocations,scriptLocations)
@@ -287,6 +288,26 @@ def randomizeROM(inputROM, settings):
     inputROM.close()
 
     return randomizedNodes
+
+
+def reduceVisibilityDragonsDen(inputROM, warpLocations, scriptLocations):
+
+    # 1 byte of filler (1)
+    # 1 count byte, 2 warp events 1 + (1 + 5 + 5) = 12
+    # 1 count event, 1 co-ord event  12 + (1 + 8) = 21
+    # 1 count byte, 4 bg_events 21 + (1 + (4 * 5)) = 42
+    # 1 count event, Skip 3 object events 42 + (1 + (3 * 13)) =  82
+    # Skip to 11th byte for sight range 82 + 9?? = 91
+
+    inputROM.seek(scriptLocations["DragonsDenB1F_MapEvents"] + 91)
+
+    #Finding 1626049, expecting 1626040 (+11?)
+
+    # Should default to 4
+    value = inputROM.read(1)
+    inputROM.seek(scriptLocations["DragonsDenB1F_MapEvents"] + 91)
+
+    inputROM.write(bytes.fromhex(getHex(3)))
 
 def removeRivalInMoon(inputROM, warpLocations, scriptLocations):
     print("Removing Mt.Moon Rival Fight")
@@ -465,30 +486,42 @@ def changeGoldenrodRockets(inputROM, warpLocations, scriptLocations):
     inputROM.write(bytes.fromhex(getHex(51)))
 
 
+def AddressToIntValues(address):
+    bank_size = 0x4000
+    value = (address % bank_size) + bank_size
+    bytes_return = value.to_bytes(2, byteorder='little')
+    return bytes_return
+
+
 def enableLegendaries(inputROM, warpLocations, scriptLocations, settings):
     print("\tEnabling Always Catchable Setting")
 
+    lugiaAppearAddress = scriptLocations["LugiaAddress"]
+    lugia_appear_bytes_result = AddressToIntValues(lugiaAppearAddress)
+    inputROM.seek(scriptLocations["LugiaToggle"])
+    inputROM.write(lugia_appear_bytes_result)
+
     inputROM.seek(warpLocations["WhirlIslandLugiaChamber"] + 7)
     inputROM.write(bytes.fromhex(getHex(15)))
-    inputROM.seek(scriptLocations["LugiaToggle"])
-    inputROM.write(bytes.fromhex(getHex(18)))
+
     #Change ho-oh, different in each version
     if "1.1" in settings[0]:
         print("Doing Vanilla Ho-OH")
         inputROM.seek(scriptLocations["HoOhToggle"])
         inputROM.write(bytes.fromhex(getHex(62)))
-    elif "7.2" in settings[0]:
-        print("Doing Speedchoice 7.2 Ho-OH")
+    elif "Speedchoice" in settings[0]:
+        #inputROM.seek(scriptLocations["HoOhToggleE4"])
+        noE4Address = scriptLocations["NoE4Address"]
+        e4_bytes_result = AddressToIntValues(noE4Address)
+        appearAddress = scriptLocations["HoOhAddress"]
+        appear_bytes_result = AddressToIntValues(appearAddress)
+        # Convert appear address to bytes from the label it jumps to, and use this!
         inputROM.seek(scriptLocations["HoOhToggle"])
-        inputROM.write(bytes.fromhex(getHex(88)))
+        #If user does not have Rainbow Wing check, replace NoAppear with Appear
+        inputROM.write(appear_bytes_result)
         inputROM.seek(scriptLocations["HoOhToggleE4"])
-        inputROM.write(bytes.fromhex(getHex(88)))
-    elif "7.31" in settings[0]:
-        print("Doing Speedchoice 7.31 Ho-OH")
-        inputROM.seek(scriptLocations["HoOhToggle"])
-        inputROM.write(bytes.fromhex(getHex(92)))
-        inputROM.seek(scriptLocations["HoOhToggleE4"])
-        inputROM.write(bytes.fromhex(getHex(92)))
+        #If user has not beaten E4, jump to NoE4 Check -- where checks if Ho-Oh already beaten
+        inputROM.write(e4_bytes_result)
     print("Done Enabling Legendaries")
 
 

@@ -1,22 +1,33 @@
 import os, sys
 
 
-def buildMemoryLocationsFromSym(detectedROMName):
+def buildMemoryLocationsFromSym(detectedROMName, custom_path=None):
     memoryMapWarps = dict()
     memoryMapScripts = dict()
-    print(sys.executable)
+
+    sym_path = None
+    is_syms = os.path.isdir("syms")
+    if not is_syms:
+        sym_path = "logic"
+    else:
+        sym_path = "."
+
+
     if detectedROMName == "Pokemon - Crystal Version 1.1":
-        print("\nLoading Vanilla Scripts...")
-        file = os.path.join(os.path.dirname(os.path.realpath(__file__)),"vanilla.sym")
-        # file = os.path.join(os.path.dirname(sys.executable),"syms\\vanilla.sym")
+        file = os.path.join(sym_path,"syms\\vanilla.sym")
     elif detectedROMName == "Pokemon - Crystal Speedchoice Version 7.2":
         print("\nLoading Speedchoice 7.2 Scripts...")
-        file = os.path.join(os.path.dirname(os.path.realpath(__file__)), "crystal-speedchoice7.2.sym")
-        # file = os.path.join(os.path.dirname(sys.executable),"syms\\crystal-speedchoice7.2.sym")
+        # file = os.path.join(os.path.dirname(os.path.realpath(__file__)), "crystal-speedchoice7.2.sym")
+        file = os.path.join(sym_path,"syms\\crystal-speedchoice7.2.sym")
     elif detectedROMName == "Pokemon - Crystal Speedchoice Version 7.31":
         print("\nLoading Speedchoice 7.31 Scripts...")
-        file = os.path.join(os.path.dirname(os.path.realpath(__file__)), "crystal-speedchoice7.31.sym")
-        # file = os.path.join(os.path.dirname(sys.executable),"syms\\crystal-speedchoice7.31.sym")
+        # file = os.path.join(os.path.dirname(os.path.realpath(__file__)), "crystal-speedchoice7.31.sym")
+        file = os.path.join(sym_path,"syms\\crystal-speedchoice7.31.sym")
+    elif detectedROMName == "Pokemon - Crystal Speedchoice Version 8":
+        print("\nLoading Speedchoice 8 Scripts...")
+        file = os.path.join(sym_path,"syms\\crystal-speedchoice8.sym")
+    elif detectedROMName == "Custom" and custom_path is not None:
+        file = custom_path
 
     with open(file, "r") as memLoc:
 
@@ -48,6 +59,11 @@ def buildMemoryLocationsFromSym(detectedROMName):
                 bank, address = memInfo.split(":")[0], memInfo.split(":")[1]
                 memoryMapScripts["LugiaToggle"] = (int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 12
                 #print("LugiaToggle is at", hex((int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 12))
+
+            if "WhirlIslandLugiaChamber_MapScripts.Appear" in line:
+                memInfo = line.split(" ")[0]
+                bank, address = memInfo.split(":")[0], memInfo.split(":")[1]
+                memoryMapScripts["LugiaAddress"] = (int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 0 #Start of line
 
             if "sRoomDoors" in line:
                 memInfo = line.split(" ")[0]
@@ -82,13 +98,11 @@ def buildMemoryLocationsFromSym(detectedROMName):
             if "AideScript_GivePotion" in line:
                 memInfo = line.split(" ")[0]
                 bank, address = memInfo.split(":")[0], memInfo.split(":")[1]
-                memoryMapScripts[line.split(" ")[1]] = (int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 6
-                #print(line.split(" ")[1], "is at", hex((int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 6))
+                byteOffset = 6
+                if detectedROMName == "Pokemon - Crystal Speedchoice Version 8":
+                    byteOffset += 3 # Speedchoice 7.4 added additional bytes for re-obtaining the item
 
-            if "AideScript_GivePotion" in line:
-                memInfo = line.split(" ")[0]
-                bank, address = memInfo.split(":")[0], memInfo.split(":")[1]
-                memoryMapScripts[line.split(" ")[1]] = (int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 6
+                memoryMapScripts[line.split(" ")[1]] = (int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + byteOffset
                 #print(line.split(" ")[1], "is at", hex((int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 6))
 
             if "CyndaquilPokeBallScript" in line:
@@ -113,11 +127,20 @@ def buildMemoryLocationsFromSym(detectedROMName):
                 if "MapScripts.NoE4Check" in line:
                     memInfo = line.split(" ")[0]
                     bank, address = memInfo.split(":")[0], memInfo.split(":")[1]
+                    #Address of NoE4CheckLabel
+                    memoryMapScripts["NoE4Address"] = (int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 0
+                    #Location of NoAppear (Rainbow Wing check)
                     memoryMapScripts["HoOhToggleE4"] = (int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 12
             if "MapScripts.HoOh" in line:
                 memInfo = line.split(" ")[0]
                 bank, address = memInfo.split(":")[0], memInfo.split(":")[1]
+                #Location of NoAppear (E4 Check)
                 memoryMapScripts["HoOhToggle"] = (int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 12
+
+            if "TinTowerRoof_MapScripts.Appear" in line:
+                memInfo = line.split(" ")[0]
+                bank, address = memInfo.split(":")[0], memInfo.split(":")[1]
+                memoryMapScripts["HoOhAddress"] = (int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + 0 #Start of line
 
             if "InitializeEventsScript" in line and "InitializeEventsScriptStdScript" not in line and "SkipDirector" not in line:
                 memInfo = line.split(" ")[0]
@@ -212,6 +235,13 @@ def buildMemoryLocationsFromSym(detectedROMName):
                 memInfo = line.split(" ")[0]
                 bank, address = memInfo.split(":")[0], memInfo.split(":")[1]
                 memoryMapScripts["MountMoon_MapScripts"] = (int(bank, 16) * 0x4000) + int(address, 16) - 0x4000
+
+                print(line.split(" ")[1], "is at", hex((int(bank, 16) * 0x4000) + int(address, 16) - 0x4000))
+
+            if "DragonsDenB1F_MapEvents" in line and "." not in line:
+                memInfo = line.split(" ")[0]
+                bank, address = memInfo.split(":")[0], memInfo.split(":")[1]
+                memoryMapScripts["DragonsDenB1F_MapEvents"] = (int(bank, 16) * 0x4000) + int(address, 16) - 0x4000
 
                 print(line.split(" ")[1], "is at", hex((int(bank, 16) * 0x4000) + int(address, 16) - 0x4000))
 
