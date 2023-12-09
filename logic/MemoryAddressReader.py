@@ -1,6 +1,24 @@
 import os, sys
 
 
+def IsSpeedchoice8Plus(detectedRomName):
+    if detectedRomName == "Pokemon - Crystal Speedchoice Version 8":
+        return True
+
+    if detectedRomName == "Pokemon - Crystal Speedchoice Version 8.1":
+        return True
+
+    if detectedRomName not in \
+            [
+                "Pokemon - Crystal Version 1.1",
+                "Pokemon - Crystal Speedchoice Version 7.2",
+                "Pokemon - Crystal Speedchoice Version 7.31"
+             ]:
+        # Unknown version, ensure handling for future speedchoice versions
+        return None
+
+    return False
+
 def buildMemoryLocationsFromSym(detectedROMName, custom_path=None):
     memoryMapWarps = dict()
     memoryMapScripts = dict()
@@ -26,6 +44,9 @@ def buildMemoryLocationsFromSym(detectedROMName, custom_path=None):
     elif detectedROMName == "Pokemon - Crystal Speedchoice Version 8":
         print("\nLoading Speedchoice 8 Scripts...")
         file = os.path.join(sym_path,"syms\\crystal-speedchoice8.sym")
+    elif detectedROMName == "Pokemon - Crystal Speedchoice Version 8.1":
+        print("\nLoading Speedchoice 81 Scripts...")
+        file = os.path.join(sym_path,"syms\\crystal-speedchoice81.sym")
     elif detectedROMName == "Custom" and custom_path is not None:
         file = custom_path
 
@@ -99,7 +120,12 @@ def buildMemoryLocationsFromSym(detectedROMName, custom_path=None):
                 memInfo = line.split(" ")[0]
                 bank, address = memInfo.split(":")[0], memInfo.split(":")[1]
                 byteOffset = 6
-                if detectedROMName == "Pokemon - Crystal Speedchoice Version 8":
+
+                isSpeedchoice8Plus = IsSpeedchoice8Plus(detectedROMName)
+                if isSpeedchoice8Plus is None:
+                    continue
+
+                if isSpeedchoice8Plus:
                     byteOffset += 3 # Speedchoice 7.4 added additional bytes for re-obtaining the item
 
                 memoryMapScripts[line.split(" ")[1]] = (int(bank, 16) * 0x4000) + int(address, 16) - 0x4000 + byteOffset
